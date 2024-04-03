@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Ccc_Testtwo>
+            <version>1.6.0.0.2</version>
+        </Ccc_Testtwo>
+    </modules>
+
+    <frontend>
+        <routers>
+            <testtwo>
+                <use>standard</use>
+                <args>
+                    <module>Ccc_Testtwo</module>
+                    <frontName>testtwo</frontName>
+                </args>
+            </testtwo>
+        </routers>
+    </frontend>
+      <global>
+        <models>
+            <testtwo>
+                <class>Ccc_Testtwo_Model</class>
+             <!-- <resourceModel>cms_resource</resourceModel> -->
+            </testtwo>
+        </models>
+    </global>
+</config>
