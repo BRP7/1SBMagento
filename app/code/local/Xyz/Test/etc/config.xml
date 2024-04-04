@@ -20,9 +20,9 @@
     </frontend>
       <global>
         <models>
-            <demo>
+            <xyz_test>
                 <class>Xyz_Test_Model</class>
-            </demo>
+            </xyz_test>
         </models>
     </global>
 </config>

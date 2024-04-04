@@ -20,10 +20,10 @@
     </frontend>
       <global>
         <models>
-            <test>
+            <ccc_test>
                 <class>Ccc_Test_Model</class>
              <!-- <resourceModel>cms_resource</resourceModel> -->
-            </test>
+            </ccc_test>
         </models>
     </global>
 </config>
