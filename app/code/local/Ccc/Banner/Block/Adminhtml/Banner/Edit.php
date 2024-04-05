@@ -13,7 +13,7 @@ class Ccc_Banner_Block_Adminhtml_Banner_Edit extends Mage_Adminhtml_Block_Widget
         $this->_updateButton('delete', 'label', Mage::helper('banner')->__('Delete Banner'));
 
         $this->_addButton('saveandcontinue', array(
-            'label'     => Mage::helper('adminhtml')->__('Save and Continue Edit'),
+            'label'     => Mage::helper('banner')->__('Save and Continue Edit'),
             'onclick'   => 'saveAndContinueEdit()',
             'class'     => 'save',
         ), -100);
@@ -34,17 +34,17 @@ class Ccc_Banner_Block_Adminhtml_Banner_Edit extends Mage_Adminhtml_Block_Widget
     }
 
 
-    protected function _prepareLayout()
-    {
-        parent::_prepareLayout();
+    // protected function _prepareLayout()
+    // {
+    //     parent::_prepareLayout();
 
-        // Update button labels and remove duplicate button declaration if necessary
+    //     // Update button labels and remove duplicate button declaration if necessary
 
-        $this->_updateButton('save', 'label', Mage::helper('banner')->__('Save Banner'));
-        $this->_updateButton('delete', 'label', Mage::helper('banner')->__('Delete Banner'));
+    //     $this->_updateButton('save', 'label', Mage::helper('banner')->__('Save Banner'));
+    //     $this->_updateButton('delete', 'label', Mage::helper('banner')->__('Delete Banner'));
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getHeaderText()
     {
@@ -55,14 +55,14 @@ class Ccc_Banner_Block_Adminhtml_Banner_Edit extends Mage_Adminhtml_Block_Widget
         }
     }
 
-    public function getFormHtml()
-    {
-        $form = $this->getChild('form');
-        if ($form instanceof Mage_Core_Block_Abstract) {
-            return $form->toHtml();
-        } else {
-            return ''; // Return empty string if form block is not found
-        }
-    }
+    // public function getFormHtml()
+    // {
+    //     $form = $this->getChild('form');
+    //     if ($form instanceof Mage_Core_Block_Abstract) {
+    //         return $form->toHtml();
+    //     } else {
+    //         return ''; // Return empty string if form block is not found
+    //     }
+    // }
     
 }

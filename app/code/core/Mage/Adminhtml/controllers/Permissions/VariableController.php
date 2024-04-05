@@ -112,9 +112,9 @@ class Mage_Adminhtml_Permissions_VariableController extends Mage_Adminhtml_Contr
         $this->getLayout()->getBlock('adminhtml.permissions.variable.edit')
             ->setData('action', $this->getUrl('*/permissions_variable/save'));
 
-        $this->renderLayout();
+        $this->renderLayout();      
+               
     }
-
     /**
      * Save action
      *

@@ -126,7 +126,7 @@
 //                 ->setData(
 //                     array(
 //                         'label' => Mage::helper('adminhtml')->__('Save and Continue Edit'),
-//                         'onclick' => 'editForm.submit(\'' . $this->getUrl('*/*/save', array('_current' => true)) . '\');',
+//                         'onclick' => '(\'' . $this->getUrl('*/*/save', array('_current' => true)) . '\');',
 //                         'class' => 'save',
 //                     )
 //                 )
@@ -179,20 +179,20 @@ class Ccc_Banner_Block_Adminhtml_Banner_Edit_Form extends Mage_Adminhtml_Block_W
         //     $this->getLayout()->getBlock('head')->setCanLoadTinyMce(true);
         // }
     }
-
     protected function _prepareForm()
     {
         $model = Mage::registry('banner_block');
+        $isEdit = ($model && $model->getId());
 
         $form = new Varien_Data_Form(
-            array('id' => 'edit_form', 'action' => $this->getData('action'), 'method' => 'post')
+            array('id' => 'edit_form', 'action' => $this->getUrl('*/*/save'), 'method' => 'post', 'enctype' => 'multipart/form-data')
         );
 
-        $form->setHtmlIdPrefix('banner_');
+        $form->setHtmlIdPrefix('block_');
 
         $fieldset = $form->addFieldset('base_fieldset', array('legend' => Mage::helper('banner')->__('General Information'), 'class' => 'fieldset-wide'));
 
-        if ($model->getBannerId()) {
+        if ($isEdit && $model->getBannerId()) {
             $fieldset->addField(
                 'banner_id',
                 'hidden',
@@ -201,7 +201,6 @@ class Ccc_Banner_Block_Adminhtml_Banner_Edit_Form extends Mage_Adminhtml_Block_W
                 )
             );
         }
-
         $fieldset->addField(
             'name',
             'text',
@@ -214,89 +213,65 @@ class Ccc_Banner_Block_Adminhtml_Banner_Edit_Form extends Mage_Adminhtml_Block_W
         );
 
         $fieldset->addField(
-            'image',
+            'banner_image',
             'file',
             array(
                 'name' => 'banner_image',
-                'label' => Mage::helper('banner')->__('Banner Image'),
-                'title' => Mage::helper('banner')->__('Banner Image'),
-                'required' => true,
-                'class' => 'validate-xml-identifier',
+                'label' => Mage::helper('banner')->__('Banner image'),
+                'title' => Mage::helper('banner')->__('Banner image'),
+                // Remove 'required' attribute only in edit mode
+                'required' => !$isEdit,
+                'class' => 'validate-xml-banner-image',
             )
         );
 
-        $fieldset->addField(
-            'show_on',
-            'radios',
-            array(
-                'label' => Mage::helper('banner')->__('Show On'),
-                'required' => true,
-                'name' => 'show_on',
-                'values' => array(
-                    array('value' => 0, 'label' => Mage::helper('banner')->__('No')),
-                    array('value' => 1, 'label' => Mage::helper('banner')->__('Yes')),
-                ),
-            )
-        );
+        // Add current image display if in edit mode
+        if ($isEdit) {
+            $currentImageUrl = $model->getBannerImage();
+            if ($currentImageUrl) {
+                $fieldset->addField(
+                    'current_image',
+                    'note',
+                    array(
+                        'label' => Mage::helper('banner')->__('Current Image'),
+                        'text' => '<img src="' . Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'banner/' . $currentImageUrl . '" height="200" />'
+                    )
+                );
+            }
+        }
 
         $fieldset->addField(
             'status',
-            'radios',
+            'select',
             array(
                 'label' => Mage::helper('banner')->__('Status'),
-                'required' => true,
+                'title' => Mage::helper('banner')->__('Status'),
                 'name' => 'status',
-                'values' => array(
-                    array('value' => 0, 'label' => Mage::helper('banner')->__('Disable')),
-                    array('value' => 1, 'label' => Mage::helper('banner')->__('Enable')),
+                'required' => true,
+                'options' => array(
+                    '1' => Mage::helper('banner')->__('Enabled'),
+                    '0' => Mage::helper('banner')->__('Disabled'),
                 ),
             )
         );
+        if (!($model->getId())) {
+            $model->setData('status', '1');
+        }
 
-        /**
-         * Check is single store mode
-         */
-        // if (!Mage::app()->isSingleStoreMode()) {
-        //     $field =$fieldset->addField('store_id', 'multiselect', array(
-        //         'name'      => 'stores[]',
-        //         'label'     => Mage::helper('cms')->__('Store View'),
-        //         'title'     => Mage::helper('cms')->__('Store View'),
-        //         'required'  => true,
-        //         'values'    => Mage::getSingleton('adminhtml/system_store')->getStoreValuesForForm(false, true),
-        //     ));
-        //     $renderer = $this->getLayout()->createBlock('adminhtml/store_switcher_form_renderer_fieldset_element');
-        //     $field->setRenderer($renderer);
-        // }
-        // else {
-        //     $fieldset->addField('store_id', 'hidden', array(
-        //         'name'      => 'stores[]',
-        //         'value'     => Mage::app()->getStore(true)->getId()
-        //     ));
-        //     $model->setStoreId(Mage::app()->getStore(true)->getId());
-        // }
-
-        // $fieldset->addField('status', 'select', array(
-        //     'label'     => Mage::helper('banner')->__('Status'),
-        //     'title'     => Mage::helper('banner')->__('Status'),
-        //     'name'      => 'status',
-        //     'required'  => true,
-        //     'options'   => array(
-        //         '1' => Mage::helper('banner')->__('Enabled'),
-        //         '0' => Mage::helper('banner')->__('Disabled'),
-        //     ),
-        // ));
-        // if (!$model->getId()) {
-        //     $model->setData('status', '0');
-        // }
-
-        // $fieldset->addField('banner_name', 'editor', array(
-        //     'name'      => 'banner_name',
-        //     'label'     => Mage::helper('banner')->__('banner_name'),
-        //     'title'     => Mage::helper('banner')->__('banner_name'),
-        //     'style'     => 'height:36em',
-        //     'required'  => true,
-        //     'config'    => Mage::getSingleton('banner/adminhtml_banner_config')->getConfig()
-        // ));
+        $fieldset->addField(
+            'show_on',
+            'select',
+            array(
+                'label' => Mage::helper('banner')->__('Show ON'),
+                'title' => Mage::helper('banner')->__('Show ON'),
+                'name' => 'show_on',
+                'required' => true,
+                'options' => array(
+                    '1' => Mage::helper('banner')->__('1'),
+                    '0' => Mage::helper('banner')->__('0'),
+                ),
+            )
+        );
 
         $form->setValues($model->getData());
         $form->setUseContainer(true);
@@ -304,6 +279,133 @@ class Ccc_Banner_Block_Adminhtml_Banner_Edit_Form extends Mage_Adminhtml_Block_W
 
         return parent::_prepareForm();
     }
+
+
+    // protected function _prepareForm()
+    // {
+
+    //     // print_r($this->getData('action'));
+
+    //     $model = Mage::registry('banner_block');
+
+    //     $form = new Varien_Data_Form(
+    //     array('id' => 'edit_form', 'action' => $this->getUrl('*/*/save'), 'method' => 'post')
+    //     );
+
+    //     $form->setHtmlIdPrefix('banner_');
+
+    //     $fieldset = $form->addFieldset('base_fieldset', array('legend' => Mage::helper('banner')->__('General Information'), 'class' => 'fieldset-wide'));
+
+    //     if ($model->getBannerId()) {
+    //         $fieldset->addField(
+    //             'banner_id',
+    //             'hidden',
+    //             array(
+    //                 'name' => 'banner_id',
+    //             )
+    //         );
+    //     }
+
+    //     $fieldset->addField(
+    //         'name',
+    //         'text',
+    //         array(
+    //             'name' => 'banner_name',
+    //             'label' => Mage::helper('banner')->__('Banner Name'),
+    //             'title' => Mage::helper('banner')->__('Banner Name'),
+    //             'required' => true,
+    //         )
+    //     );
+
+    //     $fieldset->addField(
+    //         'image',
+    //         'file',
+    //         array(
+    //             'name' => 'banner_image',
+    //             'label' => Mage::helper('banner')->__('Banner Image'),
+    //             'title' => Mage::helper('banner')->__('Banner Image'),
+    //             'required' => false,
+    //         )
+    //     );
+
+    //     $fieldset->addField(
+    //         'show_on',
+    //         'text',
+    //         array(
+    //             'name' => 'show_on',
+    //             'label' => Mage::helper('banner')->__('Show On'),
+    //             'title' => Mage::helper('banner')->__('Show On'),
+    //             'required' => true,
+    //         )
+    //     );
+
+    //     $fieldset->addField(
+    //         'status',
+    //         'radios',
+    //         array(
+    //             'label' => Mage::helper('banner')->__('Status'),
+    //             'required' => false,
+    //             'name' => 'status',
+    //             'values' => array(
+    //                 array('value' => 0, 'label' => Mage::helper('banner')->__('Disable')),
+    //                 array('value' => 1, 'label' => Mage::helper('banner')->__('Enable')),
+    //             ),
+    //         )
+    //     );
+
+    //     /**
+    //      * Check is single store mode
+    //      */
+    //     // if (!Mage::app()->isSingleStoreMode()) {
+    //     //     $field =$fieldset->addField('store_id', 'multiselect', array(
+    //     //         'name'      => 'stores[]',
+    //     //         'label'     => Mage::helper('cms')->__('Store View'),
+    //     //         'title'     => Mage::helper('cms')->__('Store View'),
+    //     //         'required'  => true,
+    //     //         'values'    => Mage::getSingleton('adminhtml/system_store')->getStoreValuesForForm(false, true),
+    //     //     ));
+    //     //     $renderer = $this->getLayout()->createBlock('adminhtml/store_switcher_form_renderer_fieldset_element');
+    //     //     $field->setRenderer($renderer);
+    //     // }
+    //     // else {
+    //     //     $fieldset->addField('store_id', 'hidden', array(
+    //     //         'name'      => 'stores[]',
+    //     //         'value'     => Mage::app()->getStore(true)->getId()
+    //     //     ));
+    //     //     $model->setStoreId(Mage::app()->getStore(true)->getId());
+    //     // }
+
+    //     // $fieldset->addField('status', 'select', array(
+    //     //     'label'     => Mage::helper('banner')->__('Status'),
+    //     //     'title'     => Mage::helper('banner')->__('Status'),
+    //     //     'name'      => 'status',
+    //     //     'required'  => true,
+    //     //     'options'   => array(
+    //     //         '1' => Mage::helper('banner')->__('Enabled'),
+    //     //         '0' => Mage::helper('banner')->__('Disabled'),
+    //     //     ),
+    //     // ));
+    //     // if (!$model->getId()) {
+    //     //     $model->setData('status', '0');
+    //     // }
+
+    //     // $fieldset->addField('banner_name', 'editor', array(
+    //     //     'name'      => 'banner_name',
+    //     //     'label'     => Mage::helper('banner')->__('banner_name'),
+    //     //     'title'     => Mage::helper('banner')->__('banner_name'),
+    //     //     'style'     => 'height:36em',
+    //     //     'required'  => true,
+    //     //     'config'    => Mage::getSingleton('banner/adminhtml_banner_config')->getConfig()
+    //     // ));
+
+    //     $form->setValues($model->getData());
+    //     $form->setUseContainer(true);
+    //     $this->setForm($form);
+
+    //     return parent::_prepareForm();
+    // }
+
+
 
 }
 
