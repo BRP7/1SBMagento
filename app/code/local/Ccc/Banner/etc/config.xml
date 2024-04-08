@@ -18,7 +18,7 @@
         </routers>
     </admin>
     <adminhtml>
-        <menu>
+        <!-- <menu>
             <ccc_banner translate="title" module="banner">
                 <title>Banner</title>
                 <sort_order>100</sort_order>
@@ -30,7 +30,7 @@
                     </banner>
                 </children>
             </ccc_banner>
-        </menu>
+        </menu> -->
 
         <layout>
             <updates>
