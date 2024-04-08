@@ -202,7 +202,7 @@ class Ccc_Banner_Block_Adminhtml_Banner_Edit_Form extends Mage_Adminhtml_Block_W
             );
         }
         $fieldset->addField(
-            'name',
+            'banner_name',
             'text',
             array(
                 'name' => 'banner_name',
@@ -258,7 +258,20 @@ class Ccc_Banner_Block_Adminhtml_Banner_Edit_Form extends Mage_Adminhtml_Block_W
             $model->setData('status', '1');
         }
 
+
+
         $fieldset->addField(
+            'show_on',
+            'text',
+            array(
+                'name' => 'show_on',
+                'label' => Mage::helper('banner')->__('Show On'),
+                'title' => Mage::helper('banner')->__('Show On'),
+                'required' => true,
+            )
+        );
+
+       /*  $fieldset->addField(
             'show_on',
             'select',
             array(
@@ -271,7 +284,7 @@ class Ccc_Banner_Block_Adminhtml_Banner_Edit_Form extends Mage_Adminhtml_Block_W
                     '0' => Mage::helper('banner')->__('0'),
                 ),
             )
-        );
+        ); */
 
         $form->setValues($model->getData());
         $form->setUseContainer(true);

@@ -33,19 +33,6 @@ class Ccc_Banner_Block_Adminhtml_Banner_Edit extends Mage_Adminhtml_Block_Widget
         ";
     }
 
-
-    // protected function _prepareLayout()
-    // {
-    //     parent::_prepareLayout();
-
-    //     // Update button labels and remove duplicate button declaration if necessary
-
-    //     $this->_updateButton('save', 'label', Mage::helper('banner')->__('Save Banner'));
-    //     $this->_updateButton('delete', 'label', Mage::helper('banner')->__('Delete Banner'));
-
-    //     return $this;
-    // }
-
     public function getHeaderText()
     {
         if (Mage::registry('banner_block')->getId()) {
@@ -63,6 +50,19 @@ class Ccc_Banner_Block_Adminhtml_Banner_Edit extends Mage_Adminhtml_Block_Widget
     //     } else {
     //         return ''; // Return empty string if form block is not found
     //     }
+    // }
+
+
+        // protected function _prepareLayout()
+    // {
+    //     parent::_prepareLayout();
+
+    //     // Update button labels and remove duplicate button declaration if necessary
+
+    //     $this->_updateButton('save', 'label', Mage::helper('banner')->__('Save Banner'));
+    //     $this->_updateButton('delete', 'label', Mage::helper('banner')->__('Delete Banner'));
+
+    //     return $this;
     // }
     
 }

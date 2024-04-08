@@ -10,7 +10,8 @@
             <adminhtml>
                 <args>
                     <modules>
-                        <Ccc_Banner before="Mage_Adminhtml">Ccc_Banner_Adminhtml</Ccc_Banner>
+                        <Ccc_Banner before="Mage_Adminhtml">Ccc_Banner_Adminhtml</Ccc_Banner> <!--
+                        custom tag -->
                     </modules>
                 </args>
             </adminhtml>
@@ -31,7 +32,7 @@
             </ccc_banner>
         </menu>
 
-           <layout>
+        <layout>
             <updates>
                 <banner>
                     <file>banner.xml</file>
@@ -56,7 +57,7 @@
                 <entities>
                     <banner>
                         <table>ccc_banner</table>
-                    </banner>   
+                    </banner>
                 </entities>
             </ccc_banner_resource>
         </models>
@@ -71,9 +72,9 @@
             </banner_setup>
         </resources>
         <helpers>
-                 <banner>
-                      <class>Ccc_Banner_Helper</class>
-                </banner>
+            <banner>
+                <class>Ccc_Banner_Helper</class>
+            </banner>
         </helpers>
     </global>
 
