@@ -1,24 +1,48 @@
 <?php
 class Ccc_Banner_Adminhtml_BannerController extends Mage_Adminhtml_Controller_Action
 {
+
     public function indexAction()
     {
-        // echo 12;
+        // var_dump($this->_isAllowed());        // echo 12;
         // $this->loadLayout();
         $this->_title($this->__("Manage Banners"));
         $this->_initAction();
         $this->renderLayout();
     }
 
-    public function newAction(){
+    public function newAction()
+    {
         $this->_forward('edit');
+    }
+    protected function _isAllowed()
+    {
+        $action = strtolower($this->getRequest()->getActionName());
+        switch ($action) {
+            case 'delete':
+                $aclResource = 'ccc_banner/delete';
+                break;
+            case 'edit':
+                $aclResource = 'ccc_banner/edit'; // Is this intended?
+                break;
+            case 'new':
+                $aclResource = 'ccc_banner/new'; // Is this intended?
+                break;
+            case 'index':
+                $aclResource = 'ccc_banner/index';
+                break;
+            default:
+                $aclResource = ''; // Set default ACL resource
+                break;
+        }
+        return Mage::getSingleton('admin/session')->isAllowed($aclResource);
     }
 
     protected function _initAction()
     {
         // load layout, set active menu and breadcrumbs
         $this->loadLayout();
-           $this ->_setActiveMenu('ccc_banner/banner')
+        $this->_setActiveMenu('ccc_banner/banner')
             // ->_addBreadcrumb(Mage::helper('banner')->__('BANNER'), Mage::helper('banner')->__('BANNER'))
             // ->_addBreadcrumb(Mage::helper('banner')->__('Manage Pages'), Mage::helper('banner')->__('Manage Pages'))
         ;
@@ -36,7 +60,7 @@ class Ccc_Banner_Adminhtml_BannerController extends Mage_Adminhtml_Controller_Ac
         // 2. Initial checking
         if ($id) {
             $model->load($id);
-            if (! $model->getId()) {
+            if (!$model->getId()) {
                 Mage::getSingleton('adminhtml/session')->addError(Mage::helper('banner')->__('This block no longer exists.'));
                 $this->_redirect('*/*/');
                 return;
@@ -47,28 +71,28 @@ class Ccc_Banner_Adminhtml_BannerController extends Mage_Adminhtml_Controller_Ac
 
         // 3. Set entered data if was error when we do save
         $data = Mage::getSingleton('adminhtml/session')->getFormData(true);
-        if (! empty($data)) {
+        if (!empty($data)) {
             $model->setData($data);
         }
 
         // 4. Register model to use later in blocks
         Mage::register('banner_block', $model);
-        
+
         //      //     ->setData('aa', $this->getUrl('*/*/save'));
         // 5. Build edit form
-        
+
         $this->_initAction()
             ->_addBreadcrumb($id ? Mage::helper('banner')->__('Edit Block') : Mage::helper('banner')->__('New Block'), $id ? Mage::helper('banner')->__('Edit Block') : Mage::helper('banner')->__('New Block'));
-           
-            // echo get_class($this->getLayout()->getBlock('ccc_banner_edit'));
-            $obj = $this->getLayout()->getBlock('ccc_banner_edit');
-            // echo get_class($obj);
-            
-            $obj->setData('action', $this->getUrl('*/*/save'));
-            // print_r($obj->getData('action'));
 
-        $this->renderLayout();      
-           
+        // echo get_class($this->getLayout()->getBlock('ccc_banner_edit'));
+        $obj = $this->getLayout()->getBlock('ccc_banner_edit');
+        // echo get_class($obj);
+
+        $obj->setData('action', $this->getUrl('*/*/save'));
+        // print_r($obj->getData('action'));
+
+        $this->renderLayout();
+
     }
 
 
@@ -103,7 +127,7 @@ class Ccc_Banner_Adminhtml_BannerController extends Mage_Adminhtml_Controller_Ac
                         }
                     }
 
-                    $data['banner_image'] =  $uploader->getUploadedFileName();
+                    $data['banner_image'] = $uploader->getUploadedFileName();
                     echo $oldImage;
                 } elseif (isset($data['banner_image']['delete']) && $data['banner_image']['delete'] == 1) {
                     // Delete the old image
@@ -141,12 +165,13 @@ class Ccc_Banner_Adminhtml_BannerController extends Mage_Adminhtml_Controller_Ac
 
                 // display success message
                 Mage::getSingleton('adminhtml/session')->addSuccess(
-                    Mage::helper('banner')->__('The page has been saved.'));
+                    Mage::helper('banner')->__('The page has been saved.')
+                );
                 // clear previously saved data from session
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
                 // check if 'Save and Continue'
                 if ($this->getRequest()->getParam('back')) {
-                    $this->_redirect('*/*/edit', array('banner_id' => $model->getId(), '_current'=>true));
+                    $this->_redirect('*/*/edit', array('banner_id' => $model->getId(), '_current' => true));
                     return;
                 }
                 // go to grid
@@ -155,10 +180,11 @@ class Ccc_Banner_Adminhtml_BannerController extends Mage_Adminhtml_Controller_Ac
 
             } catch (Mage_Core_Exception $e) {
                 $this->_getSession()->addError($e->getMessage());
-            }
-            catch (Exception $e) {
-                $this->_getSession()->addException($e,
-                    Mage::helper('banner')->__('An error occurred while saving the page.'));
+            } catch (Exception $e) {
+                $this->_getSession()->addException(
+                    $e,
+                    Mage::helper('banner')->__('An error occurred while saving the page.')
+                );
             }
 
             $this->_getSession()->setFormData($data);
@@ -181,8 +207,10 @@ class Ccc_Banner_Adminhtml_BannerController extends Mage_Adminhtml_Controller_Ac
             if (!empty($data['layout_update_xml']) && !$validatorCustomLayout->isValid($data['layout_update_xml'])) {
                 $errorNo = false;
             }
-            if (!empty($data['custom_layout_update_xml'])
-            && !$validatorCustomLayout->isValid($data['custom_layout_update_xml'])) {
+            if (
+                !empty($data['custom_layout_update_xml'])
+                && !$validatorCustomLayout->isValid($data['custom_layout_update_xml'])
+            ) {
                 $errorNo = false;
             }
             foreach ($validatorCustomLayout->getMessages() as $message) {

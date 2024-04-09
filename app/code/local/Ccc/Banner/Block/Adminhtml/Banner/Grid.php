@@ -9,7 +9,6 @@ class Ccc_Banner_Block_Adminhtml_Banner_Grid extends Mage_Adminhtml_Block_Widget
         //->getCollection()
         // echo "<pre>";
         // var_dump($collection);
-        
         $this->setCollection($collection);
         return parent::_prepareCollection();
     }
@@ -58,7 +57,10 @@ class Ccc_Banner_Block_Adminhtml_Banner_Grid extends Mage_Adminhtml_Block_Widget
     }
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/*/edit', array('banner_id' => $row->getId()));
+        if(Mage::getSingleton('admin/session')->isAllowed('ccc_banner/edit')){
+            return $this->getUrl('*/*/edit', array('banner_id' => $row->getId()));
+        }
+        return false;
     }
 
     // MAss Actions 

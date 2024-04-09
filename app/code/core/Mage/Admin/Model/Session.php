@@ -206,7 +206,7 @@ class Mage_Admin_Model_Session extends Mage_Core_Model_Session_Abstract
     {
         $user = $this->getUser();
         $acl = $this->getAcl();
-
+       
         if ($user && $acl) {
             if (!preg_match('/^admin/', $resource)) {
                 $resource = 'admin/' . $resource;

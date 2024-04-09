@@ -139,8 +139,9 @@ class Mage_Adminhtml_Block_Page_Menu extends Mage_Adminhtml_Block_Template
             if (1 == $child->disabled) {
                 continue;
             }
-
+            
             $aclResource = 'admin/' . ($child->resource ? (string)$child->resource : $path . $childName);
+            
             if (!$this->_checkAcl($aclResource) || !$this->_isEnabledModuleOutput($child)) {
                 continue;
             }
@@ -173,6 +174,7 @@ class Mage_Adminhtml_Block_Page_Menu extends Mage_Adminhtml_Block_Template
             $parentArr[$childName] = $menuArr;
 
             $sortOrder++;
+            
         }
 
         uasort($parentArr, array($this, '_sortMenu'));
