@@ -1,27 +1,24 @@
 <?php
 class Ccc_Banner_Block_Adminhtml_Banner_Grid extends Mage_Adminhtml_Block_Widget_Grid
 {
+
+
     protected function _prepareCollection()
     {
-
+        // Load your collection
         $collection = Mage::getModel('ccc_banner/banner')->getCollection();
-        $r=$collection->getSelect()->limit(4);
-        echo '<pre>';
-        // print_r($r);
-                    // $collection->setPageSize(2);
-            // $collection->setCurPage(1);
 
+        // Modify the SQL query to apply the limit
+        $collection->getSelect()->limit(4);
 
-        // if(Mage::getSingleton('admin/session')->isAllowed('ccc_banner/row/showall')){
-        // }
-
-        // echo get_class($collection);die;
-        //->getCollection()
-        // echo "<pre>";
-        // var_dump($collection);
+        // Set the collection to the grid
         $this->setCollection($collection);
+
         return parent::_prepareCollection();
     }
+
+    // Other methods...
+
     public function checkColumn($column)
     {
         return Mage::getSingleton('admin/session')->isAllowed($column);

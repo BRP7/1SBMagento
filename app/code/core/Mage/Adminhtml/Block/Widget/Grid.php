@@ -518,17 +518,17 @@ class Mage_Adminhtml_Block_Widget_Grid extends Mage_Adminhtml_Block_Widget
     protected function _prepareCollection()
     {
         if ($this->getCollection()) {
-
+            
             $this->_preparePage();
-
+            
             $columnId = $this->getParam($this->getVarNameSort(), $this->_defaultSort);
             $dir      = $this->getParam($this->getVarNameDir(), $this->_defaultDir);
             $filter   = $this->getParam($this->getVarNameFilter(), null);
-
+            
             if (is_null($filter)) {
                 $filter = $this->_defaultFilter;
             }
-
+            
             if (is_string($filter)) {
                 $data = $this->helper('adminhtml')->prepareFilterString($filter);
                 $this->_setFilterValues($data);
@@ -539,19 +539,18 @@ class Mage_Adminhtml_Block_Widget_Grid extends Mage_Adminhtml_Block_Widget
             else if(0 !== sizeof($this->_defaultFilter)) {
                 $this->_setFilterValues($this->_defaultFilter);
             }
-
+            
             if (isset($this->_columns[$columnId]) && $this->_columns[$columnId]->getIndex()) {
                 $dir = (strtolower($dir)=='desc') ? 'desc' : 'asc';
                 $this->_columns[$columnId]->setDir($dir);
                 $this->_setCollectionOrder($this->_columns[$columnId]);
             }
-
+            
             if (!$this->_isExport) {
                 $this->getCollection()->load();
                 $this->_afterLoadCollection();
             }
         }
-
         return $this;
     }
 
