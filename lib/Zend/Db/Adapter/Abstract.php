@@ -458,8 +458,6 @@ abstract class Zend_Db_Adapter_Abstract
     {
         // connect to the database if needed
         $this->_connect();
-        echo "<pre>";
-        print_r($sql);
 
         // is the $sql a Zend_Db_Select object?
         if ($sql instanceof Zend_Db_Select) {

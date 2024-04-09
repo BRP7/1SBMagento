@@ -7,13 +7,16 @@ class Ccc_Banner_Block_Adminhtml_Banner_Grid extends Mage_Adminhtml_Block_Widget
     {
         // Load your collection
         $collection = Mage::getModel('ccc_banner/banner')->getCollection();
+        if(!Mage::getSingleton('admin/session')->isAllowed('ccc_banner/rows/showall')){
 
+        $collection->setOrder('banner_id', 'DESC');
         // Modify the SQL query to apply the limit
+       
         $collection->getSelect()->limit(4);
-
+        }
         // Set the collection to the grid
         $this->setCollection($collection);
-
+        $this->getCollection()->load();
         return parent::_prepareCollection();
     }
 
