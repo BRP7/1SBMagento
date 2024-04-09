@@ -79,6 +79,36 @@
                                 <title>Delete Page</title>
                                 <sort_order>10</sort_order>
                             </delete>
+                            <columns translate="title">
+                                <title>Banner Columns</title>
+                                <children>
+                                    <id translate="title">
+                                        <title>Banner Id</title>
+                                    </id>
+                                    <name translate="title">
+                                        <title>Banner Name</title>
+                                    </name>
+                                    <image translate="title">
+                                        <title>Banner Image</title>
+                                    </image>
+                                    <status translate="title">
+                                        <title>Banner Status</title>
+                                    </status>
+                                    <showon translate="title">
+                                        <title>Banner Showon</title>
+                                    </showon>
+                                </children>
+                            </columns>
+                            <rows translate="title">
+                                <title>Banner Columns</title>
+                                <children>
+                                    <showall translate="title">
+                                        <title>Show All</title>
+                                    </showall>
+                                    
+                                </children>
+         
+                            </rows>
                         </children>
                     </ccc_banner>
                 </children>
