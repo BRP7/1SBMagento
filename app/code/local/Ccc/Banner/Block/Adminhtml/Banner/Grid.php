@@ -7,88 +7,73 @@ class Ccc_Banner_Block_Adminhtml_Banner_Grid extends Mage_Adminhtml_Block_Widget
     {
         // Load your collection
         $collection = Mage::getModel('ccc_banner/banner')->getCollection();
-        if(!Mage::getSingleton('admin/session')->isAllowed('ccc_banner/rows/showall')){
+        // if (!Mage::getSingleton('admin/session')->isAllowed('ccc_banner/rows/showall')) {
 
-        $collection->setOrder('banner_id', 'DESC');
-        // Modify the SQL query to apply the limit
-       
-        $collection->getSelect()->limit(4);
-        }
+            // Modify the SQL query to apply the order by  
+            $collection->setOrder('banner_id', 'DESC');
+            // Modify the SQL query to apply the limit  
+            $collection->getSelect()->limit(4);
+        // }
         // Set the collection to the grid
-        $this->setCollection($collection);
-        $this->getCollection()->load();
+        // $this->setCollection($collection);
+        // $this->getCollection()->load();
         return parent::_prepareCollection();
     }
 
-    // Other methods...
 
     public function checkColumn($column)
     {
-        return Mage::getSingleton('admin/session')->isAllowed($column);
+        return Mage::getSingleton('admin/session')->isAllowed('ccc_banner/columns/'.$column);
     }
     protected function _prepareColumns()
     {
-        // Add columns for the grid
-        if ($this->checkColumn('ccc_banner/columns/id')) {
-            $this->addColumn(
-                'banner_id',
-                array(
-                    'header' => Mage::helper('banner')->__('Banner Id'),
-                    'align' => 'right',
-                    'width' => '50px',
-                    'index' => 'banner_id',
-                )
-            );
-        }
-        if ($this->checkColumn('ccc_banner/columns/name')) {
+        $columns=array(
+            'banner_id'=>array(
+                'header' => Mage::helper('banner')->__('Banner Id'),
+                'align' => 'right',
+                'width' => '50px',
+                'index' => 'banner_id',
+                'is_allowed' => $this->checkColumn('id'), // ACL check
+            ),
+            'banner_name'=>array(
+                'header' => Mage::helper('banner')->__('Banner Name'),
+                'align' => 'left',
+                'index' => 'banner_name',
+                'is_allowed' => $this->checkColumn('name'), // ACL check
+            ),
+            'banner_image'=> array(
+                'header' => Mage::helper('banner')->__('Banner Image'),
+                'align' => 'center',
+                'index' => 'banner_image',
+                'renderer' => 'Ccc_Banner_Block_Adminhtml_Banner_Grid_Renderer_Image', // Use custom renderer for image column
+                'is_allowed' => $this->checkColumn('image'), // ACL check
 
-            $this->addColumn(
-                'banner_name',
-                array(
-                    'header' => Mage::helper('banner')->__('Banner Name'),
-                    'align' => 'left',
-                    'index' => 'banner_name',
-                )
-            );
-        }
-        if ($this->checkColumn('ccc_banner/columns/image')) {
+            ),
+            'status'=>array(
+                'header' => Mage::helper('banner')->__('Status'),
+                'align' => 'left',
+                'index' => 'status',
+                'is_allowed' => $this->checkColumn('status'), // ACL check
 
-            $this->addColumn(
-                'banner_image',
-                array(
-                    'header' => Mage::helper('banner')->__('Banner Image'),
-                    'align' => 'center',
-                    'index' => 'banner_image',
-                    'renderer' => 'Ccc_Banner_Block_Adminhtml_Banner_Grid_Renderer_Image', // Use custom renderer for image column
-                )
-            );
-        }
-        // $this->addColumn('banner_image', array(
-        //     'header'    => Mage::helper('banner')->__('Banner Image'),
-        //     'align'     =>'left',
-        //     'index'     => 'banner_image',
-        // ));
-        if ($this->checkColumn('ccc_banner/columns/status')) {
+            ),
+            'show_on'=>    array(
+                'header' => Mage::helper('banner')->__('Show On'),
+                'align' => 'left',
+                'index' => 'show_on',
+                'is_allowed' => $this->checkColumn('showon'), // ACL check
 
-            $this->addColumn(
-                'status',
-                array(
-                    'header' => Mage::helper('banner')->__('Status'),
-                    'align' => 'left',
-                    'index' => 'status',
-                )
-            );
-        }
-        if ($this->checkColumn('ccc_banner/columns/showon')) {
+            ),
+        );   
+        
+        // Loop through each column
+        foreach ($columns as $columnKey => $columnConfig) {
+            // Add column
+            $this->addColumn($columnKey, $columnConfig);
 
-            $this->addColumn(
-                'show_on',
-                array(
-                    'header' => Mage::helper('banner')->__('Show On'),
-                    'align' => 'left',
-                    'index' => 'show_on',
-                )
-            );
+            // Remove column if ACL check fails
+            if (!$this->getColumn($columnKey)->getIsAllowed()) {
+                $this->removeColumn($columnKey);
+            }
         }
 
 
