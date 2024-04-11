@@ -15,6 +15,7 @@ class Magestore_BannerSlider_Block_BannerSlider extends Mage_Core_Block_Template
 	}
 	
 	public function setDisplay($display){
+		// echo $display;
 		$this->_display = $display;
 	}
 
