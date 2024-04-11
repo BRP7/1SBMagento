@@ -12,42 +12,24 @@
 				</action>
 			</block>
 		</reference>
+		<reference name="head">
+			<action method="addJs">
+				<script>ccc_demo/prac.js</script>
+			</action>
+		</reference>
 	</banner_master>
-
 	<catalog_category_default>
-		<reference name="footer">
-			<block type="bannerslider/bannerslider" name="bannerslider_footer"
-				template="bannerslider/bannerslider.phtml">
-				<action method="setDisplay">
-					<display>1</display>
-				</action>
-			</block>
-		</reference>
+		<update handle="banner_master"></update>
 	</catalog_category_default>
-
-	<!-- Reference the bannerslider block within the footer for catalog_category_layered pages -->
 	<catalog_category_layered>
-		<reference name="footer">
-			<block type="bannerslider/bannerslider" name="bannerslider_footer"
-				template="bannerslider/bannerslider.phtml">
-				<action method="setDisplay">
-					<display>1</display>
-				</action>
-			</block>
-		</reference>
+		<update handle="banner_master"></update>
 	</catalog_category_layered>
-
-	<!-- Disable the bannerslider block for the homepage -->
 	<cms_index_index>
-		<remove name="bannerslider_footer" />
-	</cms_index_index>
-
-	<cms_index_index>
-		<update handle="banner_master" />
+		<update handle="banner_master"></update>
 		<reference name="bannerslider">
 			<action method="setDisplay">
 				<display>0</display>
 			</action>
 		</reference>
 	</cms_index_index>
-</layout>
+</layout> 

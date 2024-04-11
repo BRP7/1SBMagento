@@ -268,7 +268,6 @@ abstract class Mage_Core_Controller_Varien_Action
         }
         $this->generateLayoutBlocks();
         $this->_isLayoutLoaded = true;
-
         return $this;
     }
 

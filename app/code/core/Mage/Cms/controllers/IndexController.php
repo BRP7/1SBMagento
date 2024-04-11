@@ -45,6 +45,7 @@ class Mage_Cms_IndexController extends Mage_Core_Controller_Front_Action
         if (!Mage::helper('cms/page')->renderPage($this, $pageId)) {
             $this->_forward('defaultIndex');
         }
+        
     }
 
     /**

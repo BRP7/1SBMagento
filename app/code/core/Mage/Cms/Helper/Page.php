@@ -62,7 +62,6 @@ class Mage_Cms_Helper_Page extends Mage_Core_Helper_Abstract
     */
     protected function _renderPage(Mage_Core_Controller_Varien_Action  $action, $pageId = null, $renderLayout = true)
     {
-
         $page = Mage::getSingleton('cms/page');
         if (!is_null($pageId) && $pageId!==$page->getId()) {
             $delimeterPosition = strrpos($pageId, '|');
@@ -71,14 +70,16 @@ class Mage_Cms_Helper_Page extends Mage_Core_Helper_Abstract
             }
 
             $page->setStoreId(Mage::app()->getStore()->getId());
+           
             if (!$page->load($pageId)) {
+
                 return false;
             }
         }
-
         if (!$page->getId()) {
             return false;
         }
+        
 
         $inRange = Mage::app()->getLocale()
             ->isStoreDateInInterval(null, $page->getCustomThemeFrom(), $page->getCustomThemeTo());
@@ -136,7 +137,7 @@ class Mage_Cms_Helper_Page extends Mage_Core_Helper_Abstract
         if ($renderLayout) {
             $action->renderLayout();
         }
-
+        
         return true;
     }
 
