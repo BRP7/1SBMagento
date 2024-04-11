@@ -298,3 +298,5 @@
 [5] C:\xampp\htdocs\1SBMagento\app\Mage.php:686
 [6] C:\xampp\htdocs\1SBMagento\index.php:83
 \</pre>
+2024-04-11T11:04:29+00:00 DEBUG (7): Security problem: cms/block has not been whitelisted.
+2024-04-11T11:04:29+00:00 DEBUG (7): Security problem: cms/block has not been whitelisted.

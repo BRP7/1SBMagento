@@ -2,7 +2,14 @@
 <layout version="0.1.0">
     <adminhtml_banner_index>
         <reference name="content">
-            <block type="ccc_banner/adminhtml_banner" name="banner" />
+            <block type="ccc_banner/adminhtml_banner" name="banner" template="banner/grid/container.phtml">
+                
+            </block>
+        </reference>
+        <reference name="head">
+            <action method="addJs">
+                <script>banner/banner.js</script>
+            </action>
         </reference>
     </adminhtml_banner_index>
 
@@ -16,5 +23,12 @@
             <block type="ccc_banner/adminhtml_banner_edit" name="ccc_banner_edit"></block>
         </reference>
     </adminhtml_banner_edit>
+
+    <adminhtml_widget_grid>
+        <remove name="adminhtml.widget.grid" /> <!-- Remove the default widget grid block -->
+        <reference name="content">
+            <block type="ccc_banner/adminhtml_grid" name="adminhtml.banner.grid" as="banner_grid" template="ccc/banner/grid.phtml" />
+        </reference>
+    </adminhtml_widget_grid>
 
 </layout>
