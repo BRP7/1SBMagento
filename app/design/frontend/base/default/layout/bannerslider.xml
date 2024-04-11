@@ -1,8 +1,5 @@
 <?xml version="1.0"?>
 <layout version="0.1.0">
-
-	<!-- Define banner_master handle -->
-
 	<banner_master>
 		<reference name="content">
 			<action method="setTemplate">
@@ -17,26 +14,12 @@
 		</reference>
 	</banner_master>
 
-
-	<!-- Use banner_master handle with customizations
-	catalog_product_view -> reference ->upsell_product ->inside that define block ->upsell ki phtml me getchildhtml ya to template change karna padega bannerslider.xml bannerslider/catalog/view.phtml ->copy all code
-	-->
-	<catalog_category_default> 
+	<catalog_category_default>
 		<update handle="banner_master" />
-		<!-- <reference name="category.products">
-			<action method="setDisplay">
-				<display>1</display>
-			</action>
-		</reference> -->
 	</catalog_category_default>
 
 	<catalog_category_layered>
 		<update handle="banner_master" />
-		<!-- <reference name="category.products">
-			<action method="setDisplay">
-				<display>1</display>
-			</action>
-		</reference> -->
 	</catalog_category_layered>
 
 	<cms_index_index>
