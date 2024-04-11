@@ -5,7 +5,7 @@ class Ccc_Banner_Block_Adminhtml_Banner_Edit extends Mage_Adminhtml_Block_Widget
     {
         $this->_objectId = 'banner_id';
         $this->_controller = 'adminhtml_banner';
-        $this->_blockGroup = 'banner'; // Corrected block group name
+        $this->_blockGroup = 'ccc_banner'; // Corrected block group name
 
         parent::__construct();
 

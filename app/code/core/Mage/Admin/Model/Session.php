@@ -1,4 +1,7 @@
 <?php
+
+/* echo "sessionfile for isAllowed!!" */
+
 /**
  * Magento
  *

@@ -2,7 +2,7 @@
 <layout version="0.1.0">
     <adminhtml_banner_index>
         <reference name="content">
-            <block type="banner/adminhtml_banner" name="banner" />
+            <block type="ccc_banner/adminhtml_banner" name="banner" />
         </reference>
     </adminhtml_banner_index>
 
@@ -13,7 +13,7 @@
     <adminhtml_banner_edit>
         <update handle="editor" />
         <reference name="content">
-            <block type="banner/adminhtml_banner_edit" name="ccc_banner_edit"></block>
+            <block type="ccc_banner/adminhtml_banner_edit" name="ccc_banner_edit"></block>
         </reference>
     </adminhtml_banner_edit>
 
