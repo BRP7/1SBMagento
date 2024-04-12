@@ -8,7 +8,7 @@
         </reference>
         <reference name="head">
             <action method="addJs">
-                <script>banner/banner.js</script>
+                <script>banner/banner1.js</script>
             </action>
         </reference>
     </adminhtml_banner_index>

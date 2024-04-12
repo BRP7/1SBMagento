@@ -3,6 +3,7 @@ class Ccc_Banner_Block_Adminhtml_Banner extends Mage_Adminhtml_Block_Widget_Grid
 {
     public function __construct()
     {
+        // $id=Mage::getSingleton()
         $this->_controller = 'adminhtml_banner';
         $this->_blockGroup = 'ccc_banner';
         $this->_headerText = Mage::helper('banner')->__('Manage Banners');

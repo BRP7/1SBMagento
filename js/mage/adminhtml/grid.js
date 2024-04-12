@@ -285,6 +285,7 @@ varienGrid.prototype = {
         }
     },
     doFilter : function(){
+        console.log(11)
         var filters = $$('#'+this.containerId+' .filter input', '#'+this.containerId+' .filter select');
         var elements = [];
         for(var i in filters){
