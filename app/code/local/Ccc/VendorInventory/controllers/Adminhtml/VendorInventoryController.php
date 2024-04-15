@@ -4,7 +4,7 @@ class Ccc_VendorInventory_Adminhtml_VendorInventoryController extends Mage_Admin
 
     public function indexAction()
     {
-        // var_dump($this->_isAllowed());        // echo 12;
+        // echo 12;
         // $this->loadLayout();
         $this->_title($this->__("Manage Inventory"));
         $this->_initAction();

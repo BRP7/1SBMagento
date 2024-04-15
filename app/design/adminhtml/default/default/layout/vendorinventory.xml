@@ -2,7 +2,7 @@
 <layout version="0.1.0">
     <adminhtml_vendorinventory_index>
         <reference name="content">
-            <block type="ccc_vendorinventory/adminhtml_vendorinventory" name="vendorinventory" template="vendorinventory/grid/container.phtml" />
+            <block type="ccc_vendorinventory/adminhtml_vendorinventory" name="vendorinventory"  />
         </reference>
         <!-- <reference name="head">
             <action method="addJs">

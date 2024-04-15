@@ -5,86 +5,28 @@
             <version>0.1.0</version>
         </Ccc_VendorInventory>
     </modules>
-    <admin>
-        <routers>
-            <adminhtml>
-                <args>
-                    <modules>
-                        <Ccc_VendorInventory before="Mage_Adminhtml">Ccc_VendorInventory_Adminhtml</Ccc_VendorInventory> <!--
-                        custom tag -->
-                    </modules>
-                </args>
-            </adminhtml>
-        </routers>
-    </admin>
-    <adminhtml>
-        <!-- <menu>
-            <ccc_banner translate="title" module="banner">
-                <title>Banner</title>
-                <sort_order>100</sort_order>
-                <children>
-                    <banner translate="title" module="banner">
-                        <title>Manage Banners</title>
-                        <action>adminhtml/banner/index</action>
-                        <sort_order>10</sort_order>
-                    </banner>
-                </children>
-            </ccc_banner>
-        </menu> -->
-
-        <layout>
-            <updates>
-                <vendorinventory>
-                    <file>vendorinventory.xml</file>
-                </vendorinventory>
-            </updates>
-        </layout>
-    </adminhtml>
     <global>
-        <blocks>
-            <!-- here the -->
-            <ccc_vendorinventory>
-                <class>Ccc_VendorInventory_Block</class>
-            </ccc_vendorinventory>
-        </blocks>
         <models>
-            <ccc_vendorinventory>
+            <vendorinventory>
                 <class>Ccc_VendorInventory_Model</class>
-                <resourceModel>ccc_vendorinventory_resource</resourceModel>
-            </ccc_vendorinventory>
-            <ccc_vendorinventory_resource>
+                <resourceModel>vendorinventory_resource</resourceModel>
+            </vendorinventory>
+            <vendorinventory_resource>
                 <class>Ccc_VendorInventory_Model_Resource</class>
                 <entities>
-                    <ccc_vendorinventory>
+                    <configuration>
                         <table>inventory_configuration</table>
-                    </ccc_vendorinventory>
-                    
+                    </configuration>
+                    <rule>
+                        <table>inventory_configuration_rule</table>
+                    </rule>
+                    <instock_date>
+                        <table>inventory_instock_date</table>
+                    </instock_date>
                 </entities>
-            </ccc_vendorinventory_resource>
-        </models><!-- 
-        <models>
-            <ccc_vendorinventory>
-                <class>Ccc_VendorInventory_Model</class>
-                <resourceModel>ccc_vendorinventory_resource</resourceModel>
-            </ccc_vendorinventory>
-            <ccc_vendorinventory_resource>
-                <class>Ccc_VendorInventory_Model_Resource</class>
-                <entities>
-                    <ccc_vendorinventory>
-                        <table>Inventory_configuration</table>
-                    </ccc_vendorinventory>
-                </entities>
-            </ccc_vendorinventory_resource>
-        </models> -->
+            </vendorinventory_resource>
+        </models>
         <resources>
-            <vendorinventory_setup>
-                <setup>
-                    <module>Ccc_VendorInventory</module>
-                    <class>Mage_Core_Model_Resource_Setup</class>
-                </setup>
-            </vendorinventory_setup>
-        </resources>
-       <!--  <resources>
             <vendorinventory_setup>
                 <setup>
                     <module>Ccc_VendorInventory</module>
@@ -93,12 +35,88 @@
                     <use>core_setup</use>
                 </connection>
             </vendorinventory_setup>
+            <vendorinventory_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </vendorinventory_write>
+            <vendorinventory_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </vendorinventory_read>
         </resources>
-        --> <helpers>
+        <helpers>
             <vendorinventory>
                 <class>Ccc_VendorInventory_Helper</class>
             </vendorinventory>
         </helpers>
     </global>
 
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <ccc_vendorinventory before="Mage_Adminhtml">Ccc_VendorInventory_Adminhtml</ccc_vendorinventory>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <global>
+        <block>
+            <ccc_vendorinventory>
+                <class>Ccc_VendorInventory_Block</class>
+            </ccc_vendorinventory>
+        </block>
+        <models>
+            <vendorinventory>
+                <class>Ccc_VendorInventory_Model</class>
+                <resourceModel>vendorinventory_resource</resourceModel>
+            </vendorinventory>
+            <vendorinventory_resource>
+                <class>Ccc_VendorInventory_Model_Resource</class>
+                <entities>
+                    <configuration>
+                        <table>inventory_configuration</table>
+                    </configuration>
+                    <rule>
+                        <table>inventory_configuration_rule</table>
+                    </rule>
+                    <instock_date>
+                        <table>inventory_instock_date</table>
+                    </instock_date>
+                </entities>
+            </vendorinventory_resource>
+            <!-- Define collections -->
+            <vendorinventory_configuration>
+                <class>Ccc_VendorInventory_Model_Resource_Configuration_Collection</class>
+                <entity>vendorinventory/configuration</entity>
+            </vendorinventory_configuration>
+            <vendorinventory_rule>
+                <class>Ccc_VendorInventory_Model_Resource_Rule_Collection</class>
+                <entity>vendorinventory/rule</entity>
+            </vendorinventory_rule>
+            <vendorinventory_instock_date>
+                <class>Ccc_VendorInventory_Model_Resource_InstockDate_Collection</class>
+                <entity>vendorinventory/instock_date</entity>
+            </vendorinventory_instock_date>
+        </models>
+
+        <helpers>
+            <vendorinventory>
+                <class>Ccc_VendorInventory_Helper</class>
+            </vendorinventory>
+        </helpers>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <ccc_vendorinventory>
+                    <class>vendorinventory.xml</class>
+                </ccc_vendorinventory>
+            </updates>
+        </layout>
+    </adminhtml>
 </config>

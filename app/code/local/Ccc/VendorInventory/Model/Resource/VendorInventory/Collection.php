@@ -3,7 +3,7 @@ class Ccc_VendorInventory_Model_Resource_VendorInventory_Collection extends Mage
 {
     protected function _construct()
     {
-        $this->_init('ccc_vendorinventory/ccc_vendorinventory');
+        $this->_init('vendorinventory/vendorinventory');
     }
 }
 ?>
