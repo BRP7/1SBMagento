@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <adminhtml_vendorinventory_index>
+        <reference name="content">
+            <block type="ccc_vendorinventory/adminhtml_vendorinventory" name="vendorinventory" template="vendorinventory/grid/container.phtml" />
+        </reference>
+        <!-- <reference name="head">
+            <action method="addJs">
+                <script>banner/banner1.js</script>
+            </action>
+        </reference> -->
+    </adminhtml_vendorinventory_index>
+
+    <adminhtml_vendorinventory_new>
+        <update handle="adminhtml_vendorinventory_edit" />
+    </adminhtml_vendorinventory_new>
+
+    <adminhtml_vendorinventory_edit>
+        <update handle="editor" />
+        <reference name="content">
+            <block type="ccc_vendorinventory/adminhtml_vendorinventory_edit" name="ccc_vendorinventory_edit"></block>
+        </reference>
+    </adminhtml_vendorinventory_edit>
+
+    <!-- <adminhtml_widget_grid>
+        <remove name="adminhtml.widget.grid" />
+        <reference name="content">
+            <block type="ccc_banner/adminhtml_grid" name="adminhtml.banner.grid" as="banner_grid" template="ccc/banner/grid.phtml" />
+        </reference>
+    </adminhtml_widget_grid> -->
+
+</layout>

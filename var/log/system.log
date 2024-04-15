@@ -300,3 +300,11 @@
 \</pre>
 2024-04-11T11:04:29+00:00 DEBUG (7): Security problem: cms/block has not been whitelisted.
 2024-04-11T11:04:29+00:00 DEBUG (7): Security problem: cms/block has not been whitelisted.
+2024-04-15T05:20:48+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\vendorinventory/grid/container.phtml
+2024-04-15T05:21:17+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\vendorinventory/grid/container.phtml
+2024-04-15T06:10:53+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\vendorinventory/grid/container.phtml
+2024-04-15T06:41:15+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\vendorinventory/grid/container.phtml
+2024-04-15T06:41:18+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\vendorinventory/grid/container.phtml
+2024-04-15T06:41:39+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\vendorinventory/grid/container.phtml
+2024-04-15T06:43:09+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\vendorinventory/grid/container.phtml
+2024-04-15T07:27:19+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\vendorinventory/grid/container.phtml

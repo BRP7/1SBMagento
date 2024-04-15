@@ -6,7 +6,7 @@ class Ccc_Banner_Block_Adminhtml_Banner_Grid extends Mage_Adminhtml_Block_Widget
     {
         parent::__construct($attributes);
         $this->setTemplate('banner/grid.phtml');
-           }
+    }
 
     protected function _prepareCollection()
     {

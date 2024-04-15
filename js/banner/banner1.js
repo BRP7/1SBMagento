@@ -1,12 +1,9 @@
-varienGrid.prototype.doFilter=function (){     
-        console.log(22)
+varienGrid.prototype.doFilter=function(){     
             var filters = $$('#'+this.containerId+' .filter input', '#'+this.containerId+' .filter select');
             var elements = [];
+            filters.push(customtextbox);
             for(var i in filters){
                 if(filters[i].value && filters[i].value.length) elements.push(filters[i]);
-                // console.log(filters[i]);
-    
-                elements.push(jankiaunty);
             }
             console.log(elements);
             // debugger;
