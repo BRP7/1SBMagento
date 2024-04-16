@@ -4,17 +4,17 @@ class Ccc_VendorInventory_Block_Adminhtml_VendorInventory_Grid extends Mage_Admi
 
     public function __construct($attributes=array())
     {
-        echo 23123;
+        // echo 23123;
         parent::__construct($attributes);
-        // $this->setTemplate('vendorinventory/grid.phtml');
+        $this->setTemplate('vendorinventory/grid.phtml');
     }
 
     protected function _prepareCollection()
     {
         // Load your collection
-        $collection = Mage::getModel('ccc_vendorinventory/vendorinventory')->getCollection();
+        $collection = Mage::getModel('vendorinventory/vendorinventory')->getCollection();
         
-        if (!Mage::getSingleton('admin/session')->isAllowed('ccc_vendorinventory/rows/showall')) {
+        if (!Mage::getSingleton('admin/session')->isAllowed('vendorinventory/rows/showall')) {
             // Modify the SQL query to apply the order by
             $collection->setOrder('id', 'DESC');
             

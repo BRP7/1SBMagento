@@ -6,70 +6,12 @@
         </Ccc_VendorInventory>
     </modules>
     <global>
-        <models>
+        <blocks>
             <vendorinventory>
-                <class>Ccc_VendorInventory_Model</class>
-                <resourceModel>vendorinventory_resource</resourceModel>
-            </vendorinventory>
-            <vendorinventory_resource>
-                <class>Ccc_VendorInventory_Model_Resource</class>
-                <entities>
-                    <configuration>
-                        <table>inventory_configuration</table>
-                    </configuration>
-                    <rule>
-                        <table>inventory_configuration_rule</table>
-                    </rule>
-                    <instock_date>
-                        <table>inventory_instock_date</table>
-                    </instock_date>
-                </entities>
-            </vendorinventory_resource>
-        </models>
-        <resources>
-            <vendorinventory_setup>
-                <setup>
-                    <module>Ccc_VendorInventory</module>
-                </setup>
-                <connection>
-                    <use>core_setup</use>
-                </connection>
-            </vendorinventory_setup>
-            <vendorinventory_write>
-                <connection>
-                    <use>core_write</use>
-                </connection>
-            </vendorinventory_write>
-            <vendorinventory_read>
-                <connection>
-                    <use>core_read</use>
-                </connection>
-            </vendorinventory_read>
-        </resources>
-        <helpers>
-            <vendorinventory>
-                <class>Ccc_VendorInventory_Helper</class>
-            </vendorinventory>
-        </helpers>
-    </global>
-
-    <admin>
-        <routers>
-            <adminhtml>
-                <args>
-                    <modules>
-                        <ccc_vendorinventory before="Mage_Adminhtml">Ccc_VendorInventory_Adminhtml</ccc_vendorinventory>
-                    </modules>
-                </args>
-            </adminhtml>
-        </routers>
-    </admin>
-    <global>
-        <block>
-            <ccc_vendorinventory>
                 <class>Ccc_VendorInventory_Block</class>
-            </ccc_vendorinventory>
-        </block>
+            </vendorinventory>
+        </blocks>
+
         <models>
             <vendorinventory>
                 <class>Ccc_VendorInventory_Model</class>
@@ -110,12 +52,25 @@
             </vendorinventory>
         </helpers>
     </global>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <ccc_vendorinventory before="Mage_Adminhtml">Ccc_VendorInventory_Adminhtml</ccc_vendorinventory>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
     <adminhtml>
         <layout>
             <updates>
-                <ccc_vendorinventory>
-                    <class>vendorinventory.xml</class>
-                </ccc_vendorinventory>
+                <vendorinventory>
+                    <file>vendorinventory.xml</file>
+                </vendorinventory>
             </updates>
         </layout>
     </adminhtml>

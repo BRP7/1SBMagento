@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Ccc_VendorInventory>
+            <version>0.1.0</version>
+        </Ccc_VendorInventory>
+    </modules>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Ccc_VendorInventory before="Mage_Adminhtml">Ccc_VendorInventory_Adminhtml</Ccc_VendorInventory> <!--
+                        custom tag -->
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <!-- <menu>
+            <ccc_banner translate="title" module="banner">
+                <title>Banner</title>
+                <sort_order>100</sort_order>
+                <children>
+                    <banner translate="title" module="banner">
+                        <title>Manage Banners</title>
+                        <action>adminhtml/banner/index</action>
+                        <sort_order>10</sort_order>
+                    </banner>
+                </children>
+            </ccc_banner>
+        </menu> -->
+
+        <layout>
+            <updates>
+                <vendorinventory>
+                    <file>vendorinventory.xml</file>
+                </vendorinventory>
+            </updates>
+        </layout>
+    </adminhtml>
+    <global>
+        <blocks>
+            <!-- here the -->
+            <ccc_vendorinventory>
+                <class>Ccc_VendorInventory_Block</class>
+            </ccc_vendorinventory>
+        </blocks>
+        <models>
+            <ccc_vendorinventory>
+                <class>Ccc_VendorInventory_Model</class>
+                <resourceModel>ccc_vendorinventory_resource</resourceModel>
+            </ccc_vendorinventory>
+            <ccc_vendorinventory_resource>
+                <class>Ccc_VendorInventory_Model_Resource</class>
+                <!-- <deprecatedNode>cms_mysql4</deprecatedNode> -->
+                <entities>
+                    <ccc_vendorinventory>
+                        <table>Inventory_configuration</table>
+                    </ccc_vendorinventory>
+                </entities>
+            </ccc_vendorinventory_resource>
+        </models>
+        <resources>
+            <vendorinventory_setup>
+                <setup>
+                    <module>Ccc_VendorInventory</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </vendorinventory_setup>
+        </resources>
+        <helpers>
+            <vendorinventory>
+                <class>Ccc_VendorInventory_Helper</class>
+            </vendorinventory>
+        </helpers>
+    </global>
+
+</config>

@@ -2,13 +2,8 @@
 <layout version="0.1.0">
     <adminhtml_vendorinventory_index>
         <reference name="content">
-            <block type="ccc_vendorinventory/adminhtml_vendorinventory" name="vendorinventory"  />
+            <block type="vendorinventory/adminhtml_vendorinventory" name="vendorinventory"  />
         </reference>
-        <!-- <reference name="head">
-            <action method="addJs">
-                <script>banner/banner1.js</script>
-            </action>
-        </reference> -->
     </adminhtml_vendorinventory_index>
 
     <adminhtml_vendorinventory_new>
