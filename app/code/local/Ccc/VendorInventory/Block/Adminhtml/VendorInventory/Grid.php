@@ -5,7 +5,7 @@ class Ccc_VendorInventory_Block_Adminhtml_VendorInventory_Grid extends Mage_Admi
     public function __construct($attributes=array())
     {
         parent::__construct($attributes);
-        // $this->setTemplate('vendorinventory/grid.phtml');
+        $this->setTemplate('vendorinventory/grid.phtml');
     }
 
     protected function _prepareCollection()

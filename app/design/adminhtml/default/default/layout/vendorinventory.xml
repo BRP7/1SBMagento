@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 <layout version="0.1.0">
     <adminhtml_vendorinventory_index>
+        <reference name="head">
+            <action method="addJs"><file>vendorinventory/configuration.js</file></action>
+            </reference>
         <reference name="content">
             <block type="vendorinventory/adminhtml_vendorinventory" name="vendorinventory"  />
         </reference>

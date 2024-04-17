@@ -1,0 +1,34 @@
+<?php
+
+// Get the 'brand' attribute model
+$attribute = Mage::getModel('eav/entity_attribute')->loadByCode('catalog_product', 'brand');
+
+if ($attribute) {
+    $attribute->getId();
+    // Load the 'brand' attribute options
+    $options = $attribute->getSource()->getAllOptions(false);
+}
+?>
+<div id="configuration-container">
+    <select name="" id="brand-dropdown">
+        <option value=""></option>
+        <?php foreach ($options as $_v): ?>
+            <option value="<?php echo $_v['value'] ?>"><?php echo $_v['label']; ?></option>
+        <?php endforeach; ?>
+    </select>
+    <div id="file-upload-container" style="display:inline"></div>
+</div>
+
+
+<div id="table-container"></div>
+<script>
+    document.observe('dom:loaded', function () {
+        var FORM_KEY = '<?php echo $this->getFormKey() ?>'
+        var header_url = '<?php echo $this->getUrl("*/*/getheaders")?>';
+        var config = new Configuration({
+            'form_key':FORM_KEY,
+            'containerId':'configuration-container',
+            'header_url': header_url
+        });
+    });
+</script>
