@@ -20,6 +20,9 @@
             <vendorinventory_resource>
                 <class>Ccc_VendorInventory_Model_Resource</class>
                 <entities>
+                    <vendorinventory>
+                        <table>inventory_configuration</table>
+                    </vendorinventory>
                     <configuration>
                         <table>inventory_configuration</table>
                     </configuration>

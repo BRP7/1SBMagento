@@ -4,26 +4,27 @@ class Ccc_VendorInventory_Block_Adminhtml_VendorInventory_Grid extends Mage_Admi
 
     public function __construct($attributes=array())
     {
-        // echo 23123;
         parent::__construct($attributes);
-        $this->setTemplate('vendorinventory/grid.phtml');
+        // $this->setTemplate('vendorinventory/grid.phtml');
     }
 
     protected function _prepareCollection()
     {
         // Load your collection
         $collection = Mage::getModel('vendorinventory/vendorinventory')->getCollection();
+        // print_r($collection->getData());
+        // die();
         
-        if (!Mage::getSingleton('admin/session')->isAllowed('vendorinventory/rows/showall')) {
+        // if (!Mage::getSingleton('admin/session')->isAllowed('vendorinventory/rows/showall')) {
             // Modify the SQL query to apply the order by
-            $collection->setOrder('id', 'DESC');
+            // $collection->setOrder('id', 'DESC');
             
             // Apply custom limit
-            $customLimit = 4; // Change this to your desired limit
-            $collection->getSelect()->limit($customLimit);
-            $this->setCollection($collection);
-            return $this;
-        }
+            // $customLimit = 4; // Change this to your desired limit
+            // $collection->getSelect()->limit($customLimit);
+            // $this->setCollection($collection);
+            // return parent::_prepareCollection();
+        // }
         $this->setCollection($collection);
 
         // Set the collection to the grid
@@ -35,7 +36,7 @@ class Ccc_VendorInventory_Block_Adminhtml_VendorInventory_Grid extends Mage_Admi
 
     public function checkColumn($column)
     {
-        return Mage::getSingleton('admin/session')->isAllowed('ccc_vendorinventory/columns/' . $column);
+        return Mage::getSingleton('admin/session')->isAllowed('vendorinventory/columns/' . $column);
     }
     protected function _prepareColumns()
     {
@@ -57,7 +58,7 @@ class Ccc_VendorInventory_Block_Adminhtml_VendorInventory_Grid extends Mage_Admi
                 'header' => Mage::helper('vendorinventory')->__('vendorinventory Image'),
                 'align' => 'center',
                 'index' => 'vendorinventory_image',
-                'renderer' => 'Ccc_VendorInventory_Block_Adminhtml_vendorinventory_Grid_Renderer_Image', // Use custom renderer for image column
+                // 'renderer' => 'Ccc_VendorInventory_Block_Adminhtml_vendorinventory_Grid_Renderer_Image', // Use custom renderer for image column
                 'is_allowed' => $this->checkColumn('image'), // ACL check
 
             ),
@@ -92,7 +93,7 @@ class Ccc_VendorInventory_Block_Adminhtml_VendorInventory_Grid extends Mage_Admi
     }
     public function getRowUrl($row)
     {
-        if (Mage::getSingleton('admin/session')->isAllowed('ccc_vendorinventory/edit')) {
+        if (Mage::getSingleton('admin/session')->isAllowed('vendorinventory/edit')) {
             return $this->getUrl('*/*/edit', array('id' => $row->getId()));
         }
         return false;
@@ -113,7 +114,7 @@ class Ccc_VendorInventory_Block_Adminhtml_VendorInventory_Grid extends Mage_Admi
             )
         );
 
-        $statuses = Mage::getSingleton('ccc_vendorinventory/status')->getOptionArray();
+        $statuses = Mage::getSingleton('vendorinventory/status')->getOptionArray();
 
         array_unshift($statuses, array('label' => '', 'value' => ''));
         $this->getMassactionBlock()->addItem(
