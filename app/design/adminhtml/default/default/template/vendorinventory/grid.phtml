@@ -23,9 +23,9 @@ if ($attribute) {
 <div id="table-container"></div>
 <!-- <script>
     document.observe('dom:loaded', function () {
-        var FORM_KEY = '<?php //echo $this->getFormKey() ?>'
-        var header_url = '<?php //echo $this->getUrl("*/*/getheaders")?>';
-        var action_url = '<?php //echo $this->getUrl("*/*/save")?>'
+        var FORM_KEY = '<?php echo $this->getFormKey() ?>'
+        var header_url = '<?php echo $this->getUrl("*/*/getheaders")?>';
+        var action_url = '<?php echo $this->getUrl("*/*/save")?>'
         var config = new Configuration({
             'form_key':FORM_KEY,
             'containerId':'configuration-container',
@@ -36,16 +36,25 @@ if ($attribute) {
 </script> -->
 
 
-<script>
+<script type="text/javascript">
     document.observe('dom:loaded', function () {
         var FORM_KEY = '<?php echo $this->getFormKey() ?>'
-        var header_url = '<?php echo $this->getUrl("*/*/getheaders")?>';
-        var post_data = '<?php echo $this->getUrl("*/*/save")?>';
         var config = new Configuration({
-            'form_key':FORM_KEY,
-            'containerId':'configuration-container',
-            'header_url': header_url,
-            'post_data':post_data
+            'containerId': 'configuration-container',
+            'url': '<?php echo $this->getUrl('*/*/getheaders') ?>',
+            'form_key': FORM_KEY,
         });
     });
 </script>
+
+<!-- <script type="text/javascript">
+    document.observe('dom:loaded', function () {
+        var FORM_KEY = '<?php echo $this->getFormKey() ?>'
+        options = {
+            'containerId': 'configuration-container',
+            'url': '<?php echo $this->getUrl('*/*/getheaders') ?>',
+            'form_key': FORM_KEY,
+        }
+        var config = new Configuration(options);
+    });
+</script> -->

@@ -1,57 +1,65 @@
-
-var Configuration
-Configuration = Class.create();
+var j = jQuery.noConflict();
+var Configuration = Class.create();
 
 Configuration.prototype = {
     initialize: function (options) {
-        this.containerId = options.containerId
-        this.formId = options.form_key
-        this.header_url = options.header_url
-        this.post_data = options.post_data;
-        this.loadUploadContainer()
-        this.isUploaded = false;
+        this.containerId = options.containerId;
+        this.getheaderActionUrl = options.url;
+        this.form_key = options.form_key;
+        this.row_count = [];
+        // this.isUploaded = false;
+        // console.log(options);
+        this.loadUploadContainer();
     },
     loadUploadContainer: function (event) {
-        var _that = this;
-        console.log(_that.post_data);
+        // console.log(j("#brand-dropdown"))
         var brandDropdown = $(this.containerId).down('#brand-dropdown');
         var fileUploadContainer = $(this.containerId).down('#file-upload-container');
+        var headerUrl = this.getheaderActionUrl;
+        var formKey = this.form_key;
         brandDropdown.observe('change', function (event) {
             var selectedBrand = this.value;
-            // console.log(FORM_KEY)
             if (selectedBrand) {
-                console.log(_that.post_data);
-                // fileUploadContainer.innerHTML = `<form enctype="multipart/form-data"> ${_that.formId} <input type="file" id="file-upload" name="file-upload"><button id="upload-btn">Upload</button></form>`;
-                fileUploadContainer.innerHTML = `<form enctype="multipart/form-data">  <input type="file" id="file-upload" name="file-upload"><button id="upload-btn">Upload</button></form>`;
-
+                // load the file uploader and upload button
+                fileUploadContainer.innerHTML = '<input type="file" id="file-upload" accept=".csv,.xml,.xls" name="file-upload"><button id="upload-btn">Upload</button>';
+                // handle upload button click
                 $('upload-btn').observe('click', function (event) {
                     event.preventDefault();
+                    // get the file
                     var files = document.getElementById("file-upload").files;
-                    var formData = new FormData();
-                    if (files.length > 0) {
-                        formData.append('file-upload', files[0]);
-                        var xhr = new XMLHttpRequest();
-                        xhr.open('POST',_that.header_url);
-                        // var posrUrl =_that.post_data;
-                        xhr.onload = function () {
-                            if (xhr.status === 200) {
-                                console.log(xhr.responseText);
-                                var headers = JSON.parse(xhr.responseText);
-                                var posrUrl =_that.post_data;
-                                // Assuming response is JSON
-                                console.log(xhr.response);
-                                if (!Configuration.prototype.isUploaded) {
-                                    Configuration.prototype.isUploaded = true;
-                                    Configuration.prototype.renderTable(headers.headers,posrUrl);
-                                }
-                            } else {
+                    
+                    if (files.length > 0 ) {
+                        // append file in formData
+                        var formData = new FormData();
+                        var formData1 = new FormData();
+                        formData1.append("name", "asfasd");
+                        // console.log(formData1);
+                        var file = files[0];
+                        // var allowedExtensions = ['csv', 'xml']
+                        // console.log(file);
+                        // if(file.name.split('.'))
+                        formData.append('file-upload', file);
+                        formData.append('form_key', formKey);
+                        // console.log(formData);
+                        // console.log(headerUrl);
+                        j.ajax({
+                            url: headerUrl,
+                            type: 'POST',
+                            data: formData,
+                            processData: false, // Prevent jQuery from automatically processing the data
+                            contentType: false, // Prevent jQuery from setting the content type
+                            success: function (response) {                                // console.log(JSON.parse(response));
+                                // var headers = response.headers;
+                                console.log(response);
+                                // if (!Configuration.prototype.isUploaded && response.headers.headers) {
+                                //     Configuration.prototype.isUploaded = true;
+                                    Configuration.prototype.renderTable(response.headers);
+                                // }
+                            },
+                            error: function () {
                                 alert('Failed to retrieve CSV headers.');
                             }
-                        };
-                        xhr.onerror = function () {
-                            alert('Failed to retrieve CSV headers.');
-                        };
-                        xhr.send(formData);
+                        });
                     } else {
                         alert('Please select a file.');
                     }
@@ -61,20 +69,17 @@ Configuration.prototype = {
             }
         });
     },
-   
-    
-    renderTable: function(headers, url) {
+    renderTable: function (headers) {
         var tableContainer = document.getElementById('table-container');
-        var form = document.createElement("form"); // Create a form element
-        // Set the action attribute
-        form.setAttribute("method", "POST"); // Set the method attribute to POST
         var tableHeader = ['ISB Columns', 'Brand Column', 'Data Type', 'Condition Operator', 'Condition Value'];
         var ISBColumns = ['sku', 'instock', 'instock qty', 'restock date', 'restock qty', 'status', 'discontinued'];
         var brandColumn = headers;
-        var dataType = ['Text', 'Number', 'Date'];
+        var dataType = ['Count', 'Text', 'Number', 'Date'];
         var conditionOperator = ['=', '>', '<', '>=', '<=', '!='];
+        // create table element
         var table = document.createElement('table');
         table.border = 1;
+        // create header row
         var tr1 = document.createElement('tr');
         for (var i = 0; i < tableHeader.length; i++) {
             var th = document.createElement('th');
@@ -82,159 +87,98 @@ Configuration.prototype = {
             tr1.appendChild(th);
         }
         table.appendChild(tr1);
-    
+        var brandSelect = this.createDropDown(brandColumn);
+        var dataTypeSelect = this.createDropDown(dataType);
+        var conditionOperatorSelect = this.createDropDown(conditionOperator);
         for (var i = 0; i < ISBColumns.length; i++) {
-            var namePrefix = `brandid_${ISBColumns[i]}_brandcolumn`;
             var tr = document.createElement('tr');
+            tr.id = 'row_' + i;
+            tr.classList.add('row_' + i);
+            tr.setAttribute("row_id", "row_" + i);
+            tr.setAttribute("row_name", ISBColumns[i]);
+
             var td1 = document.createElement('td');
             td1.innerText = ISBColumns[i];
-    
+
             var td2 = document.createElement('td');
-            td2.classList.add('brand-select-cell');
-            var brandSelect = document.createElement('select');
-            for (var j = 0; j < brandColumn.length; j++) {
-                var option = document.createElement('option');
-                option.value = brandColumn[j];
-                option.innerText = brandColumn[j];
-                brandSelect.appendChild(option);
-            }
-            brandSelect.setAttribute("name", `${namePrefix}[][${i}]`);
-            td2.appendChild(brandSelect);
-    
+            td2.classList.add('brand-select-cell')
+            td2.appendChild(brandSelect.cloneNode(true));
+
             var td3 = document.createElement('td');
-            var dataTypeSelect = document.createElement('select');
-            dataTypeSelect.setAttribute("name", `${namePrefix}[${i}][data_type]`);
-            for (var j = 0; j < dataType.length; j++) {
-                var option = document.createElement('option');
-                option.value = dataType[j];
-                option.innerText = dataType[j];
-                dataTypeSelect.appendChild(option);
-            }
-            td3.appendChild(dataTypeSelect);
-    
+            td3.appendChild(dataTypeSelect.cloneNode(true));
+
             var td4 = document.createElement('td');
-            var conditionOperatorSelect = document.createElement('select');
-            conditionOperatorSelect.setAttribute("name", `${namePrefix}[${i}][condition_operation]`);
-            for (var j = 0; j < conditionOperator.length; j++) {
-                var option = document.createElement('option');
-                option.value = conditionOperator[j];
-                option.innerText = conditionOperator[j];
-                conditionOperatorSelect.appendChild(option);
-            }
-            td4.appendChild(conditionOperatorSelect);
-    
+            td4.appendChild(conditionOperatorSelect.cloneNode(true));
+
             var td5 = document.createElement('td');
-            var inputValueInput = document.createElement('input');
-            inputValueInput.setAttribute("name", `${namePrefix}[${i}][inputValue]`);
-            inputValueInput.type = 'text';
-            td5.appendChild(inputValueInput);
-    
+            var input = document.createElement('input');
+            input.type = 'text';
+            td5.appendChild(input);
+
             var td6 = document.createElement('td');
             var addButton = document.createElement('button');
             addButton.classList.add('add-button');
             addButton.innerText = "Add";
+            addButton.onclick = () => {
+                this.handleAdd(event.target);
+            };
             td6.appendChild(addButton);
-    
+
             tr.appendChild(td1);
             tr.appendChild(td2);
             tr.appendChild(td3);
             tr.appendChild(td4);
             tr.appendChild(td5);
             tr.appendChild(td6);
-    
+            // this.row_count.tr = 1;
             table.appendChild(tr);
         }
-        form.appendChild(table); // Append the table to the form
-        var saveButton = document.createElement("input");
-        saveButton.setAttribute('formaction', url);
-        saveButton.type = "submit";
-        saveButton.innerText = "Save";
-        form.appendChild(saveButton); // Append the save button to the form
-    
-        tableContainer.appendChild(form);
-        tableContainer.addEventListener('click', function(event) {
-            // Check if the clicked element is an "Add" button
-            if (event.target && event.target.tagName === 'BUTTON' && event.target.classList.contains('add-button')) {
-                // Call handleAdd function passing the clicked button and the event object
-                this.handleAdd(event.target, event);
-            }
-        }.bind(this));
+        tableContainer.appendChild(table)
+        var saveBtn = this.createButton('save');
+        saveBtn.onclick = () => {
+            this.handleSave();
+        };
+        tableContainer.appendChild(saveBtn);
     },
-    
-
-    handleAdd: function (button,event) {
-        event.preventDefault();
-        // console.log(1322);
-        var configuration = this;
-        var currentRow = button.parentNode.parentNode;
-        var rowClone = currentRow.cloneNode(true); // Clone the current row
-
-        rowClone.removeAttribute('id');
-
-        this.rowCounter++;
-
-    // Update name attributes of input elements in the cloned row
-    var inputs = rowClone.querySelectorAll('input, select');
-    inputs.forEach(function(input) {
-        var name = input.getAttribute('name');
-        if (name) {
-            var newName = name + '_' + this.rowCounter;
-            input.setAttribute('name', newName);
-        }
-    }.bind(this));
-    
-        var brandSelectCell = rowClone.children[1]; // Assuming brand select cell is at index 1
-
-        var inputFields = rowClone.querySelectorAll('input[type=text]', 'input[type=number]');
-        inputFields.forEach(function (input) {
-            input.value = ''; // Reset input value to empty string
-        });
-        // Remove existing radio inputs
-        var radioInputs = brandSelectCell.querySelectorAll('input[type=radio]');
-        radioInputs.forEach(function (input) {
-            input.parentNode.removeChild(input);
-        });
-
-        var existingDeleteButton = rowClone.querySelector('.delete-button');
-        if (existingDeleteButton) {
-            existingDeleteButton.remove();
-        }
-
-        var labels = brandSelectCell.querySelectorAll('label');
-        labels.forEach(function (label) {
-            label.parentNode.removeChild(label);
-        });
-        // Create and append new radio inputs
+    handleAdd: function (button) {
+        var currentRow = j(button).parents("tr");
+        var row_id = currentRow[0].getAttribute("row_id");
+        var row_count = j("#table-container").children("table").find("tr[row_id=" + row_id + "]").length;
+        var rowClone = currentRow[0].cloneNode(true);
+        rowClone.firstChild.innerText = '';
         var label1 = document.createElement('label');
         label1.innerText = "AND";
-        label1.setAttribute("for", "radio_and_" + Date.now()); // Unique ID for AND radio button
+        label1.setAttribute("for", "radio_and_" + currentRow[0].id + "_" + (row_count + 1))
         var label2 = document.createElement('label');
         label2.innerText = "OR";
-        label2.setAttribute("for", "radio_or_" + Date.now()); // Unique ID for OR radio button
+        label2.setAttribute("for", "radio_or_" + currentRow[0].id + "_" + (row_count + 1))
 
         var p = document.createElement('p');
+        p.appendChild(this.createRadioInput("radio_and_" + currentRow[0].id + "_" + (row_count + 1), 'condition_' + currentRow[0].id + '_' + (row_count + 1), 'AND'));
+        p.appendChild(label1)
+        p.appendChild(this.createRadioInput("radio_or_" + currentRow[0].id + "_" + (row_count + 1), 'condition_' + currentRow[0].id + '_' + (row_count + 1), 'OR'))
+        p.appendChild(label2)
 
-        var radioAnd = this.createRadioInput('radio_and_' + Date.now(), 'condition_' + Date.now(), 'AND'); // Unique name for each set of radio buttons
-        var radioOr = this.createRadioInput('radio_or_' + Date.now(), 'condition_' + Date.now(), 'OR'); // Unique name for each set of radio buttons
+        var lastTd = rowClone.lastElementChild;
+        if (lastTd) {
+            rowClone.removeChild(lastTd);
+        }
+        // console.log(j(rowClone).find('select'));
+        j(rowClone).find('select').eq(0).before(p);
+        // rowClone.children[1].children[0].before(p);
+        var removeBtn = this.createButton('Delete');
+        removeBtn.classList.add('remove-button');
+        removeBtn.onclick = () => {
+            this.handleDelete(event.target);
+        }
+        rowClone.append(document.createElement('td').appendChild(removeBtn));
+        $(currentRow).after(rowClone);
 
-        p.appendChild(radioAnd);
-        p.appendChild(label1);
-        p.appendChild(radioOr);
-        p.appendChild(label2);
-        brandSelectCell.appendChild(p); // Append radio inputs to the cell
-
-        // Create and append delete button
-        var deleteButton = document.createElement('button');
-        deleteButton.classList.add('delete-button');
-        deleteButton.innerText = "Delete";
-        deleteButton.addEventListener('click', function () {
-            this.handleDelete(rowClone);
-        }.bind(this));
-        rowClone.appendChild(deleteButton);
-        // Insert the cloned row after the current row
-        currentRow.parentNode.insertBefore(rowClone, currentRow.nextSibling);
     },
-
+    handleDelete: function (button) {
+        var currentRow = button.parentNode;
+        currentRow.parentNode.removeChild(currentRow);
+    },
     createRadioInput: function (id, name, value) {
         var radioInput = document.createElement('input');
         radioInput.id = id;
@@ -243,10 +187,48 @@ Configuration.prototype = {
         radioInput.value = value;
         return radioInput;
     },
+    createButton: function (text) {
+        var button = document.createElement('button');
+        button.innerText = text;
+        return button;
+    },
+    createDropDown: function (options) {
+        var select = document.createElement('select');
+        for (var i = 0; i < options.length; i++) {
+            var option = document.createElement('option');
+            option.innerText = options[i];
+            option.value = options[i];
+            select.appendChild(option);
+        }
+        return select;
+    },
+    handleSave: function () {
+        var brandId = j('#brand-dropdown').val();
+        var configArray = {};
+        configArray[brandId] = {};
+        j("#table-container table tr").not(":first").each(function () {
+            var obj = {};
+            // console.log(j(this).attr('row_name'));
+            var tds = j(this).find("td");
+            var name = j(this).attr('row_name');
+            var brandCol = tds.eq(1).find('select').val();
+            obj[brandCol] = [tds.eq(2).find('select').val(), tds.eq(3).find('select').val(), tds.eq(4).find('input').val()]
 
-    handleDelete: function (row) {
-        row.parentNode.removeChild(row);
+            if (configArray[brandId].hasOwnProperty(name)) {
+                var radioValue = tds.eq(1).find('input[type="radio"]:checked').val();
+                if (radioValue) {
+                    // If radio button is checked, include its value in the object
+                    configArray[brandId][name].push(radioValue);
+                }
+                // If it exists, push the obj to the existing array
+                configArray[brandId][name].push(obj);
+            } else {
+                // If it doesn't exist, create a new array with obj
+                configArray[brandId][name] = [obj];
+            }
+            // configArray.brand_id = [tds.eq(0).text()];
+        })
+        console.log(JSON.stringify(configArray));
     }
-
 
 }

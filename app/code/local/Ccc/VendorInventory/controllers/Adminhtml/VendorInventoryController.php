@@ -24,10 +24,10 @@ class Ccc_VendorInventory_Adminhtml_VendorInventoryController extends Mage_Admin
         return $this;
     }
 
-    protected function _validateFormKey()
-    {
-        return true;
-    }
+    // protected function _validateFormKey()
+    // {
+    //     return true;
+    // }
 
     public function getheadersAction()
     {

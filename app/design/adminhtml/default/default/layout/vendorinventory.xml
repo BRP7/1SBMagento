@@ -2,6 +2,7 @@
 <layout version="0.1.0">
     <adminhtml_vendorinventory_index>
         <reference name="head">
+            <action method="addJs"><file>lib/jquery/jquery-1.10.2.js</file></action>
             <action method="addJs"><file>vendorinventory/configuration.js</file></action>
             </reference>
         <reference name="content">
