@@ -9,6 +9,7 @@ Configuration.prototype = {
         this.header_url = options.header_url
         this.loadUploadContainer()
         this.isUploaded = false;
+        this.attachDeleteButtonListener();
     },
     loadUploadContainer: function (event) {
         var _that = this;
@@ -133,10 +134,17 @@ Configuration.prototype = {
         var rowClone = currentRow.cloneNode(true); // Clone the current row
         var brandSelectCell = rowClone.children[1]; // Assuming brand select cell is at index 1
     
+        // Remove existing delete button from cloned row, if present
+        var existingDeleteBtn = rowClone.querySelector('.deletebtn');
+        if (existingDeleteBtn) {
+            existingDeleteBtn.parentNode.removeChild(existingDeleteBtn);
+        }
+    
         var inputFields = rowClone.querySelectorAll('input[type=text], input[type=number],input[type=select]');
         inputFields.forEach(function(input) {
             input.value = ''; // Reset input value to empty string
         });
+    
         // Remove existing radio inputs
         var radioInputs = brandSelectCell.querySelectorAll('input[type=radio]');
         radioInputs.forEach(function(input) {
@@ -163,18 +171,25 @@ Configuration.prototype = {
         p.appendChild(label2);
         brandSelectCell.appendChild(p); // Append radio inputs to the cell
     
+        // Create delete button
         var del = document.createElement('button');
         del.innerText = "Delete"; // Set button text
         del.classList.add('deletebtn'); // Add a class to the delete button
+    
+        // Attach event listener to delete button
         del.addEventListener("click", function() {
             // Remove the row clone when the delete button is clicked
             rowClone.parentNode.removeChild(rowClone);
         });
-        rowClone.appendChild(del); // Append delete button to the cloned row
+    
+        // Append delete button to the cloned row
+        rowClone.appendChild(del);
     
         // Insert the cloned row after the current row
         currentRow.parentNode.insertBefore(rowClone, currentRow.nextSibling);
     },
+    
+    
     
     
     createRadioInput: function(id, name, value) {
@@ -184,5 +199,17 @@ Configuration.prototype = {
         radioInput.type = 'radio';
         radioInput.value = value;
         return radioInput;
-    }
+    },
+    handleDelete: function(deleteButton) {
+        var rowToDelete = deleteButton.parentNode;
+        rowToDelete.parentNode.removeChild(rowToDelete);
+    },
+    attachDeleteButtonListener: function() {
+        var _that = this;
+        document.getElementById('table-container').addEventListener('click', function(event) {
+            if (event.target && event.target.tagName === 'BUTTON' && event.target.classList.contains('deletebtn')) {
+                _that.handleDelete(event.target);
+            }
+        });
+    },
 }
