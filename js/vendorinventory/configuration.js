@@ -31,12 +31,12 @@ Configuration.prototype = {
                             if (xhr.status === 200) {
                                 // console.log(xhr.responseText);
                                 var headers = JSON.parse(xhr.responseText);
-                                 // Assuming response is JSON
+                                // Assuming response is JSON
                                 //  console.log(xhr.response);
-                                 if (!Configuration.prototype.isUploaded) {
-                                     Configuration.prototype.isUploaded = true;
-                                     Configuration.prototype.renderTable(headers.headers);
-                                 }
+                                if (!Configuration.prototype.isUploaded) {
+                                    Configuration.prototype.isUploaded = true;
+                                    Configuration.prototype.renderTable(headers.headers);
+                                }
                             } else {
                                 alert('Failed to retrieve CSV headers.');
                             }
@@ -128,28 +128,56 @@ Configuration.prototype = {
             }
         }.bind(this));
     },
-    handleAdd: function (button) {
-        console.log(1223);
-        console.log(button.parentNode.parentNode);
+    handleAdd: function(button) {
         var currentRow = button.parentNode.parentNode;
-        var rowClone = button.parentNode.parentNode.cloneNode(true);
-        var brandSelectCell = rowClone.children[1];
+        var rowClone = currentRow.cloneNode(true); // Clone the current row
+        var brandSelectCell = rowClone.children[1]; // Assuming brand select cell is at index 1
+    
+        var inputFields = rowClone.querySelectorAll('input[type=text], input[type=number],input[type=select]');
+        inputFields.forEach(function(input) {
+            input.value = ''; // Reset input value to empty string
+        });
+        // Remove existing radio inputs
+        var radioInputs = brandSelectCell.querySelectorAll('input[type=radio]');
+        radioInputs.forEach(function(input) {
+            input.parentNode.removeChild(input);
+        });
+    
+        var labels = brandSelectCell.querySelectorAll('label');
+        labels.forEach(function(label) {
+            label.parentNode.removeChild(label);
+        });
+    
+        // Create and append new radio inputs
         var label1 = document.createElement('label');
         label1.innerText = "AND";
-        label1.setAttribute("for", "radio_and")
+        label1.setAttribute("for", "radio_and");
         var label2 = document.createElement('label');
         label2.innerText = "OR";
-        label2.setAttribute("for", "radio_or")
+        label2.setAttribute("for", "radio_or");
+    
         var p = document.createElement('p');
         p.appendChild(this.createRadioInput('radio_and', 'condition', 'AND'));
-        p.appendChild(label1)
-        p.appendChild(this.createRadioInput('radio_or', 'condition', 'OR'))
-        p.appendChild(label2)
-        brandSelectCell.appendChild(p);
-        var rowClone = button.parentNode.parentNode.cloneNode(true);
-        currentRow.parentNode.insertBefore(rowClone, currentRow);
+        p.appendChild(label1);
+        p.appendChild(this.createRadioInput('radio_or', 'condition', 'OR'));
+        p.appendChild(label2);
+        brandSelectCell.appendChild(p); // Append radio inputs to the cell
+    
+        var del = document.createElement('button');
+        del.innerText = "Delete"; // Set button text
+        del.classList.add('deletebtn'); // Add a class to the delete button
+        del.addEventListener("click", function() {
+            // Remove the row clone when the delete button is clicked
+            rowClone.parentNode.removeChild(rowClone);
+        });
+        rowClone.appendChild(del); // Append delete button to the cloned row
+    
+        // Insert the cloned row after the current row
+        currentRow.parentNode.insertBefore(rowClone, currentRow.nextSibling);
     },
-    createRadioInput: function(id, name, value){
+    
+    
+    createRadioInput: function(id, name, value) {
         var radioInput = document.createElement('input');
         radioInput.id = id;
         radioInput.name = name;
@@ -157,5 +185,4 @@ Configuration.prototype = {
         radioInput.value = value;
         return radioInput;
     }
-
 }
