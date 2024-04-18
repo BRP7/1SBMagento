@@ -21,14 +21,31 @@ if ($attribute) {
 
 
 <div id="table-container"></div>
+<!-- <script>
+    document.observe('dom:loaded', function () {
+        var FORM_KEY = '<?php //echo $this->getFormKey() ?>'
+        var header_url = '<?php //echo $this->getUrl("*/*/getheaders")?>';
+        var action_url = '<?php //echo $this->getUrl("*/*/save")?>'
+        var config = new Configuration({
+            'form_key':FORM_KEY,
+            'containerId':'configuration-container',
+            'header_url': header_url,
+            'action_url': action_url
+        });
+    });
+</script> -->
+
+
 <script>
     document.observe('dom:loaded', function () {
         var FORM_KEY = '<?php echo $this->getFormKey() ?>'
         var header_url = '<?php echo $this->getUrl("*/*/getheaders")?>';
+        var post_data = '<?php echo $this->getUrl("*/*/save")?>';
         var config = new Configuration({
             'form_key':FORM_KEY,
             'containerId':'configuration-container',
-            'header_url': header_url
+            'header_url': header_url,
+            'post_data':post_data
         });
     });
 </script>

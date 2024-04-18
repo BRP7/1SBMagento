@@ -56,6 +56,12 @@ class Ccc_VendorInventory_Adminhtml_VendorInventoryController extends Mage_Admin
         return $headers;
     }
 
+    public function saveAction(){
+        // echo "Hello World!";
+        echo "<pre>";
+        print_r($this->getRequest()->getPost());
+    }
+
 
 
 
