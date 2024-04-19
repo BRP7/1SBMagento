@@ -7,12 +7,14 @@ Configuration.prototype = {
         this.getheaderActionUrl = options.url;
         this.form_key = options.form_key;
         this.row_count = [];
+        this.redirectUrl = options.redirected_url;
         // this.isUploaded = false;
         // console.log(options);
         this.loadUploadContainer();
     },
     loadUploadContainer: function (event) {
         // console.log(j("#brand-dropdown"))
+        var self = this;
         var brandDropdown = $(this.containerId).down('#brand-dropdown');
         var fileUploadContainer = $(this.containerId).down('#file-upload-container');
         var headerUrl = this.getheaderActionUrl;
@@ -27,8 +29,8 @@ Configuration.prototype = {
                     event.preventDefault();
                     // get the file
                     var files = document.getElementById("file-upload").files;
-                    
-                    if (files.length > 0 ) {
+
+                    if (files.length > 0) {
                         // append file in formData
                         var formData = new FormData();
                         var formData1 = new FormData();
@@ -53,7 +55,7 @@ Configuration.prototype = {
                                 console.log(response);
                                 // if (!Configuration.prototype.isUploaded && response.headers.headers) {
                                 //     Configuration.prototype.isUploaded = true;
-                                    Configuration.prototype.renderTable(response.headers);
+                                self.renderTable(response.headers);
                                 // }
                             },
                             error: function () {
@@ -70,6 +72,7 @@ Configuration.prototype = {
         });
     },
     renderTable: function (headers) {
+        var self = this;
         var tableContainer = document.getElementById('table-container');
         var tableHeader = ['ISB Columns', 'Brand Column', 'Data Type', 'Condition Operator', 'Condition Value'];
         var ISBColumns = ['sku', 'instock', 'instock qty', 'restock date', 'restock qty', 'status', 'discontinued'];
@@ -136,7 +139,7 @@ Configuration.prototype = {
         tableContainer.appendChild(table)
         var saveBtn = this.createButton('save');
         saveBtn.onclick = () => {
-            this.handleSave();
+            self.handleSave();
         };
         tableContainer.appendChild(saveBtn);
     },
@@ -203,32 +206,53 @@ Configuration.prototype = {
         return select;
     },
     handleSave: function () {
-        var brandId = j('#brand-dropdown').val();
+        var brandId = j("#brand-dropdown").val();
         var configArray = {};
         configArray[brandId] = {};
-        j("#table-container table tr").not(":first").each(function () {
+        j("#table-container table tr")
+          .not(":first")
+          .each(function () {
             var obj = {};
             // console.log(j(this).attr('row_name'));
             var tds = j(this).find("td");
-            var name = j(this).attr('row_name');
-            var brandCol = tds.eq(1).find('select').val();
-            obj[brandCol] = [tds.eq(2).find('select').val(), tds.eq(3).find('select').val(), tds.eq(4).find('input').val()]
-
+            var name = j(this).attr("row_name");
+            var brandCol = tds.eq(1).find("select").val();
+            obj[brandCol] = [
+              tds.eq(2).find("select").val(),
+              tds.eq(3).find("select").val(),
+              tds.eq(4).find("input").val(),
+            ];
+    
             if (configArray[brandId].hasOwnProperty(name)) {
-                var radioValue = tds.eq(1).find('input[type="radio"]:checked').val();
-                if (radioValue) {
-                    // If radio button is checked, include its value in the object
-                    configArray[brandId][name].push(radioValue);
-                }
-                // If it exists, push the obj to the existing array
-                configArray[brandId][name].push(obj);
+              var radioValue = tds.eq(1).find('input[type="radio"]:checked').val();
+              if (radioValue) {
+                // If radio button is checked, include its value in the object
+                configArray[brandId][name].push(radioValue);
+              }
+              // If it exists, push the obj to the existing array
+              configArray[brandId][name].push(obj);
             } else {
-                // If it doesn't exist, create a new array with obj
-                configArray[brandId][name] = [obj];
+              // If it doesn't exist, create a new array with obj
+              configArray[brandId][name] = [obj];
             }
             // configArray.brand_id = [tds.eq(0).text()];
-        })
-        console.log(JSON.stringify(configArray));
+          });
+          var jsonData = JSON.stringify(configArray);
+        // console.log(JSON.stringify(configArray));
+        j.ajax({
+            url: this.redirectUrl,
+            type: 'POST', 
+            data: {jsonData: jsonData},
+            success: function(response) {
+                console.log("success");
+                console.log(response);
+                // Handle success response from PHP controller
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+                // Handle error
+            }
+        });
     }
 
 }

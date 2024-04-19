@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Ccc_VendorInventory>
-            <version>0.1.0</version>
+            <version>0.1.0.0</version>
         </Ccc_VendorInventory>
     </modules>
     <global>
@@ -21,9 +21,12 @@
                 <class>Ccc_VendorInventory_Model_Resource</class>
                 <entities>
                     <vendorinventory>
-                        <table>inventory_configuration</table>
+                        <table>brand_config</table>
                     </vendorinventory>
-                    <configuration>
+                    <configdata>
+                        <table>brand_config_data</table>
+                    </configdata>
+                    <!-- <configuration>
                         <table>inventory_configuration</table>
                     </configuration>
                     <rule>
@@ -31,22 +34,9 @@
                     </rule>
                     <instock_date>
                         <table>inventory_instock_date</table>
-                    </instock_date>
+                    </instock_date> -->
                 </entities>
             </vendorinventory_resource>
-            <!-- Define collections -->
-            <vendorinventory_configuration>
-                <class>Ccc_VendorInventory_Model_Resource_Configuration_Collection</class>
-                <entity>vendorinventory/configuration</entity>
-            </vendorinventory_configuration>
-            <vendorinventory_rule>
-                <class>Ccc_VendorInventory_Model_Resource_Rule_Collection</class>
-                <entity>vendorinventory/rule</entity>
-            </vendorinventory_rule>
-            <vendorinventory_instock_date>
-                <class>Ccc_VendorInventory_Model_Resource_InstockDate_Collection</class>
-                <entity>vendorinventory/instock_date</entity>
-            </vendorinventory_instock_date>
         </models>
 
         <helpers>
@@ -54,6 +44,16 @@
                 <class>Ccc_VendorInventory_Helper</class>
             </vendorinventory>
         </helpers>
+        <resources>
+            <vendorinventory_setup>
+                <setup>
+                    <module>Ccc_VendorInventory</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </vendorinventory_setup>
+        </resources>
     </global>
 
     <admin>

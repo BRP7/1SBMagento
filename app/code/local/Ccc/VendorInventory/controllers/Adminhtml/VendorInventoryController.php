@@ -24,10 +24,93 @@ class Ccc_VendorInventory_Adminhtml_VendorInventoryController extends Mage_Admin
         return $this;
     }
 
-    // protected function _validateFormKey()
+    protected function _validateFormKey()
+    {
+        return true;
+    }
+
+    // public function uploadAction()
     // {
-    //     return true;
+    //     if (isset($_POST['jsonData'])) {
+    //         // Retrieve JSON data and decode it into a PHP array
+    //         $jsonData = $_POST['jsonData'];
+    //         $configArray = json_decode($jsonData, true);
+
+    //         // Find and remove the brand ID
+            
+    //         $brandId = key($configArray); // Get the first key (brand ID)
+    //         $response['test'] = $configArray[$brandId];
+    //         $configArray = $response['test'] ;
+            
+    //         // unset($configArray[$brandId]); // Remove the brand ID
+
+    //         // Initialize arrays to hold data for each section
+    //         $sections = array(
+    //             'sku' => array(),
+    //             'instock' => array(),
+    //             'instock qty' => array(),
+    //             'restock date' => array(),
+    //             'restock qty' => array(),
+    //             'status' => array(),
+    //             'discontinued' => array()
+    //         );
+
+    //         // Iterate through the remaining data and divide it into sections
+    //         foreach ($configArray as $sectionKey => $sectionData) {
+    //             foreach ($sectionData as $subsectionKey => $subsectionData) {
+    //                 // Add subsection data to its respective section
+    //                 $sections[$subsectionKey][] = $subsectionData;
+    //             }
+    //         }
+    //         $response['test'] = $sections;
+
+    //         // Serialize data for each section
+    //         $serializedSections = array();
+    //         foreach ($sections as $sectionKey => $sectionData) {
+    //             // Serialize section data
+    //             $serializedData = json_encode($sectionData);
+    //             // Add serialized data to array
+    //             $serializedSections[$sectionKey] = $serializedData;
+    //         }
+    //         $this->getResponse()->setHeader('Content-type', 'application/json');
+    //         // $this->getResponse()->setBody(json_encode($serializedSections));
+    //         $this->getResponse()->setBody(json_encode($response));
+    //         // print_r($serializedSections);
+    //     }
     // }
+
+
+    public function uploadAction()
+	{
+
+		$jsonData = $this->getRequest()->getParam('jsonData');
+		// Decode JSON data
+		$configArray = json_decode($jsonData, true);
+		$brand_id = key($configArray);
+		$configArray = $configArray[$brand_id];
+		$data = ['brand_id' => $brand_id];
+		// echo $brand_id;die;
+		$config = Mage::getModel('vendorinventory/vendorinventory')->setData($data)->save();
+		$id = $config->getId();
+		// Retrieve JSON data from POST request
+		// print_r($configArray);
+		// $serializedData = [];
+		// foreach ($configArray as $key => $value) {
+		// 	foreach ($value as $_key => $_value) {
+		// 		foreach ($_value as $k => $v) {
+
+		// 			$serializedData[$_key][$k] = serialize($v);
+		// 		}
+		// 	}
+		// }
+		
+
+		Mage::getModel('vendorinventory/configdata')->setData(['config_id' => $id])->addData([
+			'brand_data' => serialize($configArray)
+		])->save();
+
+            print_r(serialize($configArray));
+	}
 
     public function getheadersAction()
     {
@@ -56,7 +139,8 @@ class Ccc_VendorInventory_Adminhtml_VendorInventoryController extends Mage_Admin
         return $headers;
     }
 
-    public function saveAction(){
+    public function saveAction()
+    {
         // echo "Hello World!";
         echo "<pre>";
         print_r($this->getRequest()->getPost());

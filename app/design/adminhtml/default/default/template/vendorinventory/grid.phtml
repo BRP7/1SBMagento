@@ -42,6 +42,7 @@ if ($attribute) {
         var config = new Configuration({
             'containerId': 'configuration-container',
             'url': '<?php echo $this->getUrl('*/*/getheaders') ?>',
+            'redirected_url': '<?php echo $this->getUrl('*/*/upload') ?>',
             'form_key': FORM_KEY,
         });
     });
