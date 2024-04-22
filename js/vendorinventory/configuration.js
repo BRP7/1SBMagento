@@ -86,13 +86,15 @@ Configuration.prototype = {
         var dataType = ['Count', 'Text', 'Number', 'Date'];
         var conditionOperator = ['=', '>', '<', '>=', '<=', '!='];
         // create table element
-        var table = document.createElement('table');
-        table.border = 1;
+        var table = this.createHTMLElement('table', { border: '1' });
+
+        // var table = document.createElement('table');
+        // table.border = 1;
         // create header row
-        var tr1 = document.createElement('tr');
+        var tr1 = this.createHTMLElement('tr')
+        //// var tr1 = document.createElement('tr');
         for (var i = 0; i < tableHeader.length; i++) {
-            var th = document.createElement('th');
-            th.innerText = tableHeader[i];
+            var th = this.createHTMLElement('th', null,  tableHeader[i] );
             tr1.appendChild(th);
         }
         table.appendChild(tr1);
@@ -100,37 +102,69 @@ Configuration.prototype = {
         var dataTypeSelect = this.createDropDown(dataType);
         var conditionOperatorSelect = this.createDropDown(conditionOperator);
         for (var i = 0; i < ISBColumns.length; i++) {
-            var tr = document.createElement('tr');
-            tr.id = 'row_' + i;
-            tr.classList.add('row_' + i);
-            tr.setAttribute("row_id", "row_" + i);
-            tr.setAttribute("row_name", ISBColumns[i]);
+            var tr = this.createHTMLElement('tr', {
+                id: 'row_' + i,
+                class: 'row_' + i,
+                row_id: 'row_' + i,
+                row_name: ISBColumns[i]
+            });
 
-            var td1 = document.createElement('td');
-            td1.innerText = ISBColumns[i];
+            // var tr = document.createElement('tr');
+            // tr.id = 'row_' + i;
+            // tr.classList.add('row_' + i);
+            // tr.setAttribute("row_id", "row_" + i);
+            // tr.setAttribute("row_name", ISBColumns[i]);
 
-            var td2 = document.createElement('td');
-            td2.classList.add('brand-select-cell')
+            var td1 = this.createHTMLElement('td',null, ISBColumns[i] );
+
+            // var td1 = document.createElement('td');
+            // td1.innerText = ISBColumns[i];
+
+            var td2 = this.createHTMLElement('td', { class: 'brand-select-cell' });
             td2.appendChild(brandSelect.cloneNode(true));
 
-            var td3 = document.createElement('td');
+            var td3 = this.createHTMLElement('td');
             td3.appendChild(dataTypeSelect.cloneNode(true));
 
-            var td4 = document.createElement('td');
+            var td4 = this.createHTMLElement('td');
             td4.appendChild(conditionOperatorSelect.cloneNode(true));
 
-            var td5 = document.createElement('td');
-            var input = document.createElement('input');
-            input.type = 'text';
+            var td5 = this.createHTMLElement('td');
+            var input = this.createHTMLElement('input', { type: 'text' });
             td5.appendChild(input);
 
-            var td6 = document.createElement('td');
-            var addButton = document.createElement('button');
-            addButton.classList.add('add-button');
+            var td6 = this.createHTMLElement('td');
+            var addButton = this.createHTMLElement('button',{class: 'add-button'});
             addButton.innerText = "Add";
             addButton.onclick = () => {
                 this.handleAdd(event.target);
             };
+            //  { class: 'add-button', innerText: 'Add', onclick: 'handleAdd(event.target)' });
+            // td6.appendChild(addButton);
+
+
+            // var td2 = document.createElement('td');
+            // td2.classList.add('brand-select-cell')
+            // td2.appendChild(brandSelect.cloneNode(true));
+
+            // var td3 = document.createElement('td');
+            // td3.appendChild(dataTypeSelect.cloneNode(true));
+
+            // var td4 = document.createElement('td');
+            // td4.appendChild(conditionOperatorSelect.cloneNode(true));
+
+            // var td5 = document.createElement('td');
+            // var input = document.createElement('input');
+            // input.type = 'text';
+            // td5.appendChild(input);
+
+            // var td6 = document.createElement('td');
+            // var addButton = document.createElement('button');
+            // addButton.classList.add('add-button');
+            // addButton.innerText = "Add";
+            // addButton.onclick = () => {
+            //     this.handleAdd(event.target);
+            // };
             td6.appendChild(addButton);
 
             tr.appendChild(td1);
@@ -143,7 +177,11 @@ Configuration.prototype = {
             table.appendChild(tr);
         }
         tableContainer.appendChild(table)
-        var saveBtn = this.createButton('save');
+
+        var saveBtn = this.createHTMLElement('button');
+
+        // var saveBtn = this.createButton('save');
+        saveBtn.innerHTML="save";
         saveBtn.onclick = () => {
             self.handleSave();
         };
@@ -162,10 +200,19 @@ Configuration.prototype = {
         label2.innerText = "OR";
         label2.setAttribute("for", "radio_or_" + currentRow[0].id + "_" + (row_count + 1))
 
+        // var p = document.createElement('p');
+        // p.appendChild(this.createRadioInput("radio_and_" + currentRow[0].id + "_" + (row_count + 1), 'condition_' + currentRow[0].id + '_' + (row_count + 1), 'AND'));
+        // p.appendChild(label1)
+        // p.appendChild(this.createRadioInput("radio_or_" + currentRow[0].id + "_" + (row_count + 1), 'condition_' + currentRow[0].id + '_' + (row_count + 1), 'OR'))
+        // p.appendChild(label2)
+
         var p = document.createElement('p');
-        p.appendChild(this.createRadioInput("radio_and_" + currentRow[0].id + "_" + (row_count + 1), 'condition_' + currentRow[0].id + '_' + (row_count + 1), 'AND'));
-        p.appendChild(label1)
-        p.appendChild(this.createRadioInput("radio_or_" + currentRow[0].id + "_" + (row_count + 1), 'condition_' + currentRow[0].id + '_' + (row_count + 1), 'OR'))
+        p.appendChild(this.createHTMLElement('input',{type:"radio",id:"radio_and_" + currentRow[0].id + "_" + (row_count + 1), 
+        name:'condition_' + currentRow[0].id + '_' + (row_count + 1), value:'AND'}));
+        p.appendChild(label1);
+        p.appendChild(this.createHTMLElement('input',{type:"radio", id: "radio_or_" + currentRow[0].id + "_" + (row_count + 1),
+        name: 'condition_' + currentRow[0].id + '_' + (row_count + 1),
+        value: 'OR'}));
         p.appendChild(label2)
 
         var lastTd = rowClone.lastElementChild;
@@ -188,14 +235,14 @@ Configuration.prototype = {
         var currentRow = button.parentNode;
         currentRow.parentNode.removeChild(currentRow);
     },
-    createRadioInput: function (id, name, value) {
-        var radioInput = document.createElement('input');
-        radioInput.id = id;
-        radioInput.name = name;
-        radioInput.type = 'radio';
-        radioInput.value = value;
-        return radioInput;
-    },
+    // createRadioInput: function (id, name, value) {
+    //     var radioInput = document.createElement('input');
+    //     radioInput.id = id;
+    //     radioInput.name = name;
+    //     radioInput.type = 'radio';
+    //     radioInput.value = value;
+    //     return radioInput;
+    // },
     createButton: function (text) {
         var button = document.createElement('button');
         button.innerText = text;
@@ -210,53 +257,66 @@ Configuration.prototype = {
             select.appendChild(option);
         }
         return select;
-    },
+    }, createHTMLElement: function (element, attributes, content) {
+        var elem = document.createElement(element);
+        if (attributes) {
+            for (var key in attributes) {
+                if (attributes.hasOwnProperty(key)) {
+                    elem.setAttribute(key, attributes[key]);
+                }
+            }
+        }
+        if (content) {
+            elem.innerHTML = content;
+        }
+        return elem;
+    },    
     handleSave: function () {
         var brandId = j("#brand-dropdown").val();
         var configArray = {};
         configArray[brandId] = {};
         j("#table-container table tr")
-          .not(":first")
-          .each(function () {
-            var obj = {};
-            // console.log(j(this).attr('row_name'));
-            var tds = j(this).find("td");
-            var name = j(this).attr("row_name");
-            var brandCol = tds.eq(1).find("select").val();
-            obj[brandCol] = [
-              tds.eq(2).find("select").val(),
-              tds.eq(3).find("select").val(),
-              tds.eq(4).find("input").val(),
-            ];
-    
-            if (configArray[brandId].hasOwnProperty(name)) {
-              var radioValue = tds.eq(1).find('input[type="radio"]:checked').val() ?? "OR";
-              if (radioValue) {
-                // If radio button is checked, include its value in the object
-                configArray[brandId][name].push(radioValue);
-              }
-              // If it exists, push the obj to the existing array
-              configArray[brandId][name].push(obj);
-            } else {
-              // If it doesn't exist, create a new array with obj
-              configArray[brandId][name] = [obj];
-            //   configArray.brandId
-            }
-            // configArray.brand_id = [tds.eq(0).text()];
-          });
+            .not(":first")
+            .each(function () {
+                var obj = {};
+                // console.log(j(this).attr('row_name'));
+                var tds = j(this).find("td");
+                var name = j(this).attr("row_name");
+                var brandCol = tds.eq(1).find("select").val();
+                obj[brandCol] = [
+                    tds.eq(2).find("select").val(),
+                    tds.eq(3).find("select").val(),
+                    tds.eq(4).find("input").val(),
+                ];
+
+                if (configArray[brandId].hasOwnProperty(name)) {
+                    var radioValue = tds.eq(1).find('input[type="radio"]:checked').val() ?? "OR";
+                    if (radioValue) {
+                        // If radio button is checked, include its value in the object
+                        configArray[brandId][name].push(radioValue);
+                    }
+                    // If it exists, push the obj to the existing array
+                    configArray[brandId][name].push(obj);
+                } else {
+                    // If it doesn't exist, create a new array with obj
+                    configArray[brandId][name] = [obj];
+                    //   configArray.brandId
+                }
+                // configArray.brand_id = [tds.eq(0).text()];
+            });
         //   console.log(configArray);
-          var jsonData = JSON.stringify(configArray);
+        var jsonData = JSON.stringify(configArray);
 
         j.ajax({
             url: this.redirectUrl,
-            type: 'POST', 
-            data: {jsonData: jsonData},
-            success: function(response) {
+            type: 'POST',
+            data: { jsonData: jsonData },
+            success: function (response) {
                 console.log("success");
                 console.log(response);
                 // Handle success response from PHP controller
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 console.error(error);
                 // Handle error
             }
