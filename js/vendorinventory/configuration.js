@@ -21,6 +21,8 @@ Configuration.prototype = {
         var formKey = this.form_key;
         brandDropdown.observe('change', function (event) {
             var selectedBrand = this.value;
+            // console.log(this.value);//234
+            // console.log("selected brand id:",selectedBrand);
             if (selectedBrand) {
                 // load the file uploader and upload button
                 fileUploadContainer.innerHTML = '<input type="file" id="file-upload" accept=".csv,.xml,.xls" name="file-upload"><button id="upload-btn">Upload</button>';
@@ -29,12 +31,15 @@ Configuration.prototype = {
                     event.preventDefault();
                     // get the file
                     var files = document.getElementById("file-upload").files;
+                    // console.log(files['length']);
+                    // console.log(files[0]['name']);
+                    // return;
 
                     if (files.length > 0) {
                         // append file in formData
                         var formData = new FormData();
-                        var formData1 = new FormData();
-                        formData1.append("name", "asfasd");
+                        // var formData1 = new FormData();
+                        formData.append("name", "asfasd");
                         // console.log(formData1);
                         var file = files[0];
                         // var allowedExtensions = ['csv', 'xml']
@@ -73,6 +78,7 @@ Configuration.prototype = {
     },
     renderTable: function (headers) {
         var self = this;
+        // console.log(this);
         var tableContainer = document.getElementById('table-container');
         var tableHeader = ['ISB Columns', 'Brand Column', 'Data Type', 'Condition Operator', 'Condition Value'];
         var ISBColumns = ['sku', 'instock', 'instock qty', 'restock date', 'restock qty', 'status', 'discontinued'];
@@ -224,7 +230,7 @@ Configuration.prototype = {
             ];
     
             if (configArray[brandId].hasOwnProperty(name)) {
-              var radioValue = tds.eq(1).find('input[type="radio"]:checked').val();
+              var radioValue = tds.eq(1).find('input[type="radio"]:checked').val() ?? "OR";
               if (radioValue) {
                 // If radio button is checked, include its value in the object
                 configArray[brandId][name].push(radioValue);
@@ -234,11 +240,13 @@ Configuration.prototype = {
             } else {
               // If it doesn't exist, create a new array with obj
               configArray[brandId][name] = [obj];
+            //   configArray.brandId
             }
             // configArray.brand_id = [tds.eq(0).text()];
           });
+        //   console.log(configArray);
           var jsonData = JSON.stringify(configArray);
-        // console.log(JSON.stringify(configArray));
+
         j.ajax({
             url: this.redirectUrl,
             type: 'POST', 
