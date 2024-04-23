@@ -143,44 +143,118 @@ class Ccc_VendorInventory_Adminhtml_VendorInventoryController extends Mage_Admin
     // }
 
 
+    // public function getheadersAction()
+    // {
+    //     $response = array();
+    //     $brandId = $this->getRequest()->getPost('brand_id');
+    //     if ($brandId) {
+    //         $brandData = Mage::getModel("vendorinventory/vendorinventory")->getCollection()
+    //             ->addFieldToFilter("brand_id", $brandId)
+    //             ->getData();
+    //         if ($brandData) {
+    //             $configId = $brandData[0]['config_id'];
+    //             $responseData = Mage::getModel('vendorinventory/configdata')->getCollection()
+    //                 ->addFieldToFilter('config_id', $configId)
+    //                 ->getData();
+    //             if (!empty($responseData)) {
+    //                 $brandData = unserialize($responseData[0]['brand_data']);
+    //                 if ($brandData === false) {
+    //                     $response['error'] = "Error unserializing data";
+    //                 } else {
+    //                     $response['brand_data'] = $brandData;
+    //                     print_r($response['brand_data']);
+    //                     die;
+    //                 }
+    //             } else {
+    //                 $response['error'] = "No data found for config ID $configId";
+    //             }
+    //         } else {
+    //             $response['error'] = "No brand data found for brand ID $brandId";
+    //         }
+    //     } else {
+    //         $response['error'] = "No brand ID provided";
+    //     }
+
+    //     $response['files'] = $_FILES;
+    //     if (isset($_FILES['file-upload'])) {
+    //         $response['headers'] = $this->processCsvFile($_FILES['file-upload']['tmp_name']);
+    //     }
+
+    //     $this->getResponse()->setHeader('Content-type', 'application/json');
+    //     $this->getResponse()->setBody(json_encode($response));
+    // }
+
+    //     public function getheadersAction()
+// {
+//     $response = array();
+//     $brandId = $this->getRequest()->getPost('brand_id');
+
+    //     if ($brandId) {
+//         $brandData = Mage::getModel("vendorinventory/vendorinventory")->getCollection()
+//             ->addFieldToFilter("brand_id", $brandId)
+//             ->getData();
+
+    //         if ($brandData) {
+//             $configId = $brandData[0]['config_id'];
+//             $responseData = Mage::getModel('vendorinventory/configdata')->getCollection()
+//                 ->addFieldToFilter('config_id', $configId)
+//                 ->getData();
+
+    //             if (!empty($responseData)) {
+//                 $brandData = unserialize($responseData[0]['brand_data']);
+
+    //                 if ($brandData === false) {
+//                     $response['error'] = "Error unserializing data";
+//                 } else {
+//                     $response['brand_data'] = $brandData;
+//                 }
+//             } else {
+//                 $response['error'] = "No data found for config ID $configId";
+//             }
+//         } else {
+//             $response['error'] = "No brand data found for brand ID $brandId";
+//         }
+//     } else {
+//         $response['error'] = "No brand ID provided";
+//     }
+
+    //     $response['files'] = $_FILES;
+
+    //     if (isset($_FILES['file-upload'])) {
+//         $response['headers'] = $this->processCsvFile($_FILES['file-upload']['tmp_name']);
+//     }
+
+    //     $this->getResponse()->setHeader('Content-type', 'application/json');
+//     $this->getResponse()->setBody(json_encode($response));
+// }
+
     public function getheadersAction()
-{
-    $response = array();
-    $brandId = $this->getRequest()->getPost('brand_id');
-    if ($brandId) {
-        $brandData = Mage::getModel("vendorinventory/vendorinventory")->getCollection()
-            ->addFieldToFilter("brand_id", $brandId)
-            ->getData();
-        if ($brandData) {
-            $configId = $brandData[0]['config_id'];
-            $responseData = Mage::getModel('vendorinventory/configdata')->getCollection()
-                ->addFieldToFilter('config_id', $configId)
-                ->getData();
-            if (!empty($responseData)) {
-                $brandData = unserialize($responseData[0]['brand_data']);
-                if ($brandData === false) {
-                    $response['error'] = "Error unserializing data";
-                } else {
-                    $response['brand_data'] = $brandData;
-                }
-            } else {
-                $response['error'] = "No data found for config ID $configId";
+    {
+        // echo 2222;die;
+        $response = array();
+        $brand_id = $this->getRequest()->getPost('brand_id');
+        if ($brand_id) {
+            $data = Mage::getModel('vendorinventory/vendorinventory')->getCollection()
+                ->addFieldToFilter('brand_id', $brand_id)->getData();
+                if ($data) {
+            $config_id = $data[0]['config_id'];
+            // echo $config_id;
+            
+                $brand_data = Mage::getModel('vendorinventory/configdata')->getCollection()
+                    ->addFieldToFilter('config_id', $config_id)->getData();
+                $response['brand'] = unserialize($brand_data[0]['brand_data']);
             }
-        } else {
-            $response['error'] = "No brand data found for brand ID $brandId";
         }
-    } else {
-        $response['error'] = "No brand ID provided";
+
+        $response['files'] = $_FILES;
+        if (isset($_FILES['file-upload'])) {
+            $response['headers'] = $this->processCsvFile($_FILES['file-upload']['tmp_name']);
+        }
+        $this->getResponse()->setHeader('Content-type', 'application/json');
+        $this->getResponse()->setBody(json_encode($response));
     }
 
-    $response['files'] = $_FILES;
-    if (isset($_FILES['file-upload'])) {
-        $response['headers'] = $this->processCsvFile($_FILES['file-upload']['tmp_name']);
-    }
 
-    $this->getResponse()->setHeader('Content-type', 'application/json');
-    $this->getResponse()->setBody(json_encode($response));
-}
 
 
     private function processCsvFile($csvFilePath)
