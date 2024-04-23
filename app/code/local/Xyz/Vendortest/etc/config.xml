@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Xyz_Vendortest>
+            <version>0.1.0</version>
+        </Xyz_Vendortest>
+    </modules>
+    <frontend>
+        <routers>
+            <Xyz_Vendortest>
+                <use>standard</use>
+                <args>
+                    <module>Xyz_Vendortest</module>
+                    <frontName>abc</frontName>
+                </args>
+            </Xyz_Vendortest>
+        </routers>
+    </frontend>
+</config>

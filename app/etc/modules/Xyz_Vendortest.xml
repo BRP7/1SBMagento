@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <Xyz_Vendortest>
+            <active>true</active>
+            <codepool>local</codepool>  
+        </Xyz_Vendortest>
+    </modules>
+</config>
