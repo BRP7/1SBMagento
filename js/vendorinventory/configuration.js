@@ -50,13 +50,20 @@ Configuration.prototype = {
                 console.log(response);
                 var brand_data = response.brand;
                 var headers = response.headers;
+                if(response.hasOwnProperty('config_id')){
+                  var config_id = response.config_id;
+                  var id = response.id;
+                  Configuration.prototype.renderTable(headers, brand_data,config_id,id);
+                }else{
+                  Configuration.prototype.renderTable(headers, brand_data);
+                }
+ 
                 //    var sku = brand_data[0];
                 // console.log(brand_data);
                 // return;
                 // console.log(headers);
                 // if (!Configuration.prototype.isUploaded && headers.headers) {
                 // Configuration.prototype.isUploaded = true;
-                Configuration.prototype.renderTable(headers, brand_data);
                 // }
               },
               error: function () {
@@ -72,7 +79,9 @@ Configuration.prototype = {
       }
     });
   },
-  renderTable: function (headers, brand_data = false) {
+  renderTable: function (headers, brand_data = false , config_id = 0 ,id = 0 ) {
+    // console.log(config_id)
+    // console.log(id)
     var self = this;
     var table = this.createHTMLElement("table");
     var tableContainer = document.getElementById("table-container");
@@ -159,7 +168,7 @@ Configuration.prototype = {
       var saveBtn = document.createElement("button");
       saveBtn.innerHTML = "Save";
       saveBtn.onclick = () => {
-        self.handleSave();
+        self.handleSave(config_id,id);
       };
       tableContainer.appendChild(saveBtn);
     }
@@ -358,9 +367,22 @@ Configuration.prototype = {
     }
     return elem;
   },
-  handleSave: function () {
+  handleSave: function (config_id = 0,id = 0) {
+    // console.log(config_id);
+    // console.log(id);
     var brandId = j("#brand-dropdown").val();
+    // var configId;
+    // var primaryKey = "primary_key";
+    // var autoId;
     var configArray = {};
+    // var bId;
+    // configArray[configId] = {};
+
+    if(config_id != 0 && id != 0){
+      configArray["config_id"] = config_id;
+      configArray["primary_key"] = id;
+    }
+
     configArray[brandId] = {};
     j("#table-container table tr")
       .not(":first")
@@ -368,7 +390,7 @@ Configuration.prototype = {
         var obj = {};
         // console.log(j(this).attr('row_name'));
         var tds = j(this).find("td");
-        console.log(tds);
+        // console.log(tds);
         var name = j(this).attr("row_name");
         //   console.log(name)
         var brandCol = tds.eq(1).find("select").val();
@@ -393,8 +415,11 @@ Configuration.prototype = {
         }
         // configArray.brand_id = [tds.eq(0).text()];
       });
+
+    
     var jsonData = JSON.stringify(configArray);
     console.log(JSON.stringify(configArray));
+    // return
     j.ajax({
       url: "http://127.0.0.1/1SBMagento/index.php/admin/VendorInventory/upload",
       type: "POST",
