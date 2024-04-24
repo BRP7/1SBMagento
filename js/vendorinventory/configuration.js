@@ -188,15 +188,9 @@ Configuration.prototype = {
     j("#table-container table tr")
       .not(":first")
       .each(function (index, tr) {
-        // console.log(index);
-        // console.log(tr);
         var configData = brand_data[tr.getAttribute("row_name")];
-        // console.log(configData); 
         var p;
         configData.forEach(function (row, index) {
-//           console.log(row);
-//           console.log(index);
-//           return;
           if (index >= 1) {
             if (row == "AND" || row == "OR") {
               var radioAnd = self.createRadioInput(
