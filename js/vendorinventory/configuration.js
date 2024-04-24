@@ -11,12 +11,14 @@ Configuration.prototype = {
     this.loadUploadContainer();
   },
   loadUploadContainer: function (event) {
+    var self = this;
     var brandDropdown = $(this.containerId).down("#brand-dropdown");
     var fileUploadContainer = $(this.containerId).down(
       "#file-upload-container"
     );
     var headerUrl = this.getheaderActionUrl;
     var formKey = this.form_key;
+    // console.log(formKey)
     console.log(headerUrl);
     brandDropdown.observe("change", function (event) {
       var selectedBrand = this.value;
@@ -50,12 +52,13 @@ Configuration.prototype = {
                 console.log(response);
                 var brand_data = response.brand;
                 var headers = response.headers;
+                console.log(self.form_key);
                 if(response.hasOwnProperty('config_id')){
                   var config_id = response.config_id;
                   var id = response.id;
-                  Configuration.prototype.renderTable(headers, brand_data,config_id,id);
+                  self.renderTable(headers, brand_data,config_id,id);
                 }else{
-                  Configuration.prototype.renderTable(headers, brand_data);
+                  self.renderTable(headers, brand_data);
                 }
  
                 //    var sku = brand_data[0];
@@ -83,6 +86,7 @@ Configuration.prototype = {
     // console.log(config_id)
     // console.log(id)
     var self = this;
+    // console.log(this.formKey);
     var table = this.createHTMLElement("table");
     var tableContainer = document.getElementById("table-container");
     var tableHeader = [
@@ -368,6 +372,7 @@ Configuration.prototype = {
     return elem;
   },
   handleSave: function (config_id = 0,id = 0) {
+    var self =this;
     // console.log(config_id);
     // console.log(id);
     var brandId = j("#brand-dropdown").val();
@@ -375,8 +380,12 @@ Configuration.prototype = {
     // var primaryKey = "primary_key";
     // var autoId;
     var configArray = {};
+
     // var bId;
-    // configArray[configId] = {};
+    // configArray["from_id"] = self.form_key;
+    // console.log(this.form_key);
+    var fromKey = this.form_key
+    // return
 
     if(config_id != 0 && id != 0){
       configArray["config_id"] = config_id;
@@ -423,7 +432,7 @@ Configuration.prototype = {
     j.ajax({
       url: "http://127.0.0.1/1SBMagento/index.php/admin/VendorInventory/upload",
       type: "POST",
-      data: { jsonData: jsonData },
+      data: { jsonData: jsonData ,"form_key": fromKey},
       success: function (response) {
         console.log(response);
         // Handle success response from PHP controller
