@@ -30,26 +30,17 @@ class Ccc_VendorInventory_Adminhtml_VendorInventoryController extends Mage_Admin
     public function uploadAction()
     {
         $jsonData = $this->getRequest()->getParam('jsonData');
-        // Decode JSON data
         $configArrayData = json_decode($jsonData, true);
-
-        // print_r("key ::",Mage::getModel('vendorinventory/vendorinventory')->getId());
-        // die;
         $brand_id = key($configArrayData);
         $configArray = $configArrayData[$brand_id];
-        // die;
         $data = ['brand_id' => $brand_id];
-        // var_dump($configArray);
-        // die;
-        // echo $brand_id;die;
         if (isset($configArrayData["config_id"])) {
             $configId = $configArrayData["config_id"];
             $primaryId = $configArrayData["primary_key"];
-            $config = Mage::getModel('vendorinventory/vendorinventory')->setData($data)->addData(['config_id' => $configId])->save();
+            // $config = Mage::getModel('vendorinventory/vendorinventory')->setData($data)->addData(['config_id' => $configId])->save();
             Mage::getModel('vendorinventory/configdata')->setData(['config_id' => $configId, "id" => $primaryId])->addData([
                 'brand_data' => serialize($configArray)
             ])->save();
-
         } else {
             $config = Mage::getModel('vendorinventory/vendorinventory')->setData($data)->save();
             $id = $config->getId();
@@ -63,7 +54,6 @@ class Ccc_VendorInventory_Adminhtml_VendorInventoryController extends Mage_Admin
 
     public function getheadersAction()
     {
-        // echo 2222;die;
         $response = array();
         $brand_id = $this->getRequest()->getPost('brand_id');
         if ($brand_id) {
@@ -71,13 +61,11 @@ class Ccc_VendorInventory_Adminhtml_VendorInventoryController extends Mage_Admin
                 ->addFieldToFilter('brand_id', $brand_id)->getData();
             if ($data) {
                 $config_id = $data[0]['config_id'];
-                // echo $config_id;
-
                 $brand_data = Mage::getModel('vendorinventory/configdata')->getCollection()
-                    ->addFieldToFilter('config_id', $config_id)->getData();
-                $response['brand'] = unserialize($brand_data[0]['brand_data']);
+                    ->addFieldToFilter('config_id', $config_id)->getFirstItem();
+                $response['brand'] = unserialize($brand_data->getBrandData());
                 $response['config_id'] = $config_id;
-                $response['id'] = $brand_data[0]['id'];
+                $response['id'] = $brand_data->getId();
             }
         }
 
@@ -88,7 +76,6 @@ class Ccc_VendorInventory_Adminhtml_VendorInventoryController extends Mage_Admin
         $this->getResponse()->setHeader('Content-type', 'application/json');
         $this->getResponse()->setBody(json_encode($response));
     }
-
 
 
 
@@ -106,7 +93,6 @@ class Ccc_VendorInventory_Adminhtml_VendorInventoryController extends Mage_Admin
 
     public function saveAction()
     {
-        // echo "Hello World!";
         echo "<pre>";
         print_r($this->getRequest()->getPost());
     }

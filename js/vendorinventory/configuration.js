@@ -50,6 +50,7 @@ Configuration.prototype = {
               contentType: false, // Prevent jQuery from setting the content type
               success: function (response) {
                 console.log(response);
+                // return
                 var brand_data = response.brand;
                 var headers = response.headers;
                 console.log(self.form_key);
@@ -214,11 +215,9 @@ Configuration.prototype = {
               var labelOr = document.createElement("label");
               labelOr.innerText = "OR";
               labelOr.htmlFor = "radio_or_" + configData + "_clone_" + index;
-
-              if (configData == "AND") {
+              
+              if (configData[index] == "AND") {
                 radioAnd.checked = true;
-                // console.log(radioAnd);
-                // radioAnd.selected = "selected";
               } else {
                 radioOr.checked = true;
               }
@@ -229,8 +228,6 @@ Configuration.prototype = {
               p.appendChild(labelAnd);
             } else {
               var trClone = tr.cloneNode(true);
-              // var row_data = configData[index];
-              // console.log(row);
               var tds = j(trClone).find("td");
               for (const _row in row) {
                 // console.log(row[_row]);
@@ -371,7 +368,7 @@ Configuration.prototype = {
     }
     return elem;
   },
-  handleSave: function (config_id = 0,id = 0) {
+  handleSave: function (configId = 0,id = 0) {
     var self =this;
     // console.log(config_id);
     // console.log(id);
@@ -384,11 +381,11 @@ Configuration.prototype = {
     // var bId;
     // configArray["from_id"] = self.form_key;
     // console.log(this.form_key);
-    var fromKey = this.form_key
+    var fromKey = this.form_key;
     // return
 
-    if(config_id != 0 && id != 0){
-      configArray["config_id"] = config_id;
+    if(configId != 0 && id != 0){
+      configArray["config_id"] = configId;
       configArray["primary_key"] = id;
     }
 
