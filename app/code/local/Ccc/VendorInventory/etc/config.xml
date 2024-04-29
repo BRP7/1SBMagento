@@ -55,6 +55,15 @@
             </vendorinventory_setup>
         </resources>
     </global>
+    <crontab>
+        <jobs>
+            <inventory>
+                <run>
+                    <model>vendorinventory/observer::readcsv</model>
+                </run>
+            </inventory>
+        </jobs>
+    </crontab>
 
     <admin>
         <routers>
