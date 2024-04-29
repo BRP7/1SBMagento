@@ -74,6 +74,32 @@ class Ccc_VendorInventory_Adminhtml_VendorInventoryController extends Mage_Admin
     // }
 
 
+    // public function getheadersAction()
+    // {
+    //     $response = array();
+    //     $brandId = $this->getRequest()->getPost('brand_id');
+    //     if ($brandId) {
+    //         $data = Mage::getModel('vendorinventory/vendorinventory')->getCollection()
+    //             ->addFieldToFilter('brand_id', $brandId)->getData();
+    //         if ($data) {
+    //             $config_id = $data[0]['config_id'];
+    //             $brand_data = Mage::getModel('vendorinventory/configdata')->getCollection()
+    //                 ->addFieldToFilter('config_id', $config_id)->getFirstItem();
+    //             $response['brand'] = unserialize($brand_data->getBrandData());
+    //             $response['config_id'] = $config_id;
+    //             $response['id'] = $brand_data->getId();
+    //         }
+    //     }
+
+    //     $response['files'] = $_FILES;
+    //     if (isset($_FILES['file-upload'])) {
+    //         $response['headers'] = $this->processCsvFile($_FILES['file-upload']['tmp_name']);
+    //         Mage::getModel('vendorinventory/vendorinventory')->setData($response['headers'])->addData(["brand_id",$brandId])->save();
+    //     }
+    //     $this->getResponse()->setHeader('Content-type', 'application/json');
+    //     $this->getResponse()->setBody(json_encode($response));
+    // }
+
     public function getheadersAction()
     {
         $response = array();
@@ -90,16 +116,15 @@ class Ccc_VendorInventory_Adminhtml_VendorInventoryController extends Mage_Admin
                 $response['id'] = $brand_data->getId();
             }
         }
-        
+
         $response['files'] = $_FILES;
         if (isset($_FILES['file-upload'])) {
             $response['headers'] = $this->processCsvFile($_FILES['file-upload']['tmp_name']);
-            Mage::getModel('vendorinventory/vendorinventory')->setData($response['headers'])->addData(["brand_id",$brandId])->save();
+            // Mage::getModel('vendorinventory/vendorinventory')->setData($response['headers'])->addData(["brand_id", $brandId])->save();
         }
         $this->getResponse()->setHeader('Content-type', 'application/json');
         $this->getResponse()->setBody(json_encode($response));
     }
-
 
 
     private function processCsvFile($csvFilePath)
@@ -114,11 +139,11 @@ class Ccc_VendorInventory_Adminhtml_VendorInventoryController extends Mage_Admin
         return $headers;
     }
 
-    public function saveAction()
-    {
-        echo "<pre>";
-        print_r($this->getRequest()->getPost());
-    }
+    // public function saveAction()
+    // {
+    //     echo "<pre>";
+    //     print_r($this->getRequest()->getPost());
+    // }
 
 
 
