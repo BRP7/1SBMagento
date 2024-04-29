@@ -54,7 +54,7 @@ class Ccc_VendorInventory_Model_Observer
                     foreach ($_config as $_c) {
                         if (!is_string($_c)) {
                             foreach ($_c as $_k => $_v) {
-                                print_r($_k);
+                                // print_r($_k);
                                 $dataColumn = $_k;
                                 if($_column == 'sku'){
                                     $rule[] = true;
@@ -102,13 +102,13 @@ class Ccc_VendorInventory_Model_Observer
 
                     // $temp['sku'] = $array['part_number'];
                 }
-                print_r($temp);
-                // $data = Mage::getModel("vendorinventory/items")->getCollection()->addFieldToFilter('brand_id', $brandId)->getFirstItem();
-                // if ($data) {
-                //     Mage::getModel("vendorinventory/items")->setData($temp)->addData(["brand_id" => $brandId, "brand_items_csv" => $data->getId()])->save();
-                // } else {
-                //     Mage::getModel("vendorinventory/items")->setData($temp)->addData(["brand_id" => $brandId])->save();
-                // }
+                // print_r($temp);
+                $data = Mage::getModel("vendorinventory/items")->getCollection()->addFieldToFilter('brand_id', $brandId)->getFirstItem();
+                if ($data) {
+                    Mage::getModel("vendorinventory/items")->setData($temp)->addData(["brand_id" => $brandId, "brand_items_csv" => $data->getId()])->save();
+                } else {
+                    Mage::getModel("vendorinventory/items")->setData($temp)->addData(["brand_id" => $brandId])->save();
+                }
 
             }
         }
