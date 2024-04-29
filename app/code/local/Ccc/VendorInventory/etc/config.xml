@@ -26,6 +26,9 @@
                     <configdata>
                         <table>brand_config_data</table>
                     </configdata>
+                    <items>
+                        <table>brand_items_csv</table>
+                    </items>
                     <!-- <configuration>
                         <table>inventory_configuration</table>
                     </configuration>

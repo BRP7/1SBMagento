@@ -37,6 +37,7 @@ class Ccc_VendorInventory_Model_Observer
         if (($open = fopen($path, "r", false, stream_context_create(['encoding' => 'UTF-8']))) !== false) {
             // echo 345;
             while (($data = fgetcsv($open, 1000, ",")) !== false) {
+
                 if (!$row) {
                     // echo $row;
                     $header = $data;
@@ -77,6 +78,7 @@ class Ccc_VendorInventory_Model_Observer
                         }
                     }
                     $temp['sku'] = $array['sku'];
+                    // print_r($temp['instock']);
 
                     $result = false;
                     $logicalOperator = '';
@@ -97,7 +99,7 @@ class Ccc_VendorInventory_Model_Observer
                 }
                 print_r($temp);
 
-                // Mage::getModel("vendorinventory/items")->setData($temp)->save();
+                // Mage::getModel("vendorinventory/items")->setData($temp)->addData(["brand_id"=>$brandId])->save();
 
             }
         }
@@ -112,8 +114,8 @@ class Ccc_VendorInventory_Model_Observer
             case "text":
                 return $this->compareValues(strtolower($dataValue), strtolower($condValue), $condOperator);
             case "date":
-                $date1 = DateTime::createFromFormat('m/d/Y', $dataValue);
-                $date2 = DateTime::createFromFormat('Y-m-d', $condValue);
+                $date1 = DateTime::createFromFormat('d-m-Y', $dataValue);
+                $date2 = DateTime::createFromFormat('d-m-Y', $condValue);
                 return $this->compareValues($date1, $date2, $condOperator);
         }
     }
