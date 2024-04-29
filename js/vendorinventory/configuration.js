@@ -116,9 +116,9 @@ Configuration.prototype = {
     var ISBColumns = [
       "sku",
       "instock",
-      "instock qty",
-      "restock date",
-      "restock qty",
+      "instock_qty",
+      "restock_date",
+      "restock_qty",
       "status",
       "discontinued",
     ];
@@ -242,9 +242,9 @@ Configuration.prototype = {
               for (const _row in row) {
                 // console.log(row[_row]);
                 tds.eq(1).find("select").val(_row);
-                tds.eq(2).find("select").val(row[_row][0]);
-                tds.eq(3).find("select").val(row[_row][1]);
-                tds.eq(4).find("input").val(row[_row][2]);
+                tds.eq(2).find("select").val(row[_row]["dataType"]);
+                tds.eq(3).find("select").val(row[_row]["operator"]);
+                tds.eq(4).find("input").val(row[_row]["dataValue"]);
               }
 
               trClone.firstChild.innerText = "";
@@ -254,11 +254,10 @@ Configuration.prototype = {
           } else {
             var tds = j(tr).find("td");
             for (var _row in row) {
-              // console.log(_row);
               tds.eq(1).find("select").val(_row);
-              tds.eq(2).find("select").val(row[_row][0]);
-              tds.eq(3).find("select").val(row[_row][1]);
-              tds.eq(4).find("input").val(row[_row][2]);
+              tds.eq(2).find("select").val(row[_row]["dataType"]);
+              tds.eq(3).find("select").val(row[_row]["operator"]);
+              tds.eq(4).find("input").val(row[_row]["dataValue"]);
             }
           }
         });
@@ -410,11 +409,11 @@ Configuration.prototype = {
         var name = j(this).attr("row_name");
         //   console.log(name)
         var brandCol = tds.eq(1).find("select").val();
-        obj[brandCol] = [
-          tds.eq(2).find("select").val(),
-          tds.eq(3).find("select").val(),
-          tds.eq(4).find("input").val(),
-        ];
+        obj[brandCol] = {
+          'dataType' : tds.eq(2).find("select").val(),
+          'operator' : tds.eq(3).find("select").val(),
+          'dataValue': tds.eq(4).find("input").val(),
+        };
 
         if (configArray[brandId].hasOwnProperty(name)) {
           console.log(configArray[brandId]);
@@ -441,7 +440,7 @@ Configuration.prototype = {
       type: "POST",
       data: { jsonData: jsonData, "form_key": fromKey },
       success: function (response) {
-        console.log(response);
+        // console.log(response);
         // Handle success response from PHP controller
       },
       error: function (xhr, status, error) {
