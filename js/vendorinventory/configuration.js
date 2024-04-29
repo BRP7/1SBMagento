@@ -22,6 +22,8 @@ Configuration.prototype = {
     console.log(headerUrl);
     brandDropdown.observe("change", function (event) {
       var selectedBrand = this.value;
+      // echo selectedBrand;
+      // console.log(selectedBrand);
       if (selectedBrand) {
         // j.ajax({
         //   url: "http://127.0.0.1/1SBMagento/index.php/admin/VendorInventory/check",
@@ -68,14 +70,14 @@ Configuration.prototype = {
                 var brand_data = response.brand;
                 var headers = response.headers;
                 console.log(self.form_key);
-                if(response.hasOwnProperty('config_id')){
+                if (response.hasOwnProperty('config_id')) {
                   var config_id = response.config_id;
                   var id = response.id;
-                  self.renderTable(headers, brand_data,config_id,id);
-                }else{
+                  self.renderTable(headers, brand_data, config_id, id);
+                } else {
                   self.renderTable(headers, brand_data);
                 }
- 
+
                 //    var sku = brand_data[0];
                 // console.log(brand_data);
                 // return;
@@ -97,7 +99,7 @@ Configuration.prototype = {
       }
     });
   },
-  renderTable: function (headers, brand_data = false , config_id = 0 ,id = 0 ) {
+  renderTable: function (headers, brand_data = false, config_id = 0, id = 0) {
     // console.log(config_id)
     // console.log(id)
     var self = this;
@@ -187,7 +189,7 @@ Configuration.prototype = {
       var saveBtn = document.createElement("button");
       saveBtn.innerHTML = "Save";
       saveBtn.onclick = () => {
-        self.handleSave(config_id,id);
+        self.handleSave(config_id, id);
       };
       tableContainer.appendChild(saveBtn);
     }
@@ -223,13 +225,13 @@ Configuration.prototype = {
               var labelOr = document.createElement("label");
               labelOr.innerText = "OR";
               labelOr.htmlFor = "radio_or_" + configData + "_clone_" + index;
-              
+
               if (configData[index] == "AND") {
                 radioAnd.checked = true;
               } else {
                 radioOr.checked = true;
               }
-              p=document.createElement('p');
+              p = document.createElement('p');
               p.appendChild(radioOr);
               p.appendChild(labelOr);
               p.appendChild(radioAnd);
@@ -376,8 +378,8 @@ Configuration.prototype = {
     }
     return elem;
   },
-  handleSave: function (configId = 0,id = 0) {
-    var self =this;
+  handleSave: function (configId = 0, id = 0) {
+    var self = this;
     // console.log(config_id);
     // console.log(id);
     var brandId = j("#brand-dropdown").val();
@@ -392,7 +394,7 @@ Configuration.prototype = {
     var fromKey = this.form_key;
     // return
 
-    if(configId != 0 && id != 0){
+    if (configId != 0 && id != 0) {
       configArray["config_id"] = configId;
       configArray["primary_key"] = id;
     }
@@ -430,14 +432,14 @@ Configuration.prototype = {
         // configArray.brand_id = [tds.eq(0).text()];
       });
 
-    
+
     var jsonData = JSON.stringify(configArray);
     console.log(JSON.stringify(configArray));
     // return
     j.ajax({
       url: "http://127.0.0.1/1SBMagento/index.php/admin/VendorInventory/upload",
       type: "POST",
-      data: { jsonData: jsonData ,"form_key": fromKey},
+      data: { jsonData: jsonData, "form_key": fromKey },
       success: function (response) {
         console.log(response);
         // Handle success response from PHP controller
