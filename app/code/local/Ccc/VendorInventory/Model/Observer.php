@@ -34,10 +34,9 @@ class Ccc_VendorInventory_Model_Observer
         $row = 0;
         $header = [];
         $array = [];
-        if (($open = fopen($path, "r", false, stream_context_create(['encoding' => 'UTF-8']))) !== false) {
+        if (($open = fopen($path, "r")) !== false) {
             // echo 345;
             while (($data = fgetcsv($open, 1000, ",")) !== false) {
-
                 if (!$row) {
                     // echo $row;
                     $header = $data;
@@ -45,6 +44,7 @@ class Ccc_VendorInventory_Model_Observer
                     continue;
                 }
                 $array = array_combine($header, $data);
+                // print_r($array);
                 // print_r($array);
                 $temp = [];
                 foreach ($configData as $_column => $_config) {
@@ -54,7 +54,12 @@ class Ccc_VendorInventory_Model_Observer
                     foreach ($_config as $_c) {
                         if (!is_string($_c)) {
                             foreach ($_c as $_k => $_v) {
+                                print_r($_k);
                                 $dataColumn = $_k;
+                                if($_column == 'sku'){
+                                    $rule[] = true;
+                                    break;
+                                }
                                 if ($_v->dataValue != '') {
                                     $rule[] = $this->checkRule(
                                         $array[$_k],
@@ -77,8 +82,7 @@ class Ccc_VendorInventory_Model_Observer
                             }
                         }
                     }
-                    $temp['sku'] = $array['sku'];
-                    // print_r($temp['instock']);
+                    // print_r($temp['sku']);
 
                     $result = false;
                     $logicalOperator = '';
@@ -95,11 +99,16 @@ class Ccc_VendorInventory_Model_Observer
                     }
                     if ($result)
                         $temp[$_column] = $array[$dataColumn];
-                    // $temp['sku'] = $array['sku'];
+
+                    // $temp['sku'] = $array['part_number'];
                 }
                 print_r($temp);
-
-                // Mage::getModel("vendorinventory/items")->setData($temp)->addData(["brand_id"=>$brandId])->save();
+                // $data = Mage::getModel("vendorinventory/items")->getCollection()->addFieldToFilter('brand_id', $brandId)->getFirstItem();
+                // if ($data) {
+                //     Mage::getModel("vendorinventory/items")->setData($temp)->addData(["brand_id" => $brandId, "brand_items_csv" => $data->getId()])->save();
+                // } else {
+                //     Mage::getModel("vendorinventory/items")->setData($temp)->addData(["brand_id" => $brandId])->save();
+                // }
 
             }
         }
