@@ -26,8 +26,6 @@ class Ccc_VendorInventory_Model_Observer
         $brandData = Mage::getModel('vendorinventory/configdata')->load($config->getId(), 'config_id');
         $configData = json_decode($brandData->getBrandData());
         echo "<pre>";
-        // print_r($configData);
-
 
         $path = Mage::getBaseDir('var') . DS . 'inventory' . DS . $brandId . DS . 'inventory.csv';
         $row = 0;
