@@ -30,7 +30,6 @@ class Ccc_VendorInventory_Model_Observer
 
 
         $path = Mage::getBaseDir('var') . DS . 'inventory' . DS . $brandId . DS . 'inventory.csv';
-        // echo $path;
         $row = 0;
         $header = [];
         $array = [];
