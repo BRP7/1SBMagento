@@ -267,6 +267,7 @@ Configuration.prototype = {
   // Check if brand_data has additional rows for the current ISB column
   handleAdd: function (button) {
     var currentRow = j(button).parents("tr");
+    // console.log("ccc",currentRow);
     var row_id = currentRow[0].getAttribute("row_id");
     var row_count = j("#table-container")
       .children("table")
@@ -428,7 +429,6 @@ Configuration.prototype = {
           // If it doesn't exist, create a new array with obj
           configArray[brandId][name] = [obj];
         }
-        // configArray.brand_id = [tds.eq(0).text()];
       });
 
 
@@ -445,7 +445,6 @@ Configuration.prototype = {
       },
       error: function (xhr, status, error) {
         console.error(error);
-        // Handle error
       },
     });
   },

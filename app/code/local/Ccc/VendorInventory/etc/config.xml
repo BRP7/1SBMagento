@@ -29,7 +29,7 @@
                     <items>
                         <table>brand_items_csv</table>
                     </items>
-                    <!-- <configuration>
+                    <configuration>
                         <table>inventory_configuration</table>
                     </configuration>
                     <rule>
@@ -37,7 +37,7 @@
                     </rule>
                     <instock_date>
                         <table>inventory_instock_date</table>
-                    </instock_date> -->
+                    </instock_date>
                 </entities>
             </vendorinventory_resource>
         </models>

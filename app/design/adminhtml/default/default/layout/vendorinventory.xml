@@ -10,22 +10,4 @@
         </reference>
     </adminhtml_vendorinventory_index>
 
-    <adminhtml_vendorinventory_new>
-        <update handle="adminhtml_vendorinventory_edit" />
-    </adminhtml_vendorinventory_new>
-
-    <adminhtml_vendorinventory_edit>
-        <update handle="editor" />
-        <reference name="content">
-            <block type="ccc_vendorinventory/adminhtml_vendorinventory_edit" name="ccc_vendorinventory_edit"></block>
-        </reference>
-    </adminhtml_vendorinventory_edit>
-
-    <!-- <adminhtml_widget_grid>
-        <remove name="adminhtml.widget.grid" />
-        <reference name="content">
-            <block type="ccc_banner/adminhtml_grid" name="adminhtml.banner.grid" as="banner_grid" template="ccc/banner/grid.phtml" />
-        </reference>
-    </adminhtml_widget_grid> -->
-
 </layout>
