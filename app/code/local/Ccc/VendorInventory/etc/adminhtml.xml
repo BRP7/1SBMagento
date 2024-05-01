@@ -8,7 +8,7 @@
                     <title>Manage Inventory</title>
                     <action>adminhtml/vendorinventory/index</action>
                     <sort_order>10</sort_order>
-                    <resource>ccc_vendorinventory/index</resource> <!-- Associate with ACL resource-->
+                    <resource>ccc_vendorinventory/index</resource>
                 </index>
             </children>
         </ccc_vendorinventory>

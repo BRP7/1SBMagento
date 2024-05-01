@@ -25,21 +25,6 @@ Configuration.prototype = {
       // echo selectedBrand;
       // console.log(selectedBrand);
       if (selectedBrand) {
-        // j.ajax({
-        //   url: "http://127.0.0.1/1SBMagento/index.php/admin/VendorInventory/check",
-        //   type: "POST",
-        //   data: { brand_id: selectedBrand ,"form_key": formKey},
-        //   success: function (response) {
-        //     console.log(response);
-        //     // Handle success response from PHP controller
-        //   },
-        //   error: function (xhr, status, error) {
-        //     console.error(error);
-        //     // Handle error
-        //   },
-        // });
-        // return
-        // load the file uploader and upload button
         fileUploadContainer.innerHTML =
           '<input type="file" id="file-upload" accept=".csv,.xml,.xls" name="file-upload"><button id="upload-btn">Upload</button>';
         // handle upload button click
@@ -335,7 +320,7 @@ Configuration.prototype = {
     currentRow.parentNode.removeChild(currentRow);
   },
 
-  createDropDown: function (options, brand_data) {
+  createDropDown: function (options) {
     var select = document.createElement("select");
 
     for (var i = 0; i < options.length; i++) {

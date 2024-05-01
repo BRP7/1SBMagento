@@ -6,19 +6,12 @@ class Ccc_VendorInventory_Model_Observer
     public function readcsv()
     {
         $attribute = Mage::getModel('eav/entity_attribute')->loadByCode('catalog_product', 'brand');
-        // print_r($attribute);
-        // die;
 
         if ($attribute && $attribute->getId()) {
-            // Load the 'brand' attribute options
             $options = $attribute->getSource()->getAllOptions(false);
-            // print_r($options);
-            // echo $options->getOptionsId();
-            // Print attribute values
             foreach ($options as $option) {
                 if ($option['label'] == "CK") {
                     $brandId = $option['value'];
-                    // echo $brandId;
                     break;
                 }
             }
@@ -26,8 +19,6 @@ class Ccc_VendorInventory_Model_Observer
         $config = Mage::getModel('vendorinventory/vendorinventory')->load($brandId, 'brand_id');
         $brandData = Mage::getModel('vendorinventory/configdata')->load($config->getId(), 'config_id');
         $configData = json_decode($brandData->getBrandData());
-        var_dump($configData);
-        die;
         echo "<pre>";
 
         $path = Mage::getBaseDir('var') . DS . 'inventory' . DS . $brandId . DS . 'inventory.csv';
@@ -35,26 +26,20 @@ class Ccc_VendorInventory_Model_Observer
         $header = [];
         $array = [];
         if (($open = fopen($path, "r")) !== false) {
-            // echo 345;
             while (($data = fgetcsv($open, 1000, ",")) !== false) {
                 if (!$row) {
-                    // echo $row;
                     $header = $data;
                     $row++;
                     continue;
                 }
                 $array = array_combine($header, $data);
-                // print_r($array);
-                // print_r($array);
                 $temp = [];
                 foreach ($configData as $_column => $_config) {
                     $dataColumn = '';
-                    // $temp[$_column] = '';
                     $rule = [];
                     foreach ($_config as $_c) {
                         if (!is_string($_c)) {
                             foreach ($_c as $_k => $_v) {
-                                // print_r($_k);
                                 $dataColumn = $_k;
                                 if($_column == 'sku'){
                                     $rule[] = true;
@@ -82,7 +67,6 @@ class Ccc_VendorInventory_Model_Observer
                             }
                         }
                     }
-                    // print_r($temp['sku']);
 
                     $result = false;
                     $logicalOperator = '';

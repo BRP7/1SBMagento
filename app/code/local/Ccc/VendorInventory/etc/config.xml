@@ -7,9 +7,9 @@
     </modules>
     <global>
         <blocks>
-            <vendorinventory>
+            <ccc_vendorinventory>
                 <class>Ccc_VendorInventory_Block</class>
-            </vendorinventory>
+            </ccc_vendorinventory>
         </blocks>
 
         <models>

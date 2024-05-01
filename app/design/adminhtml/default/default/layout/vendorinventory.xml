@@ -6,8 +6,7 @@
             <action method="addJs"><file>vendorinventory/configuration.js</file></action>
             </reference>
         <reference name="content">
-            <block type="vendorinventory/adminhtml_vendorinventory" name="vendorinventory"  />
+            <block type="ccc_vendorinventory/adminhtml_vendorinventory" name="vendorinventory"  />
         </reference>
     </adminhtml_vendorinventory_index>
-
 </layout>
