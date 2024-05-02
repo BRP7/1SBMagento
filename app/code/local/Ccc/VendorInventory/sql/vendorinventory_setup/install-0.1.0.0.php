@@ -4,7 +4,6 @@ $installer->startSetup();
 
 // // Table 1: Inventory_configuration
 // $table = $installer->getConnection()
-//     // ->newTable($installer->getTable('inventory_configuration'))
 //     ->newTable($installer->getTable('vendorinventory/configuration'))
 //     ->addColumn('id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
 //         'identity'  => true,
@@ -26,7 +25,6 @@ $installer->startSetup();
 
 // // Table 2: Inventory_configuration_rule
 // $table = $installer->getConnection()
-//     // ->newTable($installer->getTable('inventory_configuration_rule'))
 //     ->newTable($installer->getTable('vendorinventory/rule'))
 //     ->addColumn('id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
 //         'identity'  => true,
@@ -51,7 +49,6 @@ $installer->startSetup();
 
 // // Table 3: Inventory_instock_date
 // $table = $installer->getConnection()
-//     // ->newTable($installer->getTable('inventory_instock_date'))
 //     ->newTable($installer->getTable('vendorinventory/instock_date'))
 //     ->addColumn('product_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
 //         'identity'  => true,
@@ -92,6 +89,7 @@ $installer->startSetup();
 //     ->setComment('Inventory Instock Date Table');
 // $installer->getConnection()->createTable($table);
 
+// // Table 4: vendorinventory Block Table
 // $table = $installer->getConnection()
 //     ->newTable($installer->getTable('vendorinventory/vendorinventory'))
 //     ->addColumn('config_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
@@ -105,7 +103,7 @@ $installer->startSetup();
 //     ->setComment('vendorInventory Block Table');
 // $installer->getConnection()->createTable($table);
 
-
+// // Table 5: vendorInventory Brand Config Data Table
 // $table = $installer->getConnection()
 //     ->newTable($installer->getTable('vendorinventory/configdata'))
 //     ->addColumn('id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
@@ -116,52 +114,46 @@ $installer->startSetup();
 //     ->addColumn('config_id', Varien_Db_Ddl_Table::TYPE_INTEGER, 11, array(
 //         'nullable' => false,
 //     ), 'config_id')
-//     ->addColumn('brand_data', Varien_Db_Ddl_Table::TYPE_TEXT,255, array(
+//     ->addColumn('brand_data', Varien_Db_Ddl_Table::TYPE_TEXT, 255, array(
 //         'nullable' => false,
 //     ), 'Brand Data')
-
 //     ->setComment('vendorInventory Brand Config Data Table');
 // $installer->getConnection()->createTable($table);
 
-
-
-$table = $installer->getConnection()
-    // ->newTable($installer->getTable('inventory_configuration'))
-    ->newTable($installer->getTable('vendorinventory/items'))
-    ->addColumn('brand_items_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
-        'identity' => true,
-        'unsigned' => true,
-        'nullable' => false,
-        'primary' => true,
-    ), 'ID')
-    ->addColumn('brand_id', Varien_Db_Ddl_Table::TYPE_INTEGER, 11, array(
-        'nullable' => false,
-    ), 'Brand Id')
-    ->addColumn('sku', Varien_Db_Ddl_Table::TYPE_TEXT, 255, array(
-        'nullable' => false,
-    ), 'SKU')
-    ->addColumn('instock', Varien_Db_Ddl_Table::TYPE_TEXT, 255, array(
-        'nullable' => false,
-    ), 'Instock')
-    ->addColumn('instock_qty', Varien_Db_Ddl_Table::TYPE_INTEGER, 11, array(
-        'nullable' => false,
-    ), 'Instock Qty')
-    ->addColumn('restock_date', Varien_Db_Ddl_Table::TYPE_DATE, array(
-        'nullable' => false,
-    ), 'Restock Date')
-    ->addColumn('restock_qty', Varien_Db_Ddl_Table::TYPE_INTEGER, 11, array(
-        'nullable' => false,
-    ), 'Restock Qty')
-    ->addColumn('status', Varien_Db_Ddl_Table::TYPE_TEXT, 255, array(
-        'nullable' => false,
-    ), 'Status')
-    ->addColumn('discontinued', Varien_Db_Ddl_Table::TYPE_TEXT, 255, array(
-        'nullable' => false,
-    ), 'Status')
-    ->setComment('Brand Items Csv Table');
-$installer->getConnection()->createTable($table);
-
-$installer->endSetup();
-
+// // Table 6: Brand Items Csv Table
+// $table = $installer->getConnection()
+//     ->newTable($installer->getTable('vendorinventory/items'))
+//     ->addColumn('brand_items_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
+//         'identity' => true,
+//         'unsigned' => true,
+//         'nullable' => false,
+//         'primary' => true,
+//     ), 'ID')
+//     ->addColumn('brand_id', Varien_Db_Ddl_Table::TYPE_INTEGER, 11, array(
+//         'nullable' => false,
+//     ), 'Brand Id')
+//     ->addColumn('sku', Varien_Db_Ddl_Table::TYPE_TEXT, 255, array(
+//         'nullable' => false,
+//     ), 'SKU')
+//     ->addColumn('instock', Varien_Db_Ddl_Table::TYPE_TEXT, 255, array(
+//         'nullable' => false,
+//     ), 'Instock')
+//     ->addColumn('instock_qty', Varien_Db_Ddl_Table::TYPE_INTEGER, 11, array(
+//         'nullable' => false,
+//     ), 'Instock Qty')
+//     ->addColumn('restock_date', Varien_Db_Ddl_Table::TYPE_DATE, array(
+//         'nullable' => false,
+//     ), 'Restock Date')
+//     ->addColumn('restock_qty', Varien_Db_Ddl_Table::TYPE_INTEGER, 11, array(
+//         'nullable' => false,
+//     ), 'Restock Qty')
+//     ->addColumn('status', Varien_Db_Ddl_Table::TYPE_TEXT, 255, array(
+//         'nullable' => false,
+//     ), 'Status')
+//     ->addColumn('discontinued', Varien_Db_Ddl_Table::TYPE_TEXT, 255, array(
+//         'nullable' => false,
+//     ), 'Status')
+//     ->setComment('Brand Items Csv Table');
+// $installer->getConnection()->createTable($table);
 
 

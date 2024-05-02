@@ -17,7 +17,7 @@ class Ccc_VendorInventory_Model_Observer
         // }}
 
             $brandId = $_brandName['value'];
-            // echo $brandId;
+            // echo $brandId;   
 
 
             $collection = Mage::getModel('vendorinventory/configdata')
