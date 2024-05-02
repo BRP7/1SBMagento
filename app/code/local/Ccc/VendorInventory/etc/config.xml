@@ -62,7 +62,7 @@
         <jobs>
             <inventory>
                 <run>
-                    <model>vendorinventory/observer::readcsv</model>
+                    <model>vendorinventory/observer::readCsv</model>
                 </run>
             </inventory>
         </jobs>
