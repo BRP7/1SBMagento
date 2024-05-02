@@ -94,8 +94,8 @@ class Ccc_VendorInventory_Model_Observer
                         $temp[$_column] = $data[$dataColumn];
                     }else{
                         echo 121;
-                        $temp[$_column] = "Null";
-                        print($temp[$_column]);
+                        $temp[$_column] = " ";
+                        // print($temp[$_column]);
                     }
                 }
                 // echo "Temporary data array: " . print_r($temp, true) . "\n";
