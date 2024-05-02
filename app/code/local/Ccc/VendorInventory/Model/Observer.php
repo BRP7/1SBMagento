@@ -6,14 +6,18 @@ class Ccc_VendorInventory_Model_Observer
     {
     
         $brands = Mage::helper('vendorinventory')->getBrandNames();
-
+        // var_dump($brands);
         foreach ($brands as $brandId => $_brandName) {
            
-            if ($_brandName['label'] != 'CK') {
-                continue;
-            }
+        //     if ($_brandName['label'] != 'CK' ) {
+        //         print_r($_brandName['label']);
+        //         print_r($_brandName['value']);
+        //         continue;
+        //     }
+        // }}
 
             $brandId = $_brandName['value'];
+            // echo $brandId;
 
 
             $collection = Mage::getModel('vendorinventory/configdata')
@@ -22,11 +26,6 @@ class Ccc_VendorInventory_Model_Observer
                 ->join('vendorinventory', 'main_table.id=vendorinventory.config_id');
             $brandConfig = json_decode($collection->getFirstItem()->getBrandData());
 
-            if (is_null($brandConfig)){
-                // echo "Brand configuration not found for brand ID: $brandId\n";
-                continue;
-            }
-            // echo "Brand configuration found: " . print_r($brandConfig, true) . "\n";
 
 
             $file = fopen(Mage::getBaseDir('var') . DS . 'inventory' . DS . $brandId . DS . 'inventory.csv', 'r');
@@ -45,14 +44,16 @@ class Ccc_VendorInventory_Model_Observer
                         if (!is_string($_c)) {
                             foreach ($_c as $_k => $_v) { 
                                 $dataColumn = $_k;
+                                
                                 if ($_column == 'sku') {
-                                    $itemCollection = $model->getCollection()->addFieldtoFilter('sku', $data[$_k]);
+                                    $itemCollection = $model->getCollection()->addFieldtoFilter("brand_id",$brandId)->addFieldtoFilter('sku', $data[$_k]);
                                     if($itemCollection->getFirstItem()->getId()){
                                         $model->load($itemCollection->getFirstItem()->getId());
                                     }
                                     $rule[] = true;
                                     break;
                                 }
+
                                 if ($_v->dataValue != '') {
                                     $rule[] = $this->checkRule(
                                         $data[$_k],
@@ -91,13 +92,14 @@ class Ccc_VendorInventory_Model_Observer
                     if ($result){
                         // print_r($_column  ."  ---  " . $data[$dataColumn]);
                         // echo "    ";
-                        $temp[$_column] = $data[$dataColumn];
+                        $temp[$_column] = $result;
                     }else{
-                        echo 121;
-                        $temp[$_column] = " ";
+                        // echo 121;
+                        $temp[$_column] = 0;
                         // print($temp[$_column]);
                     }
                 }
+                // print_r($model);
                 // echo "Temporary data array: " . print_r($temp, true) . "\n";
                 $model->addData($temp)->save();
                 // var_dump($temp);
@@ -120,7 +122,7 @@ class Ccc_VendorInventory_Model_Observer
             case "date":
                 $date1 = DateTime::createFromFormat('d-m-Y', $dataValue);
                 $date2 = DateTime::createFromFormat('d-m-Y', $condValue);
-                // print_r($this->compareValues($date1, $date2, $condOperator));
+                print_r($this->compareValues($date1, $date2, $condOperator));
                 return $this->compareValues($date1, $date2, $condOperator);
         }
     }
