@@ -121,6 +121,7 @@ $installer->startSetup();
 // $installer->getConnection()->createTable($table);
 
 // // Table 6: Brand Items Csv Table
+// DROP TABLE IF EXISTS {$installer->getTable('catalog_product_bundle_option_value')};
 // $table = $installer->getConnection()
 //     ->newTable($installer->getTable('vendorinventory/items'))
 //     ->addColumn('brand_items_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
