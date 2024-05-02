@@ -84,15 +84,16 @@ class Ccc_VendorInventory_Model_Observer
                     if ($result)
                         $temp[$_column] = $array[$dataColumn];
 
-                    // $temp['sku'] = $array['part_number'];
+                    $temp['sku'] = $array['sku'];
+
                 }
                 // print_r($temp);
-                // $data = Mage::getModel("vendorinventory/items")->getCollection()->addFieldToFilter('brand_id', $brandId)->getFirstItem();
-                // if ($data) {
-                //     Mage::getModel("vendorinventory/items")->setData($temp)->addData(["brand_id" => $brandId, "brand_items_csv" => $data->getId()])->save();
-                // } else {
-                //     Mage::getModel("vendorinventory/items")->setData($temp)->addData(["brand_id" => $brandId])->save();
-                // }
+                $data = Mage::getModel("vendorinventory/items")->getCollection()->addFieldToFilter('brand_id', $brandId)->getFirstItem();
+                if ($data) {
+                    Mage::getModel("vendorinventory/items")->setData($temp)->addData(["brand_id" => $brandId, "brand_items_csv" => $data->getId()])->save();
+                } else {
+                    Mage::getModel("vendorinventory/items")->setData($temp)->addData(["brand_id" => $brandId])->save();
+                }
 
             }
         }
