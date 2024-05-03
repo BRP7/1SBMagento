@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Ccc_Brand>
+            <version>1.0.1</version>
+        </Ccc_Brand>
+    </modules>
+    <global>
+        <resources>
+            <ccc_brand_setup>
+                <setup>
+                    <module>Ccc_Brand</module>
+                    <class>Mage_Eav_Model_Entity_Setup</class>
+                </setup>
+            </ccc_brand_setup>
+        </resources>
+    </global>
+</config>

@@ -1,5 +1,6 @@
 <?php
 // File: mysql4-install-1.0.0.php
+//upgrade file: mysql4-upgrade-x.x.x-x.x.x.php
 
 $installer = $this;
 $installer->startSetup();
@@ -13,7 +14,7 @@ $setup->addAttribute(
     $entityTypeId,
     'pink_venom',
     array(
-        'group' => 'General', // Change group name to 'General' or any other existing group
+        'group' => 'Clothing', // Change group name to 'General' or any other existing group
         'type' => 'int',
         'label' => 'Pink Venom',
         'input' => 'select',
@@ -27,9 +28,9 @@ $setup->addAttribute(
         'global' => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_GLOBAL,
         'option' => array(
             'values' => array( // Define your select options here
-                'Option 1',
-                'Option 2',
-                'Option 3'
+                'Pink',
+                'Blue',
+                'Black'
             )
         )
     )
