@@ -3,7 +3,7 @@ var Configuration = Class.create();
 
 Configuration.prototype = {
   initialize: function (options) {
-    this.containerId = options.containerId;
+    this.containerId = options.containerId;//object.extends(this)
     this.getheaderActionUrl = options.url;
     this.form_key = options.form_key;
     this.row_count = [];

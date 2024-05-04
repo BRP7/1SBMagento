@@ -1,26 +1,6 @@
+
 <?php
 
-// File: mysql4-upgrade-1.0.1-1.0.2.php
-
-$installer = $this;
-$installer->startSetup();
-
-$setup = new Mage_Eav_Model_Entity_Setup('core_setup');
-
-$attributeId = $setup->getAttributeId('catalog_product', 'brand');
-
-// Add new options
-$setup->addAttributeOption(array(
-    'attribute_id' => $attributeId,
-    'value' => array(
-        'chanel' => array('Chanel'), // Add Chanel as a new option
-        'puma' => array('Puma'),
-        'reebok' => array('Reebok'),
-    )
-));
-
-$installer->endSetup();
-?>
 
 
 
