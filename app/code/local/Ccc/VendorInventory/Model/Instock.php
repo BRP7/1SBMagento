@@ -9,7 +9,7 @@ class Ccc_VendorInventory_Model_Instock
         $model = Mage::getModel("vendorinventory/items")->getCollection();
         $skus = array();
         foreach ($model->getData() as $csvProduct) {
-            print_r($csvProduct);
+            // print_r($csvProduct);
             foreach ($collection as $product) {
 
                 if ($csvProduct['sku'] == $product->getSku()) {
