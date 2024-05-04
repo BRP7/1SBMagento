@@ -13,8 +13,8 @@ class Ccc_VendorInventory_Model_Instock
             foreach ($collection as $product) {
 
                 if ($csvProduct['sku'] == $product->getSku()) {
-                    // echo 123;
-                    // print($product->getSku());
+                    echo 123;
+                    print($product->getSku());
                 }
                 //         $skus[] = $product->getSku();
                 //         $instockDate = $csvProduct->getInstock();
