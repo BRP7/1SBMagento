@@ -89,14 +89,19 @@ class Ccc_VendorInventory_Model_Observer
                             }
                         }
                     }
-                    if ($result){
-                        // print_r($_column  ."  ---  " . $data[$dataColumn]);
-                        // echo "    ";
-                        $temp[$_column] = $result;
+                    if($dataColumn == 'sku'){
+                        $temp[$_column] = $data[$dataColumn];
                     }else{
-                        // echo 121;
-                        $temp[$_column] = 0;
-                        // print($temp[$_column]);
+                        if ($result){
+                            echo 345;
+                            // print_r($_column  ."  ---  " . $data[$dataColumn]);
+                            // echo "    ";
+                            $temp[$_column] = $result;
+                        }else{
+                            // echo 121;
+                            $temp[$_column] = 0;
+                            // print($temp[$_column]);
+                        }
                     }
                 }
                 // print_r($model);
