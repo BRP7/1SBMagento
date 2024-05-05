@@ -101,7 +101,7 @@ class Ccc_VendorInventory_Model_Observer
                         }
                     }
                 }
-                // print_r($model);
+                print_r($temp);
                 // echo "Temporary data array: " . print_r($temp, true) . "\n";
                 $model->addData($temp)->save();
                 // var_dump($temp);
