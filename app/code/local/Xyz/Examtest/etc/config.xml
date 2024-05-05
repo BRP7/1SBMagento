@@ -1,0 +1,23 @@
+<config>
+    <modules>
+        <version>0.1.0</version>
+    </modules>
+    <frontend>
+        <routers>
+            <examtest> <!-- Change from 'ccc_test' to 'examtest' -->
+                <use>standard</use>
+                <args>
+                    <module>Xyz_Examtest</module>
+                    <frontName>examtest</frontName>
+                </args>
+            </examtest>
+        </routers>
+    </frontend>
+    <global>
+        <models>
+            <xyz_examtest>
+                <class>Xyz_Examtest_Model</class>
+            </xyz_examtest>
+        </models>
+    </global>
+</config>

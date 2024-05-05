@@ -1,0 +1,9 @@
+<config>
+    <modules>
+      <Xyz_Examtest>
+        <active>true</active>
+        <codePool>local</codePool>
+      </Xyz_Examtest>
+    </modules>
+  </config>
+  
