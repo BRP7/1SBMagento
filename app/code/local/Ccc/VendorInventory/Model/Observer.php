@@ -93,12 +93,9 @@ class Ccc_VendorInventory_Model_Observer
                         $temp[$_column] = $data[$dataColumn];
                     }else{
                         if ($result){
-                            echo 345;
                             // print_r($_column  ."  ---  " . $data[$dataColumn]);
-                            // echo "    ";
                             $temp[$_column] = $result;
                         }else{
-                            // echo 121;
                             $temp[$_column] = 0;
                             // print($temp[$_column]);
                         }
