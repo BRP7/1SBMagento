@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <cms_index_index>
+        <reference name="content">
+            <block type="catalog/product_list" name="home.product.list" template="custom/homeproduct/product_list.phtml">
+                <!-- <action method="setCategoryId"><category_id>0</category_id></action> -->
+            </block>
+        </reference>
+    </cms_index_index>
+</layout>

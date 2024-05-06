@@ -25,8 +25,8 @@ class Ccc_VendorInventory_Model_Observer
                 ->addFieldtoFilter('vendorinventory.brand_id', $brandId)
                 ->join('vendorinventory', 'main_table.id=vendorinventory.config_id');
             $brandConfig = json_decode($collection->getFirstItem()->getBrandData());
-
-
+            print_r($brandConfig);
+            // die;
 
             $file = fopen(Mage::getBaseDir('var') . DS . 'inventory' . DS . $brandId . DS . 'inventory.csv', 'r');
     
@@ -93,11 +93,9 @@ class Ccc_VendorInventory_Model_Observer
                         $temp[$_column] = $data[$dataColumn];
                     }else{
                         if ($result){
-                            // print_r($_column  ."  ---  " . $data[$dataColumn]);
                             $temp[$_column] = $result;
                         }else{
                             $temp[$_column] = 0;
-                            // print($temp[$_column]);
                         }
                     }
                 }

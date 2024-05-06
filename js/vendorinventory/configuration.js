@@ -54,7 +54,8 @@ Configuration.prototype = {
                 // return
                 var brand_data = response.brand;
                 var headers = response.headers;
-                console.log(self.form_key);
+                
+                // console.log(headers[0]='sku');
                 if (response.hasOwnProperty('config_id')) {
                   var config_id = response.config_id;
                   var id = response.id;
@@ -395,6 +396,7 @@ Configuration.prototype = {
         var name = j(this).attr("row_name");
         //   console.log(name)
         var brandCol = tds.eq(1).find("select").val();
+        console.log(brandCol);
         obj[brandCol] = {
           'dataType' : tds.eq(2).find("select").val(),
           'operator' : tds.eq(3).find("select").val(),
