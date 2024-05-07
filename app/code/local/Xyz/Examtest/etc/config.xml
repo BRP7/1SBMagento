@@ -1,6 +1,8 @@
 <config>
     <modules>
-        <version>0.1.0</version>
+        <Xyz_Examtest>
+            <version>0.1.0</version>
+        </Xyz_Examtest>
     </modules>
     <frontend>
         <routers>
@@ -19,5 +21,10 @@
                 <class>Xyz_Examtest_Model</class>
             </xyz_examtest>
         </models>
+            <helpers>
+                <xyz_examtest>
+                    <class>Xyz_Examtest_Helper</class>
+                </xyz_examtest>
+            </helpers>
     </global>
 </config>

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <examtest translate="label" module="xyz_examtest">
+            <label>XXXXXXXXXX</label>
+            <sort_order>100</sort_order>
+        </examtest>
+    </tabs>
+    <sections>
+        <examtest translate="label" module="xyz_examtest">
+            <label>examtest Settings</label>
+            <tab>examtest</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <custom_message translate="label">
+                            <label>Custom Message</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </custom_message>
+                    </fields>
+                </general>
+            </groups>
+        </examtest>
+    </sections>
+</config>
