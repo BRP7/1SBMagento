@@ -17,14 +17,14 @@
     </frontend>
     <global>
         <models>
-            <examtest>
+            <xyz_examtest>
                 <class>Xyz_Examtest_Model</class>
-            </examtest>
+            </xyz_examtest>
         </models>
             <helpers>
-                <examtest>
+                <xyz_examtest>
                     <class>Xyz_Examtest_Helper</class>
-                </examtest>
+                </xyz_examtest>
             </helpers>
     </global>
 </config>
