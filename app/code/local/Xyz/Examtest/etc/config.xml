@@ -4,9 +4,9 @@
             <version>0.1.0</version>
         </Xyz_Examtest>
     </modules>
-    <frontend>
+    <!-- <frontend>
         <routers>
-            <xyz_examtest> <!-- Change from 'ccc_test' to 'examtest' -->
+            <xyz_examtest>
                 <use>standard</use>
                 <args>
                     <module>Xyz_Examtest</module>
@@ -14,7 +14,7 @@
                 </args>
             </xyz_examtest>
         </routers>
-    </frontend>
+    </frontend> -->
     <global>
         <models>
             <xyz_examtest>
