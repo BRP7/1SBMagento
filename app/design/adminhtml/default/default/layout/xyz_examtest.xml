@@ -1,8 +1,11 @@
 <?xml version="1.0"?>
 <layout>
-    <adminhtml_system_edit_section_examtest>
+    <adminhtml_system_config_edit_section_examtest>
         <reference name="content">
-            <block type="adminhtml/system_config_edit" template="examtest/config.phtml"/>
+            <block type="adminhtml/system_config_edit" template="examtest/config.phtml">
+                <!-- Pass the admin key as a parameter -->
+                <action method="setKey"><key>Your_Admin_Key_Here</key></action>
+            </block>
         </reference>
-    </adminhtml_system_edit_section_examtest>
+    </adminhtml_system_config_edit_section_examtest>
 </layout>
