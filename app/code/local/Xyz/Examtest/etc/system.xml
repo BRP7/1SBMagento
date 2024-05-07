@@ -8,7 +8,7 @@
     </tabs>
     <sections>
         <examtest translate="label" module="xyz_examtest">
-            <label>Examtest</label>
+            <label>Manage Examtest</label>
             <tab>examtest</tab>
             <frontend_type>text</frontend_type>
             <sort_order>100</sort_order>

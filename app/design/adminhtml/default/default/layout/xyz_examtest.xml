@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_system_edit_section_examtest>
+        <reference name="content">
+            <block type="adminhtml/system_config_edit" template="examtest/config.phtml"/>
+        </reference>
+    </adminhtml_system_edit_section_examtest>
+</layout>
