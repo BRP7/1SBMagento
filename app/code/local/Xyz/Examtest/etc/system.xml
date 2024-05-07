@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <config>
     <tabs>
-        <examtest translate="label" module="xyz_examtest">
-            <label>XXXXXXXXXX</label>
+        <examtest translate="label" module="examtest">
+            <label>Examtest</label>
             <sort_order>100</sort_order>
         </examtest>
     </tabs>
     <sections>
-        <examtest translate="label" module="xyz_examtest">
-            <label>examtest Settings</label>
-            <tab>examtest</tab>
+        <examtest translate="label" module="examtest"> <!-- Changed examtest to xyz_examtest -->
+            <label>Examtest</label> <!-- Updated label to match tabs -->
+            <tab>examtest</tab> <!-- Changed examtest to match tab defined in tabs -->
             <frontend_type>text</frontend_type>
             <sort_order>100</sort_order>
             <show_in_default>1</show_in_default>

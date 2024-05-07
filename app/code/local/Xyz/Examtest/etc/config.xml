@@ -6,25 +6,25 @@
     </modules>
     <frontend>
         <routers>
-            <examtest> <!-- Change from 'ccc_test' to 'examtest' -->
+            <xyz_examtest> <!-- Change from 'ccc_test' to 'examtest' -->
                 <use>standard</use>
                 <args>
                     <module>Xyz_Examtest</module>
                     <frontName>examtest</frontName>
                 </args>
-            </examtest>
+            </xyz_examtest>
         </routers>
     </frontend>
     <global>
         <models>
-            <xyz_examtest>
+            <examtest>
                 <class>Xyz_Examtest_Model</class>
-            </xyz_examtest>
+            </examtest>
         </models>
             <helpers>
-                <xyz_examtest>
+                <examtest>
                     <class>Xyz_Examtest_Helper</class>
-                </xyz_examtest>
+                </examtest>
             </helpers>
     </global>
 </config>
