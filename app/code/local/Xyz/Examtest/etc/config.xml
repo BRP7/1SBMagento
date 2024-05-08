@@ -4,7 +4,9 @@
             <version>0.1.0</version>
         </Xyz_Examtest>
     </modules>
-    <!-- <frontend>
+    
+    
+    <frontend>
         <routers>
             <xyz_examtest>
                 <use>standard</use>
@@ -14,7 +16,7 @@
                 </args>
             </xyz_examtest>
         </routers>
-    </frontend> -->
+    </frontend>
     <global>
         <models>
             <xyz_examtest>

@@ -1,4 +1,4 @@
-sku_zara,instock,zara_instock_qty,restock_date_z,restock_qty,active_zara,discontinued
+sku,instock,zara_instock_qty,restock_date_z,restock_qty,active_zara,discontinued
 msj000,no,73,12-02-2022,21,enabled,no
 msj001,yes,45,13-02-2022,86,disabled,yes
 msj002,no,18,14-02-2022,72,active,no

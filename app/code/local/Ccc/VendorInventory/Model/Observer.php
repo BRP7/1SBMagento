@@ -91,9 +91,15 @@ class Ccc_VendorInventory_Model_Observer
                     }
                     if($dataColumn == 'sku'){
                         $temp[$_column] = $data[$dataColumn];
-                    }else{
+                    }
+
+                    else{
                         if ($result){
-                            $temp[$_column] = $result;
+                            if ($dataColumn == 'restock_date') {
+                                $temp[$_column] = $data[$dataColumn];
+                            }else{
+                                $temp[$_column] = $result;
+                            }
                         }else{
                             $temp[$_column] = 0;
                         }

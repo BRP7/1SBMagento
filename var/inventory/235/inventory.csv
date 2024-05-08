@@ -1,4 +1,4 @@
-sku_lv,instock,instock_qty_lv,restock_date,restock_qty_lv,lv_status,discontinued
+sku,instock,instock_qty_lv,restock_date,restock_qty_lv,lv_status,discontinued
 mtk005,yes,97,07-03-2022,38,active,yes
 mtk006,no,23,08-03-2022,12,disabled,no
 mtk007,yes,71,09-03-2022,92,active,no

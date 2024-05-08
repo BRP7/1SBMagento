@@ -1,4 +1,4 @@
-part_number,hm_instock,instock_qty,restock_date,restock_qty,status,discontinued
+sku,hm_instock,instock_qty,restock_date,restock_qty,status,discontinued
 mpd010,no,21,24-03-2022,95,active,no
 mpd011,yes,85,25-03-2022,76,disabled,no
 mpd012,no,40,26-03-2022,26,active,yes

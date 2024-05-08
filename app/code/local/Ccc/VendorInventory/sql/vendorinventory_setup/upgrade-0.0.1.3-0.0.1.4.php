@@ -1,6 +1,7 @@
 <?php
 
 
+
 $installer = $this;
 $installer->startSetup();
 
@@ -13,8 +14,8 @@ $setup->addAttribute(
     $entityTypeId,
     'instock_date',
     array(
-        // 'group' => 'General', // Add to the 'General' attribute set
-        'type' => 'datetime', // Use 'datetime' for date with time
+        'group' => 'General', // Add to the 'General' attribute set
+        'type' => 'varchar', // Use 'datetime' for date with time
         'label' => 'In Stock Date', // Attribute Label
         'input' => 'date', // Use 'date' as input type
         'visible' => true,
