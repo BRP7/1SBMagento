@@ -3,8 +3,6 @@ class Ccc_VendorInventory_Block_Adminhtml_VendorInventory extends Mage_Adminhtml
 {
     public function __construct()
     {
-        // echo 121323;
-        // var_dump(class_exists('Ccc_VendorInventory_Block_Adminhtml_VendorInventory'));
         $this->_controller = 'adminhtml_vendorinventory';
         $this->_blockGroup = 'ccc_vendorinventory';
         $this->_headerText = Mage::helper('vendorinventory')->__('Manage Inventory');
