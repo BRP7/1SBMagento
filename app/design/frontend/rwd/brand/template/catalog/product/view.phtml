@@ -65,12 +65,10 @@
                     <span
                         class="h1"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></span>
                     <div class="product-brand">
-                        <h1>Brand</h1>
                         <strong><?php echo $this->__('Brand:') ?></strong>
                         <?php echo ($_product->getAttributeText('brand')) ? $_product->getAttributeText('brand') : $this->__('No Brand'); ?>
                     </div>
                     <div class="product-instock">
-                        <h1>Instock</h1>
                         <strong><?php echo $this->__('Instock Date:') ?></strong>
                         <?php
                         $instockDate = $_product->getData('instock_date');

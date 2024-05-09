@@ -1,6 +1,6 @@
-sku,instock_peter,instock_qty,restock_date,restock_qty,status,discontinued
-msj000,no,73,12-02-2022,21,enabled,no
-msj001,yes,45,13-02-2022,86,disabled,yes
+part_number,instock_peter,instock_qty,restock_date,restock_qty,status,discontinued
+msj006c,no,73,12-02-2022,21,enabled,no
+wbk012c,yes,45,13-02-2022,86,disabled,yes
 msj002,no,18,14-02-2022,72,active,no
 msj003,yes,82,15-02-2022,58,inactive,no
 msj004,no,96,16-02-2022,93,disabled,yes

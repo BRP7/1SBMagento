@@ -4,7 +4,30 @@
             <version>0.1.0</version>
         </Xyz_Examtest>
     </modules>
-    
+   <!--  <admin>
+        <routers>
+            <examtest>
+                <args>
+                    <modules>
+                        <Xyz_Examtest before="Mage_Adminhtml">Xyz_Examtest_Adminhtml</Xyz_Examtest>
+                    </modules>
+                </args>
+            </examtest>
+        </routers>
+    </admin> -->
+
+    <!-- <admin>
+        <routers>
+			<examtest>
+				<use>admin</use>
+				<args>
+					<module>Xyz_Examtest</module>
+					<frontName>examtest</frontName>
+				</args>
+			</examtest>
+        </routers>
+    </admin>
+     -->
     
     <frontend>
         <routers>

@@ -1,0 +1,17 @@
+<?php
+$_product = $this->getProduct();
+// var_dump($_product);
+$instockDate = $_product->getInstockDate();
+var_dump($instockDate);
+?>
+<?php if ($instockDate): ?>
+    <div class="product-instock-date">
+        <strong><?php echo $this->__('Instock Date:') ?></strong>
+        <?php echo $instockDate; ?>
+    </div>
+<?php endif; ?>
+
+<div class="product-brand">
+    <strong><?php echo $this->__('Brand:') ?></strong>
+    <?php echo ($_product->getAttributeText('brand')) ? $_product->getAttributeText('brand') : $this->__('No Brand'); ?>
+</div>

@@ -8,13 +8,6 @@ class Ccc_VendorInventory_Model_Observer
         $brands = Mage::helper('vendorinventory')->getBrandNames();
         // var_dump($brands);
         foreach ($brands as $brandId => $_brandName) {
-           
-        //     if ($_brandName['label'] != 'CK' ) {
-        //         print_r($_brandName['label']);
-        //         print_r($_brandName['value']);
-        //         continue;
-        //     }
-        // }}
 
             $brandId = $_brandName['value'];
             // echo $brandId;   

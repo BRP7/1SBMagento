@@ -2,9 +2,18 @@
 <config>
     <modules>
         <Ccc_VendorInventory>
-            <version>0.0.1.4</version>
+            <version>0.0.1.5</version>
         </Ccc_VendorInventory>
     </modules>
+    <frontend>
+        <layout>
+            <updates>
+                <ccc_vendorinventory>
+                    <file>vendorinventory.xml</file>
+                </ccc_vendorinventory>
+            </updates>
+        </layout>
+    </frontend>
     <global>
         <blocks>
             <ccc_vendorinventory>
@@ -57,6 +66,11 @@
                 </connection>
             </vendorinventory_setup>
         </resources>
+        <blocks>
+            <ccc_vendorinventory>
+                <class>Ccc_Vendorinventory_Block</class>
+            </ccc_vendorinventory>
+        </blocks>
     </global>
     <crontab>
         <jobs>
@@ -94,4 +108,16 @@
             </updates>
         </layout>
     </adminhtml>
+    <default>
+        <examtest>
+            <settings>
+                <time_delay>6</time_delay>
+                <show_description>1</show_description>
+                <list_style>1</list_style>
+                <image_width>450</image_width>
+                <image_height>250</image_height>
+            </settings>
+        </examtest>
+    </default>
+
 </config>

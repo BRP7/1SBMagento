@@ -1,40 +1,41 @@
 <?xml version="1.0"?>
 <config>
-    <tabs>
-        <examtest translate="label" module="xyz_examtest">
-            <label>Examtest</label>
-            <sort_order>100</sort_order>
-        </examtest>
-    </tabs>
-    <sections>
-        <examtest translate="label" module="xyz_examtest">
-            <label>Manage Examtest</label>
-            <tab>examtest</tab>
-            <frontend_type>text</frontend_type>
-            <sort_order>100</sort_order>
-            <show_in_default>1</show_in_default>
-            <show_in_website>1</show_in_website>
-            <show_in_store>1</show_in_store>
-            <groups>
-                <general translate="label">
-                    <label>General Settings</label>
-                    <frontend_type>text</frontend_type>
-                    <sort_order>10</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
-                    <fields>
-                        <custom_message translate="label">
-                            <label>Custom Message</label>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>10</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </custom_message>
-                    </fields>
-                </general>
-            </groups>
-        </examtest>
-    </sections>
+	<tabs>
+		<xyz_examtest translate="label">
+			<label>Exam Test</label>
+			<sort_order>400</sort_order>
+		</xyz_examtest>
+	</tabs>
+	<sections>
+		<examtest translate="label" module="xyz_examtest">
+			<label>Exam Test</label>
+			<tab>xyz_examtest</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>999</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<settings translate="label">
+				<label>Exam Settings</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>1</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+					<fields>
+						<test1_name translate="label, comment">
+							<label>Test Name</label>
+							<comment><![CDATA[in second]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</test1_name>
+					</fields>
+				</settings>
+			</groups>
+		</examtest>
+	</sections>
 </config>

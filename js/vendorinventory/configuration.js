@@ -418,6 +418,7 @@ Configuration.prototype = {
         }
       });
 
+      console.log(configArray);
 
     var jsonData = JSON.stringify(configArray);
     console.log(JSON.stringify(configArray));
