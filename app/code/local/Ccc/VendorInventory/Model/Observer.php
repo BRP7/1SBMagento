@@ -30,6 +30,7 @@ class Ccc_VendorInventory_Model_Observer
                 $temp = [];
                 $temp['brand_id'] = $brandId;
                 foreach ($brandConfig as $_column => $_config) {
+                    print_r("123".$_column."  ");
                     $dataColumn = '';
                     $temp[$_column] = null;
                     $rule = [];
@@ -82,7 +83,7 @@ class Ccc_VendorInventory_Model_Observer
                             }
                         }
                     }
-                    if($dataColumn == 'sku'){
+                    if($_column == 'sku'){
                         $temp[$_column] = $data[$dataColumn];
                     }
 
