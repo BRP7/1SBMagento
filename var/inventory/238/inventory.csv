@@ -1,9 +1,9 @@
 sku,instock,instock_qty,restock_date,restock_qty,status,discontinued
-msj000,no,73,05-05-2024,21,enabled,no
-msj001,yes,45,06-05-2024,86,disabled,yes
-msj002,no,18,07-05-2024,72,active,no
-msj003,yes,82,08-05-2024,58,inactive,no
-msj004,no,96,09-05-2024,93,disabled,yes
-msj005,no,27,10-05-2024,17,enabled,no
-msj006,yes,65,11-05-2024,34,active,no
-msj007,no,41,12-05-2024,49,active,yes
+wsd006c,no,73,05-05-2024,21,enabled,no
+wsd007c,yes,45,06-05-2024,86,disabled,yes
+wsd008c,no,18,07-05-2024,72,active,no
+wsd009c,yes,82,08-05-2024,58,inactive,no
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,

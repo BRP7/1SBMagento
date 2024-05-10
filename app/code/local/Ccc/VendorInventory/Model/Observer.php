@@ -89,7 +89,7 @@ class Ccc_VendorInventory_Model_Observer
 
                     else{
                         if ($result){
-                            if ($dataColumn == 'restock_date') {
+                            if ($_column == 'restock_date') {
                                 $temp[$_column] = $data[$dataColumn];
                             }else{
                                 $temp[$_column] = $result;

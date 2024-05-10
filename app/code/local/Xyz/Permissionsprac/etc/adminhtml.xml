@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <xyz module="permissionsprac">
+            <title>Permissions Practice</title>
+            <sort_order>71</sort_order>
+            <children>
+                <permissionsprac module="permissionsprac">
+                    <title>Manage Permissions</title>
+                    <sort_order>0</sort_order>
+                    <action>adminhtml/user/createRole</action>
+                </permissionsprac>
+                <permissionsprac module="permissionsprac">
+                    <title>Create User</title>
+                    <sort_order>10</sort_order>
+                    <action>adminhtml/user/createUser</action>
+                </permissionsprac>
+            </children>
+        </xyz>
+    </menu>
+
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <permissionsprac translate="title" module="permissionsprac"> 
+                                    </permissionsprac>
+                                </children>							
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <brand_menu translate="title" module="brand">
+            <title>Manage Brand</title>
+            <sort_order>100</sort_order>
+            <children>
+                <sub_menu translate="title" module="brand">
+                    <title>Sub Menu</title>
+                    <action>adminhtml/brand/index</action>
+                </sub_menu>
+            </children>
+        </brand_menu>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <brand_menu translate="title" module="brand">
+                        <title>Manage Brand</title>
+                        <sort_order>100</sort_order>
+                        <children>
+                            <sub_menu translate="title" module="brand">
+                                <title>Sub Menu</title>
+                                <sort_order>10</sort_order>
+                            </sub_menu>
+                        </children>
+                    </brand_menu>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

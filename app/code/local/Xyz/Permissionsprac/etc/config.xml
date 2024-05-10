@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Xyz_Permissionsprac>
+            <version>1.0.0</version>
+        </Xyz_Permissionsprac>
+    </modules>
+    <global>
+        <models>
+            <permissionsprac>
+                <class>Xyz_Permissionsprac_Model</class>
+            </permissionsprac>
+        </models>
+        <helpers>
+            <permissionsprac>
+                <class>Xyz_Permissionsprac_Helper</class>
+            </permissionsprac>
+        </helpers>
+    </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <xyz_permissionsprac after="Mage_Adminhtml">Xyz_Permissionsprac_Adminhtml</xyz_permissionsprac>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

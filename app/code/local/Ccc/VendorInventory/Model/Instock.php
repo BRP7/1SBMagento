@@ -45,14 +45,17 @@ class Ccc_VendorInventory_Model_Instock
 
                         case 0:
                             $restockDate = $csvProduct['restock_date'];
-                            if ($restockDate <= $this->getAheadDate(25, $currentDate)) {
+                            if ($restockDate <= $this->getAheadDate(25, $currentDate) && $restockDate !== null ) {
                                 $storedInstockDate = $this->getAheadDate(10, $currentDate);
-                            } elseif ($restockDate !== null) {
+                            } elseif ($restockDate > $this->getAheadDate(25, $currentDate) && $restockDate !== null) {
                                 $storedInstockDate = $restockDate;
+                            } else{
+                                $storedInstockDate = "back order";
                             }
                             break;
 
                         default:
+                            echo 123;
                             $storedInstockDate = "back order";
                             break;
                     }

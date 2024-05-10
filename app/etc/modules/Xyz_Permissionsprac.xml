@@ -1,0 +1,9 @@
+<config>
+    <modules>
+      <Xyz_Permissionsprac>
+        <active>false</active>
+        <codePool>local</codePool>
+      </Xyz_Permissionsprac>
+    </modules>
+  </config>
+  

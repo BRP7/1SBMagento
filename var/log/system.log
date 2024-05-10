@@ -360,3 +360,5 @@
 2024-05-07T20:50:23+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\xyz/examtest/custom_index.phtml
 2024-05-09T05:18:28+00:00 DEBUG (7): Security problem: cms/block has not been whitelisted.
 2024-05-09T05:18:28+00:00 DEBUG (7): Security problem: cms/block has not been whitelisted.
+2024-05-09T12:39:16+00:00 DEBUG (7): Security problem: cms/block has not been whitelisted.
+2024-05-09T12:39:16+00:00 DEBUG (7): Security problem: cms/block has not been whitelisted.

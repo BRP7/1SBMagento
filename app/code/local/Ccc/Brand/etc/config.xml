@@ -2,6 +2,78 @@
 <config>
     <modules>
         <Ccc_Brand>
+            <version>1.0.0</version>
+        </Ccc_Brand>
+    </modules>
+    <global>
+        
+        <helpers>
+            <brand>
+                <class>Ccc_Brand_Helper</class>
+            </brand>
+        </helpers>
+        <models>
+            <brand>
+                <class>Ccc_Brand_Model</class>
+            </brand>
+        </models>
+        <resources>
+            <brand_setup>
+                <setup>
+                    <module>Ccc_Brand</module>
+                    <class>Mage_Catalog_Model_Resource_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </brand_setup>
+            <brand_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </brand_write>
+            <brand_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </brand_read>
+        </resources>
+        <blocks>
+            <brand>
+                <class>Ccc_Brand_Block</class>
+            </brand>
+        </blocks>
+        <models>
+            <brand>
+                <class>Ccc_Brand_Model</class>
+            </brand>
+        </models>
+    </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Ccc_Brand before="Mage_Adminhtml">Ccc_Brand_Adminhtml</Ccc_Brand>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <brand>
+                    <file>brand.xml</file>
+                </brand>
+            </updates>
+        </layout>
+    </adminhtml>
+</config>
+<!-- <?xml version="1.0"?>
+<config>
+    <modules>
+        <Ccc_Brand>
             <version>1.0.1</version>
         </Ccc_Brand>
     </modules>
@@ -15,4 +87,4 @@
             </ccc_brand_setup>
         </resources>
     </global>
-</config>
+</config> -->

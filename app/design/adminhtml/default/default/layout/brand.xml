@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <brand_adminhtml_brand_index>
+        <reference name="content">
+            <block type="brand/adminhtml_brand" name="brand_grid"/>
+        </reference>
+    </brand_adminhtml_brand_index>
+ 
+    <brand_adminhtml_brand_edit>
+        <reference name="content">
+            <block type="brand/adminhtml_brand_edit" name="brand_edit"/>
+        </reference>
+    </brand_adminhtml_brand_edit>
+
+
+</layout>

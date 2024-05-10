@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+		<permissionsprac translate="label">
+			<label>Permission Practice</label>
+			<sort_order>400</sort_order>
+		</permissionsprac>
+	</tabs>
+    <sections>
+        <permissionsprac translate="label" module="permissionsprac">
+            <label>Permissions Practice</label>
+            <tab>permissionsprac</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>0</show_in_website>
+            <show_in_store>0</show_in_store>
+            <groups>
+                <roles translate="label">
+                    <label>Roles</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <role_name translate="label">
+                            <label>Role Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </role_name>
+                    </fields>
+                </roles>
+                <users translate="label">
+                    <label>Users</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <username translate="label">
+                            <label>Username</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </username>
+                    </fields>
+                </users>
+            </groups>
+        </permissionsprac>
+    </sections>
+</config>

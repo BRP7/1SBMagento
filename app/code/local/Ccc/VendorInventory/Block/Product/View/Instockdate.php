@@ -1,9 +1,9 @@
 <?php
 class Ccc_VendorInventory_Block_Product_View_Instockdate extends Mage_Catalog_Block_Product_Abstract
 {
-    public function _construct(){
-        echo 1213;
-    }
+    // public function _construct(){
+    //     echo 1213;
+    // }
     // public function getInstockDate()
     // {
     //     echo 8888;

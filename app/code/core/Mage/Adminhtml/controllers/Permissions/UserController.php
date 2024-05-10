@@ -98,7 +98,6 @@ class Mage_Adminhtml_Permissions_UserController extends Mage_Adminhtml_Controlle
     public function saveAction()
     {
         if ($data = $this->getRequest()->getPost()) {
-
             $id = $this->getRequest()->getParam('user_id');
             $model = Mage::getModel('admin/user')->load($id);
             // @var $isNew flag for detecting new admin user creation.

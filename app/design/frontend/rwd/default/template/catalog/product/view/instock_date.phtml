@@ -2,13 +2,17 @@
 $_product = $this->getProduct();
 // var_dump($_product);
 $instockDate = $_product->getInstockDate();
-var_dump($instockDate);
 ?>
 <?php if ($instockDate): ?>
     <div class="product-instock-date">
         <strong><?php echo $this->__('Instock Date:') ?></strong>
         <?php echo $instockDate; ?>
     </div>
+<!-- <?php else: ?>
+    <div class="product-instock-date">
+        <strong><?php //echo $this->__('Instock Date:') ?></strong>
+        <?php //echo $this->__('Back Order'); ?>
+    </div> -->
 <?php endif; ?>
 
 <div class="product-brand">
