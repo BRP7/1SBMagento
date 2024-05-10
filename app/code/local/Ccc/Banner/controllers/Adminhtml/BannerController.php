@@ -24,10 +24,10 @@ class Ccc_Banner_Adminhtml_BannerController extends Mage_Adminhtml_Controller_Ac
                 $aclResource = 'ccc_banner/delete';
                 break;
             case 'edit':
-                $aclResource = 'ccc_banner/edit'; // Is this intended?
+                $aclResource = 'ccc_banner/edit'; 
                 break;
             case 'new':
-                $aclResource = 'ccc_banner/new'; // Is this intended?
+                $aclResource = 'ccc_banner/new'; 
                 break;
             case 'index':
                 $aclResource = 'ccc_banner/index';
@@ -99,7 +99,6 @@ class Ccc_Banner_Adminhtml_BannerController extends Mage_Adminhtml_Controller_Ac
 
     public function saveAction()
     {
-        // check if data sent
         if ($data = $this->getRequest()->getPost()) {
             $data = $this->_filterPostData($data);
             //init model and set data
