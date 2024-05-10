@@ -86,37 +86,35 @@ class Ccc_Brand_Adminhtml_BrandController extends Mage_Adminhtml_Controller_Acti
     // }
     
     public function saveAction()
-{
-    if ($data = $this->getRequest()->getPost()) {
-        try {
-            if (!empty($data['id'])) {
-                $optionId = $data['id'];
-                $brand = Mage::getModel('eav/entity_attribute_option')->load($optionId);
-            } else {
-                $brand = Mage::getModel('eav/entity_attribute_option');
+    {
+        if ($data = $this->getRequest()->getPost()) {
+            try {
+                if (!empty($data['id'])) {
+                    $optionId = $data['id'];
+                    $brand = Mage::getModel('eav/entity_attribute_option')->load($optionId);
+                } else {
+                    $brand = Mage::getModel('eav/entity_attribute_option');
+                }
+    
+                // Ensure that the attribute_id is set properly
+                $attributeId = 216; // Assuming 216 is the ID of the brand attribute
+                $brand->setAttributeId($attributeId);
+    
+                $brand->setData('value', $data['value'])->save();
+                Mage::getSingleton('adminhtml/session')->addSuccess('Brand option has been saved.');
+    
+                // Redirect back to the grid
+                $this->_redirect('*/*/index');
+                return;
+            } catch (Exception $e) {
+                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
             }
-
-            // Ensure that the attribute_id is set properly
-            $attributeId = 216; // Assuming 216 is the ID of the brand attribute
-            $brand->setAttributeId($attributeId);
-
-            $brand->setData('value', $data['value'])->save();
-            Mage::getSingleton('adminhtml/session')->addSuccess('Brand option has been saved.');
-
-            // Refresh the collection
-            $this->_refreshCollection();
-
-            // Redirect back to the grid
-            $this->_redirect('*/*/index');
-            return;
-        } catch (Exception $e) {
-            Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
         }
+    
+        // If there was an error or if the data was not properly saved, redirect back to the edit page
+        $this->_redirectReferer();
     }
-
-    // If there was an error or if the data was not properly saved, redirect back to the edit page
-    $this->_redirectReferer();
-}
+    
 
 protected function _refreshCollection()
 {
