@@ -40,22 +40,61 @@ class Ccc_Brand_Block_Adminhtml_Brand_Grid extends Mage_Adminhtml_Block_Widget_G
         return parent::_prepareCollection();
     }
 
-    public function _prepareColumns()
+    // public function _prepareColumns()
+    // {
+    //     // Add columns to the grid
+    //     $this->addColumn('option_id', array(
+    //         'header'    => Mage::helper('brand')->__('Option ID'),
+    //         'index'     => 'option_id',
+    //         'type'      => 'number'
+    //     ));
+
+    //     $this->addColumn('option_name', array(
+    //         'header'    => Mage::helper('brand')->__('Option Name'),
+    //         'index'     => 'option_name'
+    //     ));
+
+    //     return parent::_prepareColumns();
+    // }
+
+
+    protected function _prepareColumns()
     {
-        // Add columns to the grid
         $this->addColumn('option_id', array(
             'header'    => Mage::helper('brand')->__('Option ID'),
             'index'     => 'option_id',
             'type'      => 'number'
         ));
-
+    
         $this->addColumn('option_name', array(
             'header'    => Mage::helper('brand')->__('Option Name'),
             'index'     => 'option_name'
         ));
-
+    
+        // Add the action column
+        $this->addColumn('action', array(
+            'header'    => Mage::helper('brand')->__('Action'),
+            'width'     => '100',
+            'type'      => 'action',
+            'getter'    => 'getOptionId', // Method to retrieve the option id
+            'actions'   => array(
+                array(
+                    'caption'   => Mage::helper('brand')->__('Edit'),
+                    'url'       => array(
+                        'base' => '*/*/edit' // Custom URL for editing the option
+                    ),
+                    'field'     => 'option_id'
+                )
+            ),
+            'filter'    => false,
+            'sortable'  => false,
+            'is_system' => true
+        ));
+    
         return parent::_prepareColumns();
     }
+    
+
 
 
     protected function _getAttributeIdByCode($attributeCode)
