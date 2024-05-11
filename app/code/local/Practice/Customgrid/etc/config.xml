@@ -44,6 +44,15 @@
             </customgrid>
         </blocks>
     </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <customgrid>
+                    <file>customgrid.xml</file>
+                </customgrid>
+            </updates>
+        </layout>
+    </adminhtml>
         <frontend>
             <routers>
                 <customgrid>
