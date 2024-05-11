@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version='1.0' ?>
 <config>
     <modules>
         <Practice_Customgrid>
@@ -6,24 +6,54 @@
         </Practice_Customgrid>
     </modules>
     <global>
+        <!-- <models>
+            <Customgrid>
+
+            </Customgrid>
+        </models> -->
+
+        <models>
+            <customgrid>
+                <class>Practice_Customgrid_Model</class>
+                <resourceModel>practice_customgrid_resource</resourceModel>
+            </customgrid>
+            <practice_customgrid_resource>
+                <class>Practice_Customgrid_Model_Resource</class>
+                <!-- <deprecatedNode>cms_mysql4</deprecatedNode> -->
+                <entities>
+                    <customgrid>
+                        <table>practice_customgrid</table>
+                    </customgrid>
+                </entities>
+            </practice_customgrid_resource>
+        </models>
         <resources>
             <customgrid_setup>
                 <setup>
                     <module>Practice_Customgrid</module>
-                    <class>Mage_Core_Model_Resource_Setup</class>
+                    <!-- <class>Mage_Core_Model_Resource_Setup</class> -->
                 </setup>
+                <!-- <connection>
+                    <use>core_setup</use>
+                </connection> -->
             </customgrid_setup>
         </resources>
-    </global>
-    <frontend>
-        <routers>
+        <blocks>
             <customgrid>
-                <use>standard</use>
-                <args>
-                    <module>Practice_Customgrid</module>
-                    <frontName>customgrid</frontName>
-                </args>
+                <class>Practice_Customgrid_Block</class>
             </customgrid>
-        </routers>
-    </frontend>
+        </blocks>
+    </global>
+        <frontend>
+            <routers>
+                <customgrid>
+                    <use>standard</use>
+                    <args>
+                        <module>Practice_Customgrid</module>
+                        <frontName>customgrid</frontName>
+                    </args>
+                </customgrid>
+            </routers>
+        </frontend>
+  
 </config>
