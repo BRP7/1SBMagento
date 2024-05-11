@@ -8,11 +8,11 @@ $instockDate = $_product->getInstockDate();
         <strong><?php echo $this->__('Instock Date:') ?></strong>
         <?php echo $instockDate; ?>
     </div>
-<!-- <?php else: ?>
+<?php else: ?>
     <div class="product-instock-date">
-        <strong><?php //echo $this->__('Instock Date:') ?></strong>
-        <?php //echo $this->__('Back Order'); ?>
-    </div> -->
+        <strong><?php echo $this->__('Instock Date:') ?></strong>
+        <?php echo $this->__('No Date'); ?>
+    </div>
 <?php endif; ?>
 
 <div class="product-brand">
