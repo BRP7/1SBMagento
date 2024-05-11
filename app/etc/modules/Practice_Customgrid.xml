@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Practice_Customgrid>
+            <active>true</active>
+            <codePool>locl</codePool>
+        </Practice_Customgrid>
+    </modules>
+</config>
