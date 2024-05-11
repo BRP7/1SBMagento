@@ -3,7 +3,7 @@
     <modules>
         <Practice_Customgrid>
             <active>true</active>
-            <codePool>locl</codePool>
+            <codePool>local</codePool>
         </Practice_Customgrid>
     </modules>
 </config>

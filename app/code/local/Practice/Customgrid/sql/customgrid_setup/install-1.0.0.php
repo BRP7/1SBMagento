@@ -1,35 +1,58 @@
 <?php
 
-
 $installer = $this;
 
 $installer->startSetup();
 
 /**
- * drop table 'ccc/banner' if it exist
+ * Drop table 'practice_customgrid' if it exists
  */
-$tableName = $installer->getTable('customgrid/customgrid');
+$tableName = $installer->getTable('practice_customgrid/customgrid');
 if ($installer->getConnection()->isTableExists($tableName)) {
-    Mage::log("Table $tableName already exists", null, 'practice_customgrid.log');
+    echo "Table $tableName already exists.\n";
     return;
 }
 
 $table = $installer->getConnection()
     ->newTable($tableName)
-    ->addColumn('customgrid_id', Varien_Db_Ddl_Table::TYPE_SMALLINT, null, array(
-        'identity' => true,
-        'nullable' => false,
-        'primary' => true,
-    ), 'Banner Id')
-    ->addColumn('grid_name', Varien_Db_Ddl_Table::TYPE_TEXT, 255, array(
-        'nullable' => false,
-    ), 'Banner Name')
-    ->addColumn('show_on', Varien_Db_Ddl_Table::TYPE_TEXT, 255, array(
-    ), 'Show On ')
-    ->addColumn('status', Varien_Db_Ddl_Table::TYPE_SMALLINT, null, array(
-        'nullable' => false,
-        'default' => '1',
-    ), 'Status')
-    ->setComment('Custom Grid Table');
+    ->addColumn(
+        'customgrid_id',
+        Varien_Db_Ddl_Table::TYPE_SMALLINT,
+        null,
+        [
+            'identity' => true,
+            'nullable' => false,
+            'primary' => true,
+        ],
+        'Customgrid Id'
+    )
+    ->addColumn(
+        'grid_name',
+        Varien_Db_Ddl_Table::TYPE_TEXT,
+        255,
+        [
+            'nullable' => false,
+        ],
+        'Grid Name'
+    )
+    ->addColumn(
+        'show_on',
+        Varien_Db_Ddl_Table::TYPE_TEXT,
+        255,
+        [],
+        'Show On'
+    )
+    ->addColumn(
+        'status',
+        Varien_Db_Ddl_Table::TYPE_SMALLINT,
+        null,
+        [
+            'nullable' => false,
+            'default' => '1',
+        ],
+        'Status'
+    )
+    ->setComment('Customgrid Table');
 $installer->getConnection()->createTable($table);
+
 $installer->endSetup();

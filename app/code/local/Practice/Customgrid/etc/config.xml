@@ -1,4 +1,4 @@
-<?xml version='1.0' ?>
+<?xml version='1.0'?>
 <config>
     <modules>
         <Practice_Customgrid>
@@ -6,20 +6,13 @@
         </Practice_Customgrid>
     </modules>
     <global>
-        <!-- <models>
-            <Customgrid>
-
-            </Customgrid>
-        </models> -->
-
         <models>
-            <customgrid>
+            <practice_customgrid>
                 <class>Practice_Customgrid_Model</class>
                 <resourceModel>practice_customgrid_resource</resourceModel>
-            </customgrid>
+            </practice_customgrid>
             <practice_customgrid_resource>
                 <class>Practice_Customgrid_Model_Resource</class>
-                <!-- <deprecatedNode>cms_mysql4</deprecatedNode> -->
                 <entities>
                     <customgrid>
                         <table>practice_customgrid</table>
@@ -31,19 +24,40 @@
             <customgrid_setup>
                 <setup>
                     <module>Practice_Customgrid</module>
-                    <!-- <class>Mage_Core_Model_Resource_Setup</class> -->
                 </setup>
-                <!-- <connection>
-                    <use>core_setup</use>
-                </connection> -->
             </customgrid_setup>
         </resources>
         <blocks>
-            <customgrid>
+            <practice_customgrid>
                 <class>Practice_Customgrid_Block</class>
-            </customgrid>
+            </practice_customgrid>
         </blocks>
+        <helpers>
+            <practice_customgrid>
+                <class>Practice_Customgrid_Helper</class>
+            </practice_customgrid>
+        </helpers>
+      
+        
     </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Practice_Customgrid before="Mage_Adminhtml">Practice_Customgrid_Adminhtml</Practice_Customgrid>
+                    </modules>
+                </args>
+            </adminhtml>
+            <!-- <customgrid>
+                <use>admin</use>
+                <args>
+                    <module>Practice_Customgrid</module>
+                    <frontName>customgrid</frontName>
+                </args>
+            </customgrid> -->
+        </routers>
+    </admin>
     <adminhtml>
         <layout>
             <updates>
@@ -53,16 +67,4 @@
             </updates>
         </layout>
     </adminhtml>
-        <frontend>
-            <routers>
-                <customgrid>
-                    <use>standard</use>
-                    <args>
-                        <module>Practice_Customgrid</module>
-                        <frontName>customgrid</frontName>
-                    </args>
-                </customgrid>
-            </routers>
-        </frontend>
-  
 </config>

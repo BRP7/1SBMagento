@@ -1,29 +1,39 @@
 <config>
     <menu>
-        <customgrid translate="title" module="customgrid">
+        <practice_customgrid translate="title" module="practice_customgrid">
             <title>Customgrid</title>
             <sort_order>100</sort_order>
             <children>
-                <index translate="title" module="customgrid">
+                <index translate="title" module="practice_customgrid">
                     <title>Manage Customgrid</title>
                     <action>adminhtml/customgrid/index</action>
                     <sort_order>10</sort_order>
-                    <resource>customgrid/index</resource> <!-- Associate with ACL resource-->
+                    <resource>practice_customgrid/index</resource>
                 </index>
             </children>
-        </customgrid>
+        </practice_customgrid>
     </menu>
-    <admin>
-        <routers>
-            <adminhtml>
-                <args>
-                    <modules>
-                        <Ccc_Banner before="Mage_Adminhtml">Practice_Customgrid_Adminhtml</Ccc_Banner> <!--
-                        custom tag -->
-                    </modules>
-                </args>
-            </adminhtml>
-        </routers>
-    </admin>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <!-- Change 'customgrid' to 'practice_customgrid' -->
+                    <practice_customgrid translate="title" module="practice_customgrid">
+                        <title>Customgrid</title>
+                        <sort_order>100</sort_order>
+                        <children>
+                            <index translate="title" module="practice_customgrid">
+                                <title>Manage Customgrid</title>
+                                <sort_order>10</sort_order>
+                            </index>
+                        </children>
+                    </practice_customgrid>
+                </children>
+            </admin>
+        </resources>
+    </acl>
     
+      
+
+
 </config>

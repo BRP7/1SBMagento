@@ -2,7 +2,7 @@
 <layout version="0.1.0">
     <adminhtml_customgrid_index>
         <reference name="content">
-            <block type="customgrid/adminhtml_customgrid" name="customgrid"  />
+            <block type="practice_customgrid/adminhtml_customgrid" name="customgrid"  />
         </reference>
     </adminhtml_customgrid_index>
 </layout>
