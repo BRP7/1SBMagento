@@ -75,7 +75,7 @@ class Practice_Customgrid_Block_Adminhtml_Customgrid_Grid extends Mage_Adminhtml
     protected function _prepareMassaction()
     {
         $this->setMassactionIdField('customgrid_id');
-        $this->getMassactionBlock()->setFormFieldName('customgrid');
+        $this->getMassactionBlock()->setFormFieldName('customgrid_id');
 
         $this->getMassactionBlock()->addItem('delete', array(
             'label' => Mage::helper('practice_customgrid')->__('Delete'),

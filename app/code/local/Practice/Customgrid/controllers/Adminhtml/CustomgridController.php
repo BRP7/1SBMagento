@@ -514,4 +514,65 @@ public function editAction()
         $this->_redirect('*/*/');
     }
 
+
+    public function massDeleteAction()
+    {
+        $customgridIds = $this->getRequest()->getParam('customgrid_id');
+        // var_dump($customgridIds);
+        // die;
+        if (!is_array($customgridIds)) {
+            $this->_getSession()->addError($this->__('Please select customgrid(s).'));
+        } else {
+            if (!empty($customgridIds)) {
+                try {
+                    foreach ($customgridIds as $customgridId) {
+                        $banner = Mage::getSingleton('practice_customgrid/customgrid')->load($customgridId);
+                        // Mage::dispatchEvent('banner_controller_banner_delete', array('banner' => $banner));
+                        $banner->delete();
+                    }
+                    $this->_getSession()->addSuccess(
+                        $this->__('Total of %d record(s) have been deleted.', count($customgridIds))
+                    );
+                } catch (Exception $e) {
+                    $this->_getSession()->addError($e->getMessage());
+                }
+            }
+        }
+        $this->_redirect('*/*/index');
+    }
+
+    public function massStatusAction()
+    {
+        $customgridIds = $this->getRequest()->getParam('customgrid_id');
+        $status = $this->getRequest()->getParam('status');
+
+        if (!is_array($customgridIds)) {
+            $customgridIds = array($customgridIds);
+        }
+
+        try {
+            foreach ($customgridIds as $customgridId) {
+                $banner = Mage::getModel('practice_customgrid/customgrid')->load($customgridId);
+                // Check if the status is different than the one being set
+                if ($banner->getStatus() != $status) {
+                    $banner->setStatus($status)->save();
+                }
+            }
+            // Use appropriate success message based on the status changed
+            if ($status == 1) {
+                $this->_getSession()->addSuccess(
+                    $this->__('Total of %d record(s) have been enabled.', count($customgridIds))
+                );
+            } else {
+                $this->_getSession()->addSuccess(
+                    $this->__('Total of %d record(s) have been disabled.', count($customgridIds))
+                );
+            }
+        } catch (Exception $e) {
+            $this->_getSession()->addError($e->getMessage());
+        }
+
+        $this->_redirect('*/*/index');
+    }
+
 }
