@@ -5,4 +5,12 @@
             <block type="practice_customgrid/adminhtml_customgrid" name="customgrid"  />
         </reference>
     </adminhtml_customgrid_index>
+    <adminhtml_customgrid_edit>
+        <reference name="content">
+            <block type="practice_customgrid/adminhtml_customgrid_edit" name="practice_customgrid_edit"/>
+        </reference>
+    </adminhtml_customgrid_edit>
+    <adminhtml_customgrid_new>
+        <update handle="adminhtml_customgrid_edit" />
+    </adminhtml_customgrid_new>
 </layout>
