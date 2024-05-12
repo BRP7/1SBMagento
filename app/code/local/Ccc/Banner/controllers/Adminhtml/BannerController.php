@@ -148,6 +148,7 @@ class Ccc_Banner_Adminhtml_BannerController extends Mage_Adminhtml_Controller_Ac
                 $this->_redirect('*/*/edit', array('banner_id' => $this->getRequest()->getParam('banner_id')));
                 return;
             }
+            var_dump($data);
             $model->setData($data);
 
             Mage::dispatchEvent('banner_form_prepare_save', array('banner' => $model, 'request' => $this->getRequest()));

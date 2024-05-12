@@ -5,6 +5,7 @@ class Practice_Customgrid_Block_Adminhtml_Customgrid_Edit_Form extends Mage_Admi
     protected function _prepareForm()
     {
         $model = Mage::registry('customgrid_data');
+        $isEdit = ($model && $model->getId());
 
         $form = new Varien_Data_Form(array(
             'id' => 'edit_form',
@@ -12,10 +13,25 @@ class Practice_Customgrid_Block_Adminhtml_Customgrid_Edit_Form extends Mage_Admi
             'method' => 'post'
         ));
 
+        // $fieldset = $form->addFieldset('base_fieldset', array('legend' => Mage::helper('practice_customgrid')->__('General Information'), 'class' => 'fieldset-wide'));
+
         $fieldset = $form->addFieldset('base_fieldset', array(
             'legend' => Mage::helper('practice_customgrid')->__('Item Information'),
             'class'  => 'fieldset-wide'
         ));
+
+        if ($isEdit && $model->getCustomgridId()) {
+            echo 12121212112;
+            $fieldset->addField(
+                'customgrid_id',
+                'hidden',
+                array(
+                    'name' => 'customgrid_id',
+                )
+            );
+        }
+
+       
 
         $fieldset->addField('grid_name', 'text', array(
             'name'     => 'grid_name',
