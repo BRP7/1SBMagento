@@ -76,4 +76,64 @@ class Practice_Customgrid_Adminhtml_CustomgridController extends Mage_Adminhtml_
         $this->renderLayout();
     }
     
+    public function saveAction()
+    {
+        if ($data = $this->getRequest()->getPost()) {
+            $data = $this->_filterPostData($data);
+            // Initialize model and set data
+            $model = Mage::getModel('practice_customgrid/customgrid');
+    
+            if ($id = $this->getRequest()->getParam('customgrid_id')) {
+                $model->load($id);
+            }
+    
+            // Validating and saving
+            try {
+                // Save the data
+                $model->setData($data)->save();
+    
+                // Display success message
+                Mage::getSingleton('adminhtml/session')->addSuccess(
+                    Mage::helper('practice_customgrid')->__('The item has been saved.')
+                );
+    
+                // Clear previously saved data from session
+                Mage::getSingleton('adminhtml/session')->setFormData(false);
+    
+                // Check if 'Save and Continue' is clicked
+                if ($this->getRequest()->getParam('back')) {
+                    $this->_redirect('*/*/edit', array('customgrid_id' => $model->getId(), '_current' => true));
+                    return;
+                }
+    
+                // Go to grid
+                $this->_redirect('*/*/');
+                return;
+    
+            } catch (Mage_Core_Exception $e) {
+                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+            } catch (Exception $e) {
+                Mage::getSingleton('adminhtml/session')->addException(
+                    $e,
+                    Mage::helper('practice_customgrid')->__('An error occurred while saving the item.')
+                );
+            }
+    
+            // If there's an error, redirect back to the edit form
+            $this->_redirect('*/*/edit', array('customgrid_id' => $this->getRequest()->getParam('customgrid_id')));
+            return;
+        }
+    
+        // If no data was posted, redirect back to the grid
+        $this->_redirect('*/*/');
+    }
+
+    protected function _filterPostData($data)
+    {
+        // Add any custom filtering or validation here
+        // In your case, you may not need to filter any data
+
+        return $data;
+    }
+    
 }

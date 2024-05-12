@@ -17,7 +17,8 @@ class Practice_Customgrid_Block_Adminhtml_Customgrid_Grid extends Mage_Adminhtml
         $this->setCollection($collection);
         return parent::_prepareCollection();
     }
-
+    
+    
     protected function _prepareColumns()
     {
         $this->addColumn('customgrid_id', array(
