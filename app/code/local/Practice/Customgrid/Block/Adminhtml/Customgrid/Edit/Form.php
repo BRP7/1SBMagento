@@ -21,7 +21,6 @@ class Practice_Customgrid_Block_Adminhtml_Customgrid_Edit_Form extends Mage_Admi
         ));
 
         if ($isEdit && $model->getCustomgridId()) {
-            echo 12121212112;
             $fieldset->addField(
                 'customgrid_id',
                 'hidden',

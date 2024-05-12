@@ -344,7 +344,7 @@ public function editAction()
     {
         echo 111111;
         if ($data = $this->getRequest()->getPost()) {
-            var_dump($data);
+            // var_dump($data);
             $data = $this->_filterPostData($data);
             //init model and set data
             $model = Mage::getModel('practice_customgrid/customgrid');
@@ -425,7 +425,7 @@ public function editAction()
                     return;
                 }
                 // go to grid
-                // $this->_redirect('*/*/');
+                $this->_redirect('*/*/');
                 return;
 
             } catch (Mage_Core_Exception $e) {
@@ -475,6 +475,43 @@ public function editAction()
         // In your case, you may not need to filter any data
 
         return $data;
+    }
+
+
+    public function deleteAction()
+    {
+        // check if we know what should be deleted
+        if ($id = $this->getRequest()->getParam('id')) {
+            echo 123;
+            $title = "";
+            try {
+                // init model and delete
+                $model = Mage::getModel('practice_customgrid/customgrid');
+                $model->load($id);
+                $title = $model->getTitle();
+                $model->delete();
+                // display success message
+                Mage::getSingleton('adminhtml/session')->addSuccess(
+                    Mage::helper('practice_customgrid')->__('The page has been deleted.')
+                );
+                // go to grid
+                Mage::dispatchEvent('adminhtml_cmspage_on_delete', array('title' => $title, 'status' => 'success'));
+                $this->_redirect('*/*/');
+                return;
+
+            } catch (Exception $e) {
+                Mage::dispatchEvent('adminhtml_cmspage_on_delete', array('title' => $title, 'status' => 'fail'));
+                // display error message
+                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+                // go back to edit form
+                $this->_redirect('*/*/edit', array('customgrid_id' => $id));
+                return;
+            }
+        }
+        // display error message
+        Mage::getSingleton('adminhtml/session')->addError(Mage::helper('practice_customgrid')->__('Unable to find a page to delete.'));
+        // go to grid
+        $this->_redirect('*/*/');
     }
 
 }
