@@ -4,23 +4,14 @@
             <title>Customgrid</title>
             <sort_order>100</sort_order>
             <children>
-                <index translate="title" module="practice_customgrid">
+                <customgrid translate="title" module="practice_customgrid">
                     <title>Manage Customgrid</title>
-                    <action>adminhtml/customgrid/index</action><!-- index to view main -->
+                    <action>adminhtml/customgrid/index</action>
                     <sort_order>10</sort_order>
-                    <resource>practice_customgrid/index</resource><!-- index to view okaies -->
-                </index>
+                    <resource>practice_customgrid/customgrid</resource>
+                </customgrid>
             </children>
         </practice_customgrid>
-        <!-- <catalog>
-            <children>
-                <custom_products translate="title" module="catalog">
-                    <title> Custom Manage Products</title>
-                    <action>adminhtml/catalog_product/</action>
-                    <sort_order>0</sort_order>
-                </custom_products>
-            </children>
-        </catalog> -->
     </menu>
     <acl>
         <resources>
@@ -30,35 +21,26 @@
                         <title>Custom Grid</title>
                         <sort_order>100</sort_order>
                         <children>
-                            <!-- <index translate="title" module="practice_customgrid">// index to view
-                                doesn't matter 
-                                <title>Manage Customgrid</title>
-                                <sort_order>10</sort_order>
-                            </index> -->
                             <customgrid translate="title">
                                 <title>Manage Customgrid</title>
+                                <sort_order>10</sort_order>
                                 <children>
-                                    <action>
-                                        <title translate='title'>Actions</title>
-                                        <children>
-                                            <delete translate='title'>
-                                                <title>Delete</title>
-                                                <sort_order>4</sort_order>
-                                            </delete>
-                                            <edit translate="title">
-                                                <title>Edit</title>
-                                                <sort_order>3</sort_order>
-                                            </edit>
-                                            <new translate="title">
-                                                <title>Add New</title>
-                                                <sort_order>2</sort_order>
-                                            </new>
-                                            <index translate="title">
-                                                <title>Show</title>
-                                                <sort_order>1</sort_order>
-                                            </index>
-                                        </children>
-                                    </action>
+                                    <index translate="title">
+                                        <title>Show</title>
+                                        <sort_order>1</sort_order>
+                                    </index>
+                                    <new translate="title">
+                                        <title>Add New</title>
+                                        <sort_order>2</sort_order>
+                                    </new>
+                                    <edit translate="title">
+                                        <title>Edit</title>
+                                        <sort_order>3</sort_order>
+                                    </edit>
+                                    <delete translate="title">
+                                        <title>Delete</title>
+                                        <sort_order>4</sort_order>
+                                    </delete>
                                 </children>
                             </customgrid>
                         </children>
@@ -67,6 +49,4 @@
             </admin>
         </resources>
     </acl>
-
-
 </config>
