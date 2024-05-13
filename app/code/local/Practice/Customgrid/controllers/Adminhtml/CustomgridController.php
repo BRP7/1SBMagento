@@ -13,7 +13,6 @@ class Practice_Customgrid_Adminhtml_CustomgridController extends Mage_Adminhtml_
     }
     protected function _initAction()
     {
-        // Load layout, set active menu, and breadcrumbs
         $this->loadLayout()
             ->_setActiveMenu('practice_customgrid')
             ->_addBreadcrumb(Mage::helper('adminhtml')->__('Customgrid'), Mage::helper('adminhtml')->__('Customgrid'))
@@ -27,215 +26,8 @@ class Practice_Customgrid_Adminhtml_CustomgridController extends Mage_Adminhtml_
         $this->_forward('edit');
     }
 
-    // public function editAction()
-    // {
-    //     // Set the page title
-    //     $this->_title($this->__('Manage Customgrid'));
 
-    //     // Get the customgrid ID from the request parameters
-    //     $id = $this->getRequest()->getParam('customgrid_id');
-
-    //     // Load the customgrid model based on the ID
-    //     $model = Mage::getModel('practice_customgrid/customgrid');
-
-    //     // Initial checking
-    //     if ($id) {
-    //         $model->load($id);
-    //         if (!$model->getId()) {
-    //             Mage::getSingleton('adminhtml/session')->addError(Mage::helper('practice_customgrid')->__('This customgrid does not exist.'));
-    //             $this->_redirect('*/*/');
-    //             return;
-    //         }
-    //     }
-
-    //     // Set the page title based on whether it's a new customgrid or an edit action
-    //     $this->_title($model->getId() ? $this->__('Edit Customgrid') : $this->__('New Customgrid'));
-
-    //     // Set entered data if there was an error during saving
-    //     $data = Mage::getSingleton('adminhtml/session')->getFormData(true);
-    //     Mage::log($data); // Let's log the data to see what's happening
-    //     if (!empty($data)) {
-    //         Mage::log('Setting form data to model');
-    //         $model->setData($data);
-    //     }
-
-    //     // Register the customgrid model to use it later in blocks
-    //     Mage::register('customgrid_data', $model);
-
-    //     // Initialize the action
-    //     $this->_initAction();
-
-    //     // Add breadcrumbs
-    //     $this->_addBreadcrumb($id ? $this->__('Edit Customgrid') : $this->__('New Customgrid'), $id ? $this->__('Edit Customgrid') : $this->__('New Customgrid'));
-
-    //     // Get the edit form block
-    //     $editBlock = $this->getLayout()->createBlock('practice_customgrid/adminhtml_customgrid_edit');
-
-    //     // Pass the model data to the edit form block
-    //     $editBlock->setCustomgrid($model);
-
-    //     // Set the form action URL
-    //     $editBlock->setData('action', $this->getUrl('*/*/save'));
-
-    //     // Render layout
-    //     $this->renderLayout();
-    // }
-
-
-    // public function editAction()
-    // {
-    //     // Set the page title
-    //     $this->_title($this->__('Manage Customgrid'));
-
-    //     // Get the customgrid ID from the request parameters
-    //     $id = $this->getRequest()->getParam('customgrid_id');
-
-    //     // Load the customgrid model based on the ID
-    //     $model = Mage::getModel('practice_customgrid/customgrid');
-
-
-    //     $data = Mage::getSingleton('adminhtml/session')->getFormData(true);
-    //     Mage::log($data); // Let's log the data to see what's happening
-    //     if (!empty($data)) {
-    //         echo "Setting form data to model";
-    //         Mage::log('Setting form data to model');
-    //         $model->setData($data);
-    //     }
-    
-    //     // Register the customgrid model to use it later in blocks
-    //     Mage::register('customgrid_data', $model);
-    //     // Initial checking
-    //     if ($id) {
-    //         $model->load($id);
-    //         if (!$model->getId()) {
-    //             Mage::getSingleton('adminhtml/session')->addError(Mage::helper('practice_customgrid')->__('This customgrid does not exist.'));
-    //             $this->_redirect('*/*/');
-    //             return;
-    //         }
-    //     }
-
-    //     // Set the page title based on whether it's a new customgrid or an edit action
-    //     $this->_title($model->getId() ? $this->__('Edit Customgrid') : $this->__('New Customgrid'));
-
-    //     // Set entered data if there was an error during saving
-    //     $data = Mage::getSingleton('adminhtml/session')->getFormData(true);
-    //     var_dump($data);
-    //     Mage::log($data); // Let's log the data to see what's happening
-    //     if (!empty($data)) {
-    //         echo "Setting form data to model";
-    //         Mage::log('Setting form data to model');
-    //         $model->setData($data);
-    //     }
-
-    //     // Register the customgrid model to use it later in blocks
-    //     Mage::register('customgrid_data', $model);
-
-    //     // Initialize the action
-    //     $this->_initAction();
-
-    //     // Add breadcrumbs
-    //     $this->_addBreadcrumb($id ? $this->__('Edit Customgrid') : $this->__('New Customgrid'), $id ? $this->__('Edit Customgrid') : $this->__('New Customgrid'));
-
-    //     // Get the edit form block
-    //     $editBlock = $this->getLayout()->createBlock('practice_customgrid/adminhtml_customgrid_edit');
-
-    //     // Pass the model data to the edit form block
-    //     $editBlock->setCustomgrid($model);
-
-    //     // Set the form action URL
-    //     $editBlock->setData('action', $this->getUrl('*/*/save'));
-
-    //     // Render layout
-    //     $this->renderLayout();
-    // }
-
-//     public function editAction()
-// {
-//     $this->_title($this->__('Edit Customgrid'));
-
-//     $id = $this->getRequest()->getParam('id');
-//     $model = Mage::getModel('practice_customgrid/customgrid');
-//     // $data = Mage::getSingleton('adminhtml/session')->getFormData(true);
-//     // Mage::log($data); // Let's log the data to see what's happening
-//     // if (!empty($data)) {
-//     //     Mage::log('Setting form data to model');
-//     //     $model->setData($data);
-//     // }
-
-
-//     if ($id) {
-//         $model->load($id);
-//         if (!$model->getId()) {
-//             Mage::getSingleton('adminhtml/session')->addError(Mage::helper('practice_customgrid')->__('This customgrid does not exist.'));
-//             $this->_redirect('*/*/');
-//             return;
-//         }
-//     }
-
-//     Mage::register('customgrid_data', $model);
-
-//     $this->_initAction();
-
-//     $this->_addBreadcrumb($id ? $this->__('Edit Customgrid') : $this->__('New Customgrid'), $id ? $this->__('Edit Customgrid') : $this->__('New Customgrid'));
-
-//     $editBlock = $this->getLayout()->createBlock('practice_customgrid/adminhtml_customgrid_edit');
-//     $editBlock->setCustomgrid($model);
-
-//     // $this->getLayout()->getBlock('content')->append($editBlock);
-
-//     $this->renderLayout();
-// }
-
-// public function editAction()
-//     {
-//         // $this->_title($this->__('BANNER'))->_title($this->__('Static Blocks'));
-
-//         // 1. Get ID and create model
-//         $id = $this->getRequest()->getParam('id');
-//         // var_dump($id);
-//         $model = Mage::getModel('practice_customgrid/customgrid');
-
-//         // 2. Initial checking
-//         if ($id) {
-//             $model->load($id);
-//             // var_dump($model->load($id));
-//             if (!$model->getId()) {
-//                 // echo 123;
-//                 Mage::getSingleton('adminhtml/session')->addError(Mage::helper('practice_customgrid')->__('This block no longer exists.'));
-//                 $this->_redirect('*/*/');
-//                 return;
-//             }
-//         }
-
-//         $this->_title($model->getId() ? $model->getTitle() : $this->__('New Block'));
-
-//         // 3. Set entered data if was error when we do save
-//         $data = Mage::getSingleton('adminhtml/session')->getFormData(true);
-//         if (!empty($data)) {  
-//             $model->setData($data);
-//         } elseif ($id) {
-//             // If it's an update (ID provided), load existing data into the form
-//             $data = $model->getData();
-//             Mage::getSingleton('adminhtml/session')->setFormData($data);
-//         }
-
-//         Mage::register('customgrid_data', $model);
-
-//         $this->_initAction()
-//             ->_addBreadcrumb($id ? Mage::helper('practice_customgrid')->__('Edit Block') : Mage::helper('practice_customgrid')->__('New Block'), $id ? Mage::helper('practice_customgrid')->__('Edit Block') : Mage::helper('practice_customgrid')->__('New Block'));
-
-       
-//         $obj = $this->getLayout()->getBlock('practice_customgrid_edit');
-      
-
-//         $obj->setData('action', $this->getUrl('*/*/save'));
-      
-
-//         $this->renderLayout();
-
-//     }
-
-public function editAction()
+    public function editAction()
     {
         $this->_title($this->__('CUSTOMGRID'))->_title($this->__('Static Blocks'));
 
@@ -263,9 +55,6 @@ public function editAction()
 
         // 4. Register model to use later in blocks
         Mage::register('customgrid_data', $model);
-
-        //      //     ->setData('aa', $this->getUrl('*/*/save'));
-        // 5. Build edit form
 
         $this->_initAction()
             ->_addBreadcrumb($id ? Mage::helper('practice_customgrid')->__('Edit Block') : Mage::helper('practice_customgrid')->__('New Block'), $id ? Mage::helper('practice_customgrid')->__('Edit Block') : Mage::helper('practice_customgrid')->__('New Block'));
@@ -342,7 +131,6 @@ public function editAction()
 
     public function saveAction()
     {
-        echo 111111;
         if ($data = $this->getRequest()->getPost()) {
             // var_dump($data);
             $data = $this->_filterPostData($data);
@@ -394,12 +182,10 @@ public function editAction()
             //     $this->_redirect('*/*/edit', array('banner_id' => $this->getRequest()->getParam('banner_id')));
             //     return;
             // }
-            var_dump($data);
+            
             $model->setData($data);
 
             Mage::dispatchEvent('customgrid_form_prepare_save', array('practice_customgrid' => $model, 'request' => $this->getRequest()));
-
-                // var_dump($this->_validatePostData($data));
 
             //validating
             if (!$this->_validatePostData($data)) {
@@ -469,11 +255,8 @@ public function editAction()
 
 
     protected function _filterPostData($data)
-    {        $data = $this->_filterDates($data, array('custom_theme_from', 'custom_theme_to'));
-
-        // Add any custom filtering or validation here
-        // In your case, you may not need to filter any data
-
+    {
+        $data = $this->_filterDates($data, array('custom_theme_from', 'custom_theme_to'));
         return $data;
     }
 
@@ -517,9 +300,7 @@ public function editAction()
 
     public function massDeleteAction()
     {
-        $customgridIds = $this->getRequest()->getParam('customgrid_id');
-        // var_dump($customgridIds);
-        // die;
+        $customgridIds = $this->getRequest()->getParam('customgrid');
         if (!is_array($customgridIds)) {
             $this->_getSession()->addError($this->__('Please select customgrid(s).'));
         } else {
@@ -527,7 +308,6 @@ public function editAction()
                 try {
                     foreach ($customgridIds as $customgridId) {
                         $banner = Mage::getSingleton('practice_customgrid/customgrid')->load($customgridId);
-                        // Mage::dispatchEvent('banner_controller_banner_delete', array('banner' => $banner));
                         $banner->delete();
                     }
                     $this->_getSession()->addSuccess(
@@ -543,7 +323,7 @@ public function editAction()
 
     public function massStatusAction()
     {
-        $customgridIds = $this->getRequest()->getParam('customgrid_id');
+        $customgridIds = $this->getRequest()->getParam('customgrid');
         $status = $this->getRequest()->getParam('status');
 
         if (!is_array($customgridIds)) {
@@ -553,12 +333,10 @@ public function editAction()
         try {
             foreach ($customgridIds as $customgridId) {
                 $banner = Mage::getModel('practice_customgrid/customgrid')->load($customgridId);
-                // Check if the status is different than the one being set
                 if ($banner->getStatus() != $status) {
                     $banner->setStatus($status)->save();
                 }
             }
-            // Use appropriate success message based on the status changed
             if ($status == 1) {
                 $this->_getSession()->addSuccess(
                     $this->__('Total of %d record(s) have been enabled.', count($customgridIds))

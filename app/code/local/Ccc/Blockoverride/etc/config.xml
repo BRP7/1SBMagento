@@ -31,6 +31,14 @@
                 </args>
             </catalog>
         </routers>
+            <layout>
+                <updates>
+                    <ccc_blockoverride>
+                        <file>override.xml</file>
+                    </ccc_blockoverride>
+                </updates>
+            </layout>
+       
     </frontend>
 </config>
 

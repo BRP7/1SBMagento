@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Practice_Custompermission>
+            <version>1.0.0</version>
+        </Practice_Custompermission>
+    </modules>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Practice_Custompermission before="Mage_Adminhtml">Practice_Custompermission_Adminhtml</Practice_Custompermission>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <global>
+        <blocks>
+            <adminhtml>
+                <rewrite>
+                    <catalog_product_grid>Practice_Custompermission_Block_Adminhtml_Catalog_Product_Grid</catalog_product_grid>
+                    <!-- <catalog_category_grid>Practice_Custompermission_Block_Adminhtml_Catalog_Category_Grid</catalog_category_grid> -->
+                </rewrite>
+            </adminhtml>
+        </blocks>
+    </global>
+</config>

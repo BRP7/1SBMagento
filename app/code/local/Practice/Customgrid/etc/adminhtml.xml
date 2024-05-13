@@ -12,6 +12,15 @@
                 </index>
             </children>
         </practice_customgrid>
+        <catalog>
+            <children>
+                <custom_products translate="title" module="catalog">
+                    <title> Custom Manage Products</title>
+                    <action>adminhtml/catalog_product/</action>
+                    <sort_order>0</sort_order>
+                </custom_products>
+            </children>
+        </catalog>
     </menu>
     <acl>
         <resources>
@@ -32,8 +41,6 @@
             </admin>
         </resources>
     </acl>
-    
-      
 
 
 </config>
