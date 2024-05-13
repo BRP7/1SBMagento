@@ -6,13 +6,13 @@
             <children>
                 <index translate="title" module="practice_customgrid">
                     <title>Manage Customgrid</title>
-                    <action>adminhtml/customgrid/index</action><!-- index to view -->
+                    <action>adminhtml/customgrid/index</action><!-- index to view main -->
                     <sort_order>10</sort_order>
-                    <resource>practice_customgrid/index</resource><!-- index to view -->
+                    <resource>practice_customgrid/index</resource><!-- index to view okaies -->
                 </index>
             </children>
         </practice_customgrid>
-        <catalog>
+        <!-- <catalog>
             <children>
                 <custom_products translate="title" module="catalog">
                     <title> Custom Manage Products</title>
@@ -20,21 +20,47 @@
                     <sort_order>0</sort_order>
                 </custom_products>
             </children>
-        </catalog>
+        </catalog> -->
     </menu>
     <acl>
         <resources>
             <admin>
                 <children>
-                    <!-- Change 'customgrid' to 'practice_customgrid' -->
                     <practice_customgrid translate="title" module="practice_customgrid">
-                        <title>Customgrid</title>
+                        <title>Custom Grid</title>
                         <sort_order>100</sort_order>
                         <children>
-                            <index translate="title" module="practice_customgrid"><!-- index to view -->
+                            <!-- <index translate="title" module="practice_customgrid">// index to view
+                                doesn't matter 
                                 <title>Manage Customgrid</title>
                                 <sort_order>10</sort_order>
-                            </index>
+                            </index> -->
+                            <customgrid translate="title">
+                                <title>Manage Customgrid</title>
+                                <children>
+                                    <action>
+                                        <title translate='title'>Actions</title>
+                                        <children>
+                                            <delete translate='title'>
+                                                <title>Delete</title>
+                                                <sort_order>4</sort_order>
+                                            </delete>
+                                            <edit translate="title">
+                                                <title>Edit</title>
+                                                <sort_order>3</sort_order>
+                                            </edit>
+                                            <new translate="title">
+                                                <title>Add New</title>
+                                                <sort_order>2</sort_order>
+                                            </new>
+                                            <index translate="title">
+                                                <title>Show</title>
+                                                <sort_order>1</sort_order>
+                                            </index>
+                                        </children>
+                                    </action>
+                                </children>
+                            </customgrid>
                         </children>
                     </practice_customgrid>
                 </children>

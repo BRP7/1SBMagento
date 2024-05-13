@@ -31,13 +31,13 @@
                 </args>
             </catalog>
         </routers>
-            <layout>
+            <!-- <layout> //check file are already exist just remove comment when overriding
                 <updates>
                     <ccc_blockoverride>
                         <file>override.xml</file>
                     </ccc_blockoverride>
                 </updates>
-            </layout>
+            </layout> -->
        
     </frontend>
 </config>

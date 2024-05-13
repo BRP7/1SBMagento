@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <Practice_Custompermissions>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Practice_Custompermissions>
+    </modules>
+</config>

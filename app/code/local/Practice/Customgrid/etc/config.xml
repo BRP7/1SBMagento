@@ -25,6 +25,9 @@
                 <setup>
                     <module>Practice_Customgrid</module>
                 </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
             </customgrid_setup>
         </resources>
         <blocks>
@@ -37,8 +40,6 @@
                 <class>Practice_Customgrid_Helper</class>
             </practice_customgrid>
         </helpers>
-      
-        
     </global>
     <admin>
         <routers>
@@ -49,21 +50,14 @@
                     </modules>
                 </args>
             </adminhtml>
-            <!-- <customgrid>
-                <use>admin</use>
-                <args>
-                    <module>Practice_Customgrid</module>
-                    <frontName>customgrid</frontName>
-                </args>
-            </customgrid> -->
         </routers>
     </admin>
     <adminhtml>
         <layout>
             <updates>
-                <customgrid>
+                <practice_customgrid>
                     <file>customgrid.xml</file>
-                </customgrid>
+                </practice_customgrid>
             </updates>
         </layout>
     </adminhtml>

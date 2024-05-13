@@ -11,6 +11,9 @@ class Practice_Customgrid_Block_Adminhtml_Customgrid_Edit extends Mage_Adminhtml
         $this->_controller = 'adminhtml_customgrid';
         $this->_updateButton('save', 'label', Mage::helper('practice_customgrid')->__('Save Customgrid'));
         $this->_updateButton('delete', 'label', Mage::helper('practice_customgrid')->__('Delete Customgrid'));
+        if(!Mage::getSingleton('admin/session')->isAllowed('practice_customgrid/delete')){
+            $this->removeButton('delete');
+            }
 
         // $this->_addButton('saveandcontinue', array(
         //     'label' => Mage::helper('practice_customgrid')->__('Save and Continue Edit'),

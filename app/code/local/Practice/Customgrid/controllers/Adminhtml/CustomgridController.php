@@ -11,6 +11,48 @@ class Practice_Customgrid_Adminhtml_CustomgridController extends Mage_Adminhtml_
     {
         echo 123;
     }
+
+    // protected function _isAllowed()
+    // {
+    //     $action = strtolower($this->getRequest()->getActionName());
+    //     switch ($action) {
+    //         case 'delete':
+    //             $aclResource = 'practice_customgrid/delete';
+    //             break;
+    //         case 'edit':
+    //             $aclResource = 'practice_customgrid/edit'; 
+    //             break;
+    //         case 'new':
+    //             $aclResource = 'practice_customgrid/new'; 
+    //             break;
+    //         case 'index':
+    //             $aclResource = 'practice_customgrid/index';
+    //             break;
+    //         default:
+    //             $aclResource = '';
+    //             break;
+    //     }
+    //     return Mage::getSingleton('admin/session')->isAllowed($aclResource);
+    // }
+
+
+    protected function _isAllowed()
+    {
+        $action = $this->getRequest()->getActionName();
+        switch ($action) {
+            case 'index':
+                return Mage::getSingleton('admin/session')->isAllowed('practice_customgrid/index');
+            case 'delete':
+                return Mage::getSingleton('admin/session')->isAllowed('practice_customgrid/delete');
+            case 'edit':
+                return Mage::getSingleton('admin/session')->isAllowed('practice_customgrid/edit');
+            case 'new':
+                return Mage::getSingleton('admin/session')->isAllowed('practice_customgrid/new');
+            default:
+                return Mage::getSingleton('admin/session')->isAllowed('practice_customgrid/customgrid');
+        }
+    }
+
     protected function _initAction()
     {
         $this->loadLayout()
