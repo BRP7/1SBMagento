@@ -1,7 +1,7 @@
 <config>
     <modules>
         <Practice_Custompermissions>
-            <active>true</active>
+            <active>false</active>
             <codePool>local</codePool>
         </Practice_Custompermissions>
     </modules>

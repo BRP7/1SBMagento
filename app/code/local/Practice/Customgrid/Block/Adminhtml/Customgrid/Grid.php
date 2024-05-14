@@ -68,7 +68,7 @@ class Practice_Customgrid_Block_Adminhtml_Customgrid_Grid extends Mage_Adminhtml
             'sortable' => false,
             'index' => 'stores',
         ));
-        if (!Mage::getSingleton('admin/session')->isAllowed('practice_customgrid/edit')) {
+        if (!Mage::getSingleton('admin/session')->isAllowed('practice_customgrid/customgrid/edit')) {
             $this->removeColumn('action');
         }
         return parent::_prepareColumns();
@@ -109,8 +109,8 @@ class Practice_Customgrid_Block_Adminhtml_Customgrid_Grid extends Mage_Adminhtml
 
     public function getRowUrl($row)
     {
-        if (Mage::getSingleton('admin/session')->isAllowed('practice_customgrid/edit')) {
-            return $this->getUrl('*/*/edit', array('customgrid_id' => $row->getId()));
+        if (Mage::getSingleton('admin/session')->isAllowed('practice_customgrid/customgrid/edit')) {
+            return $this->getUrl('*/*/edit', array('id' => $row->getId()));
         }
         return false;
     }

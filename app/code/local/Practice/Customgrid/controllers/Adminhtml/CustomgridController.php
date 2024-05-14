@@ -38,20 +38,32 @@ class Practice_Customgrid_Adminhtml_CustomgridController extends Mage_Adminhtml_
 
     protected function _isAllowed()
     {
-        $action = $this->getRequest()->getActionName();
+        $action = strtolower($this->getRequest()->getActionName());
         switch ($action) {
             case 'index':
-                return Mage::getSingleton('admin/session')->isAllowed('practice_customgrid/index');
+                $aclResource = 'practice_customgrid/customgrid/index';
+                // $isAllowed = Mage::getSingleton('admin/session')->isAllowed($aclResource);
+                // var_dump("Is allowed for $aclResource:", $isAllowed);
+                // return $isAllowed;
+                break;
             case 'delete':
-                return Mage::getSingleton('admin/session')->isAllowed('practice_customgrid/delete');
+                $aclResource = 'practice_customgrid/customgrid/delete';
+                break;
             case 'edit':
-                return Mage::getSingleton('admin/session')->isAllowed('practice_customgrid/edit');
+                $aclResource = 'practice_customgrid/customgrid/edit';
+                $isAllowed = Mage::getSingleton('admin/session')->isAllowed($aclResource);
+                break;
             case 'new':
-                return Mage::getSingleton('admin/session')->isAllowed('practice_customgrid/new');
+                $aclResource = 'practice_customgrid/customgrid/new';
+                break;
             default:
-                return Mage::getSingleton('admin/session')->isAllowed('practice_customgrid/customgrid');
+                $aclResource = '';
+                break;
         }
+        return Mage::getSingleton('admin/session')->isAllowed($aclResource);
     }
+
+
 
     protected function _initAction()
     {
@@ -94,7 +106,6 @@ class Practice_Customgrid_Adminhtml_CustomgridController extends Mage_Adminhtml_
         if (!empty($data)) {
             $model->setData($data);
         }
-
         // 4. Register model to use later in blocks
         Mage::register('customgrid_data', $model);
 
@@ -224,14 +235,14 @@ class Practice_Customgrid_Adminhtml_CustomgridController extends Mage_Adminhtml_
             //     $this->_redirect('*/*/edit', array('banner_id' => $this->getRequest()->getParam('banner_id')));
             //     return;
             // }
-            
+
             $model->setData($data);
 
             Mage::dispatchEvent('customgrid_form_prepare_save', array('practice_customgrid' => $model, 'request' => $this->getRequest()));
 
             //validating
             if (!$this->_validatePostData($data)) {
-                $this->_redirect('*/*/edit', array('customgrid_id' => $model->getId(), '_current' => true));
+                $this->_redirect('*/*/edit', array('id' => $model->getId(), '_current' => true));
                 return;
             }
 
@@ -342,7 +353,7 @@ class Practice_Customgrid_Adminhtml_CustomgridController extends Mage_Adminhtml_
 
     public function massDeleteAction()
     {
-        $customgridIds = $this->getRequest()->getParam('customgrid');
+        $customgridIds = $this->getRequest()->getParam('id');
         if (!is_array($customgridIds)) {
             $this->_getSession()->addError($this->__('Please select customgrid(s).'));
         } else {
@@ -365,7 +376,7 @@ class Practice_Customgrid_Adminhtml_CustomgridController extends Mage_Adminhtml_
 
     public function massStatusAction()
     {
-        $customgridIds = $this->getRequest()->getParam('customgrid');
+        $customgridIds = $this->getRequest()->getParam('id');
         $status = $this->getRequest()->getParam('status');
 
         if (!is_array($customgridIds)) {

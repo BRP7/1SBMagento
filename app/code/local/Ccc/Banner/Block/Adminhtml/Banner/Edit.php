@@ -8,8 +8,6 @@ class Ccc_Banner_Block_Adminhtml_Banner_Edit extends Mage_Adminhtml_Block_Widget
         $this->_blockGroup = 'ccc_banner'; // Corrected block group name
 
         parent::__construct();
-
-        
         $this->_updateButton('save', 'label', Mage::helper('banner')->__('Save Banner'));
         $this->_updateButton('delete', 'label', Mage::helper('banner')->__('Delete Banner'));
         if(!Mage::getSingleton('admin/session')->isAllowed('ccc_banner/delete')){
