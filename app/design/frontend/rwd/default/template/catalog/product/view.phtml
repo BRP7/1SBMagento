@@ -35,13 +35,13 @@
 <?php //echo "Debug Message"; ?>
 <?php //Mage::log("Debug Message", null, 'bannerslider.log'); ?>
 <?php $_helper = $this->helper('catalog/output'); ?>
-<?php $_product = $this->getProduct(); ?>
+<?php $_product = $this->getProduct();?>
 
 <script type="text/javascript">
     var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
 </script>
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
-<div class="product-view">
+ <div class="product-view">
     <div class="product-essential">
         <form action="<?php echo $this->getSubmitUrl($_product, array('_secure' => $this->_isSecure())) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
             <?php echo $this->getBlockHtml('formkey') ?>
@@ -61,7 +61,7 @@
                 <div class="product-name">
                     <span class="h1"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></span>
 
-                    <?php echo $this->getChildHtml('instock_date');?>
+                    <?php //echo $this->getChildHtml('instock_date');?>
                 </div>
 
                 <div class="price-info">

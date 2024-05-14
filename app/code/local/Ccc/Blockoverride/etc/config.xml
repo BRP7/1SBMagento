@@ -19,6 +19,9 @@
                     <product>Ccc_Blockoverride_Model_Product</product>
                 </rewrite>
             </catalog>
+            <ccc_blockoverride>
+                <class>Ccc_Blockoverride_Model</class>
+            </ccc_blockoverride>
         </models>
     </global>
     <frontend>
@@ -31,22 +34,28 @@
                 </args>
             </catalog>
         </routers>
-            <!-- <layout> //check file are already exist just remove comment when overriding
-                <updates>
-                    <ccc_blockoverride>
-                        <file>override.xml</file>
-                    </ccc_blockoverride>
-                </updates>
-            </layout> -->
-       
+        <!-- <layout>
+            <updates>
+                <ccc_blockoverride>
+                    <file>override.xml</file>
+                </ccc_blockoverride>
+            </updates>
+        </layout> -->
     </frontend>
+    <adminhtml>
+        <events>
+            <admin_session_user_login_success>
+                <observers>
+                    <observer_override>
+                        <type>singleton</type>
+                        <class>ccc_blockoverride/observer</class>
+                        <method>demo</method>
+                    </observer_override>
+                </observers>
+            </admin_session_user_login_success>
+        </events>
+    </adminhtml>
 </config>
-
-
-
-
-
-
 
 
 

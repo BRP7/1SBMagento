@@ -1,9 +1,8 @@
 <?xml version="1.0"?>
-<layout version="0.1.0">
+<layout>
     <catalog_product_view>
-        <reference name="product.info">
+        <reference name="product.info.addtocart">
             <block type="ccc_vendorinventory/product_view_instockdate" name="product.instock_date" as="instock_date" template="catalog/product/view/instock_date.phtml" />
         </reference>
     </catalog_product_view>
 </layout>
-
