@@ -10,6 +10,7 @@ class Ccc_Blockoverride_ProductController extends Mage_Catalog_ProductController
     // }
     public function viewAction()
     {
+       
         // Your custom logic here
         echo "This is the overridden product view action!";
         // Call parent action
