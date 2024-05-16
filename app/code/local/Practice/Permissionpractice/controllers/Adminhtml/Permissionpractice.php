@@ -1,6 +1,6 @@
 <?php
 
-class Practice_Customgrid_Adminhtml_CustomgridController extends Mage_Adminhtml_Controller_Action
+class Practice_Permissionpractice_Adminhtml_PermissionpracticeController extends Mage_Adminhtml_Controller_Action
 {
     public function indexAction()
     {
@@ -12,49 +12,27 @@ class Practice_Customgrid_Adminhtml_CustomgridController extends Mage_Adminhtml_
         echo 123;
     }
 
-    // protected function _isAllowed()
-    // {
-    //     $action = strtolower($this->getRequest()->getActionName());
-    //     switch ($action) {
-    //         case 'delete':
-    //             $aclResource = 'practice_customgrid/delete';
-    //             break;
-    //         case 'edit':
-    //             $aclResource = 'practice_customgrid/edit'; 
-    //             break;
-    //         case 'new':
-    //             $aclResource = 'practice_customgrid/new'; 
-    //             break;
-    //         case 'index':
-    //             $aclResource = 'practice_customgrid/index';
-    //             break;
-    //         default:
-    //             $aclResource = '';
-    //             break;
-    //     }
-    //     return Mage::getSingleton('admin/session')->isAllowed($aclResource);
-    // }
-
+    
 
     protected function _isAllowed()
     {
         $action = strtolower($this->getRequest()->getActionName());
         switch ($action) {
             case 'index':
-                $aclResource = 'practice_customgrid/customgrid/index';
+                $aclResource = 'practice_permissionpractice/permissionpractice/index';
                 // $isAllowed = Mage::getSingleton('admin/session')->isAllowed($aclResource);
                 // var_dump("Is allowed for $aclResource:", $isAllowed);
                 // return $isAllowed;
                 break;
             case 'delete':
-                $aclResource = 'practice_customgrid/customgrid/delete';
+                $aclResource = 'practice_permissionpractice/permissionpractice/delete';
                 break;
             case 'edit':
-                $aclResource = 'practice_customgrid/customgrid/edit';
+                $aclResource = 'practice_permissionpractice/permissionpractice/edit';
                 $isAllowed = Mage::getSingleton('admin/session')->isAllowed($aclResource);
                 break;
             case 'new':
-                $aclResource = 'practice_customgrid/customgrid/new';
+                $aclResource = 'practice_permissionpractice/permissionpractice/new';
                 break;
             default:
                 $aclResource = '';
@@ -68,7 +46,7 @@ class Practice_Customgrid_Adminhtml_CustomgridController extends Mage_Adminhtml_
     protected function _initAction()
     {
         $this->loadLayout()
-            ->_setActiveMenu('practice_customgrid')
+            ->_setActiveMenu('practice_permissionpractice')
             ->_addBreadcrumb(Mage::helper('adminhtml')->__('Customgrid'), Mage::helper('adminhtml')->__('Customgrid'))
             ->_addBreadcrumb(Mage::helper('adminhtml')->__('Manage Customgrid'), Mage::helper('adminhtml')->__('Manage Customgrid'));
         return $this;
@@ -87,13 +65,13 @@ class Practice_Customgrid_Adminhtml_CustomgridController extends Mage_Adminhtml_
 
         // 1. Get ID and create model
         $id = $this->getRequest()->getParam('id');
-        $model = Mage::getModel('practice_customgrid/customgrid');
+        $model = Mage::getModel('practice_permissionpractice/permissionpractice');
 
         // 2. Initial checking
         if ($id) {
             $model->load($id);
             if (!$model->getId()) {
-                Mage::getSingleton('adminhtml/session')->addError(Mage::helper('practice_customgrid')->__('This block no longer exists.'));
+                Mage::getSingleton('adminhtml/session')->addError(Mage::helper('practice_permissionpractice')->__('This block no longer exists.'));
                 $this->_redirect('*/*/');
                 return;
             }
@@ -107,13 +85,13 @@ class Practice_Customgrid_Adminhtml_CustomgridController extends Mage_Adminhtml_
             $model->setData($data);
         }
         // 4. Register model to use later in blocks
-        Mage::register('customgrid_data', $model);
+        Mage::register('permissionpractice_data', $model);
 
         $this->_initAction()
-            ->_addBreadcrumb($id ? Mage::helper('practice_customgrid')->__('Edit Block') : Mage::helper('practice_customgrid')->__('New Block'), $id ? Mage::helper('practice_customgrid')->__('Edit Block') : Mage::helper('practice_customgrid')->__('New Block'));
+            ->_addBreadcrumb($id ? Mage::helper('practice_permissionpractice')->__('Edit Block') : Mage::helper('practice_permissionpractice')->__('New Block'), $id ? Mage::helper('practice_permissionpractice')->__('Edit Block') : Mage::helper('practice_permissionpractice')->__('New Block'));
 
         // echo get_class($this->getLayout()->getBlock('ccc_banner_edit'));
-        $obj = $this->getLayout()->getBlock('practice_customgrid_edit');
+        $obj = $this->getLayout()->getBlock('practice_permissionpractice_edit');
         // echo get_class($obj);
         // var_dump("2334",$obj->getData('action'));
 
@@ -127,14 +105,14 @@ class Practice_Customgrid_Adminhtml_CustomgridController extends Mage_Adminhtml_
 
 
 
-    // public function saveAction()
+  
     // {
     //     if ($data = $this->getRequest()->getPost()) {
     //         $data = $this->_filterPostData($data);
     //         // Initialize model and set data
-    //         $model = Mage::getModel('practice_customgrid/customgrid');
+    //         $model = Mage::getModel('practice_permissionpractice/permissionpractice');
 
-    //         if ($id = $this->getRequest()->getParam('customgrid_id')) {
+    //         if ($id = $this->getRequest()->getParam('permissionpractice_id')) {
     //             $model->load($id);
     //         }
 
@@ -145,7 +123,7 @@ class Practice_Customgrid_Adminhtml_CustomgridController extends Mage_Adminhtml_
 
     //             // Display success message
     //             Mage::getSingleton('adminhtml/session')->addSuccess(
-    //                 Mage::helper('practice_customgrid')->__('The item has been saved.')
+    //                 Mage::helper('practice_permissionpractice')->__('The item has been saved.')
     //             );
 
     //             // Clear previously saved data from session
@@ -153,7 +131,7 @@ class Practice_Customgrid_Adminhtml_CustomgridController extends Mage_Adminhtml_
 
     //             // Check if 'Save and Continue' is clicked
     //             if ($this->getRequest()->getParam('back')) {
-    //                 $this->_redirect('*/*/edit', array('customgrid_id' => $model->getId(), '_current' => true));
+    //                 $this->_redirect('*/*/edit', array('permissionpractice_id' => $model->getId(), '_current' => true));
     //                 return;
     //             }
 
@@ -166,13 +144,13 @@ class Practice_Customgrid_Adminhtml_CustomgridController extends Mage_Adminhtml_
     //         } catch (Exception $e) {
     //             Mage::getSingleton('adminhtml/session')->addException(
     //                 $e,
-    //                 Mage::helper('practice_customgrid')->__('An error occurred while saving the item.')
+    //                 Mage::helper('practice_permissionpractice')->__('An error occurred while saving the item.')
     //             );
     //         }
 
     //         $this->_getSession()->setFormData($data);
     //         // If there's an error, redirect back to the edit form
-    //         $this->_redirect('*/*/edit', array('customgrid_id' => $this->getRequest()->getParam('customgrid_id')));
+    //         $this->_redirect('*/*/edit', array('permissionpractice_id' => $this->getRequest()->getParam('permissionpractice_id')));
     //         return;
     //     }
 
@@ -188,7 +166,7 @@ class Practice_Customgrid_Adminhtml_CustomgridController extends Mage_Adminhtml_
             // var_dump($data);
             $data = $this->_filterPostData($data);
             //init model and set data
-            $model = Mage::getModel('practice_customgrid/customgrid');
+            $model = Mage::getModel('practice_permissionpractice/permissionpractice');
 
             if ($id = $this->getRequest()->getParam('id')) {
                 // echo $id;
@@ -238,7 +216,7 @@ class Practice_Customgrid_Adminhtml_CustomgridController extends Mage_Adminhtml_
 
             $model->setData($data);
 
-            Mage::dispatchEvent('customgrid_form_prepare_save', array('practice_customgrid' => $model, 'request' => $this->getRequest()));
+            Mage::dispatchEvent('permissionpractice_form_prepare_save', array('practice_permissionpractice' => $model, 'request' => $this->getRequest()));
 
             //validating
             if (!$this->_validatePostData($data)) {
@@ -254,13 +232,13 @@ class Practice_Customgrid_Adminhtml_CustomgridController extends Mage_Adminhtml_
 
                 // display success message
                 Mage::getSingleton('adminhtml/session')->addSuccess(
-                    Mage::helper('practice_customgrid')->__('The page has been saved.')
+                    Mage::helper('practice_permissionpractice')->__('The page has been saved.')
                 );
                 // clear previously saved data from session
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
                 // check if 'Save and Continue'
                 if ($this->getRequest()->getParam('back')) {
-                    $this->_redirect('*/*/edit', array('customgrid_id' => $model->getId(), '_current' => true));
+                    $this->_redirect('*/*/edit', array('permissionpractice_id' => $model->getId(), '_current' => true));
                     return;
                 }
                 // go to grid
@@ -272,12 +250,12 @@ class Practice_Customgrid_Adminhtml_CustomgridController extends Mage_Adminhtml_
             } catch (Exception $e) {
                 $this->_getSession()->addException(
                     $e,
-                    Mage::helper('practice_customgrid')->__('An error occurred while saving the page.')
+                    Mage::helper('practice_permissionpractice')->__('An error occurred while saving the page.')
                 );
             }
 
             $this->_getSession()->setFormData($data);
-            $this->_redirect('*/*/edit', array('customgrid_id' => $this->getRequest()->getParam('customgrid_id')));
+            $this->_redirect('*/*/edit', array('permissionpractice_id' => $this->getRequest()->getParam('permissionpractice_id')));
             return;
         }
         $this->_redirect('*/*/');
@@ -322,13 +300,13 @@ class Practice_Customgrid_Adminhtml_CustomgridController extends Mage_Adminhtml_
             $title = "";
             try {
                 // init model and delete
-                $model = Mage::getModel('practice_customgrid/customgrid');
+                $model = Mage::getModel('practice_permissionpractice/permissionpractice');
                 $model->load($id);
                 $title = $model->getTitle();
                 $model->delete();
                 // display success message
                 Mage::getSingleton('adminhtml/session')->addSuccess(
-                    Mage::helper('practice_customgrid')->__('The page has been deleted.')
+                    Mage::helper('practice_permissionpractice')->__('The page has been deleted.')
                 );
                 // go to grid
                 Mage::dispatchEvent('adminhtml_cmspage_on_delete', array('title' => $title, 'status' => 'success'));
@@ -340,12 +318,12 @@ class Practice_Customgrid_Adminhtml_CustomgridController extends Mage_Adminhtml_
                 // display error message
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 // go back to edit form
-                $this->_redirect('*/*/edit', array('customgrid_id' => $id));
+                $this->_redirect('*/*/edit', array('permissionpractice_id' => $id));
                 return;
             }
         }
         // display error message
-        Mage::getSingleton('adminhtml/session')->addError(Mage::helper('practice_customgrid')->__('Unable to find a page to delete.'));
+        Mage::getSingleton('adminhtml/session')->addError(Mage::helper('practice_permissionpractice')->__('Unable to find a page to delete.'));
         // go to grid
         $this->_redirect('*/*/');
     }
@@ -353,18 +331,18 @@ class Practice_Customgrid_Adminhtml_CustomgridController extends Mage_Adminhtml_
 
     public function massDeleteAction()
     {
-        $customgridIds = $this->getRequest()->getParam('id');
-        if (!is_array($customgridIds)) {
-            $this->_getSession()->addError($this->__('Please select customgrid(s).'));
+        $permissionpracticeIds = $this->getRequest()->getParam('id');
+        if (!is_array($permissionpracticeIds)) {
+            $this->_getSession()->addError($this->__('Please select permissionpractice(s).'));
         } else {
-            if (!empty($customgridIds)) {
+            if (!empty($permissionpracticeIds)) {
                 try {
-                    foreach ($customgridIds as $customgridId) {
-                        $banner = Mage::getSingleton('practice_customgrid/customgrid')->load($customgridId);
+                    foreach ($permissionpracticeIds as $permissionpracticeId) {
+                        $banner = Mage::getSingleton('practice_permissionpractice/permissionpractice')->load($permissionpracticeId);
                         $banner->delete();
                     }
                     $this->_getSession()->addSuccess(
-                        $this->__('Total of %d record(s) have been deleted.', count($customgridIds))
+                        $this->__('Total of %d record(s) have been deleted.', count($permissionpracticeIds))
                     );
                 } catch (Exception $e) {
                     $this->_getSession()->addError($e->getMessage());
@@ -376,27 +354,27 @@ class Practice_Customgrid_Adminhtml_CustomgridController extends Mage_Adminhtml_
 
     public function massStatusAction()
     {
-        $customgridIds = $this->getRequest()->getParam('id');
+        $permissionpracticeIds = $this->getRequest()->getParam('id');
         $status = $this->getRequest()->getParam('status');
 
-        if (!is_array($customgridIds)) {
-            $customgridIds = array($customgridIds);
+        if (!is_array($permissionpracticeIds)) {
+            $permissionpracticeIds = array($permissionpracticeIds);
         }
 
         try {
-            foreach ($customgridIds as $customgridId) {
-                $banner = Mage::getModel('practice_customgrid/customgrid')->load($customgridId);
+            foreach ($permissionpracticeIds as $permissionpracticeId) {
+                $banner = Mage::getModel('practice_permissionpractice/permissionpractice')->load($permissionpracticeId);
                 if ($banner->getStatus() != $status) {
                     $banner->setStatus($status)->save();
                 }
             }
             if ($status == 1) {
                 $this->_getSession()->addSuccess(
-                    $this->__('Total of %d record(s) have been enabled.', count($customgridIds))
+                    $this->__('Total of %d record(s) have been enabled.', count($permissionpracticeIds))
                 );
             } else {
                 $this->_getSession()->addSuccess(
-                    $this->__('Total of %d record(s) have been disabled.', count($customgridIds))
+                    $this->__('Total of %d record(s) have been disabled.', count($permissionpracticeIds))
                 );
             }
         } catch (Exception $e) {
