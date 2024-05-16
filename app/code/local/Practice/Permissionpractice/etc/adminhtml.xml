@@ -1,0 +1,52 @@
+<config>
+    <menu>
+        <practice_permissionpractice translate="title" module="practice_permissionpractice">
+            <title>permissionpractice</title>
+            <sort_order>100</sort_order>
+            <children>
+                <permissionpractice translate="title" module="practice_permissionpractice">
+                    <title>Manage permissionpractice</title>
+                    <action>adminhtml/permissionpractice/index</action>
+                    <sort_order>10</sort_order>
+                    <resource>practice_permissionpractice/permissionpractice</resource>
+                </permissionpractice>
+            </children>
+        </practice_permissionpractice>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <practice_permissionpractice translate="title" module="practice_permissionpractice">
+                        <title>Custom Practice</title>
+                        <sort_order>100</sort_order>
+                        <children>
+                            <permissionpractice translate="title">
+                                <title>Manage permissionpractice</title>
+                                <sort_order>10</sort_order>
+                                <children>
+                                    <index translate="title">
+                                        <title>Show</title>
+                                        <sort_order>1</sort_order>
+                                    </index>
+                                    <new translate="title">
+                                        <title>Add New</title>
+                                        <sort_order>2</sort_order>
+                                    </new>
+                                    <edit translate="title">
+                                        <title>Edit</title>
+                                        <sort_order>3</sort_order>
+                                    </edit>
+                                    <delete translate="title">
+                                        <title>Delete</title>
+                                        <sort_order>4</sort_order>
+                                    </delete>
+                                </children>
+                            </permissionpractice>
+                        </children>
+                    </practice_permissionpractice>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>
