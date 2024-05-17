@@ -9,11 +9,17 @@ class Practice_Permissionpractice_Adminhtml_PermissionpracticeController extends
     }
     public function viewAction()
     {
-        $this->_initAction();
+        $this->_title($this->__('Custom Menu Item'));
+        $this->loadLayout();
+        $this->_setActiveMenu('catalog/custom_menu_item');
+        $this->_addContent($this->getLayout()->createBlock('core/text', 'custom-menu-item')->setText('<h1>Custom Menu Item Content</h1>'));
         $this->renderLayout();
+
     }
 
-    
+
+
+
 
     protected function _isAllowed()
     {
@@ -51,15 +57,15 @@ class Practice_Permissionpractice_Adminhtml_PermissionpracticeController extends
     //     if($action == 'edit'){
     //         $allowedActions[] = 'save';
     //     }
-        
+
     //     if (in_array($action, $allowedActions) ) {
     //         $aclResource = 'practice_permissionpractice/permissionpractice/'.$action;
     //         return Mage::getSingleton('admin/session')->isAllowed($aclResource);
     //     }
-        
+
     //     return false;
     // }
-    
+
 
     protected function _initAction()
     {
@@ -123,7 +129,7 @@ class Practice_Permissionpractice_Adminhtml_PermissionpracticeController extends
 
 
 
-  
+
     // {
     //     if ($data = $this->getRequest()->getPost()) {
     //         $data = $this->_filterPostData($data);
@@ -191,7 +197,7 @@ class Practice_Permissionpractice_Adminhtml_PermissionpracticeController extends
     //             $model->load($id);
     //         }
 
-           
+
 
     //         $model->setData($data);
 
@@ -245,44 +251,44 @@ class Practice_Permissionpractice_Adminhtml_PermissionpracticeController extends
     {
         if ($data = $this->getRequest()->getPost()) {
             Mage::log($data, null, 'permissionpractice_save.log');
-    
+
             $data = $this->_filterPostData($data);
             $model = Mage::getModel('practice_permissionpractice/permissionpractice');
-    
+
             if ($id = $this->getRequest()->getParam('id')) {
                 $model->load($id);
                 Mage::log("Loaded model ID: {$id}", null, 'permissionpractice_save.log');
             }
-    
+
             $model->addData($data);
             Mage::log("Model data before save:", null, 'permissionpractice_save.log');
             Mage::log($model->getData(), null, 'permissionpractice_save.log');
-    
+
             Mage::dispatchEvent('permissionpractice_form_prepare_save', array('practice_permissionpractice' => $model, 'request' => $this->getRequest()));
-    
+
             if (!$this->_validatePostData($data)) {
                 $this->_redirect('*/*/edit', array('id' => $model->getId(), '_current' => true));
                 return;
             }
-    
+
             try {
                 $model->save();
                 Mage::log("Model data after save:", null, 'permissionpractice_save.log');
                 Mage::log($model->getData(), null, 'permissionpractice_save.log');
-    
+
                 Mage::getSingleton('adminhtml/session')->addSuccess(
                     Mage::helper('practice_permissionpractice')->__('The page has been saved.')
                 );
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
-    
+
                 if ($this->getRequest()->getParam('back')) {
                     $this->_redirect('*/*/edit', array('permissionpractice_id' => $model->getId(), '_current' => true));
                     return;
                 }
-    
+
                 $this->_redirect('*/*/');
                 return;
-    
+
             } catch (Mage_Core_Exception $e) {
                 $this->_getSession()->addError($e->getMessage());
             } catch (Exception $e) {
@@ -291,14 +297,14 @@ class Practice_Permissionpractice_Adminhtml_PermissionpracticeController extends
                     Mage::helper('practice_permissionpractice')->__('An error occurred while saving the page.')
                 );
             }
-    
+
             $this->_getSession()->setFormData($data);
             $this->_redirect('*/*/edit', array('permissionpractice_id' => $this->getRequest()->getParam('permissionpractice_id')));
             return;
         }
         $this->_redirect('*/*/');
     }
-    
+
 
     protected function _validatePostData($data)
     {
