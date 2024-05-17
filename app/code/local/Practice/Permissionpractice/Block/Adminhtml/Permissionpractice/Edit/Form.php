@@ -22,15 +22,15 @@ class Practice_Permissionpractice_Block_Adminhtml_Permissionpractice_Edit_Form e
         ));
 
         if ($isEdit && $model->getPermissionpracticeId()) {
+            $fieldset->addField(
+                'permissionpractice_id',
+                'hidden',
+                array(
+                    'name' => 'permissionpractice_id',
+                )
+            );
         }
         
-        $fieldset->addField(
-            'permissionpractice_id',
-            'hidden',
-            array(
-                'name' => 'permissionpractice_id',
-            )
-        );
         $fieldset->addField('grid_name', 'text', array(
             'name'     => 'grid_name',
             'label'    => Mage::helper('practice_permissionpractice')->__('Grid Name'),

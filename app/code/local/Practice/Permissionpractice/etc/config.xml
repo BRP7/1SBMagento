@@ -1,18 +1,29 @@
-<?xml version='1.0'?>
+<?xml version="1.0"?>
 <config>
     <modules>
-        <practice_permissionpractice>
+        <Practice_Permissionpractice>
             <version>1.0.0</version>
-        </practice_permissionpractice>
+        </Practice_Permissionpractice>
     </modules>
+    <frontend>
+        <routers>
+            <practice_permissionpractice>
+                <use>standard</use>
+                <args>
+                    <module>Practice_Permissionpractice</module>
+                    <frontName>customconfig</frontName>
+                </args>
+            </practice_permissionpractice>
+        </routers>
+    </frontend>
     <global>
         <models>
             <practice_permissionpractice>
-                <class>practice_permissionpractice_Model</class>
+                <class>Practice_Permissionpractice_Model</class>
                 <resourceModel>practice_permissionpractice_resource</resourceModel>
             </practice_permissionpractice>
             <practice_permissionpractice_resource>
-                <class>practice_permissionpractice_Model_Resource</class>
+                <class>Practice_Permissionpractice_Model_Resource</class>
                 <entities>
                     <permissionpractice>
                         <table>practice_permissionpractice</table>
@@ -23,7 +34,7 @@
         <resources>
             <permissionpractice_setup>
                 <setup>
-                    <module>practice_permissionpractice</module>
+                    <module>Practice_Permissionpractice</module>
                 </setup>
                 <connection>
                     <use>core_setup</use>
@@ -32,12 +43,12 @@
         </resources>
         <blocks>
             <practice_permissionpractice>
-                <class>practice_permissionpractice_Block</class>
+                <class>Practice_Permissionpractice_Block</class>
             </practice_permissionpractice>
         </blocks>
         <helpers>
             <practice_permissionpractice>
-                <class>practice_permissionpractice_Helper</class>
+                <class>Practice_Permissionpractice_Helper</class>
             </practice_permissionpractice>
         </helpers>
     </global>
@@ -46,7 +57,7 @@
             <adminhtml>
                 <args>
                     <modules>
-                        <practice_permissionpractice before="Mage_Adminhtml">practice_permissionpractice_Adminhtml</practice_permissionpractice>
+                        <practice_permissionpractice before="Mage_Adminhtml">Practice_Permissionpractice_Adminhtml</practice_permissionpractice>
                     </modules>
                 </args>
             </adminhtml>
@@ -61,4 +72,13 @@
             </updates>
         </layout>
     </adminhtml>
+    <default>
+        <practice_permissionpractice>
+            <general>
+                <custom_message_1>Default Message 1</custom_message_1>
+                <custom_message_2>Default Message 2</custom_message_2>
+                <custom_message_3>Default Message 3</custom_message_3>
+            </general>
+        </practice_permissionpractice>
+    </default>
 </config>

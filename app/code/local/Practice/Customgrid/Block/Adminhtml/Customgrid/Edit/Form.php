@@ -22,15 +22,15 @@ class Practice_Customgrid_Block_Adminhtml_Customgrid_Edit_Form extends Mage_Admi
         ));
 
         if ($isEdit && $model->getCustomgridId()) {
+            $fieldset->addField(
+                'customgrid_id',
+                'hidden',
+                array(
+                    'name' => 'customgrid_id',
+                )
+            );
         }
         
-        $fieldset->addField(
-            'customgrid_id',
-            'hidden',
-            array(
-                'name' => 'customgrid_id',
-            )
-        );
         $fieldset->addField('grid_name', 'text', array(
             'name'     => 'grid_name',
             'label'    => Mage::helper('practice_customgrid')->__('Grid Name'),

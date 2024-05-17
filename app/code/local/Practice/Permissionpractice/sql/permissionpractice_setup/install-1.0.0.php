@@ -5,7 +5,7 @@ $installer = $this;
 $installer->startSetup();
 
 /**
- * Drop table 'practice_permissionpractice' if it exists
+ * Drop table 'practice_customgrid' if it exists
  */
 $tableName = $installer->getTable('practice_permissionpractice/permissionpractice');
 if ($installer->getConnection()->isTableExists($tableName)) {
@@ -24,7 +24,7 @@ $table = $installer->getConnection()
             'nullable' => false,
             'primary' => true,
         ],
-        'Permissionpractice Id'
+        'Customgrid Id'
     )
     ->addColumn(
         'grid_name',

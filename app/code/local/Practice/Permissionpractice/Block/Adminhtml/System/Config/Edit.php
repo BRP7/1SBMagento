@@ -1,0 +1,3 @@
+<?php
+
+class Practice_Permissionpractice_Block_Adminhtml_System_Config_Edit extends Mage_Core_Block_Absstract

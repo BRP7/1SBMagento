@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <adminhtml_permissionpractice_index>
+        <reference name="content">
+            <block type="practice_permissionpractice/adminhtml_permissionpractice" name="permissionpractice"  />
+        </reference>
+    </adminhtml_permissionpractice_index>
+    <adminhtml_permissionpractice_edit>
+        <reference name="content">
+            <block type="practice_permissionpractice/adminhtml_permissionpractice_edit" name="practice_permissionpractice_edit"/>
+        </reference>
+    </adminhtml_permissionpractice_edit>
+    <adminhtml_permissionpractice_new>
+        <update handle="adminhtml_permissionpractice_edit" />
+    </adminhtml_permissionpractice_new>
+</layout>

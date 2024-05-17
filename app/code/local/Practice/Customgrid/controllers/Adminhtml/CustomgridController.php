@@ -60,6 +60,12 @@ class Practice_Customgrid_Adminhtml_CustomgridController extends Mage_Adminhtml_
                 $aclResource = '';
                 break;
         }
+        $isAllowed = Mage::getSingleton('admin/session')->isAllowed($aclResource);
+    
+        // If the action is 'edit' and user has permission, allow 'save' action too
+        if ($action == 'edit' && $isAllowed) {
+            return true;
+        }
         return Mage::getSingleton('admin/session')->isAllowed($aclResource);
     }
 

@@ -37,16 +37,33 @@
                                         <title>Edit</title>
                                         <sort_order>3</sort_order>
                                     </edit>
+                                    <save translate="title">
+                                        <title>Save</title>
+                                        <sort_order>4</sort_order>
+                                    </save>
                                     <delete translate="title">
                                         <title>Delete</title>
-                                        <sort_order>4</sort_order>
+                                        <sort_order>5</sort_order>
                                     </delete>
                                 </children>
                             </permissionpractice>
                         </children>
                     </practice_permissionpractice>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <practice_permissionpractice translate="title" module="practice_permissionpractice">
+                                        <title>Custom Config</title>
+                                    </practice_permissionpractice>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
                 </children>
             </admin>
         </resources>
-    </acl>
+        </acl>
+
+        
 </config>

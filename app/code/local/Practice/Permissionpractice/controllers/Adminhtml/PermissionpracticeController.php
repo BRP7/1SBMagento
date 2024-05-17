@@ -9,7 +9,8 @@ class Practice_Permissionpractice_Adminhtml_PermissionpracticeController extends
     }
     public function viewAction()
     {
-        echo 123;
+        $this->_initAction();
+        $this->renderLayout();
     }
 
     
@@ -29,7 +30,9 @@ class Practice_Permissionpractice_Adminhtml_PermissionpracticeController extends
                 break;
             case 'edit':
                 $aclResource = 'practice_permissionpractice/permissionpractice/edit';
-                $isAllowed = Mage::getSingleton('admin/session')->isAllowed($aclResource);
+                break;
+            case 'save':
+                $aclResource = 'practice_permissionpractice/permissionpractice/edit';
                 break;
             case 'new':
                 $aclResource = 'practice_permissionpractice/permissionpractice/new';
@@ -41,7 +44,22 @@ class Practice_Permissionpractice_Adminhtml_PermissionpracticeController extends
         return Mage::getSingleton('admin/session')->isAllowed($aclResource);
     }
 
-
+    // protected function _isAllowed()
+    // {
+    //     $action = strtolower($this->getRequest()->getActionName());
+    //     $allowedActions = array('index', 'delete', 'edit', 'new');
+    //     if($action == 'edit'){
+    //         $allowedActions[] = 'save';
+    //     }
+        
+    //     if (in_array($action, $allowedActions) ) {
+    //         $aclResource = 'practice_permissionpractice/permissionpractice/'.$action;
+    //         return Mage::getSingleton('admin/session')->isAllowed($aclResource);
+    //     }
+        
+    //     return false;
+    // }
+    
 
     protected function _initAction()
     {
@@ -160,91 +178,111 @@ class Practice_Permissionpractice_Adminhtml_PermissionpracticeController extends
 
 
 
+    // public function saveAction()
+    // {
+    //     if ($data = $this->getRequest()->getPost()) {
+    //         // var_dump($data);
+    //         $data = $this->_filterPostData($data);
+    //         //init model and set data
+    //         $model = Mage::getModel('practice_permissionpractice/permissionpractice');
+
+    //         if ($id = $this->getRequest()->getParam('id')) {
+    //             // echo $id;
+    //             $model->load($id);
+    //         }
+
+           
+
+    //         $model->setData($data);
+
+    //         Mage::dispatchEvent('permissionpractice_form_prepare_save', array('practice_permissionpractice' => $model, 'request' => $this->getRequest()));
+
+    //         //validating
+    //         if (!$this->_validatePostData($data)) {
+    //             $this->_redirect('*/*/edit', array('id' => $model->getId(), '_current' => true));
+    //             return;
+    //         }
+
+    //         // try to save it
+    //         try {
+    //             echo 12313;
+    //             // save the data
+    //             $model->save();
+
+    //             // display success message
+    //             Mage::getSingleton('adminhtml/session')->addSuccess(
+    //                 Mage::helper('practice_permissionpractice')->__('The page has been saved.')
+    //             );
+    //             // clear previously saved data from session
+    //             Mage::getSingleton('adminhtml/session')->setFormData(false);
+    //             // check if 'Save and Continue'
+    //             if ($this->getRequest()->getParam('back')) {
+    //                 $this->_redirect('*/*/edit', array('permissionpractice_id' => $model->getId(), '_current' => true));
+    //                 return;
+    //             }
+    //             // go to grid
+    //             $this->_redirect('*/*/');
+    //             return;
+
+    //         } catch (Mage_Core_Exception $e) {
+    //             $this->_getSession()->addError($e->getMessage());
+    //         } catch (Exception $e) {
+    //             $this->_getSession()->addException(
+    //                 $e,
+    //                 Mage::helper('practice_permissionpractice')->__('An error occurred while saving the page.')
+    //             );
+    //         }
+
+    //         $this->_getSession()->setFormData($data);
+    //         $this->_redirect('*/*/edit', array('permissionpractice_id' => $this->getRequest()->getParam('permissionpractice_id')));
+    //         return;
+    //     }
+    //     $this->_redirect('*/*/');
+    // }
+
+
     public function saveAction()
     {
         if ($data = $this->getRequest()->getPost()) {
-            // var_dump($data);
+            Mage::log($data, null, 'permissionpractice_save.log');
+    
             $data = $this->_filterPostData($data);
-            //init model and set data
             $model = Mage::getModel('practice_permissionpractice/permissionpractice');
-
+    
             if ($id = $this->getRequest()->getParam('id')) {
-                // echo $id;
                 $model->load($id);
+                Mage::log("Loaded model ID: {$id}", null, 'permissionpractice_save.log');
             }
-
-            // Image upload handling
-            // try {
-            //     if (!empty($_FILES['banner_image']['name'])) {
-            //         $uploader = new Varien_File_Uploader('banner_image');
-            //         $uploader->setAllowedExtensions(array('jpg', 'jpeg', 'gif', 'png'));
-            //         $uploader->setAllowRenameFiles(true);
-            //         $uploader->setFilesDispersion(false);
-            //         $path = Mage::getBaseDir('media') . DS . 'banner' . DS;
-            //         $uploader->save($path, $_FILES['banner_image']['name']);
-
-            //         // Delete old image if exists
-            //         $oldImage = $model->getData('banner_image');
-            //         if (!empty($oldImage)) {
-            //             $oldImagePath = Mage::getBaseDir('media') . DS . $oldImage;
-            //             if (file_exists($oldImagePath)) {
-            //                 unlink($oldImagePath);
-            //             }
-            //         }
-
-            //         $data['banner_image'] = $uploader->getUploadedFileName();
-            //         echo $oldImage;
-            //     } elseif (isset($data['banner_image']['delete']) && $data['banner_image']['delete'] == 1) {
-            //         // Delete the old image
-            //         $oldImage = $model->getData('banner_image');
-            //         if (!empty($oldImage)) {
-            //             $oldImagePath = Mage::getBaseDir('media') . DS . $oldImage;
-            //             if (file_exists($oldImagePath)) {
-            //                 unlink($oldImagePath);
-            //             }
-            //         }
-
-            //         $data['banner_image'] = ''; // Empty the image field if delete checkbox is checked
-            //     } else {
-            //         unset($data['banner_image']); // Unset the image data if no new image uploaded and not deleting existing one
-            //     }
-            // } catch (Exception $e) {
-            //     Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-            //     $this->_redirect('*/*/edit', array('banner_id' => $this->getRequest()->getParam('banner_id')));
-            //     return;
-            // }
-
-            $model->setData($data);
-
+    
+            $model->addData($data);
+            Mage::log("Model data before save:", null, 'permissionpractice_save.log');
+            Mage::log($model->getData(), null, 'permissionpractice_save.log');
+    
             Mage::dispatchEvent('permissionpractice_form_prepare_save', array('practice_permissionpractice' => $model, 'request' => $this->getRequest()));
-
-            //validating
+    
             if (!$this->_validatePostData($data)) {
                 $this->_redirect('*/*/edit', array('id' => $model->getId(), '_current' => true));
                 return;
             }
-
-            // try to save it
+    
             try {
-                echo 12313;
-                // save the data
                 $model->save();
-
-                // display success message
+                Mage::log("Model data after save:", null, 'permissionpractice_save.log');
+                Mage::log($model->getData(), null, 'permissionpractice_save.log');
+    
                 Mage::getSingleton('adminhtml/session')->addSuccess(
                     Mage::helper('practice_permissionpractice')->__('The page has been saved.')
                 );
-                // clear previously saved data from session
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
-                // check if 'Save and Continue'
+    
                 if ($this->getRequest()->getParam('back')) {
                     $this->_redirect('*/*/edit', array('permissionpractice_id' => $model->getId(), '_current' => true));
                     return;
                 }
-                // go to grid
+    
                 $this->_redirect('*/*/');
                 return;
-
+    
             } catch (Mage_Core_Exception $e) {
                 $this->_getSession()->addError($e->getMessage());
             } catch (Exception $e) {
@@ -253,13 +291,14 @@ class Practice_Permissionpractice_Adminhtml_PermissionpracticeController extends
                     Mage::helper('practice_permissionpractice')->__('An error occurred while saving the page.')
                 );
             }
-
+    
             $this->_getSession()->setFormData($data);
             $this->_redirect('*/*/edit', array('permissionpractice_id' => $this->getRequest()->getParam('permissionpractice_id')));
             return;
         }
         $this->_redirect('*/*/');
     }
+    
 
     protected function _validatePostData($data)
     {

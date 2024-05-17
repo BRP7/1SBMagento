@@ -1,0 +1,195 @@
+2024-05-16T14:58:10+00:00 DEBUG (7): Array
+(
+    [form_key] => fkM7TBHcSwzpyXLH
+    [permissionpractice_id] => 
+    [grid_name] => Practice Permission Grid
+    [show_on] => Active
+    [status] => 0
+)
+
+2024-05-16T14:58:10+00:00 DEBUG (7): Array
+(
+)
+
+2024-05-16T14:58:10+00:00 DEBUG (7): Array
+(
+    [form_key] => fkM7TBHcSwzpyXLH
+    [permissionpractice_id] => 
+    [grid_name] => Practice Permission Grid
+    [show_on] => Active
+    [status] => 0
+)
+
+2024-05-16T15:04:10+00:00 DEBUG (7): Array
+(
+    [form_key] => fkM7TBHcSwzpyXLH
+    [permissionpractice_id] => 
+    [grid_name] => Custom Grid
+    [show_on] => Active
+    [status] => 1
+)
+
+2024-05-16T15:04:10+00:00 DEBUG (7): Model data before save:
+2024-05-16T15:04:10+00:00 DEBUG (7): Array
+(
+    [form_key] => fkM7TBHcSwzpyXLH
+    [permissionpractice_id] => 
+    [grid_name] => Custom Grid
+    [show_on] => Active
+    [status] => 1
+)
+
+2024-05-16T15:04:10+00:00 DEBUG (7): Model data after save:
+2024-05-16T15:04:10+00:00 DEBUG (7): Array
+(
+    [form_key] => fkM7TBHcSwzpyXLH
+    [permissionpractice_id] => 
+    [grid_name] => Custom Grid
+    [show_on] => Active
+    [status] => 1
+)
+
+2024-05-16T15:29:17+00:00 DEBUG (7): Array
+(
+    [form_key] => fkM7TBHcSwzpyXLH
+    [grid_name] => Custom Paper Grid
+    [show_on] => Active
+    [status] => 0
+)
+
+2024-05-16T15:29:17+00:00 DEBUG (7): Model data before save:
+2024-05-16T15:29:17+00:00 DEBUG (7): Array
+(
+    [form_key] => fkM7TBHcSwzpyXLH
+    [grid_name] => Custom Paper Grid
+    [show_on] => Active
+    [status] => 0
+)
+
+2024-05-16T15:29:17+00:00 DEBUG (7): Model data after save:
+2024-05-16T15:29:17+00:00 DEBUG (7): Array
+(
+    [form_key] => fkM7TBHcSwzpyXLH
+    [grid_name] => Custom Paper Grid
+    [show_on] => Active
+    [status] => 0
+    [permissionpractice_id] => 1
+)
+
+2024-05-16T16:05:34+00:00 DEBUG (7): Array
+(
+    [form_key] => fkM7TBHcSwzpyXLH
+    [permissionpractice_id] => 1
+    [grid_name] => Custom Paper Grid
+    [show_on] => Active
+    [status] => 1
+)
+
+2024-05-16T16:05:34+00:00 DEBUG (7): Loaded model ID: 1
+2024-05-16T16:05:34+00:00 DEBUG (7): Model data before save:
+2024-05-16T16:05:34+00:00 DEBUG (7): Array
+(
+    [permissionpractice_id] => 1
+    [grid_name] => Custom Paper Grid
+    [show_on] => Active
+    [status] => 1
+    [form_key] => fkM7TBHcSwzpyXLH
+)
+
+2024-05-16T16:05:34+00:00 DEBUG (7): Model data after save:
+2024-05-16T16:05:34+00:00 DEBUG (7): Array
+(
+    [permissionpractice_id] => 1
+    [grid_name] => Custom Paper Grid
+    [show_on] => Active
+    [status] => 1
+    [form_key] => fkM7TBHcSwzpyXLH
+)
+
+2024-05-16T16:08:03+00:00 DEBUG (7): Array
+(
+    [form_key] => fkM7TBHcSwzpyXLH
+    [grid_name] => Custom Paper Grid
+    [show_on] => Active
+    [status] => 1
+)
+
+2024-05-16T16:08:03+00:00 DEBUG (7): Model data before save:
+2024-05-16T16:08:03+00:00 DEBUG (7): Array
+(
+    [form_key] => fkM7TBHcSwzpyXLH
+    [grid_name] => Custom Paper Grid
+    [show_on] => Active
+    [status] => 1
+)
+
+2024-05-16T16:08:03+00:00 DEBUG (7): Model data after save:
+2024-05-16T16:08:03+00:00 DEBUG (7): Array
+(
+    [form_key] => fkM7TBHcSwzpyXLH
+    [grid_name] => Custom Paper Grid
+    [show_on] => Active
+    [status] => 1
+    [permissionpractice_id] => 2
+)
+
+2024-05-16T16:36:32+00:00 DEBUG (7): Array
+(
+    [form_key] => wXSDoRbr0STR8Il6
+    [permissionpractice_id] => 2
+    [grid_name] => Custom Paper Grid
+    [show_on] => Active
+    [status] => 0
+)
+
+2024-05-16T16:36:32+00:00 DEBUG (7): Loaded model ID: 2
+2024-05-16T16:36:32+00:00 DEBUG (7): Model data before save:
+2024-05-16T16:36:32+00:00 DEBUG (7): Array
+(
+    [permissionpractice_id] => 2
+    [grid_name] => Custom Paper Grid
+    [show_on] => Active
+    [status] => 0
+    [form_key] => wXSDoRbr0STR8Il6
+)
+
+2024-05-16T16:36:32+00:00 DEBUG (7): Model data after save:
+2024-05-16T16:36:32+00:00 DEBUG (7): Array
+(
+    [permissionpractice_id] => 2
+    [grid_name] => Custom Paper Grid
+    [show_on] => Active
+    [status] => 0
+    [form_key] => wXSDoRbr0STR8Il6
+)
+
+2024-05-16T16:36:52+00:00 DEBUG (7): Array
+(
+    [form_key] => wXSDoRbr0STR8Il6
+    [permissionpractice_id] => 2
+    [grid_name] => Custom Paper Grid
+    [show_on] => On
+    [status] => 0
+)
+
+2024-05-16T16:36:52+00:00 DEBUG (7): Loaded model ID: 2
+2024-05-16T16:36:52+00:00 DEBUG (7): Model data before save:
+2024-05-16T16:36:52+00:00 DEBUG (7): Array
+(
+    [permissionpractice_id] => 2
+    [grid_name] => Custom Paper Grid
+    [show_on] => On
+    [status] => 0
+    [form_key] => wXSDoRbr0STR8Il6
+)
+
+2024-05-16T16:36:52+00:00 DEBUG (7): Model data after save:
+2024-05-16T16:36:52+00:00 DEBUG (7): Array
+(
+    [permissionpractice_id] => 2
+    [grid_name] => Custom Paper Grid
+    [show_on] => On
+    [status] => 0
+    [form_key] => wXSDoRbr0STR8Il6
+)
+

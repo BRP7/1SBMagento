@@ -3362,3 +3362,103 @@ Stack trace:
 #37 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
 #38 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
 #39 {main}
+2024-05-16T13:54:59+00:00 ERR (3): 
+Mage_Core_Exception: Invalid block type: Magestore_Bannerslider_Block_Bannerslider_Custom in C:\xampp\htdocs\1SBMagento\app\Mage.php:598
+Stack trace:
+#0 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(495): Mage::throwException('Invalid block t...')
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('Magestore_Banne...', Array)
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(472): Mage_Core_Model_Layout->createBlock('bannerslider/ba...', 'bannerslider')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(239): Mage_Core_Model_Layout->addBlock('bannerslider/ba...', 'bannerslider')
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(205): Mage_Core_Model_Layout->_generateBlock(Object(Mage_Core_Model_Layout_Element), Object(Mage_Core_Model_Layout_Element))
+#5 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(210): Mage_Core_Model_Layout->generateBlocks(Object(Mage_Core_Model_Layout_Element))
+#6 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(343): Mage_Core_Model_Layout->generateBlocks()
+#7 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Cms\Helper\Page.php(114): Mage_Core_Controller_Varien_Action->generateLayoutBlocks()
+#8 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Cms\Helper\Page.php(52): Mage_Cms_Helper_Page->_renderPage(Object(Mage_Cms_IndexController), 'home')
+#9 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Cms\controllers\IndexController.php(45): Mage_Cms_Helper_Page->renderPage(Object(Mage_Cms_IndexController), 'home')
+#10 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Mage_Cms_IndexController->indexAction()
+#11 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#12 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#13 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#14 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#15 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#16 {main}
+2024-05-16T14:06:29+00:00 DEBUG (7): Exception message: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'magento.practice_permissionpractice' doesn't exist, query was: DESCRIBE `practice_permissionpractice`
+Trace: #0 C:\xampp\htdocs\1SBMagento\lib\Varien\Db\Statement\Pdo\Mysql.php(110): Zend_Db_Statement_Pdo->_execute(Array)
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Zend\Db\Statement.php(291): Varien_Db_Statement_Pdo_Mysql->_execute(Array)
+#2 C:\xampp\htdocs\1SBMagento\lib\Zend\Db\Adapter\Abstract.php(481): Zend_Db_Statement->execute(Array)
+#3 C:\xampp\htdocs\1SBMagento\lib\Zend\Db\Adapter\Pdo\Abstract.php(238): Zend_Db_Adapter_Abstract->query('DESCRIBE `pract...', Array)
+#4 C:\xampp\htdocs\1SBMagento\lib\Varien\Db\Adapter\Pdo\Mysql.php(504): Zend_Db_Adapter_Pdo_Abstract->query('DESCRIBE `pract...', Array)
+#5 C:\xampp\htdocs\1SBMagento\lib\Zend\Db\Adapter\Pdo\Mysql.php(171): Varien_Db_Adapter_Pdo_Mysql->query('DESCRIBE `pract...')
+#6 C:\xampp\htdocs\1SBMagento\lib\Varien\Db\Adapter\Pdo\Mysql.php(1694): Zend_Db_Adapter_Pdo_Mysql->describeTable('practice_permis...', NULL)
+#7 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Resource\Abstract.php(212): Varien_Db_Adapter_Pdo_Mysql->describeTable('practice_permis...')
+#8 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Resource\Db\Abstract.php(586): Mage_Core_Model_Resource_Abstract->_prepareDataForTable(Object(Practice_Permissionpractice_Model_Permissionpractice), 'practice_permis...')
+#9 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Resource\Db\Abstract.php(431): Mage_Core_Model_Resource_Db_Abstract->_prepareDataForSave(Object(Practice_Permissionpractice_Model_Permissionpractice))
+#10 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Abstract.php(318): Mage_Core_Model_Resource_Db_Abstract->save(Object(Practice_Permissionpractice_Model_Permissionpractice))
+#11 C:\xampp\htdocs\1SBMagento\app\code\local\Practice\Permissionpractice\controllers\Adminhtml\PermissionpracticeController.php(232): Mage_Core_Model_Abstract->save()
+#12 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Practice_Permissionpractice_Adminhtml_PermissionpracticeController->saveAction()
+#13 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('save')
+#14 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#15 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#16 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#17 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#18 {main}
+2024-05-16T20:10:05+00:00 ERR (3): 
+Exception: Warning: simplexml_load_string(): Entity: line 50: parser error : Start tag expected, '&lt;' not found  in C:\xampp\htdocs\1SBMagento\lib\Varien\Simplexml\Config.php on line 510 in C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\functions.php:232
+Stack trace:
+#0 [internal function]: mageCoreErrorHandler(2, 'simplexml_load_...', 'C:\\xampp\\htdocs...', 510, Array)
+#1 C:\xampp\htdocs\1SBMagento\lib\Varien\Simplexml\Config.php(510): simplexml_load_string('\<!-- \<config>\r\n...', 'Mage_Core_Model...')
+#2 C:\xampp\htdocs\1SBMagento\lib\Varien\Simplexml\Config.php(498): Varien_Simplexml_Config->loadString('\<!-- \<config>\r\n...', 'Mage_Core_Model...')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Config.php(961): Varien_Simplexml_Config->loadFile('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Model\Config.php(90): Mage_Core_Model_Config->loadModulesConfiguration(Array)
+#5 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Model\Config.php(63): Mage_Adminhtml_Model_Config->_initSectionsAndTabs()
+#6 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Block\System\Config\Edit.php(46): Mage_Adminhtml_Model_Config->getSections()
+#7 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(491): Mage_Adminhtml_Block_System_Config_Edit->__construct(Array)
+#8 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('Mage_Adminhtml_...', Array)
+#9 C:\xampp\htdocs\1SBMagento\app\code\local\Practice\Permissionpractice\controllers\Adminhtml\System\ConfigController.php(8): Mage_Core_Model_Layout->createBlock('adminhtml/syste...')
+#10 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Practice_Permissionpractice_Adminhtml_System_ConfigController->editAction()
+#11 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('edit')
+#12 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#13 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#14 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#15 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#16 {main}
+2024-05-16T20:10:39+00:00 ERR (3): 
+Exception: Warning: simplexml_load_string(): Entity: line 50: parser error : Start tag expected, '&lt;' not found  in C:\xampp\htdocs\1SBMagento\lib\Varien\Simplexml\Config.php on line 510 in C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\functions.php:232
+Stack trace:
+#0 [internal function]: mageCoreErrorHandler(2, 'simplexml_load_...', 'C:\\xampp\\htdocs...', 510, Array)
+#1 C:\xampp\htdocs\1SBMagento\lib\Varien\Simplexml\Config.php(510): simplexml_load_string('\<!-- \<config>\r\n...', 'Mage_Core_Model...')
+#2 C:\xampp\htdocs\1SBMagento\lib\Varien\Simplexml\Config.php(498): Varien_Simplexml_Config->loadString('\<!-- \<config>\r\n...', 'Mage_Core_Model...')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Config.php(961): Varien_Simplexml_Config->loadFile('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Model\Config.php(90): Mage_Core_Model_Config->loadModulesConfiguration(Array)
+#5 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Model\Config.php(63): Mage_Adminhtml_Model_Config->_initSectionsAndTabs()
+#6 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Block\System\Config\Edit.php(46): Mage_Adminhtml_Model_Config->getSections()
+#7 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(491): Mage_Adminhtml_Block_System_Config_Edit->__construct(Array)
+#8 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('Mage_Adminhtml_...', Array)
+#9 C:\xampp\htdocs\1SBMagento\app\code\local\Practice\Permissionpractice\controllers\Adminhtml\System\ConfigController.php(8): Mage_Core_Model_Layout->createBlock('adminhtml/syste...')
+#10 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Practice_Permissionpractice_Adminhtml_System_ConfigController->editAction()
+#11 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('edit')
+#12 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#13 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#14 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#15 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#16 {main}
+2024-05-17T04:17:22+00:00 ERR (3): 
+Mage_Core_Exception: Invalid block type: Magestore_Bannerslider_Block_Bannerslider_Custom in C:\xampp\htdocs\1SBMagento\app\Mage.php:598
+Stack trace:
+#0 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(495): Mage::throwException('Invalid block t...')
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('Magestore_Banne...', Array)
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(472): Mage_Core_Model_Layout->createBlock('bannerslider/ba...', 'bannerslider')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(239): Mage_Core_Model_Layout->addBlock('bannerslider/ba...', 'bannerslider')
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(205): Mage_Core_Model_Layout->_generateBlock(Object(Mage_Core_Model_Layout_Element), Object(Mage_Core_Model_Layout_Element))
+#5 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(210): Mage_Core_Model_Layout->generateBlocks(Object(Mage_Core_Model_Layout_Element))
+#6 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(343): Mage_Core_Model_Layout->generateBlocks()
+#7 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Cms\Helper\Page.php(114): Mage_Core_Controller_Varien_Action->generateLayoutBlocks()
+#8 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Cms\Helper\Page.php(52): Mage_Cms_Helper_Page->_renderPage(Object(Mage_Cms_IndexController), 'home')
+#9 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Cms\controllers\IndexController.php(45): Mage_Cms_Helper_Page->renderPage(Object(Mage_Cms_IndexController), 'home')
+#10 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Mage_Cms_IndexController->indexAction()
+#11 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#12 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#13 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#14 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#15 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#16 {main}
