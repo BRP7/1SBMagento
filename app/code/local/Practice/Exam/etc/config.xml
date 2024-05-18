@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Practice_Exam>
+            <version>1.0.1</version>
+        </Practice_Exam>
+    </modules>
+    <frontend>
+        <routers>
+            <practice_exam>
+                <use>standard</use>
+                <args>
+                    <module>Practice_Exam</module>
+                    <frontName>practice_exam</frontName>
+                </args>
+            </practice_exam>
+        </routers>
+    </frontend>
+    <global>
+        <!-- <events>
+            <admin_session_user_login_success>
+                <observers>
+                    <exam_observer>
+                        <type>singleton</type>
+                        <class>practice_exam/observer</class>
+                        <method>sendNotificationEmail</method>
+                    </exam_observer>
+                </observers>
+            </admin_session_user_login_success>
+        </events> -->
+            <resources>
+                <practice_exam_setup>
+                    <setup>
+                        <module>Practice_Exam</module>
+                        <class>Mage_Eav_Model_Entity_Setup</class>
+                    </setup>
+                </practice_exam_setup>
+            </resources>
+            <events>
+                <custom_event>
+                    <observers>
+                        <custom_observer>
+                            <type>singleton</type>
+                            <class>Practice_Exam_Model_Observer</class>
+                            <method>customAction</method>
+                        </custom_observer>
+                    </observers>
+                </custom_event>
+                <catalog_product_save_after>
+                    <observers>
+                        <log_changes>
+                            <type>singleton</type>
+                            <class>Practice_Exam_Model_Observer</class>
+                            <method>logProductChanges</method>
+                        </log_changes>
+                    </observers>
+                </catalog_product_save_after>
+                <controller_action_postdispatch>
+                    <observers>
+                        <practice_exam_observer>
+                            <type>singleton</type>
+                            <class>Practice_Exam_Model_Observer</class>
+                            <method>displayCustomMessage</method>
+                        </practice_exam_observer>
+                    </observers>
+                </controller_action_postdispatch>
+                <adminhtml_controller_action_postdispatch_catalog_category_save>
+                    <observers>
+                        <practice_exam_create_special_offers_category>
+                            <class>practice_exam/observer</class>
+                            <method>createSpecialOffersCategory</method>
+                        </practice_exam_create_special_offers_category>
+                    </observers>
+                </adminhtml_controller_action_postdispatch_catalog_category_save>
+            </events>
+        
+        <models>
+            <practice_exam>
+                <class>Practice_Exam_Model</class>
+                <resourceModel>practice_exam_resource</resourceModel>
+            </practice_exam>
+            <practice_exam_resource>
+                <class>Practice_Exam_Model_Resource</class>
+                <entities>
+                    <exam>
+                        <table>practice_exam</table>
+                    </exam>
+                </entities>
+            </practice_exam_resource>
+        </models>
+        <resources>
+            <exam_setup>
+                <setup>
+                    <module>Practice_Exam</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </exam_setup>
+        </resources>
+        <blocks>
+            <practice_exam>
+                <class>Practice_Exam_Block</class>
+            </practice_exam>
+        </blocks>
+        <helpers>
+            <practice_exam>
+                <class>Practice_Exam_Helper</class>
+            </practice_exam>
+        </helpers>
+        <crontab>
+            <jobs>
+                <update_product_stock>
+                    <schedule><cron_expr>0 */6 * * *</cron_expr></schedule>
+                    <run><model>practice_exam/observer::updateProductStockLevels</model></run>
+                </update_product_stock>
+            </jobs>
+        </crontab>
+    </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <practice_exam before="Mage_Adminhtml">Practice_Exam_Adminhtml</practice_exam>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <!-- <adminhtml> -->
+        <!-- Uncomment if you have a layout file -->
+        <!-- <layout>
+            <updates>
+                <practice_exam>
+                    <file>exam.xml</file>
+                </practice_exam>
+            </updates>
+        </layout> -->
+    <!-- </adminhtml> -->
+        <frontend>
+        <layout>
+            <updates>
+                <practice_exam>
+                    <file>practice_exam.xml</file>
+                </practice_exam>
+            </updates>
+        </layout> 
+    </frontend>
+   
+    <default>
+        <practice_exam>
+            <general>
+                <custom_message_1>Default Message 1</custom_message_1>
+                <custom_message_2>Default Message 2</custom_message_2>
+                <custom_message_3>Default Message 3</custom_message_3>
+            </general>
+        </practice_exam>
+    </default>
+</config>

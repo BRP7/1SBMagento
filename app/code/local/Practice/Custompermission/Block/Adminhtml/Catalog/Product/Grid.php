@@ -161,7 +161,7 @@ class Practice_Custompermission_Block_Adminhtml_Catalog_Product_Grid extends Mag
 
     public function getRowUrl($row)
     {
-        if (Mage::getSingleton('admin/session')->isAllowed('catalog_product/edit')) {
+        if (Mage::getSingleton('admin/session')->isAllowed('catalog/products/action/edit')) {
             return $this->getUrl(
                 '*/*/edit',
                 array(

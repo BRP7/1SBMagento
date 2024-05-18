@@ -22,7 +22,9 @@
             <adminhtml>
                 <rewrite>
                     <catalog_product_grid>Practice_Custompermission_Block_Adminhtml_Catalog_Product_Grid</catalog_product_grid>
-                    <!-- <catalog_category_grid>Practice_Custompermission_Block_Adminhtml_Catalog_Category_Grid</catalog_category_grid> -->
+                    <catalog_product_edit>Practice_Custompermission_Block_Adminhtml_Catalog_Product_Edit</catalog_product_edit>
+                    <catalog_product>Practice_Custompermission_Block_Adminhtml_Catalog_Product</catalog_product>
+                
                 </rewrite>
             </adminhtml>
         </blocks>

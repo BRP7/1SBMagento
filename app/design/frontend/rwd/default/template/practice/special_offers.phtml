@@ -1,0 +1,42 @@
+<h1>HELLO</h1>
+<?php
+// Retrieve special offers data passed from the controller
+$specialOffers = $this->getData('special_offers');
+
+// Debug output to verify the structure of the special offers data
+// var_dump($specialOffers->getData());
+
+// Check if special offers exist and are countable
+if ($specialOffers && count($specialOffers)) {
+    foreach ($specialOffers as $offer) {
+        echo '<div>';
+        echo '<h2>' . $this->escapeHtml($offer->getName()) . '</h2>';
+        echo '<p>Price: ' . Mage::helper('core')->currency($offer->getSpecialPrice()) . '</p>';
+        // Add other product attributes as needed
+        echo '<p>Description: ' . $this->escapeHtml($offer->getDescription()) . '</p>';
+        echo '</div>';
+    }
+} else {
+    echo '<p>No special offers available.</p>';
+}
+?>
+
+<?php
+// Retrieve special offers data passed from the controller
+$specialOffers = $this->getData('special_offers');
+
+// Check if special offers exist
+if (!empty($specialOffers)) {
+    echo '<ul>';
+    foreach ($specialOffers as $offer) {
+        echo '<li>';
+        echo '<strong>Title:</strong> ' . $this->escapeHtml($offer->getName()) . '<br />';
+        echo '<strong>Description:</strong> ' . $this->escapeHtml($offer->getDescription());
+        // Add more fields as needed
+        echo '</li>';
+    }
+    echo '</ul>';
+} else {
+    echo '<p>No special offers available.</p>';
+}
+?>

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout>
+    <exam_index_index>
+    <reference name="content">
+        <block type="practice_exam/specialOffers" name="special.offers" template="practice/exam/special_offers.phtml"/>
+    </reference>
+</exam_index_index>
+</layout>

@@ -1,0 +1,79 @@
+<config>
+    <menu>
+        <practice_exam translate="title" module="practice_exam">
+            <title>Promotions xxxxxxxx</title>
+            <sort_order>1</sort_order>
+            <children>
+                <exam translate="title" module="practice_exam">
+                    <title>Promotions xxxxxxxxx</title>
+                    <action>adminhtml/exam/index</action>
+                    <sort_order>10</sort_order>
+                    <resource>practice_exam/exam</resource>
+                </exam>
+            </children>
+        </practice_exam>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <practice_exam translate="title" module="practice_exam">
+                        <title>Custom Practice</title>
+                        <sort_order>100</sort_order>
+                        <children>
+                            <exam translate="title">
+                                <title>Manage exam</title>
+                                <sort_order>10</sort_order>
+                                <children>
+                                    <index translate="title">
+                                        <title>Show</title>
+                                        <sort_order>1</sort_order>
+                                    </index>
+                                    <new translate="title">
+                                        <title>Add New</title>
+                                        <sort_order>2</sort_order>
+                                    </new>
+                                    <edit translate="title">
+                                        <title>Edit</title>
+                                        <sort_order>3</sort_order>
+                                    </edit>
+                                    <save translate="title">
+                                        <title>Save</title>
+                                        <sort_order>4</sort_order>
+                                    </save>
+                                    <delete translate="title">
+                                        <title>Delete</title>
+                                        <sort_order>5</sort_order>
+                                    </delete>
+                                </children>
+                            </exam>
+                        </children>
+                    </practice_exam>
+                    <!-- <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <practice_exam translate="title" module="practice_exam">
+                                        <title>Exam Practice</title>
+                                    </practice_exam>
+                                </children>
+                            </config>
+                        </children>
+                    </system> -->
+
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <practice_exam_settings translate="title" module="practice_exam">
+                                        <title>Practice Settings</title>
+                                    </practice_exam_settings>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>
