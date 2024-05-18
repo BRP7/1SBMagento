@@ -16,6 +16,11 @@
                 <class>Practice_Jscustomgrid_Model</class>
             </practice_jscustomgrid>
         </models>
+        <blocks>
+            <practice_jscustomgrid>
+                <class>Practice_Jscustomgrid_Block</class>
+            </practice_jscustomgrid>
+        </blocks>
     </global>
     <admin>
         <routers>
