@@ -66,6 +66,7 @@ class Practice_Exam_Model_Observer
 public function customAction($observer)
 {
     $product = $observer->getEvent()->getProduct();
+    print_r($product);
     // Perform custom action here with $product
 }
 

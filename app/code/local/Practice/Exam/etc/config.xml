@@ -128,16 +128,16 @@
             </adminhtml>
         </routers>
     </admin>
-    <!-- <adminhtml> -->
+    <adminhtml>
         <!-- Uncomment if you have a layout file -->
-        <!-- <layout>
+        <layout>
             <updates>
                 <practice_exam>
                     <file>exam.xml</file>
                 </practice_exam>
             </updates>
-        </layout> -->
-    <!-- </adminhtml> -->
+        </layout>
+    </adminhtml>
         <frontend>
         <layout>
             <updates>
