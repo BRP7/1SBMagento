@@ -28,52 +28,52 @@
                 </observers>
             </admin_session_user_login_success>
         </events> -->
-            <resources>
-                <practice_exam_setup>
-                    <setup>
-                        <module>Practice_Exam</module>
-                        <class>Mage_Eav_Model_Entity_Setup</class>
-                    </setup>
-                </practice_exam_setup>
-            </resources>
-            <events>
-                <custom_event>
-                    <observers>
-                        <custom_observer>
-                            <type>singleton</type>
-                            <class>Practice_Exam_Model_Observer</class>
-                            <method>customAction</method>
-                        </custom_observer>
-                    </observers>
-                </custom_event>
-                <catalog_product_save_after>
-                    <observers>
-                        <log_changes>
-                            <type>singleton</type>
-                            <class>Practice_Exam_Model_Observer</class>
-                            <method>logProductChanges</method>
-                        </log_changes>
-                    </observers>
-                </catalog_product_save_after>
-                <controller_action_postdispatch>
-                    <observers>
-                        <practice_exam_observer>
-                            <type>singleton</type>
-                            <class>Practice_Exam_Model_Observer</class>
-                            <method>displayCustomMessage</method>
-                        </practice_exam_observer>
-                    </observers>
-                </controller_action_postdispatch>
-                <adminhtml_controller_action_postdispatch_catalog_category_save>
-                    <observers>
-                        <practice_exam_create_special_offers_category>
-                            <class>practice_exam/observer</class>
-                            <method>createSpecialOffersCategory</method>
-                        </practice_exam_create_special_offers_category>
-                    </observers>
-                </adminhtml_controller_action_postdispatch_catalog_category_save>
-            </events>
-        
+        <resources>
+            <practice_exam_setup>
+                <setup>
+                    <module>Practice_Exam</module>
+                    <class>Mage_Eav_Model_Entity_Setup</class>
+                </setup>
+            </practice_exam_setup>
+        </resources>
+        <events>
+            <custom_event>
+                <observers>
+                    <custom_observer>
+                        <type>singleton</type>
+                        <class>Practice_Exam_Model_Observer</class>
+                        <method>customAction</method>
+                    </custom_observer>
+                </observers>
+            </custom_event>
+            <catalog_product_save_after>
+                <observers>
+                    <log_changes>
+                        <type>singleton</type>
+                        <class>Practice_Exam_Model_Observer</class>
+                        <method>logProductChanges</method>
+                    </log_changes>
+                </observers>
+            </catalog_product_save_after>
+            <controller_action_postdispatch>
+                <observers>
+                    <practice_exam_observer>
+                        <type>singleton</type>
+                        <class>Practice_Exam_Model_Observer</class>
+                        <method>displayCustomMessage</method>
+                    </practice_exam_observer>
+                </observers>
+            </controller_action_postdispatch>
+            <adminhtml_controller_action_postdispatch_catalog_category_save>
+                <observers>
+                    <practice_exam_create_special_offers_category>
+                        <class>practice_exam/observer</class>
+                        <method>createSpecialOffersCategory</method>
+                    </practice_exam_create_special_offers_category>
+                </observers>
+            </adminhtml_controller_action_postdispatch_catalog_category_save>
+        </events>
+
         <models>
             <practice_exam>
                 <class>Practice_Exam_Model</class>
@@ -111,8 +111,12 @@
         <crontab>
             <jobs>
                 <update_product_stock>
-                    <schedule><cron_expr>0 */6 * * *</cron_expr></schedule>
-                    <run><model>practice_exam/observer::updateProductStockLevels</model></run>
+                    <schedule>
+                        <cron_expr>0 */6 * * *</cron_expr>
+                    </schedule>
+                    <run>
+                        <model>practice_exam/observer::updateProductStockLevels</model>
+                    </run>
                 </update_product_stock>
             </jobs>
         </crontab>
@@ -138,16 +142,16 @@
             </updates>
         </layout>
     </adminhtml>
-        <frontend>
+    <frontend>
         <layout>
             <updates>
                 <practice_exam>
                     <file>practice_exam.xml</file>
                 </practice_exam>
             </updates>
-        </layout> 
+        </layout>
     </frontend>
-   
+
     <default>
         <practice_exam>
             <general>

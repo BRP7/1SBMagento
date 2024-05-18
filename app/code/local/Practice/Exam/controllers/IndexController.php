@@ -75,20 +75,17 @@ class Practice_Exam_IndexController extends Mage_Core_Controller_Front_Action
     // }
 
 
-    public function saveAction()
+    public function indexAction()
     {
-        // Logic to save product data
-        $productId = $this->getRequest()->getParam('id');
-        $product = Mage::getModel('catalog/product')->load($productId);
-        $product->setName($this->getRequest()->getParam('name'));
-        // Set other product attributes as needed
-        $product->save();
-
-        // Dispatch custom event
-        Mage::dispatchEvent('custom_event', array('product' => $product));
-
-        // Redirect or return response
-        $this->_redirect('*/*/index');
+        $this->loadLayout();
+        $block = $this->getLayout()->getBlock('special.offers');
+        if ($block) {
+            // Get special offers using block method
+            $specialOffers = $block->getSpecialOffersProducts();
+            $block->setData('special_offers', $specialOffers);
+        }
+        $this->renderLayout();
     }
+
 
 }
