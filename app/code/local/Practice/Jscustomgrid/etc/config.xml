@@ -16,6 +16,7 @@
                 <class>Practice_Jscustomgrid_Model</class>
             </practice_jscustomgrid>
         </models>
+        <!-- define block class -->
         <blocks>
             <practice_jscustomgrid>
                 <class>Practice_Jscustomgrid_Block</class>
