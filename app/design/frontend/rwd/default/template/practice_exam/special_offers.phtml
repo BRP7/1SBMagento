@@ -40,3 +40,42 @@ if (!empty($specialOffers)) {
     echo '<p>No special offers available.</p>';
 }
 ?>
+
+
+<h5>------------------------------------------------------</h5>
+
+
+<?php
+$products = $this->getProducts();
+?>
+<h1>Special Offers</h1>
+<ul>
+    <?php foreach ($products as $product): ?>
+        <li id="product-<?php echo $product->getId(); ?>">
+            <span class="product-name"><?php echo $this->escapeHtml($product->getName()); ?></span>
+            <span class="product-price"><?php echo $this->escapeHtml($product->getPrice()); ?></span>
+            <span class="product-attribute">
+                <input type="text" value="<?php echo $this->escapeHtml($product->getCustomAttribute()); ?>" 
+                       onchange="updateCustomAttribute(<?php echo $product->getId(); ?>, this.value)" />
+            </span>
+        </li>
+    <?php endforeach; ?>
+</ul>
+
+<script type="text/javascript">
+function updateCustomAttribute(productId, value) {
+    new Ajax.Request('<?php echo $this->getUrl('specialoffers/ajax/update'); ?>', {
+        method: 'post',
+        parameters: {
+            product_id: productId,
+            custom_attribute: value
+        },
+        onSuccess: function(transport) {
+            alert('Attribute updated successfully.');
+        },
+        onFailure: function() {
+            alert('Failed to update attribute.');
+        }
+    });
+}
+</script>

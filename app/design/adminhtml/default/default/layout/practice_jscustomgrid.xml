@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout>
+    <practice_jscustomgrid_adminhtml_product_index>
+        <reference name="content">
+            <block type="practice_jscustomgrid/adminhtml_product_grid" name="product.grid"/>
+        </reference>
+    </practice_jscustomgrid_adminhtml_product_index>
+</layout>

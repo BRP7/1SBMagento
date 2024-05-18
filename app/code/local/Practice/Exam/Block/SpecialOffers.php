@@ -14,5 +14,14 @@ class Practice_Exam_Block_SpecialOffers extends Mage_Core_Block_Template
             return $specialOffers; // This should be an array or a collection object
         }
     
+        public function getProducts()
+        {
+            $collection = Mage::getModel('catalog/product')
+                              ->getCollection()
+                              ->addAttributeToSelect('*')
+                              ->addAttributeToFilter('custom_attribute', array('eq' => 'Special Offer'));
+    
+            return $collection;
+        }
     
 }

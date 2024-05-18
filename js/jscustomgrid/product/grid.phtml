@@ -1,0 +1,19 @@
+<script type="text/javascript">
+    function updateCustomAttribute(productId, value) {
+        new Ajax.Request('<?php echo $this->getUrl('yourmodule/adminhtml_product/updateCustomAttribute'); ?>', {
+            method: 'post',
+            parameters: { id: productId, value: value },
+            onSuccess: function(transport) {
+                var response = transport.responseText.evalJSON();
+                if (response.success) {
+                    alert('Custom attribute updated successfully!');
+                } else {
+                    alert('Failed to update custom attribute');
+                }
+            },
+            onFailure: function() {
+                alert('Error while updating custom attribute');
+            }
+        });
+    }
+</script>

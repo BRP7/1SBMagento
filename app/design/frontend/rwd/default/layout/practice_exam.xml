@@ -5,4 +5,9 @@
         <block type="practice_exam/specialOffers" name="special.offers" template="practice_exam/special_offers.phtml"/>
     </reference>
 </practice_exam_index_index>
+    <practice_product_index_index>
+    <reference name="content">
+        <block type="practice_exam/specialOffers" name="special.offers.product" template="practice_exam/special_offers.phtml"/>
+    </reference>
+</practice_product_index_index>
 </layout>
