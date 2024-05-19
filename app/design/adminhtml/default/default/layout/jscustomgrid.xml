@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <adminhtml_product_index>
+        <reference name="content">
+            <block type="practice_jscustomgrid/adminhtml_product" name="product.container.custom">
+                <block type="practice_jscustomgrid/adminhtml_product_grid" name="product.grid"/>
+            </block>
+        </reference>
+        <reference name="head">
+            <action method="addJs"><script>jscustomgrid/jquery.js</script></action>
+            <action method="addJs"><script>jscustomgrid/grid.js</script></action>
+        </reference>
+    </adminhtml_product_index>
+</layout>

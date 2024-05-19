@@ -4,11 +4,13 @@ class Practice_Jscustomgrid_Block_Adminhtml_Product extends Mage_Adminhtml_Block
 {
     public function __construct()
     {
+        // echo "[2[][3]]";
         $this->_controller = 'adminhtml_product';
         $this->_blockGroup = 'practice_jscustomgrid';
         $this->_headerText = Mage::helper('practice_jscustomgrid')->__('Product Manager');
         parent::__construct();
-        $this->_removeButton('add');
+        $this->setId('abc');
+        // $this->_removeButton('add');
     }
 
     protected function _prepareLayout()

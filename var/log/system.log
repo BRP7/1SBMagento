@@ -415,3 +415,26 @@
 2024-05-18T06:56:11+00:00 CRIT (2): Not valid template file:frontend\base\default\template\practice/exam/special_offers.phtml
 2024-05-18T17:47:03+00:00 DEBUG (7): Security problem: cms/block has not been whitelisted.
 2024-05-18T17:47:03+00:00 DEBUG (7): Security problem: cms/block has not been whitelisted.
+2024-05-19T07:20:26+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\jscustomgrid/product/grid.phtml
+2024-05-19T07:20:47+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\jscustomgrid/product/grid.phtml
+2024-05-19T07:21:04+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\jscustomgrid/product/grid.phtml
+2024-05-19T09:11:15+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\jscustomgris/product/grid.phtml
+2024-05-19T09:11:15+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\jscustomgris/product/grid.phtml
+2024-05-19T09:12:11+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\jscustomgris/product/grid.phtml
+2024-05-19T09:12:11+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\jscustomgris/product/grid.phtml
+2024-05-19T09:12:12+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\jscustomgris/product/grid.phtml
+2024-05-19T09:12:12+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\jscustomgris/product/grid.phtml
+2024-05-19T09:12:52+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\jscustomgris/product/grid.phtml
+2024-05-19T09:12:52+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\jscustomgris/product/grid.phtml
+2024-05-19T09:13:12+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\jscustomgris/product/grid.phtml
+2024-05-19T09:13:12+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\jscustomgris/product/grid.phtml
+2024-05-19T09:14:01+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\jscustomgris/product/grid.phtml
+2024-05-19T09:14:23+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\jscustomgris/product/grid.phtml
+2024-05-19T09:17:05+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\jscustomgris/product/grid.phtml
+2024-05-19T09:17:55+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\jscustomgris/product/grid.phtml
+2024-05-19T09:18:53+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\jscustomgris/product/grid.phtml
+2024-05-19T09:20:37+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\jscustomgris/product/grid.phtml
+2024-05-19T09:22:20+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\jscustomgris/grid.phtml
+2024-05-19T09:22:21+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\jscustomgris/grid.phtml
+2024-05-19T09:23:46+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\jscustomgris/grid.phtml
+2024-05-19T09:24:09+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\jscustomgris/grid.phtml

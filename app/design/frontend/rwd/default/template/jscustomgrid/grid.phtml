@@ -1,0 +1,25 @@
+ <h1>CUSTOM GRID</h1><!--
+<?php echo $this->getGridHtml(); ?>
+
+<script>
+jQuery(document).ready(function($) {
+    $('#productGrid tbody tr').click(function() {
+        var productId = $(this).attr('id'); // Assuming the row ID corresponds to the product ID
+        if (productId) {
+            $.ajax({
+                url: '<?php echo $this->getUrl('*/*/productDetail'); ?>',
+                type: 'POST',
+                data: { id: productId },
+                success: function(response) {
+                    // Handle the response, e.g., display product details in a modal
+                    console.log(response);
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        }
+    });
+});
+
+</script> -->
