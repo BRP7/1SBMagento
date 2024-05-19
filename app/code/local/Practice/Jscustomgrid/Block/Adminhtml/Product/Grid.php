@@ -5,7 +5,6 @@ class Practice_Jscustomgrid_Block_Adminhtml_Product_Grid extends Mage_Adminhtml_
     public function __construct()
     {
         parent::__construct();
-        // $this->setTemplate('jscustomgris/grid.phtml');
         $this->setId('productGrid');
         $this->setDefaultSort('entity_id');
         $this->setDefaultDir('ASC');
@@ -21,48 +20,51 @@ class Practice_Jscustomgrid_Block_Adminhtml_Product_Grid extends Mage_Adminhtml_
             ->addAttributeToSelect('instock_date')
             ->addAttributeToSelect('name')
             ->addAttributeToSelect('custom_select_attribute');
-    
+
         Mage::log($collection->getData(), null, 'custom.log', true);
-    
-       
-        return  $this->setCollection($collection);
+
+        return $this->setCollection($collection);
     }
-    
 
     protected function _prepareColumns()
     {
         $this->addColumn('entity_id', array(
-            'header'    => Mage::helper('practice_jscustomgrid')->__('ID'),
-            'align'     =>'right',
-            'width'     => '50px',
-            'index'     => 'entity_id',
-        ));
+            'header' => Mage::helper('practice_jscustomgrid')->__('ID'),
+            'align' => 'right',
+            'width' => '50px',
+            'index' => 'entity_id',
+        )
+        );
 
         $this->addColumn('name', array(
-            'header'    => Mage::helper('practice_jscustomgrid')->__('Name'),
-            'align'     =>'left',
-            'index'     => 'name',
-        ));
+            'header' => Mage::helper('practice_jscustomgrid')->__('Name'),
+            'align' => 'left',
+            'index' => 'name',
+        )
+        );
 
         $this->addColumn('brand', array(
-            'header'    => Mage::helper('practice_jscustomgrid')->__('brand'),
-            'align'     =>'left',
-            'index'     => 'brand',
-        ));
-        
+            'header' => Mage::helper('practice_jscustomgrid')->__('Brand'),
+            'align' => 'left',
+            'index' => 'brand',
+        )
+        );
+
         $this->addColumn('instock_date', array(
-            'header'    => Mage::helper('practice_jscustomgrid')->__('instock_date'),
-            'align'     =>'left',
-            'index'     => 'instock_date',
-        ));
+            'header' => Mage::helper('practice_jscustomgrid')->__('In Stock Date'),
+            'align' => 'left',
+            'index' => 'instock_date',
+        )
+        );
 
         $this->addColumn('custom_select_attribute', array(
-            'header'    => Mage::helper('practice_jscustomgrid')->__('Custom Attribute'),
-            'align'     => 'left',
-            'index'     => 'custom_select_attribute',
-            'editable'  => true,
-            'renderer'  => 'Practice_Jscustomgrid_Block_Adminhtml_Widget_Grid_Column_Renderer_Editable',
-        ));
+            'header' => Mage::helper('practice_jscustomgrid')->__('Custom Attribute'),
+            'align' => 'left',
+            'index' => 'custom_select_attribute',
+            'editable' => true,
+            'renderer' => 'Practice_Jscustomgrid_Block_Adminhtml_Widget_Grid_Column_Renderer_Editable',
+        )
+        );
 
         return parent::_prepareColumns();
     }
@@ -75,14 +77,61 @@ class Practice_Jscustomgrid_Block_Adminhtml_Product_Grid extends Mage_Adminhtml_
         return $this;
     }
 
-    public function getRowUrl($row)
+    // public function getRowUrl($row)
+    // {
+    //     return 'javascript:void(0)';
+    // }
+
+    public function getRowClass(Varien_Object $row)
     {
-        // Check if the admin user has permission to access the productDetail action
-        // if (Mage::getSingleton('admin/session')->isAllowed('practice_customgrid/customgrid/productdetail')) {
-            // Return JavaScript code instead of URL
-            return 'javascript:void(0)';
-        // }
-        // return parent::getRowUrl($row);
+        return 'product-name';
+    }
+    public function getRowId(Varien_Object $row)
+    {
+        return $row->getId();
+    }
+
+    // for inline css
+    // public function getRowAttributes($row)
+    // {
+    //     return 'data-product-id="' . $row->getId() . '" data-update-url="' . $this->getUpdateUrl() . '" data-form-key="' . $this->getFormKey() . '"';
+    // }
+
+
+    public function getUpdateUrl()
+    {
+        return $this->getUrl('*/*/getProductDetails');
+    }
+
+    public function getFormKey()
+    {
+        return Mage::getSingleton('core/session')->getFormKey();
+    }
+
+    protected function _toHtml()
+    {
+        $updateUrl = $this->getUpdateUrl();
+        $formKey = $this->getFormKey();
+    
+        // Get product IDs from the current collection
+        $productIds = [];
+        foreach ($this->getCollection() as $item) {
+            $productIds[] = $item->getId();
+        }
+    
+        // Convert the array of product IDs into a JavaScript variable
+        $productIdsString = json_encode($productIds);
+    
+        // Echo JavaScript variables containing the URL, form key, and product IDs
+        echo "<script type='text/javascript'>
+                var updateUrl = '{$updateUrl}';
+                var formKey = '{$formKey}';
+                var productIds = {$productIdsString};
+              </script>";
+    
+        return parent::_toHtml();
     }
     
+    
+
 }
