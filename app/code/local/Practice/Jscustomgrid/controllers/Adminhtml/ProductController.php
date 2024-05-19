@@ -52,7 +52,10 @@ class Practice_Jscustomgrid_Adminhtml_ProductController extends Mage_Adminhtml_C
             $product = Mage::getModel('catalog/product')->load($productId);
             $response = [
                 'name' => $product->getName(),
-                'custom_select_attribute' => $product->getData('custom_select_attribute')
+                'custom_select_attribute' => $product->getData('custom_select_attribute'),
+                'color'=> $product->getColor(),
+                'brand'=>$product->getBrand(),
+                'price'=>$product->getPrice(),
             ];
         } else {
             $response = ['error' => 'Product not found'];

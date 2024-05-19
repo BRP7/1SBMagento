@@ -3,11 +3,11 @@ jQuery.noConflict();
 
 function updateCustomAttribute(productId, value, url, fromId) {
     // console.log(url);
-    url = url; 
+    url = url;
     new Ajax.Request(url, {
         method: 'post',
         parameters: { id: productId, value: value, from_id: fromId },
-        onSuccess: function(transport) {
+        onSuccess: function (transport) {
             var response = transport.responseText.evalJSON();
             if (response.success) {
                 alert('Custom attribute updated successfully!');
@@ -15,7 +15,7 @@ function updateCustomAttribute(productId, value, url, fromId) {
                 alert('Failed to update custom attribute');
             }
         },
-        onFailure: function() {
+        onFailure: function () {
             alert('Error while updating custom attribute');
         }
     });
@@ -101,14 +101,14 @@ function updateCustomAttribute(productId, value, url, fromId) {
 //                     var productId = productIds[index]; // Access the corresponding product ID from the array
 //                     var updateUrl = window.updateUrl;
 //                     var formKey = window.formKey;
-                    
+
 //                     console.log(productId);
 //                     console.log(updateUrl);
 //                     console.log(formKey);
-                    
-          
+
+
 //             // Add additional console logs or alerts to debug further
-            
+
 //             $.ajax({
 //                 url: updateUrl,
 //                 method: 'post',
@@ -141,9 +141,9 @@ function updateCustomAttribute(productId, value, url, fromId) {
 // });
 
 
-jQuery(document).ready(function($) {
-    $('.product-name').each(function(index) {
-        $(this).click(function() {
+jQuery(document).ready(function ($) {
+    $('.product-name').each(function (index) {
+        $(this).click(function () {
             var productId = productIds[index]; // Access the corresponding product ID from the array
             var updateUrl = window.updateUrl;
             var formKey = window.formKey;
@@ -155,18 +155,22 @@ jQuery(document).ready(function($) {
             $.ajax({
                 url: updateUrl,
                 method: 'post',
-                data: { id: productId ,from_id:formKey },
+                data: { id: productId, from_id: formKey },
                 success: function(response) {
                     console.log(response);
                     var product = $.parseJSON(response);
                     var modalHtml = '<div id="productModal" title="Product Details">' +
                                     '<p>Name: ' + product.name + '</p>' +
+                                    '<p>Brand: ' + product.brand + '</p>' +
+                                    '<p>Color: ' + product.color + '</p>' +
+                                    '<p>Price: ' + product.price + '</p>' +
                                     '<p>Custom Attribute: ' + product.custom_select_attribute + '</p>' +
                                     '</div>';
                     $('body').append(modalHtml);
-
+                
                     // Open modal dialog using simple jQuery
-                    $('#productModal').css({
+                    var $productModal = $('#productModal');
+                    $productModal.css({
                         'position': 'fixed',
                         'top': '50%',
                         'left': '50%',
@@ -177,13 +181,14 @@ jQuery(document).ready(function($) {
                         'box-shadow': '0 0 10px rgba(0,0,0,0.3)',
                         'z-index': '9999'
                     }).show();
-
-                    // Close modal dialog on click
-                    $('#productModal').click(function() {
-                        $(this).hide().remove();
-                    });
+                
+                    // Close modal dialog after 2 seconds
+                    setTimeout(function() {
+                        $productModal.hide().remove();
+                    }, 3000);
                 },
-                error: function(xhr, status, error) {
+                
+                error: function (xhr, status, error) {
                     console.log(xhr.responseText);
                     console.log(status);
                     console.log(error);
@@ -192,3 +197,7 @@ jQuery(document).ready(function($) {
         });
     });
 });
+
+// $('#productModal').click(function () {
+//     $(this).hide().remove();
+// });
