@@ -1,0 +1,40 @@
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+    console.log(1212);
+    var formKey = '<?php echo Mage::getSingleton("core/session")->getFormKey(); ?>'; // Get the form key
+    console.log(formKey); // Fixed typo here
+
+    document.querySelectorAll('.custom-attribute-editable').forEach(function(input) {
+        input.addEventListener('change', function() {
+            updateCustomAttribute(this);
+        });
+    });
+});
+
+function updateCustomAttribute(element) {
+    var productId = element.getAttribute('data-id');
+    var value = element.value;
+    var formKey = '<?php echo Mage::getSingleton("core/session")->getFormKey(); ?>'; // Get the form key
+    console.log(formKey); // Fixed typo here
+
+    new Ajax.Request('<?php echo Mage::helper("adminhtml")->getUrl("adminhtml/product/updateCustomAttribute") ?>', {
+        method: 'post',
+        parameters: {
+            form_key: formKey, // Include the form key in the parameters
+            id: productId,
+            value: value
+        },
+        onSuccess: function(response) {
+            var jsonResponse = response.responseText.evalJSON();
+            if (jsonResponse.success) {
+                alert('Custom attribute updated successfully.');
+            } else {
+                alert('Error updating custom attribute: ' + jsonResponse.message);
+            }
+        },
+        onFailure: function() {
+            alert('Error processing the request.');
+        }
+    });
+}
+</script>

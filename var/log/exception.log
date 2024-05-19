@@ -3522,3 +3522,94 @@ Stack trace:
 #14 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
 #15 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
 #16 {main}
+2024-05-18T18:59:14+00:00 ERR (3): 
+Mage_Core_Exception: Invalid block type: Mage_Practice_Jscustomgrid_Block_Adminhtml_Product in C:\xampp\htdocs\1SBMagento\app\Mage.php:598
+Stack trace:
+#0 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(495): Mage::throwException('Invalid block t...')
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('Mage_Practice_J...', Array)
+#2 C:\xampp\htdocs\1SBMagento\app\code\local\Practice\Jscustomgrid\controllers\Adminhtml\ProductController.php(11): Mage_Core_Model_Layout->createBlock('practice_jscust...')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Practice_Jscustomgrid_Adminhtml_ProductController->indexAction()
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#5 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#6 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#7 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#8 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#9 {main}
+2024-05-18T18:59:55+00:00 ERR (3): 
+Mage_Core_Exception: Invalid block type: Mage_Practice_Jscustomgrid_Block_Adminhtml_Product in C:\xampp\htdocs\1SBMagento\app\Mage.php:598
+Stack trace:
+#0 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(495): Mage::throwException('Invalid block t...')
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('Mage_Practice_J...', Array)
+#2 C:\xampp\htdocs\1SBMagento\app\code\local\Practice\Jscustomgrid\controllers\Adminhtml\ProductController.php(11): Mage_Core_Model_Layout->createBlock('practice_jscust...')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Practice_Jscustomgrid_Adminhtml_ProductController->indexAction()
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#5 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#6 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#7 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#8 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#9 {main}
+2024-05-18T19:00:57+00:00 ERR (3): 
+Mage_Core_Exception: Invalid block type: Mage_Practice_Jscustomgrid_Block_Adminhtml_Product in C:\xampp\htdocs\1SBMagento\app\Mage.php:598
+Stack trace:
+#0 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(495): Mage::throwException('Invalid block t...')
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('Mage_Practice_J...', Array)
+#2 C:\xampp\htdocs\1SBMagento\app\code\local\Practice\Jscustomgrid\controllers\Adminhtml\ProductController.php(13): Mage_Core_Model_Layout->createBlock('practice_jscust...')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Practice_Jscustomgrid_Adminhtml_ProductController->indexAction()
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#5 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#6 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#7 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#8 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#9 {main}
+2024-05-18T19:06:00+00:00 ERR (3): 
+Mage_Core_Exception: Invalid block type: Mage_Practice_Jscustomgrid_Block_Adminhtml_Product in C:\xampp\htdocs\1SBMagento\app\Mage.php:598
+Stack trace:
+#0 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(495): Mage::throwException('Invalid block t...')
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('Mage_Practice_J...', Array)
+#2 C:\xampp\htdocs\1SBMagento\app\code\local\Practice\Jscustomgrid\controllers\Adminhtml\ProductController.php(13): Mage_Core_Model_Layout->createBlock('practice_jscust...')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Practice_Jscustomgrid_Adminhtml_ProductController->indexAction()
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#5 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#6 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#7 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#8 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#9 {main}
+2024-05-18T19:10:13+00:00 ERR (3): 
+Mage_Core_Exception: Invalid block type: Mage_Practice_Jscustomgrid_Block_Adminhtml_Product in C:\xampp\htdocs\1SBMagento\app\Mage.php:598
+Stack trace:
+#0 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(495): Mage::throwException('Invalid block t...')
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('Mage_Practice_J...', Array)
+#2 C:\xampp\htdocs\1SBMagento\app\code\local\Practice\Jscustomgrid\controllers\Adminhtml\ProductController.php(13): Mage_Core_Model_Layout->createBlock('practice_jscust...')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Practice_Jscustomgrid_Adminhtml_ProductController->indexAction()
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#5 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#6 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#7 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#8 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#9 {main}
+2024-05-18T19:12:59+00:00 ERR (3): 
+Mage_Core_Exception: Invalid block type: Mage_Practice_Jscustomgrid_Block_Adminhtml_Product in C:\xampp\htdocs\1SBMagento\app\Mage.php:598
+Stack trace:
+#0 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(495): Mage::throwException('Invalid block t...')
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('Mage_Practice_J...', Array)
+#2 C:\xampp\htdocs\1SBMagento\app\code\local\Practice\Jscustomgrid\controllers\Adminhtml\ProductController.php(13): Mage_Core_Model_Layout->createBlock('practice_jscust...')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Practice_Jscustomgrid_Adminhtml_ProductController->indexAction()
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#5 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#6 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#7 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#8 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#9 {main}
+2024-05-18T19:20:07+00:00 ERR (3): 
+Mage_Core_Exception: Invalid block type: Mage_Practice_Jscustomgrid_Block_Adminhtml_Product in C:\xampp\htdocs\1SBMagento\app\Mage.php:598
+Stack trace:
+#0 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(495): Mage::throwException('Invalid block t...')
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('Mage_Practice_J...', Array)
+#2 C:\xampp\htdocs\1SBMagento\app\code\local\Practice\Jscustomgrid\controllers\Adminhtml\ProductController.php(10): Mage_Core_Model_Layout->createBlock('practice_jscust...')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Practice_Jscustomgrid_Adminhtml_ProductController->indexAction()
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#5 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#6 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#7 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#8 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#9 {main}
