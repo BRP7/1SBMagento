@@ -1,0 +1,22 @@
+2024-05-20T05:10:37+00:00 DEBUG (7): configChanged called
+2024-05-20T05:10:37+00:00 DEBUG (7): Enabled: 0
+2024-05-20T05:11:55+00:00 DEBUG (7): configChanged called
+2024-05-20T05:11:55+00:00 DEBUG (7): Enabled: 1
+2024-05-20T05:49:53+00:00 DEBUG (7): configChanged called
+2024-05-20T05:49:53+00:00 DEBUG (7): Enabled: 0
+2024-05-20T05:50:44+00:00 DEBUG (7): configChanged called
+2024-05-20T05:50:44+00:00 DEBUG (7): Enabled: 1
+2024-05-20T05:51:48+00:00 DEBUG (7): configChanged called
+2024-05-20T05:51:48+00:00 DEBUG (7): Enabled: 0
+2024-05-20T05:53:00+00:00 DEBUG (7): coreConfigChanged called
+2024-05-20T05:53:00+00:00 DEBUG (7): isModuleDisabled: 
+2024-05-20T05:53:35+00:00 DEBUG (7): configChanged called
+2024-05-20T05:53:35+00:00 DEBUG (7): Enabled: 1
+2024-05-20T05:54:07+00:00 DEBUG (7): configChanged called
+2024-05-20T05:54:07+00:00 DEBUG (7): Enabled: 1
+2024-05-20T05:54:24+00:00 DEBUG (7): configChanged called
+2024-05-20T05:54:24+00:00 DEBUG (7): Enabled: 0
+2024-05-20T05:54:43+00:00 DEBUG (7): coreConfigChanged called
+2024-05-20T05:54:43+00:00 DEBUG (7): isModuleDisabled: 
+2024-05-20T05:55:17+00:00 DEBUG (7): coreConfigChanged called
+2024-05-20T05:55:17+00:00 DEBUG (7): isModuleDisabled: 

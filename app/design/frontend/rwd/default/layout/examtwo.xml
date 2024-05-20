@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout>
+    <practice_examtwo_index_index>
+        <reference name="content">
+            <block type="practice_examtwo/customreports" name="custom.reports" template="examtwo/custom_reports.phtml"/>
+        </reference>
+    </practice_examtwo_index_index>
+    <!-- <examtwo_index_index>
+        <reference name="content">
+            <block type="practice_examtwo/customreports" name="custom.reports" template="examtwo/custom_reports.phtml"/>
+        </reference>
+    </examtwo_index_index> -->
+</layout>

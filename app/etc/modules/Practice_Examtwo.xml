@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Practice_Examtwo>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Practice_Examtwo>
+    </modules>
+</config>
