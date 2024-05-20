@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Practice_Jscustomgrid>
+            <version>0.1.0</version>
+        </Practice_Jscustomgrid>
+    </modules>
+    <global>
+        <resources>
+            <jscustomgrid_setup>
+                <setup>
+                    <module>Practice_Jscustomgrid</module>
+                    <class>Mage_Catalog_Model_Resource_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </jscustomgrid_setup>
+        </resources>
+        <helpers>
+            <practice_jscustomgrid>
+                <class>Practice_Jscustomgrid_Helper</class>
+            </practice_jscustomgrid>
+        </helpers>
+        <models>
+            <practice_jscustomgrid>
+                <class>Practice_Jscustomgrid_Model</class>
+            </practice_jscustomgrid>
+        </models>
+        <!-- define block class -->
+        <blocks>
+            <practice_jscustomgrid>
+                <class>Practice_Jscustomgrid_Block</class>
+            </practice_jscustomgrid>
+        </blocks>
+    </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Practice_Jscustomgrid before="Mage_Adminhtml">Practice_Jscustomgrid_Adminhtml</Practice_Jscustomgrid>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <practice_jscustomgrid>
+                    <file>jscustomgrid.xml</file>
+                </practice_jscustomgrid>
+            </updates>
+        </layout>
+    </adminhtml>
+</config>
