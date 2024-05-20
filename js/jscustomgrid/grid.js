@@ -25,7 +25,7 @@ function updateCustomAttribute(productId, value, url, fromId) {
 //     console.log(updateUrl);
 //     $$('.product-name').each(function(element) {
 //         element.observe('click', function() {
-//             var productId = element.readAttribute('data-product-id');
+            // var productId = element.readAttribute('data-product-id');
 //             console.log(productId);
 //             new Ajax.Request(updateUrl, {
 //                 method: 'post',
@@ -144,9 +144,14 @@ function updateCustomAttribute(productId, value, url, fromId) {
 jQuery(document).ready(function ($) {
     $('.product-name').each(function (index) {
         $(this).click(function () {
-            var productId = productIds[index]; // Access the corresponding product ID from the array
-            var updateUrl = window.updateUrl;
-            var formKey = window.formKey;
+
+            var productId = $(this).data('product-id');
+            var updateUrl = $(this).data('update-url');
+            var formKey = $(this).data('form-key');
+    
+            // var productId = productIds[index]; // Access the corresponding product ID from the array
+            // var updateUrl = window.updateUrl;
+            // var formKey = window.formKey;
 
             console.log(productId);
             console.log(updateUrl);

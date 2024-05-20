@@ -9,7 +9,7 @@ class Practice_Exam_Model_Observer
         $this->num = $this->num + 1;
         // $message = $this->num;
         Mage::getSingleton('core/session')->addNotice($this->num);
-        return $this->num;
+        // return $this->num;
         // if (Mage::getStoreConfig('practice_exam_settings/general/enable')) {
         //     // $message = Mage::getStoreConfig('practice_exam_settings/general/practice_exam_message');
         //     $this->num = $this->num + 1;

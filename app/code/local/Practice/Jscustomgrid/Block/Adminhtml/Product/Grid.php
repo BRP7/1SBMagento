@@ -91,11 +91,11 @@ class Practice_Jscustomgrid_Block_Adminhtml_Product_Grid extends Mage_Adminhtml_
         return $row->getId();
     }
 
-    // for inline css
-    // public function getRowAttributes($row)
-    // {
-    //     return 'data-product-id="' . $row->getId() . '" data-update-url="' . $this->getUpdateUrl() . '" data-form-key="' . $this->getFormKey() . '"';
-    // }
+   
+    public function getRowAttributes($row)
+    {
+        return 'data-product-id="' . $row->getId() . '" data-update-url="' . $this->getUpdateUrl() . '" data-form-key="' . $this->getFormKey() . '"';
+    }
 
 
     public function getUpdateUrl()
@@ -122,7 +122,7 @@ class Practice_Jscustomgrid_Block_Adminhtml_Product_Grid extends Mage_Adminhtml_
         // Convert the array of product IDs into a JavaScript variable
         $productIdsString = json_encode($productIds);
     
-        // Echo JavaScript variables containing the URL, form key, and product IDs
+        //  JavaScript variables containing the URL, form key, and product IDs
         echo "<script type='text/javascript'>
                 var updateUrl = '{$updateUrl}';
                 var formKey = '{$formKey}';
