@@ -5,6 +5,7 @@ class Practice_Rowedit_Block_Adminhtml_Rowedit_Grid_Renderer_EditButton extends 
     protected static $rowCounter = 0;
     public function render(Varien_Object $row)
     {
+        Mage::log('EditButton Renderer Called',null,'rowgrid.log'); 
         // Render competitor information
         $rowId = $row->getData('entity_id');
         // $status = array(

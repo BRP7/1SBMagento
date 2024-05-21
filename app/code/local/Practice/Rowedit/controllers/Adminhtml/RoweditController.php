@@ -37,7 +37,7 @@ class Practice_Rowedit_Adminhtml_RoweditController extends Mage_Adminhtml_Contro
         $this->_title($this->__("Manage Rowedit"));
         $this->_initAction();
         $this->renderLayout();
-        Mage::dispatchEvent('Rowedit_event', ['Rowedit','practice']);
+        Mage::dispatchEvent('Rowedit_event', ['Rowedit', 'practice']);
     }
     public function newAction()
     {
@@ -74,35 +74,55 @@ class Practice_Rowedit_Adminhtml_RoweditController extends Mage_Adminhtml_Contro
             // 4. Register model to use later in blocks
             ->_addBreadcrumb(
                 $id ? Mage::helper('practice_rowedit')->__('Edit Page')
-                    : Mage::helper('practice_rowedit')->__('New Page'),
+                : Mage::helper('practice_rowedit')->__('New Page'),
                 $id ? Mage::helper('practice_rowedit')->__('Edit Page')
-                    : Mage::helper('practice_rowedit')->__('New Page')
+                : Mage::helper('practice_rowedit')->__('New Page')
             );
         $this->renderLayout();
     }
     public function saveAction()
     {
         if ($this->getRequest()->isXmlHttpRequest()) {
-            $id = $this->getRequest()->getPost('id');
+            $id = $this->getRequest()->getPost('entity_id');
             $name = $this->getRequest()->getPost('name');
             $description = $this->getRequest()->getPost('description');
-            Mage::log($description,null,"save.log");
+
+            // Log the description for debugging purposes
+            Mage::log($description, null, "save.log");
+
+            // Instantiate the rowedit model
             $roweditModel = Mage::getModel('practice_rowedit/rowedit');
 
-            if ($id) {
-                $roweditModel->addData(['entity_id' => $id]);
-                $roweditModel->addData(['name' => $name]);
-                $roweditModel->addData(['description' => $description]);
+            // Set data to the model
+            $roweditModel->setData([
+                'entity_id' => $id,
+                'name' => $name,
+                'description' => $description
+            ]);
+
+            try {
+                // Save the model
                 $roweditModel->save();
+
+                // Prepare success response
+                $response = [
+                    'success' => true,
+                    'message' => 'Data saved successfully'
+                ];
+            } catch (Exception $e) {
+                // Prepare error response if saving fails
+                $response = [
+                    'success' => false,
+                    'message' => $e->getMessage()
+                ];
             }
-            $response = array(
-                'success' => true,
-                'message' => 'Data saved successfully'
-            );
+
+            // Set response headers and body
             $this->getResponse()->setHeader('Content-type', 'application/json');
             $this->getResponse()->setBody(json_encode($response));
         }
     }
+
     protected function _filterPostData($data)
     {
         $data = $this->_filterDates($data, array('custom_theme_from', 'custom_theme_to'));
