@@ -1,6 +1,6 @@
 <?php
 
-class Practice_Rowedit_Adminhtml_Rowedit extends Mage_Adminhtml_Controller_Action
+class Practice_Rowedit_Adminhtml_RoweditController extends Mage_Adminhtml_Controller_Action
 {
     protected function _initAction()
     {

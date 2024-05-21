@@ -56,9 +56,9 @@
     <adminhtml>
         <layout>
             <updates>
-                <jethalal>
+                <practice_rowedit>
                     <file>rowedit.xml</file>
-                </jethalal>
+                </practice_rowedit>
             </updates>
         </layout>
     </adminhtml>
@@ -68,7 +68,7 @@
             <adminhtml>
                 <args>
                     <modules>
-                        <Practice_Rowedit before="Mage_Adminhtml">Practice_Rowedit_Adminhtml</Practice_Rowedit>
+                        <practice_rowedit before="Mage_Adminhtml">Practice_Rowedit_Adminhtml</practice_rowedit>
                     </modules>
                 </args>
             </adminhtml>
