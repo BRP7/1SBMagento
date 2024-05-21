@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Practice_Rowedit>
+            <version>0.1.0</version>
+        </Practice_Rowedit>
+    </modules>
+    <global>
+        <models>
+            <practice_rowedit>
+                <class>Practice_Rowedit_Model</class>
+                <resourceModel>practice_rowedit_resource</resourceModel>
+            </practice_rowedit>
+            <practice_rowedit_resource>
+                <class>Practice_Rowedit_Model_Resource</class>
+                <entities>
+                    <rowedit>
+                        <table>practice_rowedit</table>
+                    </rowedit>
+                </entities>
+            </practice_rowedit_resource>
+        </models>
+        <helpers>
+            <practice_rowedit>
+                <class>Practice_Rowedit_Helper</class>
+            </practice_rowedit>
+        </helpers>
+        <blocks>
+            <practice_rowedit>
+                <class>Practice_Rowedit_Block</class>
+            </practice_rowedit>
+        </blocks>
+        <resources>
+            <practice_rowedit_setup>
+                <setup>
+                    <module>Practice_Rowedit</module>
+                    <class>Mage_Core_Model_Resource_Setup</class>
+                </setup>
+                <data>
+                    <install>practice_rowedit_setup</install>
+                </data>
+            </practice_rowedit_setup>
+        </resources>
+    </global>
+    <!-- <admin>
+        <routers>
+            <practice_rowedit>
+                <use>admin</use>
+                <args>
+                    <module>Practice_Rowedit</module>
+                    <frontName>practice_rowedit</frontName>
+                </args>
+            </practice_rowedit>
+        </routers>
+    </admin> -->
+    <adminhtml>
+        <layout>
+            <updates>
+                <jethalal>
+                    <file>rowedit.xml</file>
+                </jethalal>
+            </updates>
+        </layout>
+    </adminhtml>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Practice_Rowedit before="Mage_Adminhtml">Practice_Rowedit_Adminhtml</Practice_Rowedit>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+</config>
+
+<!-- <config>
+    <modules>
+        <Practice_Rowedit>
+            <version>0.1.0</version>
+        </Practice_Rowedit>
+    </modules>
+    <global>
+        <models>
+            <practice_rowedit>
+                <class>Practice_Rowedit_Model</class>
+                <resourceModel>rowedit_mysql4</resourceModel>
+            </practice_rowedit>
+            <rowedit_mysql4>
+                <class>Practice_Rowedit_Model_Mysql4</class>
+                <entities>
+                    <rowedit>
+                        <table>practice_rowedit</table>
+                    </rowedit>
+                </entities>
+            </rowedit_mysql4>
+        </models>
+        <resources>
+            <rowedit_setup>
+                <setup>
+                    <module>Practice_Rowedit</module>
+                    <class>Mage_Core_Model_Resource_Setup</class>
+                </setup>
+                <data>
+                    <install>rowedit_setup</install>
+                </data>
+            </rowedit_setup>
+        </resources>
+    </global>
+</config> -->
+
+
+<!-- mysql4 -->

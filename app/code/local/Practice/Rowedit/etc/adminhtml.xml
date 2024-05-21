@@ -1,0 +1,103 @@
+<config>
+    <menu>
+        <practice_rowedit translate="title" module="practice_rowedit">
+            <title>Practice Rowedit</title>
+            <sort_order>100</sort_order>
+            <children>
+                <practice_rowedit translate="title" module="practice_rowedit">
+                    <title>Rowedit</title>
+                    <action>adminhtml/rowedit</action>
+                    <sort_order>10</sort_order>
+                </practice_rowedit>
+            </children>
+        </practice_rowedit>
+        <catalog>
+            <children>
+                <practice_rowedit translate="title" module="practice_rowedit">
+                    <title>Jethalal</title>
+                    <children>
+                        <index translate="title" module="practice_rowedit">
+                            <title>Rowedit</title>
+                            <action>adminhtml/rowedit/index</action>
+                        </index>
+                    </children>
+                </practice_rowedit>
+            </children>
+        </catalog>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <practice_rowedit translate="title" module="practice_rowedit">
+                        <title>Rowedit</title>
+                        <children>
+                            <practice_rowedit translate="title">
+                                <title>Manage Rows</title>
+                                <children>
+                                    <actions translate="title">
+                                        <title>Actions</title>
+                                        <children>
+                                            <index translate="title">
+                                                <title>Index</title>
+                                            </index>
+                                            <new translate="title">
+                                                <title>New</title>
+                                            </new>
+                                            <edit translate="title">
+                                                <title>Edit</title>
+                                            </edit>
+                                            <save translate="title">
+                                                <title>Save</title>
+                                            </save>
+                                            <delete translate="title">
+                                                <title>Delete</title>
+                                            </delete>
+                                        </children>
+                                    </actions>
+                                </children>
+                            </practice_rowedit>
+                            <!-- <fafda translate="title">
+                                <title>Manage Fatada</title>
+                                <children>
+                                    <actions translate="title">
+                                        <title>Actions</title>
+                                        <children>
+                                            <index translate="title">
+                                                <title>Index</title>
+                                            </index>
+                                            <new translate="title">
+                                                <title>New</title>
+                                            </new>
+                                            <save translate="title">
+                                                <title>Save</title>
+                                            </save>
+                                            <edit translate="title">
+                                                <title>Edit</title>
+                                            </edit>
+                                            <delete translate="title">
+                                                <title>Delete</title>
+                                            </delete>
+                                        </children>
+                                    </actions>
+                                </children>
+                            </fafda> -->
+                        </children>
+                    </practice_rowedit>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <practice_rowedit module="practice_rowedit" translate="title">
+                                        <title>Rowedit</title>
+                                        <sort_order>60</sort_order>
+                                    </practice_rowedit>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>
