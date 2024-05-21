@@ -8,6 +8,8 @@ j(document).ready(function () {
         var editButton = j(this);
         var editUrl = editButton.data("url");
         var id = editButton.data("entity-id");
+        var status =editButton.data("status");
+        // console.log(status)
         var className = ".editable-" + id;
         
         j(className).each(function () {
@@ -20,6 +22,20 @@ j(document).ready(function () {
             var rowDescription = j(this).find(".description");
             var rowDescriptionText = rowDescription.text().trim();
             rowDescription.html('<input type="text" class="edit-input" value="' + rowDescriptionText + '" data-original="' + rowDescriptionText + '">');
+            
+          
+            var statusRow = j(this).find(".status");
+            var statusText = statusRow.text().trim();
+            console.log(statusText);
+            var dropdown = '<select class="status">';
+            Object.keys(status).forEach((element) => {
+                // console.log(21,status[element]);
+                dropdown +=
+                    '<option value="' + element + '" ' + (statusText == status[element] ? "selected" : "") + ' data-original="' + statusText + '">' + status[element] + "</option>";
+            });
+            dropdown += "</select>";
+            statusRow.html(dropdown);
+
 
             // Handle date/time fields (assuming they are datetime inputs)
             var createdDate = j(this).find(".created_date");
@@ -60,6 +76,17 @@ j(document).ready(function () {
             editedData["description"] = rowDescriptionText;
             rowDescription.closest('.description').text(rowDescriptionText);
 
+            // var rowStatus = j(this).find(".status .edit-input");
+            // var rowStatusText = rowStatus.val().trim();
+            // editedData["status"] = rowStatusText;
+            // rowDescription.closest('.status').text(rowDescriptionText);
+
+            var statusRow = j(this).find(".status");
+            var statusText = statusRow.find("select").val();
+            editedData["status"] = statusText;
+            statusRow.text(status[statusText]);
+
+
             var createdDate = j(this).find(".created_date .edit-input");
             var createdDateText = createdDate.val().trim();
             editedData["created_date"] = formatDateForServer(createdDateText);
@@ -80,6 +107,7 @@ j(document).ready(function () {
                 "entity_id": rowId,
                 "name": editedData['name'],
                 "description": editedData['description'],
+                "status": editedData['status'],
                 "created_date": editedData['created_date'],
                 "updated_date": editedData['updated_date'],
             },

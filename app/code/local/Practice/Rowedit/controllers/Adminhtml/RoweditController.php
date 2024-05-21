@@ -86,6 +86,7 @@ class Practice_Rowedit_Adminhtml_RoweditController extends Mage_Adminhtml_Contro
             $id = $this->getRequest()->getPost('entity_id');
             $name = $this->getRequest()->getPost('name');
             $description = $this->getRequest()->getPost('description');
+            $status = $this->getRequest()->getPost('status');
 
             // Log the description for debugging purposes
             Mage::log($description, null, "save.log");
@@ -97,7 +98,8 @@ class Practice_Rowedit_Adminhtml_RoweditController extends Mage_Adminhtml_Contro
             $roweditModel->setData([
                 'entity_id' => $id,
                 'name' => $name,
-                'description' => $description
+                'description' => $description,
+                'status'=>$status
             ]);
 
             try {
