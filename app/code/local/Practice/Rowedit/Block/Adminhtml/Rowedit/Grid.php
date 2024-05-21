@@ -21,7 +21,7 @@ class Practice_Rowedit_Block_Adminhtml_Rowedit_Grid extends Mage_Adminhtml_Block
                 'header' => Mage::helper('practice_rowedit')->__('Entity Id'),
                 'align' => 'right',
                 'width' => '50px',
-                'index' => 'jalebi_id',
+                'index' => 'entity_id',
             ),
 
             'name' =>
@@ -30,17 +30,18 @@ class Practice_Rowedit_Block_Adminhtml_Rowedit_Grid extends Mage_Adminhtml_Block
                 'align' => 'left',
                 'index' => 'name',
                 'type' => 'text',
-                'column_css_class' => 'name',
+                'column_css_class' => 'row_name',
             ),
             
             'description' =>
             array(
                 'header' => Mage::helper('practice_rowedit')->__('Row Description'),
                 'align' => 'left',
-                'index' => 'name',
+                'index' => 'description',
                 'type' => 'text',
                 'column_css_class' => 'description',
             ),
+            
 
             // 'status' =>
             // array(
@@ -148,10 +149,14 @@ class Practice_Rowedit_Block_Adminhtml_Rowedit_Grid extends Mage_Adminhtml_Block
     public function getRowClass(Varien_Object $row)
     {
         $primaryKey = $row->getId(); 
-        return 'editabl
-        e-' . $primaryKey;
+        var_dump($primaryKey);
+        return 'editable-' . $primaryKey;
     }
 
+    // public function getRowClass(Varien_Object $row)
+    // {
+    //     return 'product-name';
+    // }
     // public function getRowId(Varien_Object $row)
     // {
     //     return $row->getId();

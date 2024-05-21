@@ -6,7 +6,7 @@
         </reference>
         <reference name="head">
             <action method="addJs">
-                <script>lib/jquery/jquery-1.10.2.js</script>
+                <script>vendorinventory/jquery.js</script>
             </action>
             <action method="addJs">
                 <script>rowedit/rowedit.js</script>
