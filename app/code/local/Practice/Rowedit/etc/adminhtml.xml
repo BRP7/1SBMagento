@@ -14,7 +14,7 @@
         <catalog>
             <children>
                 <practice_rowedit translate="title" module="practice_rowedit">
-                    <title>Jethalal</title>
+                    <title>Row Edit</title>
                     <children>
                         <index translate="title" module="practice_rowedit">
                             <title>Rowedit</title>

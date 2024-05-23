@@ -31,7 +31,7 @@ class Practice_Exam_IndexController extends Mage_Core_Controller_Front_Action
     //             $attributeCode = $attribute->getAttributeCode();
     //             $attributeValue = $product->getData($attributeCode);
     //             echo "<strong>$attributeCode:</strong> ";
-                
+
     //             if (is_array($attributeValue)) {
     //                 // Handle array attributes
     //                 if ($attributeCode == 'media_gallery') {
@@ -53,7 +53,7 @@ class Practice_Exam_IndexController extends Mage_Core_Controller_Front_Action
     //                 // Handle other types
     //                 echo (string)$attributeValue;
     //             }
-                
+
     //             echo "<br>";
     //         }
     //     } else {
@@ -84,6 +84,9 @@ class Practice_Exam_IndexController extends Mage_Core_Controller_Front_Action
             $specialOffers = $block->getSpecialOffersProducts();
             $block->setData('special_offers', $specialOffers);
         }
+        // Dispatching event with data
+        Mage::dispatchEvent('custom_event_name', array('param1' => $value1, 'param2' => $value2));
+
         $this->renderLayout();
     }
 

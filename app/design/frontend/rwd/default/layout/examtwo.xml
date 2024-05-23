@@ -3,8 +3,12 @@
     <practice_examtwo_index_index>
         <reference name="content">
             <block type="practice_examtwo/customreports" name="custom.reports" template="examtwo/custom_reports.phtml"/>
+        </reference> 
+        <reference name="left">
+            <block type="core/template" name="custom_sidebar_block" template="examtwo/sidebar.phtml" />
         </reference>
     </practice_examtwo_index_index>
+
     <!-- <examtwo_index_index>
         <reference name="content">
             <block type="practice_examtwo/customreports" name="custom.reports" template="examtwo/custom_reports.phtml"/>

@@ -29,4 +29,28 @@
         </reference>
     </adminhtml_widget_grid> -->
 
+
+    <!-- <editor>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/editor.css</stylesheet></action>
+            <action method="addJs"><script>js/editor.js</script></action>
+        </reference>
+    </editor> -->
+
+
+    <!-- witout defining block u can set template on core/template general block -->
+    <!-- <layout version="0.1.0">
+        <custom_page_handle>
+            <reference name="content">
+                <block type="core/template" name="custom_block" template="custom/template.phtml" />
+            </reference>
+        </custom_page_handle>
+    </layout> -->
+
+
+    <!-- <custom_page_handle>
+        <reference name="left">
+            <block type="core/template" name="custom_sidebar_block" template="path/to/template.phtml" />
+        </reference>
+    </custom_page_handle> -->
 </layout>

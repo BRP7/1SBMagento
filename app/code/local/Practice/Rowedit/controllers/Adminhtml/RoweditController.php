@@ -89,7 +89,7 @@ class Practice_Rowedit_Adminhtml_RoweditController extends Mage_Adminhtml_Contro
             $status = $this->getRequest()->getPost('status');
 
             // Log the description for debugging purposes
-            Mage::log($description, null, "save.log");
+            Mage::log($status, null, "save.log");
 
             // Instantiate the rowedit model
             $roweditModel = Mage::getModel('practice_rowedit/rowedit');
@@ -186,7 +186,7 @@ class Practice_Rowedit_Adminhtml_RoweditController extends Mage_Adminhtml_Contro
     }
     public function massDeleteAction()
     {
-        $ids = $this->getRequest()->getParam('id');
+        $ids = $this->getRequest()->getParam('entity_id');
         if (!is_array($ids)) {
             $this->_getSession()->addError($this->__('Please select row(s).'));
         } else {
@@ -207,35 +207,40 @@ class Practice_Rowedit_Adminhtml_RoweditController extends Mage_Adminhtml_Contro
         $this->_redirect('*/*/index');
     }
     public function massStatusAction()
-    {
-        $ids = $this->getRequest()->getParam('id');
-        $status = $this->getRequest()->getParam('status');
-        if (!is_array($ids)) {
-            $rowids = array($ids);
-        }
+{
+    $ids = $this->getRequest()->getParam('entity_id');
+    $status = $this->getRequest()->getParam('status');
 
-        try {
-            foreach ($ids as $id) {
-                $rowids = Mage::getModel('practice_rowedit/rowedit')->load($id);
-                // Check if the status is different than the one being set
-                // if ($jalebi->getStatus() != $status) {
-                //     $jalebi->setStatus($status)->save();
-                // }
-            }
-            // Use appropriate success message based on the status changed
-            if ($status == 1) {
-                $this->_getSession()->addSuccess(
-                    $this->__('Total of %d record(s) have been enabled.', count($rowids))
-                );
-            } else {
-                $this->_getSession()->addSuccess(
-                    $this->__('Total of %d record(s) have been disabled.', count($rowids))
-                );
-            }
-        } catch (Exception $e) {
-            $this->_getSession()->addError($e->getMessage());
-        }
-
-        $this->_redirect('*/*/index');
+    if (!is_array($ids)) {
+        $ids = array($ids); // Ensure $ids is always an array
     }
+
+    try {
+        $updatedCount = 0; // Initialize a counter for updated records
+
+        foreach ($ids as $id) {
+            $rowedit = Mage::getModel('practice_rowedit/rowedit')->load($id);
+            if ($rowedit->getId()) {
+                $rowedit->setStatus($status)->save();
+                $updatedCount++;
+            }
+        }
+
+        // Use appropriate success message based on the status changed
+        if ($status == 1) {
+            $this->_getSession()->addSuccess(
+                $this->__('Total of %d record(s) have been enabled.', $updatedCount)
+            );
+        } else {
+            $this->_getSession()->addSuccess(
+                $this->__('Total of %d record(s) have been disabled.', $updatedCount)
+            );
+        }
+    } catch (Exception $e) {
+        $this->_getSession()->addError($e->getMessage());
+    }
+
+    $this->_redirect('*/*/index');
+}
+
 }

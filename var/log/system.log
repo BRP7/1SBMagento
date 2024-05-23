@@ -439,3 +439,54 @@
 2024-05-19T09:23:46+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\jscustomgris/grid.phtml
 2024-05-19T09:24:09+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\jscustomgris/grid.phtml
 2024-05-20T08:57:53+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\practice_exam/form.phtml
+2024-05-21T09:16:10+00:00 DEBUG (7): Security problem: cms/block has not been whitelisted.
+2024-05-21T09:16:10+00:00 DEBUG (7): Security problem: cms/block has not been whitelisted.
+2024-05-21T09:16:43+00:00 DEBUG (7): Security problem: cms/block has not been whitelisted.
+2024-05-21T09:16:43+00:00 DEBUG (7): Security problem: cms/block has not been whitelisted.
+2024-05-22T03:02:41+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\practice_exam/form.phtml
+2024-05-22T03:03:02+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\practice_exam/form.phtml
+2024-05-22T03:03:58+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\practice_exam/form.phtml
+2024-05-22T11:20:12+00:00 DEBUG (7): Security problem: cms/block has not been whitelisted.
+2024-05-22T11:20:12+00:00 DEBUG (7): Security problem: cms/block has not been whitelisted.
+2024-05-22T11:20:16+00:00 DEBUG (7): Security problem: cms/block has not been whitelisted.
+2024-05-22T11:20:16+00:00 DEBUG (7): Security problem: cms/block has not been whitelisted.
+2024-05-22T12:36:19+00:00 DEBUG (7): HEADERS ALREADY SENT: \<pre>[0] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Response\Http.php:52
+[1] C:\xampp\htdocs\1SBMagento\lib\Zend\Controller\Response\Abstract.php:768
+[2] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Response\Http.php:84
+[3] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php:184
+[4] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php:365
+[5] C:\xampp\htdocs\1SBMagento\app\Mage.php:686
+[6] C:\xampp\htdocs\1SBMagento\index.php:83
+\</pre>
+2024-05-22T12:38:30+00:00 DEBUG (7): HEADERS ALREADY SENT: \<pre>[0] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Response\Http.php:52
+[1] C:\xampp\htdocs\1SBMagento\lib\Zend\Controller\Response\Abstract.php:768
+[2] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Response\Http.php:84
+[3] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php:184
+[4] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php:365
+[5] C:\xampp\htdocs\1SBMagento\app\Mage.php:686
+[6] C:\xampp\htdocs\1SBMagento\index.php:83
+\</pre>
+2024-05-23T01:42:36+00:00 DEBUG (7): HEADERS ALREADY SENT: \<pre>[0] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Response\Http.php:52
+[1] C:\xampp\htdocs\1SBMagento\lib\Zend\Controller\Response\Abstract.php:768
+[2] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Response\Http.php:84
+[3] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php:184
+[4] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php:365
+[5] C:\xampp\htdocs\1SBMagento\app\Mage.php:686
+[6] C:\xampp\htdocs\1SBMagento\index.php:83
+\</pre>
+2024-05-23T04:06:18+00:00 DEBUG (7): HEADERS ALREADY SENT: \<pre>[0] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Response\Http.php:52
+[1] C:\xampp\htdocs\1SBMagento\lib\Zend\Controller\Response\Abstract.php:768
+[2] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Response\Http.php:84
+[3] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php:184
+[4] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php:365
+[5] C:\xampp\htdocs\1SBMagento\app\Mage.php:686
+[6] C:\xampp\htdocs\1SBMagento\index.php:83
+\</pre>
+2024-05-23T04:07:34+00:00 DEBUG (7): HEADERS ALREADY SENT: \<pre>[0] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Response\Http.php:52
+[1] C:\xampp\htdocs\1SBMagento\lib\Zend\Controller\Response\Abstract.php:768
+[2] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Response\Http.php:84
+[3] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php:184
+[4] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php:365
+[5] C:\xampp\htdocs\1SBMagento\app\Mage.php:686
+[6] C:\xampp\htdocs\1SBMagento\index.php:83
+\</pre>

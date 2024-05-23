@@ -1,0 +1,74 @@
+<?php if (!Mage::getStoreConfig('locationcheck/settings/enabled')): ?>
+    Product Executed Location Check :
+    <select id="product_execution">
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+<?php endif ?>
+
+
+Order Mark Location Check :
+<select id="order_mark">
+    <option value="1">Yes</option>
+    <option value="0">No</option>
+</select>
+
+<button name="demobtn" id='demoid'>Click</button>
+<p id="data-para"></p>
+
+<script>
+
+    // document.getElementById('demoid').addEventListener('click', function () {
+    var Product = $('product_execution');
+    var FormKey = FORM_KEY;
+    var Order = $('order_mark')
+    var obj = {
+        from_key: FormKey,
+    }
+    // console.log(Product.value);
+
+    $action = '<?php echo $this->getUrl('*/*/productDetail') ?>';
+    console.log($action);
+
+    document.observe("dom:loaded", function () {
+        $('demoid').observe('click', function (event) {
+            <?php if (!Mage::getStoreConfig('locationcheck/settings/enabled')): ?>
+                    obj['product_enable'] =Product.value;
+                <?php endif ?>
+                obj['order_enable']=Order.value;
+            new Ajax.Request('<?php echo $this->getUrl('*/*/productDetail') ?>', {
+                method: 'post',
+                parameters: obj ,
+                // parameters: { product_enable: Product.value, order_enable: Order.value, from_key: FormKey }, // Add your data here
+                onSuccess: function (transport) {
+                    var response = transport.responseText;
+                    $('data-para').innerText = response;
+                    var data = JSON.parse(response);
+                    console.log(response);
+
+                    var table = '<table border="1"><thead><tr><th>Order ID</th><th>Status</th><th>Grand Total</th></tr></thead><tbody>';
+
+                    data.forEach(function (order) {
+                        table += '<tr>';
+                        table += '<td>' + order.entity_id + '</td>';
+                        table += '<td>' + order.state + '</td>';
+                        table += '<td>' + order.grand_total + '</td>';
+                        table += '</tr>';
+                    });
+
+                    table += '</tbody></table>';
+                    $('data-para').innerHTML = table;
+
+                },
+                onFailure: function () {
+                    alert('Ajax request failed!');
+                }
+            });
+        });
+    });
+
+
+
+
+
+</script>

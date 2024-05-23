@@ -7,6 +7,9 @@ class Practice_Exam_Model_Product
      * @param int $productId
      * @return array
      */
+
+     protected $_eventPrefix = 'practice_product';
+     protected $_eventObject = 'product';
     public function getProductAttributeData($productId)
     {
         // Load the product by ID

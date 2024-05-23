@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_locationcheck_index>
+        <reference name="content">
+            <block type="ccc_locationcheck/adminhtml_locationcheck" name="locationcheck" />
+        </reference>
+    </adminhtml_locationcheck_index>
+
+    <adminhtml_locationcheck_new>
+        <update handle="adminhtml_locationcheck_edit" />
+    </adminhtml_locationcheck_new>
+
+    <adminhtml_locationcheck_edit>
+        <update handle="editor" />
+        <reference name="content">
+            <block type="ccc_locationcheck/adminhtml_locationcheck_edit" name="ccc_locationcheck_edit"></block>
+        </reference>
+    </adminhtml_locationcheck_edit>
+    <adminhtml_locationcheck_report>
+        <reference name="content">
+            <block type="ccc_locationcheck/adminhtml_locationcheck" name="ccc_locationcheck_report" template="locationcheck/location_report.phtml"></block>
+        </reference>
+    </adminhtml_locationcheck_report>
+</layout>

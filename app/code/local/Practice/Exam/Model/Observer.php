@@ -3,10 +3,11 @@
 class Practice_Exam_Model_Observer
 {
 
-    protected $num=5;
+    protected $num = 5;
     public function displayCustomMessage()
     {
         $this->num = $this->num + 1;
+        // echo $this->num;
         // $message = $this->num;
         Mage::getSingleton('core/session')->addNotice($this->num);
         // return $this->num;
@@ -18,6 +19,29 @@ class Practice_Exam_Model_Observer
         // }
     }
 
+    //     <?php  
+// class Practice_Product_Model_Observer{
+
+    public function demo()
+    {
+
+        echo 'your cron is runing';
+    }
+    public function customPrice(Varien_Event_Observer $observer)
+    {
+        $product = $observer->getEvent()->getProduct();
+        $product->setProductName($product->getProductName() . 'abc');
+    }
+    // }
+
+    public function handleCustomEvent($observer)
+    {
+        // Retrieve data from the event object
+        $param1 = $observer->getData('param1');
+        $param2 = $observer->getData('param2');
+
+        // Your logic here using $param1 and $param2
+    }
 
     // public function sendNotificationEmail(Varien_Event_Observer $observer)
     // {
@@ -45,41 +69,41 @@ class Practice_Exam_Model_Observer
     // }
 
     public function assignProductsToSpecialOffersCategory()
-{
-    $category = Mage::getModel('catalog/category')->loadByAttribute('name', 'Special Offers');
-    
-    if (!$category) {
-        Mage::log("Category 'Special Offers' does not exist.");
-        return;
-    }
+    {
+        $category = Mage::getModel('catalog/category')->loadByAttribute('name', 'Special Offers');
 
-    $productIds = [1, 2, 3]; // Replace with your actual product IDs
-
-    try {
-        foreach ($productIds as $productId) {
-            $product = Mage::getModel('catalog/product')->load($productId);
-            $categoryIds = $product->getCategoryIds();
-            if (!in_array($category->getId(), $categoryIds)) {
-                $categoryIds[] = $category->getId();
-                $product->setCategoryIds($categoryIds)->save();
-                Mage::log("Product ID {$productId} assigned to 'Special Offers'.");
-            }
+        if (!$category) {
+            Mage::log("Category 'Special Offers' does not exist.");
+            return;
         }
-    } catch (Exception $e) {
-        Mage::log("Failed to assign products: " . $e->getMessage());
+
+        $productIds = [1, 2, 3]; // Replace with your actual product IDs
+
+        try {
+            foreach ($productIds as $productId) {
+                $product = Mage::getModel('catalog/product')->load($productId);
+                $categoryIds = $product->getCategoryIds();
+                if (!in_array($category->getId(), $categoryIds)) {
+                    $categoryIds[] = $category->getId();
+                    $product->setCategoryIds($categoryIds)->save();
+                    Mage::log("Product ID {$productId} assigned to 'Special Offers'.");
+                }
+            }
+        } catch (Exception $e) {
+            Mage::log("Failed to assign products: " . $e->getMessage());
+        }
     }
-}
 
-public function customAction($observer)
-{
-    $product = $observer->getEvent()->getProduct();
-    print_r($product);
-    // Perform custom action here with $product
-}
+    public function customAction($observer)
+    {
+        $product = $observer->getEvent()->getProduct();
+        print_r($product);
+        // Perform custom action here with $product
+    }
 
-public function logProductChanges($observer)
-{
-    $product = $observer->getEvent()->getProduct();
-    // Log changes in product data
-}
+    public function logProductChanges($observer)
+    {
+        $product = $observer->getEvent()->getProduct();
+        // Log changes in product data
+    }
 }

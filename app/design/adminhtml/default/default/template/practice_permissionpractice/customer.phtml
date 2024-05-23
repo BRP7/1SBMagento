@@ -1,0 +1,18 @@
+<!-- app/design/adminhtml/default/default/template/practice_permissionpractice/customer.phtml -->
+
+<?php $customers = $this->getCustomers(); ?>
+<h1>Customers with Transaction Amounts Greater than Average</h1>
+<table border="1">
+    <tr>
+        <th>Customer Name</th>
+        <th>Email</th>
+        <th>Total Amount</th>
+    </tr>
+    <?php foreach ($customers as $customer): ?>
+        <tr>
+            <td><?php echo $customer->getFirstname() . ' ' . $customer->getLastname(); ?></td>
+            <td><?php echo $customer->getEmail(); ?></td>
+            <td><?php echo $customer->getTotalAmount(); ?></td>
+        </tr>
+    <?php endforeach; ?>
+</table>

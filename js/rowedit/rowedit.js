@@ -2,28 +2,29 @@
 var j = jQuery.noConflict();
 
 j(document).ready(function () {
+    var status = [];
     j("body").on("click", ".edit-row", function (e) {
         e.preventDefault();
 
         var editButton = j(this);
         var editUrl = editButton.data("url");
         var id = editButton.data("entity-id");
-        var status =editButton.data("status");
-        // console.log(status)
+        status = editButton.data("status");
+        console.log(status)
         var className = ".editable-" + id;
-        
+
         j(className).each(function () {
             // Handle name
             var rowName = j(this).find(".row_name");
             var rowNameText = rowName.text().trim();
             rowName.html('<input type="text" class="edit-input" value="' + rowNameText + '" data-original="' + rowNameText + '">');
-            
+
             // Handle description
             var rowDescription = j(this).find(".description");
             var rowDescriptionText = rowDescription.text().trim();
             rowDescription.html('<input type="text" class="edit-input" value="' + rowDescriptionText + '" data-original="' + rowDescriptionText + '">');
-            
-          
+
+
             var statusRow = j(this).find(".status");
             var statusText = statusRow.text().trim();
             console.log(statusText);
@@ -76,15 +77,16 @@ j(document).ready(function () {
             editedData["description"] = rowDescriptionText;
             rowDescription.closest('.description').text(rowDescriptionText);
 
-            // var rowStatus = j(this).find(".status .edit-input");
-            // var rowStatusText = rowStatus.val().trim();
-            // editedData["status"] = rowStatusText;
-            // rowDescription.closest('.status').text(rowDescriptionText);
+            var rowStatus = j(this).find(".status");
+            var rowStatusText = rowStatus.find("select").val();
+            console.log(status);
+            editedData["status"] = rowStatusText;
+            rowStatus.text(status[rowStatusText]);
 
-            var statusRow = j(this).find(".status");
-            var statusText = statusRow.find("select").val();
-            editedData["status"] = statusText;
-            statusRow.text(status[statusText]);
+            // var statusRow = j(this).find(".status");
+            // var statusText = statusRow.find("select").val();
+            // editedData["status"] = statusText;
+            // statusRow.text(status[statusText]);
 
 
             var createdDate = j(this).find(".created_date .edit-input");
@@ -118,9 +120,8 @@ j(document).ready(function () {
                 console.error("Error saving data:", error);
             },
         });
-
         var cell = saveButton.closest("td");
-        var a = j('<a>').text("Edit").attr("href", "#").addClass("edit-row").data("url", editUrl).data("entity-id", rowId);
+        var a = j('<a>').text("Edit").attr("href", "#").addClass("edit-row").data("url", editUrl).data("entity-id", rowId).data("status", status);
         cell.empty().append(a);
     });
     j("body").on("click", ".cancel-button", function (e) {
@@ -142,13 +143,19 @@ j(document).ready(function () {
             var createdDateText = createdDate.data('original');
             createdDate.closest('.created_date').text(createdDateText);
 
+            var statusRow = j(this).find(".status");
+            console.log(statusRow);
+            var statusText = statusRow.find("select").children('option:selected').data('original');
+            console.log(statusText);
+            statusRow.text(statusText);
+
             var updatedDate = j(this).find(".updated_date .edit-input");
             var updatedDateText = updatedDate.data('original');
             updatedDate.closest('.updated_date').text(updatedDateText);
         });
 
         var cell = cancelButton.closest("td");
-        var a = j('<a>').text("Edit").attr("href", "#").addClass("edit-row").data("url", cancelButton.data("url")).data("entity-id", rowId);
+        var a = j('<a>').text("Edit").attr("href", "#").addClass("edit-row").data("url", cancelButton.data('url')).data("entity-id", rowId).data("status", status);
         cell.empty().append(a);
     });
 });
@@ -156,13 +163,46 @@ j(document).ready(function () {
 function formatDateForServer(dateTimeString) {
     // Parse the date and time string into a Date object
     var date = new Date(dateTimeString);
-    
+
     // Format the date and time into the desired format
-    var formattedDateTime = date.getFullYear() + '-' + 
-                            ('0' + (date.getMonth() + 1)).slice(-2) + '-' + 
-                            ('0' + date.getDate()).slice(-2) + 'T' +
-                            ('0' + date.getHours()).slice(-2) + ':' + 
-                            ('0' + date.getMinutes()).slice(-2);
+    var formattedDateTime = date.getFullYear() + '-' +
+        ('0' + (date.getMonth() + 1)).slice(-2) + '-' +
+        ('0' + date.getDate()).slice(-2) + 'T' +
+        ('0' + date.getHours()).slice(-2) + ':' +
+        ('0' + date.getMinutes()).slice(-2);
 
     return formattedDateTime;
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Your code here
+    const button = document.getElementsByClassName('cus');
+    console.log(button);
+    j(button).on("click", roweditGrid_massactionJsObject.customFunction);
+    // button.setAttribute('onclick', 'gridMassaction.customFunction()');
+});
+// const button=document.createElement('button');
+// div.setAttribute('value','Click Here')
+// div.setAttribute('onclick','gridMassaction.customFunction()');
+// body.append(button);
+// if (typeof varienGridMassaction !== 'undefined') {
+    varienGridMassaction.prototype.customFunction = function() {
+        alert('Custom Mass Grid Function Called');
+        // Your custom code here
+    };
+// }
+
+varienGrid.prototype.doFilter = function () {
+    var filters = $$('#' + this.containerId + ' .filter input', '#' + this.containerId + ' .filter select');
+    var elements = [];
+    filters.push(customtextbox);
+    for (var i in filters) {
+        if (filters[i].value && filters[i].value.length) elements.push(filters[i]);
+    }
+    console.log(elements);
+    // debugger;
+    if (!this.doFilterCallback || (this.doFilterCallback && this.doFilterCallback())) {
+        this.reload(this.addVarToUrl(this.filterVar, encode_base64(Form.serializeElements(elements))));
+    }
+
+};

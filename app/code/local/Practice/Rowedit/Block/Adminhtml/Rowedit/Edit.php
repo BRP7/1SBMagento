@@ -25,7 +25,7 @@ class Practice_Rowedit_Block_Adminhtml_Rowedit_Edit extends Mage_Adminhtml_Block
             } else {
                 tinyMCE.execCommand('mceRemoveControl', false, 'row_content');
             }
-        }s
+        }
         
         function saveAndContinueEdit(){
             editForm.submit($('edit_form').action+'back/edit/');

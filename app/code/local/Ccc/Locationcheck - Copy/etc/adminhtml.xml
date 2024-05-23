@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+    <sales translate="title">
+        <children>
+            <locationcheck translate="title" module="locationcheck">
+                <title>Location Check Orders</title>
+                <action>adminhtml/locationcheck</action>
+                <sort_order>10</sort_order>
+            </locationcheck>
+            <locationcheck_report translate="title" module="locationcheck">
+                <title>Location Check Report</title>
+                <action>adminhtml/locationcheck/report</action>
+                <sort_order>10</sort_order>
+            </locationcheck_report>
+        </children>
+    </sales>
+  </menu>
+  <acl>
+    <resources>
+        <admin>
+            <children>
+                <system>
+                    <children>
+                        <config>
+                            <children>
+                                <locationcheck translate="title" module="locationcheck">
+                                    <title>Locationcheck Section</title>
+                                </locationcheck>
+                            </children>
+                        </config>
+                    </children>
+                </system>
+                <!-- <locationcheck>
+                    <children>
+                        <ccc_locationcheck translate="title">
+                            <title>Manage Locationcheck</title>
+                            <children>
+                                <action>
+                                    <title translate='title'>Actions</title>
+                                    <children>
+                                        <delete translate='title'>
+                                            <title>Delete</title>
+                                            <sort_order>4</sort_order>
+                                        </delete>
+                                        <edit translate="title">
+                                            <title>Edit</title>
+                                            <sort_order>3</sort_order>
+                                        </edit>
+                                        <save translate="title">
+                                            <title>Save</title>
+                                            <sort_order>3</sort_order>
+                                        </save>
+                                        <new translate="title">
+                                            <title>Add New</title>
+                                            <sort_order>2</sort_order>
+                                        </new>
+                                        <index translate="title">
+                                            <title>Show</title>
+                                            <sort_order>1</sort_order>
+                                        </index>
+                                    </children>
+                                </action>
+                            </children>
+                        </ccc_locationcheck>
+                        <locationcheck_report translate="title">
+                            <title>Manage Report</title>
+                            <children>
+                                <action>
+                                    <title translate='title'>Actions</title>
+                                    <children>
+                                        <delete translate='title'>
+                                            <title>Delete</title>
+                                            <sort_order>4</sort_order>
+                                        </delete>
+                                        <save translate='title'>
+                                            <title>Save</title>
+                                            <sort_order>4</sort_order>
+                                        </save>
+                                        <edit translate="title">
+                                            <title>Edit</title>
+                                            <sort_order>3</sort_order>
+                                        </edit>
+                                        <new translate="title">
+                                            <title>Add New</title>
+                                            <sort_order>2</sort_order>
+                                        </new>
+                                        <index translate="title">
+                                            <title>Show</title>
+                                            <sort_order>1</sort_order>
+                                        </index>
+                                    </children>
+                                </action>
+                            </children>
+                        </locationcheck_report>
+                    </children>
+                </locationcheck> -->
+
+                <ccc_location translate="title" module="locationcheck">
+                    <title>Manage Location Check</title>
+                    <sort_order>70</sort_order>
+                    <children>
+                        <index translate="title">
+                            <title>Show Location Grid</title>
+                            <sort_order>0</sort_order>
+                        </index>
+                        <new translate="title">
+                            <title>New </title>
+                            <sort_order>0</sort_order>
+                        </new>
+                        <edit translate="title">
+                            <title>Edit </title>
+                            <sort_order>0</sort_order>
+                        </edit>
+                        <save translate="title">
+                            <title>Save </title>
+                            <sort_order>0</sort_order>
+                        </save>
+                        <delete translate="title">
+                            <title>Delete Page</title>
+                            <sort_order>10</sort_order>
+                        </delete>
+                    </children>
+                </ccc_location>
+                <ccc_location_report translate="title" module="locationcheck">
+                    <title>Manage Location Report</title>
+                    <sort_order>70</sort_order>
+                    <children>
+                        <index translate="title">
+                            <title>Show </title>
+                            <sort_order>0</sort_order>
+                        </index>
+                        <new translate="title">
+                            <title>New </title>
+                            <sort_order>0</sort_order>
+                        </new>
+                        <edit translate="title">
+                            <title>Edit </title>
+                            <sort_order>0</sort_order>
+                        </edit>
+                        <save translate="title">
+                            <title>Save </title>
+                            <sort_order>0</sort_order>
+                        </save>
+                        <delete translate="title">
+                            <title>Delete Page</title>
+                            <sort_order>10</sort_order>
+                        </delete>
+                    </children>
+                </ccc_location_report>
+            </children>
+        </admin>
+    </resources>
+</acl>
+</config>

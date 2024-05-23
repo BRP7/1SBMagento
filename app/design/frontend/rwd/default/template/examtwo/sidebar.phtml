@@ -1,0 +1,45 @@
+<button id="custom_button">Click Me</button>
+<script type="text/javascript">
+    //    document.observe("dom:loaded", function () {
+    //     $('custom_button').observe('click', function (event) {
+    //         new Ajax.Request('<?php echo $this->getUrl('*/*/sidebar') ?>', {
+    //             method: 'post',
+    //             parameters: { key1: 'value1', key2: 'value2' }, // Add your data here
+    //             onSuccess: function (transport) {
+    //                 var response = transport.responseText;
+    //                 alert('Ajax request successful! Response: ' + response); // Display response in alert
+    //             },
+    //             onFailure: function () {
+    //                 alert('Ajax request failed!');
+    //             }
+    //         });
+    //     });
+    // });
+
+    document.observe("dom:loaded", function () {
+        $('custom_button').observe('click', function (event) {
+            new Ajax.Request('<?php echo $this->getUrl('*/*/sidebar') ?>', {
+                method: 'post',
+                parameters: { key1: 'value1', key2: 'value2' }, // Add your data here
+                onSuccess: function (transport) {
+                    var response = transport.responseText;
+                    var responseObject = JSON.parse(response); // Parse JSON response
+                    alert('Ajax request successful! Response: ' + responseObject.merged_value); // Access properties of the parsed object
+                },
+                onFailure: function () {
+                    alert('Ajax request failed!');
+                }
+            });
+        });
+    });
+
+
+    // <button name="demobtn" id='demoid'>Click</button>
+
+
+
+    // document.getElementById('demoid').addEventListener('click', function () {
+    //     <?php echo $this->getJsObjectName() ?>.demo('<?php echo $this->getUrl('*/*/demo'); ?>','<?php echo $this->getFormKey(); ?>');
+    // })
+
+</script>

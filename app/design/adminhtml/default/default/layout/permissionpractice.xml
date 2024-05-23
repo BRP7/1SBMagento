@@ -2,6 +2,7 @@
 <layout version="0.1.0">
     <adminhtml_permissionpractice_index>
         <reference name="content">
+            <block type="practice_permissionpractice/adminhtml_customer" name="practice_permissionpractice_customer" template="practice_permissionpractice/customer.phtml" />
             <block type="practice_permissionpractice/adminhtml_permissionpractice" name="permissionpractice"  />
         </reference>
     </adminhtml_permissionpractice_index>

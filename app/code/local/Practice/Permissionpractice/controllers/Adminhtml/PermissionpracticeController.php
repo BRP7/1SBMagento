@@ -4,7 +4,13 @@ class Practice_Permissionpractice_Adminhtml_PermissionpracticeController extends
 {
     public function indexAction()
     {
-        $this->_initAction();
+        // echo 132313;
+        $this->loadLayout();
+        $this->_title($this->__("Customer Information"));
+
+        $contentBlock = $this->getLayout()->createBlock('practice_permissionpractice/adminhtml_customer');
+        $this->_addContent($contentBlock);
+
         $this->renderLayout();
     }
     public function viewAction()
@@ -16,6 +22,8 @@ class Practice_Permissionpractice_Adminhtml_PermissionpracticeController extends
         $this->renderLayout();
 
     }
+
+    
 
 
 

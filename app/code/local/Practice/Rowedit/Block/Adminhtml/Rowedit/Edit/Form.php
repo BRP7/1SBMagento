@@ -45,16 +45,6 @@ class Practice_Rowedit_Block_Adminhtml_Rowedit_Edit_Form extends Mage_Adminhtml_
                 'required' => true,
             )
         );
-        $fieldset->addField(
-            'description',
-            'text',
-            array(
-                'name' => 'name',
-                'label' => Mage::helper('practice_rowedit')->__('Row Name'),
-                'title' => Mage::helper('practice_rowedit')->__('Row Name'),
-                'required' => true,
-            )
-        );
 
         $fieldset->addField(
             'status',

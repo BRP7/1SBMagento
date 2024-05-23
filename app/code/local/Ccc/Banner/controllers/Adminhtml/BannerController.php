@@ -265,7 +265,7 @@ class Ccc_Banner_Adminhtml_BannerController extends Mage_Adminhtml_Controller_Ac
                 try {
                     foreach ($bannerIds as $bannerId) {
                         $banner = Mage::getSingleton('ccc_banner/banner')->load($bannerId);
-                        // Mage::dispatchEvent('banner_controller_banner_delete', array('banner' => $banner));
+                        Mage::dispatchEvent('banner_controller_banner_delete', array('banner' => $banner));
                         $banner->delete();
                     }
                     $this->_getSession()->addSuccess(

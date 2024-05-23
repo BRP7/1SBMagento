@@ -14,7 +14,7 @@ class Practice_Rowedit_Block_Adminhtml_Rowedit_Grid_Renderer_EditButton extends 
         );
         $status = json_encode($statusOptions);
         $editUrl = $this->getUrl('*/*/save', array('entity_id' => $rowId));
-        $output = "<a href='#' class='edit-row' data-url='{$editUrl}' data-entity-id='{$rowId}' data-status='{$status}'>Edit</a>";
+        $output = "<a herf='' class='edit-row' data-url='{$editUrl}' data-entity-id='{$rowId}' data-status='{$status}'>Edit</a>";
         return $output;
     }
 }

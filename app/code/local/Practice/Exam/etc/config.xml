@@ -55,7 +55,7 @@
                     </log_changes>
                 </observers>
             </catalog_product_save_after>
-            <controller_action_postdispatch>
+            <controller_action_predispatch>
                 <observers>
                     <practice_exam_observer>
                         <type>singleton</type>
@@ -63,7 +63,30 @@
                         <method>displayCustomMessage</method>
                     </practice_exam_observer>
                 </observers>
-            </controller_action_postdispatch>
+            </controller_action_predispatch>
+                <practice_product_save_before>
+                    <observers>
+                        <product__save_before>
+                            <type>singleton</type>
+                            <class>practice_exam/observer</class>
+                            <method>customPrice</method>
+                        </product__save_before>
+                    </observers>
+                </practice_product_save_before>
+                <custom_event_name>
+                    <!-- Specify the observer node -->
+                    <observers>
+                        <!-- Unique identifier for your observer -->
+                        <custom_exam_observer>
+                            <!-- Name of the model class containing the observer method -->
+                            <class>practice_exam/observer</class>
+                            
+                            <!-- Name of the method in the observer class to be executed -->
+                            <method>handleCustomEvent</method>
+                        </custom_exam_observer>
+                    </observers>
+                </custom_event_name>
+            
             <!-- <adminhtml_controller_action_postdispatch_catalog_category_save>
                 <observers>
                     <practice_exam_create_special_offers_category>
