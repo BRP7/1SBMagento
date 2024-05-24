@@ -112,3 +112,9 @@
 2024-05-24T11:04:08+00:00 DEBUG (7): Updated sold_count for product ID 313: 49
 2024-05-24T11:21:21+00:00 DEBUG (7): Updated sold_count for product ID 313: 49
 2024-05-24T11:23:06+00:00 DEBUG (7): Updated sold_count for product ID 313: 49
+2024-05-24T11:41:07+00:00 DEBUG (7): Updated sold_count for product ID 313: 49
+2024-05-24T11:44:54+00:00 DEBUG (7): Updated sold_count for product ID 418: 0
+2024-05-24T11:44:55+00:00 DEBUG (7): Updated sold_count for product ID 287: 0
+2024-05-24T12:47:10+00:00 DEBUG (7): Decremented sold_count for product ID 418: -1
+2024-05-24T12:47:11+00:00 DEBUG (7): Decremented sold_count for product ID 287: -1
+2024-05-24T12:47:15+00:00 DEBUG (7): Updated sold_count for product ID 313: 49

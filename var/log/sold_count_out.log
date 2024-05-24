@@ -64,3 +64,14 @@
 2024-05-24T11:23:04+00:00 DEBUG (7): Current Qty --> { ()}
 2024-05-24T11:23:04+00:00 DEBUG (7): Old Qty --> 1.0000
 2024-05-24T11:23:04+00:00 DEBUG (7): Old Sold Count 49 : Current Qty -->1 : Old Qty --> 1.0000
+2024-05-24T11:39:21+00:00 DEBUG (7): Old Qty --> 3.0000
+2024-05-24T11:40:01+00:00 DEBUG (7): Old Qty --> 3.0000
+2024-05-24T11:40:46+00:00 DEBUG (7): Old Qty --> 3.0000
+2024-05-24T11:41:06+00:00 DEBUG (7): Old Qty --> 3.0000
+2024-05-24T11:41:06+00:00 DEBUG (7): Old Sold Count 49 : Current Qty -->3 : Old Qty --> 3.0000
+2024-05-24T11:44:53+00:00 DEBUG (7): Old Qty --> 1.0000
+2024-05-24T11:44:53+00:00 DEBUG (7): Old Sold Count 0 : Current Qty -->1 : Old Qty --> 1.0000
+2024-05-24T11:44:54+00:00 DEBUG (7): Old Qty --> 1.0000
+2024-05-24T11:44:54+00:00 DEBUG (7): Old Sold Count 0 : Current Qty -->1 : Old Qty --> 1.0000
+2024-05-24T12:47:14+00:00 DEBUG (7): Old Qty --> 5.0000
+2024-05-24T12:47:14+00:00 DEBUG (7): Old Sold Count 49 : Current Qty -->5 : Old Qty --> 5.0000

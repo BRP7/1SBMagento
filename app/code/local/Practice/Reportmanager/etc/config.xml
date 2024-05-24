@@ -7,23 +7,23 @@
     </modules>
     <global>
         <events>
-            <sales_order_place_before>
+            <sales_order_place_after>
                 <observers>
                     <repoer_sales_order_save_before_observer>
                         <class>practice_reportmanager/observer</class>
                         <method>customSalesOrderBeforeSave</method>
                     </repoer_sales_order_save_before_observer>
                 </observers>
-            </sales_order_place_before>
-            <sales_order_delete_before>
+            </sales_order_place_after>
+            <order_cancel_after>
                 <observers>
                     <repoer_sales_order_save_delete_observer>
                         <class>practice_reportmanager/observer</class>
                         <method>customSalesOrderBeforeDelete</method>
                     </repoer_sales_order_save_delete_observer>
                 </observers>
-            </sales_order_delete_before>
-            </events>
+            </order_cancel_after>
+        </events>
         <models>
             <practice_reportmanager>
                 <class>Practice_Reportmanager_Model</class>

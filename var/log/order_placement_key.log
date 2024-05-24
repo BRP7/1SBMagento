@@ -188,3 +188,19 @@
 2024-05-24T11:23:08+00:00 DEBUG (7): Product excluded location check set to 1 for item ID: 630
 2024-05-24T11:23:08+00:00 DEBUG (7): Product excluded location check set to 1 for item ID: 631
 2024-05-24T11:24:12+00:00 DEBUG (7): Product excluded location check set to 1 for item ID: 631
+2024-05-24T11:39:21+00:00 DEBUG (7): Product excluded location check set to 1 for item ID: 
+2024-05-24T11:40:01+00:00 DEBUG (7): Product excluded location check set to 1 for item ID: 
+2024-05-24T11:40:46+00:00 DEBUG (7): Product excluded location check set to 1 for item ID: 
+2024-05-24T11:41:06+00:00 DEBUG (7): Product excluded location check set to 1 for item ID: 
+2024-05-24T11:41:07+00:00 DEBUG (7): Product excluded location check set to 1 for item ID: 635
+2024-05-24T11:44:53+00:00 DEBUG (7): Product excluded location check is not set for item ID: 
+2024-05-24T11:44:53+00:00 DEBUG (7): Product excluded location check set to 1 for item ID: 
+2024-05-24T11:44:55+00:00 DEBUG (7): Product excluded location check is not set for item ID: 636
+2024-05-24T11:44:55+00:00 DEBUG (7): Product excluded location check set to 1 for item ID: 637
+2024-05-24T12:47:14+00:00 DEBUG (7): Product excluded location check set to 1 for item ID: 
+2024-05-24T12:47:15+00:00 DEBUG (7): Product excluded location check set to 1 for item ID: 638
+2024-05-24T12:47:16+00:00 DEBUG (7): Product excluded location check is not set for item ID: 636
+2024-05-24T12:47:16+00:00 DEBUG (7): Product excluded location check set to 1 for item ID: 637
+2024-05-24T12:47:20+00:00 DEBUG (7): Product excluded location check is not set for item ID: 636
+2024-05-24T12:47:20+00:00 DEBUG (7): Product excluded location check set to 1 for item ID: 637
+2024-05-24T12:47:20+00:00 DEBUG (7): Product excluded location check set to 1 for item ID: 638
