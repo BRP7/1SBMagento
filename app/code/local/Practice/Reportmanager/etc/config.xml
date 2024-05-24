@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Practice_Reportmanager>
+            <version>0.1.0</version>
+        </Practice_Reportmanager>
+    </modules>
+    <global>
+        <models>
+            <practice_reportmanager>
+                <class>Practice_Reportmanager_Model</class>
+                <resourceModel>practice_reportmanager_resource</resourceModel>
+            </practice_reportmanager>
+            <practice_reportmanager_resource>
+                <class>Practice_Reportmanager_Model_Resource</class>
+                <entities>
+                    <reportmanager>
+                        <table>ccc_filter_report</table>
+                    </reportmanager>
+                </entities>
+            </practice_reportmanager_resource>
+        </models>
+        <resources>
+            <practice_reportmanager_setup>
+                <setup>
+                    <module>practice_reportmanager</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </practice_reportmanager_setup>
+        </resources>
+    </global>
+</config>

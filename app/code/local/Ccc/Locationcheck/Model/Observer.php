@@ -20,7 +20,6 @@ class Ccc_Locationcheck_Model_Observer
 
         $items = $order->getAllItems();
         foreach ($items as $item) {
-            // Explicitly load the product with the desired attribute
             $product = Mage::getModel('catalog/product')->load($item->getProductId());
             $isExcludeLocationCheck = $product->getData('is_exclude_location_check');
             
