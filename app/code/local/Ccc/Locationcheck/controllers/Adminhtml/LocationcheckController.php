@@ -178,7 +178,7 @@ class Ccc_Locationcheck_Adminhtml_LocationcheckController extends Mage_Adminhtml
                     $Location->setIsActive($isActive)->save();
                 }
             }
-            if ($isActive == 'yes') {
+            if ($isActive == 1) {
                 $this->_getSession()->addSuccess(
                     $this->__('Total of %d record(s) have been Yes.', count($locationcheckIds))
                 );
@@ -229,7 +229,6 @@ class Ccc_Locationcheck_Adminhtml_LocationcheckController extends Mage_Adminhtml
                 'entity_id' => $order['entity_id'],
                 'state' => $order['status'],
                 'grand_total' => $order['grand_total'],
-                // Add more columns as needed
             ];
         }
 

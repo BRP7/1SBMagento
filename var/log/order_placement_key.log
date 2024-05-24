@@ -1,2 +1,8 @@
 2024-05-23T07:52:42+00:00 DEBUG (7): Product Excluded: 
 2024-05-23T07:52:42+00:00 DEBUG (7): Product Excluded: 
+2024-05-24T05:04:13+00:00 DEBUG (7): Product excluded location check set to 1 for item ID: 
+2024-05-24T05:04:13+00:00 DEBUG (7): Product excluded location check set to 1 for item ID: 605
+2024-05-24T05:18:12+00:00 DEBUG (7): Product excluded location check is not set for item ID: 
+2024-05-24T05:18:12+00:00 DEBUG (7): Product excluded location check is not set for item ID: 606
+2024-05-24T05:42:13+00:00 DEBUG (7): Product excluded location check set to 1 for item ID: 
+2024-05-24T05:42:13+00:00 DEBUG (7): Product excluded location check set to 1 for item ID: 607

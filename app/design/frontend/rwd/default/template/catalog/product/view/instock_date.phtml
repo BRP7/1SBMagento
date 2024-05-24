@@ -18,7 +18,4 @@ $instockDate = $_product->getInstockDate();
     <strong><?php echo $this->__('Brand:') ?></strong>
     <?php echo ($_product->getAttributeText('brand')) ? $_product->getAttributeText('brand') : $this->__('No Brand'); ?>
 </div>
-<div class="product-islocationcheck">
-    <strong><?php echo $this->__('Is Location Check:') ?></strong>
-    <?php echo ($_product->getAttributeText('is_exclude_location_check')) ? $_product->getAttributeText('is_exclude_location_check') : $this->__('No is_exclude_location_check'); ?>
-</div>
+

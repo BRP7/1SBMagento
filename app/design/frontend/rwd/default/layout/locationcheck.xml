@@ -2,7 +2,7 @@
 <layout>
     <catalog_product_view>
         <reference name="product.info.addtocart">
-            <block type="ccc_locationcheck/adminhtml_locationcheck" name="custom.location"  template="locationcheck/locationcheck.phtml" />
+            <block type="ccc_locationcheck/locationcheck" name="custom.location"  template="locationcheck/locationcheck.phtml" />
         </reference>
     </catalog_product_view>
 </layout>

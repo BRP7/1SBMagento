@@ -61,8 +61,8 @@ class Ccc_Locationcheck_Block_Adminhtml_Locationcheck_Edit_Form extends Mage_Adm
                 // Remove 'required' attribute only in edit mode
                 'required' => true,
                 'options' => array(
-                    'yes' => Mage::helper('locationcheck')->__('Yes'),
-                    'no' => Mage::helper('locationcheck')->__('No'),
+                    1 => Mage::helper('locationcheck')->__('Yes'),
+                    0 => Mage::helper('locationcheck')->__('No'),
                 ),
             )
         );

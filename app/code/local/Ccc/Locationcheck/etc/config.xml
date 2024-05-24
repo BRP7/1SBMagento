@@ -2,9 +2,18 @@
 <config>
     <modules>
         <Ccc_Locationcheck>
-            <version>0.1.3</version>
+            <version>0.1.1</version>
         </Ccc_Locationcheck>
     </modules>
+    <frontend>
+        <layout>
+            <updates>
+                <ccc_locationcheck>
+                    <file>locationcheck.xml</file>
+                </ccc_locationcheck>
+            </updates>
+        </layout>
+    </frontend>
     <admin>
         <routers>
             <adminhtml>
