@@ -19,3 +19,8 @@ $instockDate = $_product->getInstockDate();
     <?php echo ($_product->getAttributeText('brand')) ? $_product->getAttributeText('brand') : $this->__('No Brand'); ?>
 </div>
 
+<div class="product-soldcount">
+    <strong><?php echo $this->__('Sold Count:') ?></strong>
+    <?php echo ($_product->getSoldCount()) ? $_product->getData('sold_count') : $this->__('No Sold Count'); ?>
+</div>
+

@@ -2,10 +2,28 @@
 <config>
     <modules>
         <Practice_Reportmanager>
-            <version>0.1.0</version>
+            <version>0.1.1</version>
         </Practice_Reportmanager>
     </modules>
     <global>
+        <events>
+            <sales_order_place_before>
+                <observers>
+                    <repoer_sales_order_save_before_observer>
+                        <class>practice_reportmanager/observer</class>
+                        <method>customSalesOrderBeforeSave</method>
+                    </repoer_sales_order_save_before_observer>
+                </observers>
+            </sales_order_place_before>
+            <sales_order_delete_before>
+                <observers>
+                    <repoer_sales_order_save_delete_observer>
+                        <class>practice_reportmanager/observer</class>
+                        <method>customSalesOrderBeforeDelete</method>
+                    </repoer_sales_order_save_delete_observer>
+                </observers>
+            </sales_order_delete_before>
+            </events>
         <models>
             <practice_reportmanager>
                 <class>Practice_Reportmanager_Model</class>
@@ -23,7 +41,7 @@
         <resources>
             <practice_reportmanager_setup>
                 <setup>
-                    <module>practice_reportmanager</module>
+                    <module>Practice_Reportmanager</module>
                 </setup>
                 <connection>
                     <use>core_setup</use>

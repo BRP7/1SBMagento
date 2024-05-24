@@ -1,6 +1,5 @@
 <?php
 $installer = $this;
-
 $installer->startSetup();
 
 $tableName = $installer->getTable('practice_reportmanager/reportmanager');
@@ -28,17 +27,19 @@ $table = $installer->getConnection()
     ->addColumn('is_active', Varien_Db_Ddl_Table::TYPE_TEXT, 255, array(
         'nullable' => false,
     ), 'Is Active')
-    ->addColumn('filter_data', Varien_Db_Ddl_Table::TYPE_TEXT, array(
+    ->addColumn('filter_data', Varien_Db_Ddl_Table::TYPE_TEXT, null, array(
         'nullable' => false,
     ), 'Filter Data')
-    ->addColumn('created_at', Varien_Db_Ddl_Table::TYPE_TIMESTAMP, null, [
+    ->addColumn('created_at', Varien_Db_Ddl_Table::TYPE_TIMESTAMP, null, array(
         'nullable' => false,
         'default' => Varien_Db_Ddl_Table::TIMESTAMP_INIT,
-    ], 'Created At')
-    ->addColumn('updated_at', Varien_Db_Ddl_Table::TYPE_TIMESTAMP, null, [
+    ), 'Created At')
+    ->addColumn('updated_at', Varien_Db_Ddl_Table::TYPE_TIMESTAMP, null, array(
         'nullable' => false,
-        'default' => Varien_Db_Ddl_Table::TIMESTAMP_INIT,
-    ], 'Updated At')
-    ->setComment('Prctice Report Manager Table');
+        'default' => Varien_Db_Ddl_Table::TIMESTAMP_INIT_UPDATE,
+    ), 'Updated At')
+    ->setComment('Practice Report Manager Table');
+
 $installer->getConnection()->createTable($table);
+
 $installer->endSetup();

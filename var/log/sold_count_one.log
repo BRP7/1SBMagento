@@ -1,0 +1,30 @@
+2024-05-24T10:34:55+00:00 DEBUG (7): Updated sold_count for product ID  : 
+2024-05-24T10:34:56+00:00 DEBUG (7): Updated sold_count for product ID 623 : 217
+2024-05-24T10:34:57+00:00 DEBUG (7): Updated sold_count for product ID 622 : 216
+2024-05-24T10:34:58+00:00 DEBUG (7): Updated sold_count for product ID 618 : 212
+2024-05-24T10:34:59+00:00 DEBUG (7): Updated sold_count for product ID 619 : 213
+2024-05-24T10:34:59+00:00 DEBUG (7): Updated sold_count for product ID 620 : 214
+2024-05-24T10:35:00+00:00 DEBUG (7): Updated sold_count for product ID 621 : 215
+2024-05-24T10:35:01+00:00 DEBUG (7): Updated sold_count for product ID 622 : 216
+2024-05-24T10:35:02+00:00 DEBUG (7): Updated sold_count for product ID 623 : 217
+2024-05-24T10:37:07+00:00 DEBUG (7): Updated sold_count for product ID  : 
+2024-05-24T10:37:07+00:00 DEBUG (7): Updated sold_count for product ID 624 : 218
+2024-05-24T10:37:08+00:00 DEBUG (7): Updated sold_count for product ID 623 : 217
+2024-05-24T10:37:10+00:00 DEBUG (7): Updated sold_count for product ID 618 : 212
+2024-05-24T10:37:10+00:00 DEBUG (7): Updated sold_count for product ID 619 : 213
+2024-05-24T10:37:11+00:00 DEBUG (7): Updated sold_count for product ID 620 : 214
+2024-05-24T10:37:12+00:00 DEBUG (7): Updated sold_count for product ID 621 : 215
+2024-05-24T10:37:13+00:00 DEBUG (7): Updated sold_count for product ID 622 : 216
+2024-05-24T10:37:14+00:00 DEBUG (7): Updated sold_count for product ID 623 : 217
+2024-05-24T10:37:15+00:00 DEBUG (7): Updated sold_count for product ID 624 : 218
+2024-05-24T10:44:34+00:00 DEBUG (7): 
+2024-05-24T10:44:34+00:00 DEBUG (7): 219
+2024-05-24T10:44:35+00:00 DEBUG (7): 218
+2024-05-24T10:44:37+00:00 DEBUG (7): 212
+2024-05-24T10:44:37+00:00 DEBUG (7): 213
+2024-05-24T10:44:38+00:00 DEBUG (7): 214
+2024-05-24T10:44:39+00:00 DEBUG (7): 215
+2024-05-24T10:44:40+00:00 DEBUG (7): 216
+2024-05-24T10:44:41+00:00 DEBUG (7): 217
+2024-05-24T10:44:42+00:00 DEBUG (7): 218
+2024-05-24T10:44:43+00:00 DEBUG (7): 219
