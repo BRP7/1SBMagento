@@ -13,20 +13,28 @@ class Ccc_Locationcheck_Model_Observer
             foreach ($collection as $location) {
                 if ($location->getZipcode() == $shippingAddress->getPostcode()) {
                     $order->setIsLocationChecked(1);
-                    Mage::log('Order location checkid: ' . $order->getIsLocationChecked(), null, 'order_placement.log');
+                    Mage::log('Order location checked: ' . $order->getIsLocationChecked(), null, 'order_placement.log');
                 }
             }
         }
 
         $items = $order->getAllItems();
         foreach ($items as $item) {
-            if ($item->getProduct()->getData('is_exclude_location_check')) {
-                $item->setProductExcludedLocationCheck(1);
-                Mage::log('Product excluded location id: ' . $order->getProductExcludedLocationCheck(), null, 'order_placement_key.log');
+            // Explicitly load the product with the desired attribute
+            $product = Mage::getModel('catalog/product')->load($item->getProductId());
+            $isExcludeLocationCheck = $product->getData('is_exclude_location_check');
+            
+            Mage::log('Product ID: ' . $item->getProductId(), null, 'order_placement_key_one.log');
+            Mage::log('Product excluded location check: ' . $isExcludeLocationCheck, null, 'order_placement_key_one.log');
+
+            if ($isExcludeLocationCheck == 1) {
+                $item->setData('product_excluded_location_check', 1);
+                Mage::log('Product excluded location check set to 1 for item ID: ' . $item->getId(), null, 'order_placement_key.log');
+            } else {
+                Mage::log('Product excluded location check is not set for item ID: ' . $item->getId(), null, 'order_placement_key.log');
             }
         }
 
         return $this;
     }
-
 }
