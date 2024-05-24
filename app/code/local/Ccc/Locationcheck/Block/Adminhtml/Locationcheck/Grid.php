@@ -4,71 +4,15 @@ class Ccc_Locationcheck_Block_Adminhtml_Locationcheck_Grid extends Mage_Adminhtm
     public function __construct($attributes = array())
     {
         parent::__construct($attributes);
-        // $this->setTemplate('banner/grid.phtml');
 
     }
     protected function _prepareCollection()
     {
-        // Load your collection
+
         $collection = Mage::getModel('ccc_locationcheck/locationcheck')->getCollection();
         $this->setCollection($collection);
         return parent::_prepareCollection();
     }
-    // public function checkColumn($column)
-    // {
-    //     return Mage::getSingleton('admin/session')->isAllowed('ccc_banner/columns/' . $column);
-    // }
-    // protected function _prepareColumns()
-    // {
-    //     $columns = array(
-    //         'banner_id' => array(
-    //             'header' => Mage::helper('locationcheck')->__('Id'),
-    //             'align' => 'right',
-    //             'width' => '50px',
-    //             'index' => 'banner_id',
-    //             // 'is_allowed' => $this->checkColumn('id'), // ACL check
-    //         ),
-    //         'banner_name' => array(
-    //             'header' => Mage::helper('banner')->__('Banner Name'),
-    //             'align' => 'left',
-    //             'index' => 'banner_name',
-    //             // 'is_allowed' => $this->checkColumn('name'), // ACL check
-    //         ),
-    //         'banner_image' => array(
-    //             'header' => Mage::helper('banner')->__('Banner Image'),
-    //             'align' => 'center',
-    //             'index' => 'banner_image',
-    //             'renderer' => 'Ccc_Banner_Block_Adminhtml_Banner_Grid_Renderer_Image', // Use custom renderer for image column
-    //             // 'is_allowed' => $this->checkColumn('image'), // ACL check
-
-    //         ),
-    //         'status' => array(
-    //             'header' => Mage::helper('banner')->__('Status'),
-    //             'align' => 'left',
-    //             'index' => 'status',
-    //             // 'is_allowed' => $this->checkColumn('status'), // ACL check
-
-    //         ),
-    //         'show_on' => array(
-    //             'header' => Mage::helper('banner')->__('Show On'),
-    //             'align' => 'left',
-    //             'index' => 'show_on',
-    //             // 'is_allowed' => $this->checkColumn('showon'), // ACL check
-
-    //         ),
-    //     );
-    //     // Loop through each column
-    //     foreach ($columns as $columnKey => $columnConfig) {
-    //         // Add column
-    //         if ($columnConfig['is_allowed'] == true) {
-    //             $this->addColumn($columnKey, $columnConfig);
-    //         }
-    //     }
-    //     // Add more columns as needed
-
-    //     return parent::_prepareColumns();
-    // }
-
 
     protected function _prepareColumns()
     {
@@ -121,25 +65,6 @@ class Ccc_Locationcheck_Block_Adminhtml_Locationcheck_Grid extends Mage_Adminhtm
             'renderer' => 'ccc_locationcheck/adminhtml_locationcheck_grid_renderer_datetime',
         ));
 
-        // $this->addColumn('edit', array(
-        //     'header' => Mage::helper('practice_rowedit')->__('Action'),
-        //     'align' => 'left',
-        //     'type' => 'action',
-        //     'getter' => 'getId',
-        //     'actions' => array(
-        //         array(
-        //             'caption' => Mage::helper('practice_rowedit')->__('Edit'),
-        //             'url' => array('base' => '*/*/edit'),
-        //             'field' => 'entity_id',
-        //         )
-        //     ),
-        //     'filter' => false,
-        //     'sortable' => false,
-        //     'index' => 'edit',
-        //     'renderer' => 'practice_rowedit/adminhtml_rowedit_grid_renderer_editbutton',
-        // )
-        // );
-
         return parent::_prepareColumns();
     }
 
@@ -147,11 +72,11 @@ class Ccc_Locationcheck_Block_Adminhtml_Locationcheck_Grid extends Mage_Adminhtm
     {
         return $this->getUrl('*/*/edit', array('id' => $row->getId()));
     }
-    // MAss Actions 
+    
     protected function _prepareMassaction()
     {
         $this->setMassactionIdField('id');
-        $this->getMassactionBlock()->setFormFieldName('id'); // Change to 'banner_id'
+        $this->getMassactionBlock()->setFormFieldName('id'); 
 
         $this->getMassactionBlock()->addItem(
             'delete',

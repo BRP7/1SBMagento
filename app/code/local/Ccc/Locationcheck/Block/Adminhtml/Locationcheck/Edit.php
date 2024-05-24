@@ -34,11 +34,7 @@ class Ccc_Locationcheck_Block_Adminhtml_Locationcheck_Edit extends Mage_Adminhtm
         }
     ";
     }
-    /**
-     * Get edit form container header text
-     *
-     * @return string
-     */
+    
     public function getHeaderText()
     {
         if (Mage::registry('locationcheck_block')->getId()) {

@@ -5,6 +5,8 @@ class Ccc_Locationcheck_Model_Locationcheck extends Mage_Core_Model_Abstract
     {
         $this->_init('ccc_locationcheck/locationcheck');
     }
+
+    
 }
 
 ?>

@@ -10,22 +10,21 @@ class Ccc_Banner_Block_Adminhtml_Banner_Grid extends Mage_Adminhtml_Block_Widget
 
     protected function _prepareCollection()
     {
-        // Load your collection
+       
         $collection = Mage::getModel('ccc_banner/banner')->getCollection();
         
         if (!Mage::getSingleton('admin/session')->isAllowed('ccc_banner/rows/showall')) {
-            // Modify the SQL query to apply the order by
+         
             $collection->setOrder('banner_id', 'DESC');
             
-            // Apply custom limit
-            $customLimit = 4; // Change this to your desired limit
+            
+            $customLimit = 4; 
             $collection->getSelect()->limit($customLimit);
             $this->setCollection($collection);
             return $this;
         }
         $this->setCollection($collection);
 
-        // Set the collection to the grid
         return parent::_prepareCollection();
     }
     
@@ -44,34 +43,34 @@ class Ccc_Banner_Block_Adminhtml_Banner_Grid extends Mage_Adminhtml_Block_Widget
                 'align' => 'right',
                 'width' => '50px',
                 'index' => 'banner_id',
-                'is_allowed' => $this->checkColumn('id'), // ACL check
+                'is_allowed' => $this->checkColumn('id'), 
             ),
             'banner_name' => array(
                 'header' => Mage::helper('banner')->__('Banner Name'),
                 'align' => 'left',
                 'index' => 'banner_name',
-                'is_allowed' => $this->checkColumn('name'), // ACL check
+                'is_allowed' => $this->checkColumn('name'), 
             ),
             'banner_image' => array(
                 'header' => Mage::helper('banner')->__('Banner Image'),
                 'align' => 'center',
                 'index' => 'banner_image',
-                'renderer' => 'Ccc_Banner_Block_Adminhtml_Banner_Grid_Renderer_Image', // Use custom renderer for image column
-                'is_allowed' => $this->checkColumn('image'), // ACL check
+                'renderer' => 'Ccc_Banner_Block_Adminhtml_Banner_Grid_Renderer_Image', 
+                'is_allowed' => $this->checkColumn('image'), 
 
             ),
             'status' => array(
                 'header' => Mage::helper('banner')->__('Status'),
                 'align' => 'left',
                 'index' => 'status',
-                'is_allowed' => $this->checkColumn('status'), // ACL check
+                'is_allowed' => $this->checkColumn('status'), 
 
             ),
             'show_on' => array(
                 'header' => Mage::helper('banner')->__('Show On'),
                 'align' => 'left',
                 'index' => 'show_on',
-                'is_allowed' => $this->checkColumn('showon'), // ACL check
+                'is_allowed' => $this->checkColumn('showon'), 
 
             ),
         );

@@ -5,6 +5,7 @@ class Ccc_Locationcheck_Model_Resource_Locationcheck extends Mage_Core_Model_Res
     {
         $this->_init('ccc_locationcheck/locationcheck', 'id');
     }
+
 }
 
 ?>

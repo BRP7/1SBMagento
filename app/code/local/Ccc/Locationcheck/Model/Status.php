@@ -5,11 +5,7 @@ class Ccc_Locationcheck_Model_Status extends Mage_Core_Model_Abstract
     const IS_ACTIVE_ENABLED = 'yes';
     const IS_ACTIVE_DISABLED = 'no';
 
-    /**
-     * Retrieve option array
-     *
-     * @return array
-     */
+
     static public function getOptionArray()
     {
         return array(
@@ -18,11 +14,6 @@ class Ccc_Locationcheck_Model_Status extends Mage_Core_Model_Abstract
         );
     }
 
-    /**
-     * Retrieve option array with empty value
-     *
-     * @return array
-     */
     static public function getAllOption()
     {
         $options = self::getOptionArray();
@@ -30,11 +21,7 @@ class Ccc_Locationcheck_Model_Status extends Mage_Core_Model_Abstract
         return $options;
     }
 
-    /**
-     * Retrieve option array with empty value
-     *
-     * @return array
-     */
+  
     static public function getAllOptions()
     {
         $res = array(
@@ -52,12 +39,6 @@ class Ccc_Locationcheck_Model_Status extends Mage_Core_Model_Abstract
         return $res;
     }
 
-    /**
-     * Retrieve option text by option value
-     *
-     * @param string $optionId
-     * @return string
-     */
     static public function getOptionText($optionId)
     {
         $options = self::getOptionArray();
