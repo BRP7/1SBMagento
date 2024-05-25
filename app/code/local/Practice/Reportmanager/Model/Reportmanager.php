@@ -1,6 +1,6 @@
 <?php
 
-class Practice_Reportmanager_Model_Reportmanager extends Mage_Core_Model_Abstract
+class Practice_Reportmanager_Model_Reportmanager extends Mage_Core_Model_Abstrac
 {
     public function _construct()
     {
