@@ -209,7 +209,6 @@ class Ccc_Locationcheck_Adminhtml_LocationcheckController extends Mage_Adminhtml
 
     public function productDetailAction()
     {
-        // Retrieve data sent via POST
         $data = $this->getRequest()->getPost();
         $order_enable = $data['order_enable'];
         if (isset($data['product_enable'])) {
@@ -235,6 +234,8 @@ class Ccc_Locationcheck_Adminhtml_LocationcheckController extends Mage_Adminhtml
                 'entity_id' => $order['entity_id'],
                 'state' => $order['status'],
                 'grand_total' => $order['grand_total'],
+                'product_execluded_location_checked' => $order['product_execluded_location_checked'],
+                'is_location_checked' => $order['is_location_checked'],
             ];
         }
 

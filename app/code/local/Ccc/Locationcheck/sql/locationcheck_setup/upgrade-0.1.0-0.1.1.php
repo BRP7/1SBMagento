@@ -1,4 +1,5 @@
 <?php
+
 $installer = $this;
 $installer->startSetup();
 
@@ -22,12 +23,6 @@ $setup->addAttribute(
         'visible_on_front' => true,
         'default' => '0',
         'global' => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_GLOBAL,
-        'option' => array(
-            'value' => array(
-                'option_0' => array('No'),
-                'option_1' => array('Yes'),
-            )
-        ),
     )
 );
 
