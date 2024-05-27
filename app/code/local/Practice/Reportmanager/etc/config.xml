@@ -1,4 +1,3 @@
-<?xml version="1.0"?>
 <config>
     <modules>
         <Practice_Reportmanager>
@@ -7,14 +6,22 @@
     </modules>
     <global>
         <events>
-            <sales_order_place_after>
+            <sales_order_item_save_before>
                 <observers>
-                    <repoer_sales_order_save_before_observer>
+                    <repoer_sales_order_item_save_before_observer>
                         <class>practice_reportmanager/observer</class>
-                        <method>customSalesOrderBeforeSave</method>
-                    </repoer_sales_order_save_before_observer>
+                        <method>customSalesOrderItemBeforeSave</method>
+                    </repoer_sales_order_item_save_before_observer>
                 </observers>
-            </sales_order_place_after>
+            </sales_order_item_save_before>
+            <sales_order_item_save_after>
+                <observers>
+                    <repoer_sales_order_item_save_after_observer>
+                        <class>practice_reportmanager/observer</class>
+                        <method>customSalesOrderItemAfterSave</method>
+                    </repoer_sales_order_item_save_after_observer>
+                </observers>
+            </sales_order_item_save_after>
             <order_cancel_after>
                 <observers>
                     <repoer_sales_order_save_delete_observer>
