@@ -1,14 +1,14 @@
 <?php
-class Ccc_Locationcheck_Block_Adminhtml_Locationcheck extends Mage_Adminhtml_Block_Widget_Grid_Container
+class Practice_Reportmanager_Block_Adminhtml_Reportmanager extends Mage_Adminhtml_Block_Widget_Grid_Container
 {
     public function __construct()
     {
         
-        $this->_controller = 'adminhtml_locationcheck';
-        $this->_blockGroup = 'ccc_locationcheck';
-        $this->_headerText = Mage::helper('locationcheck')->__('Manage Locationchecks');
+        $this->_controller = 'adminhtml_reportmanager';
+        $this->_blockGroup = 'practice_reportmanager';
+        $this->_headerText = Mage::helper('practice_reportmanager')->__('Manage Reportmanagers');
         parent::__construct();
-        if (!Mage::getSingleton('admin/session')->isAllowed('ccc_locationcheck/new')) {
+        if (!Mage::getSingleton('admin/session')->isAllowed('practice_reportmanager/new')) {
             $this->removeButton('add');
         }
     }
