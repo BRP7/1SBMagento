@@ -1,6 +1,6 @@
 <?php
 
-class Practice_Reportmanager_Block_Adminhtml_Reportmanager_Grid_Renderer_Datetime extends Mage_Adminhtml_Block_Widget_Grid_Column_Renderer_Abstract
+class Ccc_Locationcheck_Block_Adminhtml_Locationcheck_Grid_Renderer_Datetime extends Mage_Adminhtml_Block_Widget_Grid_Column_Renderer_Abstract
 {
     public function render(Varien_Object $row)
     {

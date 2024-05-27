@@ -39,8 +39,8 @@ class Ccc_Locationcheck_Block_Adminhtml_Locationcheck_Grid extends Mage_Adminhtm
             'index' => 'is_active',
             'type' => 'options',
             'options' => array(
-                'yes' => Mage::helper('locationcheck')->__('Yes'),
-                'no' => Mage::helper('locationcheck')->__('No'),
+                '1' => Mage::helper('locationcheck')->__('Yes'),
+                '0' => Mage::helper('locationcheck')->__('No'),
             ),
             'column_css_class' => 'is_active',
         )

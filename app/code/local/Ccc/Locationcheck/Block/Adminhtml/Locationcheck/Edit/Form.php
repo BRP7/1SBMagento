@@ -58,6 +58,7 @@ class Ccc_Locationcheck_Block_Adminhtml_Locationcheck_Edit_Form extends Mage_Adm
                 'name' => 'is_active',
                 'label' => Mage::helper('locationcheck')->__('locationcheck Is Active'),
                 'title' => Mage::helper('locationcheck')->__('locationcheck Is Active'),
+                // Remove 'required' attribute only in edit mode
                 'required' => true,
                 'options' => array(
                     '1' => Mage::helper('locationcheck')->__('Yes'),
@@ -66,7 +67,9 @@ class Ccc_Locationcheck_Block_Adminhtml_Locationcheck_Edit_Form extends Mage_Adm
             )
         );
 
-        
+            if (!($model->getId())) {
+                $model->setData('is_active', 'no');
+            }
             if ($isEdit) {
                 $fieldset->addField(
                     'created_at',

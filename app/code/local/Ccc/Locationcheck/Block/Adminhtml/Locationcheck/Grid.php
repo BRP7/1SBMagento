@@ -1,5 +1,5 @@
 <?php
-class Ccc_Reportmanager_Block_Adminhtml_Reportmanager_Grid extends Mage_Adminhtml_Block_Widget_Grid
+class Ccc_Locationcheck_Block_Adminhtml_Locationcheck_Grid extends Mage_Adminhtml_Block_Widget_Grid
 {
     public function __construct($attributes = array())
     {
@@ -9,7 +9,7 @@ class Ccc_Reportmanager_Block_Adminhtml_Reportmanager_Grid extends Mage_Adminhtm
     protected function _prepareCollection()
     {
 
-        $collection = Mage::getModel('practice_reportmanager/reportmanager')->getCollection();
+        $collection = Mage::getModel('ccc_locationcheck/locationcheck')->getCollection();
         $this->setCollection($collection);
         return parent::_prepareCollection();
     }
@@ -17,7 +17,7 @@ class Ccc_Reportmanager_Block_Adminhtml_Reportmanager_Grid extends Mage_Adminhtm
     protected function _prepareColumns()
     {
         $this->addColumn('id', array(
-            'header' => Mage::helper('practice_reportmanager')->__('Id'),
+            'header' => Mage::helper('locationcheck')->__('Id'),
             'align' => 'right',
             'width' => '50px',
             'index' => 'id',
@@ -25,7 +25,7 @@ class Ccc_Reportmanager_Block_Adminhtml_Reportmanager_Grid extends Mage_Adminhtm
         );
 
         $this->addColumn('zipcode', array(
-            'header' => Mage::helper('practice_reportmanager')->__('Zipcode'),
+            'header' => Mage::helper('locationcheck')->__('Zipcode'),
             'align' => 'left',
             'index' => 'zipcode',
             'type' => 'text',
@@ -34,35 +34,35 @@ class Ccc_Reportmanager_Block_Adminhtml_Reportmanager_Grid extends Mage_Adminhtm
         );
 
         $this->addColumn('is_active', array(
-            'header' => Mage::helper('practice_reportmanager')->__('Is Active'),
+            'header' => Mage::helper('locationcheck')->__('Is Active'),
             'align' => 'left',
             'index' => 'is_active',
             'type' => 'options',
             'options' => array(
-                '1' => Mage::helper('practice_reportmanager')->__('Yes'),
-                '0' => Mage::helper('practice_reportmanager')->__('No'),
+                '1' => Mage::helper('locationcheck')->__('Yes'),
+                '0' => Mage::helper('locationcheck')->__('No'),
             ),
             'column_css_class' => 'is_active',
         )
         );
         $this->addColumn('created_at', array(
-            'header' => Mage::helper('practice_reportmanager')->__('Created Date'),
+            'header' => Mage::helper('locationcheck')->__('Created Date'),
             'align' => 'left',
             'width' => '200px',
             'type' => 'datetime',
             'index' => 'created_at',
             'column_css_class' => 'created_at',
-            'renderer' => 'practice_reportmanager/adminhtml_reportmanager_grid_renderer_datetime',
+            'renderer' => 'ccc_locationcheck/adminhtml_locationcheck_grid_renderer_datetime',
         ));
 
         $this->addColumn('updated_at', array(
-            'header' => Mage::helper('practice_reportmanager')->__('Updated Date'),
+            'header' => Mage::helper('locationcheck')->__('Updated Date'),
             'align' => 'left',
             'width' => '200px',
             'type' => 'datetime',
             'index' => 'updated_at',
             'column_css_class' => 'updated_at',
-            'renderer' => 'practice_reportmanager/adminhtml_reportmanager_grid_renderer_datetime',
+            'renderer' => 'ccc_locationcheck/adminhtml_locationcheck_grid_renderer_datetime',
         ));
 
         return parent::_prepareColumns();
@@ -81,33 +81,33 @@ class Ccc_Reportmanager_Block_Adminhtml_Reportmanager_Grid extends Mage_Adminhtm
         $this->getMassactionBlock()->addItem(
             'delete',
             array(
-                'label' => Mage::helper('practice_reportmanager')->__('Delete'),
+                'label' => Mage::helper('locationcheck')->__('Delete'),
                 'url' => $this->getUrl('*/*/massDelete'),
-                'confirm' => Mage::helper('practice_reportmanager')->__('Are you sure you want to delete selected reportmanager?')
+                'confirm' => Mage::helper('locationcheck')->__('Are you sure you want to delete selected locationcheck?')
             )
         );
 
-        $statuses = Mage::getSingleton('practice_reportmanager/status')->getOptionArray();
+        $statuses = Mage::getSingleton('ccc_locationcheck/status')->getOptionArray();
 
         array_unshift($statuses, array('label' => '', 'value' => ''));
         $this->getMassactionBlock()->addItem(
             'is_active',
             array(
-                'label' => Mage::helper('practice_reportmanager')->__('Change Is Active'),
+                'label' => Mage::helper('locationcheck')->__('Change Is Active'),
                 'url' => $this->getUrl('*/*/massStatus', array('_current' => true)),
                 'additional' => array(
                     'visibility' => array(
                         'name' => 'is_active',
                         'type' => 'select',
                         'class' => 'required-entry',
-                        'label' => Mage::helper('practice_reportmanager')->__('Is Active'),
+                        'label' => Mage::helper('locationcheck')->__('Is Active'),
                         'values' => $statuses
                     )
                 )
             )
         );
 
-        Mage::dispatchEvent('reportmanager_adminhtml_reportmanager_grid_prepare_massaction', array('block' => $this));
+        Mage::dispatchEvent('locationcheck_adminhtml_locationcheck_grid_prepare_massaction', array('block' => $this));
         return $this;
     }
 

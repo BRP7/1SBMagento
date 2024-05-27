@@ -2,8 +2,8 @@
 
 class Ccc_Locationcheck_Model_Status extends Mage_Core_Model_Abstract
 {
-    const IS_ACTIVE_ENABLED = 'yes';
-    const IS_ACTIVE_DISABLED = 'no';
+    const IS_ACTIVE_ENABLED = '1';
+    const IS_ACTIVE_DISABLED = '0';
 
 
     static public function getOptionArray()
