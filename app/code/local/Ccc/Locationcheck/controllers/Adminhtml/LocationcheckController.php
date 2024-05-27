@@ -23,16 +23,22 @@ class Ccc_Locationcheck_Adminhtml_LocationcheckController extends Mage_Adminhtml
         $action = strtolower($this->getRequest()->getActionName());
         switch ($action) {
             case 'new':
-                $aclResource = 'sales/location';
+                $aclResource = 'sales/ccc_location/new';
                 break;
             case 'edit':
-                $aclResource = 'ccc_locationcheck/edit';
+                $aclResource = 'sales/ccc_location/edit';
                 break;
             case 'delete':
-                $aclResource = 'ccc_locationcheck/delete';
+                $aclResource = 'sales/ccc_location/delete';
+                break;
+            case 'report':
+                $aclResource = 'sales/ccc_location_report/report';
+                break;
+            case 'product':
+                $aclResource = 'sales/ccc_location_report/product';
                 break;
             default:
-                $aclResource = 'ccc_locationcheck/index';
+                $aclResource = 'sales/ccc_location/index';
                 break;
 
         }
