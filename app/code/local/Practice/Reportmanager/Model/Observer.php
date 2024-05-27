@@ -1,49 +1,44 @@
 <?php
-class Practice_Reportmanager_Model_Observer {
+class Practice_Reportmanager_Model_Observer
+{
+    public function updateSoldCountSaveBefore(Varien_Event_Observer $observer)
+    {
+        $order = $observer->getEvent()->getOrder();
+        foreach ($order->getAllItems() as $item) {
+            $product = Mage::getModel('catalog/product');
+            $collection = $product->load($item->getProductId());
 
-public function customSalesOrderItemBeforeSave(Varien_Event_Observer $observer) {
-    $item = $observer->getEvent()->getItem();
-    $oldItem = Mage::getModel('sales/order_item')->load($item->getId());
-
-    if ($oldItem->getId()) {
-        $oldQty = $oldItem->getQtyOrdered();
-        Mage::getSingleton('core/session')->setData('old_qty_' . $item->getId(), $oldQty);
-        Mage::log("Old Qty set in session --> {$oldQty}", null, 'sold_count_out.log');
+            if ($collection->getId()) {
+                Mage::log('Product loaded with ID: ' . $collection->getId(), null, 'orderSku.  log');
+                $soldCount = (int) $collection->getSoldCount();
+                $soldCount += (int) $item->getQtyOrdered();
+                $product->setSoldCount($soldCount);
+                Mage::log('Product Sku: ' . $product->getSoldCount() . ' - Updated Sold Count: ' . $soldCount, null, 'orderSku.log');
+                $product->save();
+            } else {
+                Mage::log('Failed to load product with ID: ' . $item->getProductId(), null, 'orderSku.log');
+            }
+        }
     }
-}
 
-public function customSalesOrderItemAfterSave(Varien_Event_Observer $observer) {
-    $item = $observer->getEvent()->getItem();
-    $productId = $item->getProductId();
-    $newQty = $item->getQtyOrdered();
-    $oldQty = Mage::getSingleton('core/session')->getData('old_qty_' . $item->getId());
+    public function updateSoldCountDeleteBefore(Varien_Event_Observer $observer)
+    {
+        Mage::log('Observer method updateSoldCountDeleteBefore triggered', null, 'orderSku.log');
 
-    if ($oldQty === null) {
-        $oldQty = 0;
+        $order = $observer->getEvent()->getOrder();
+        foreach ($order->getAllItems() as $item) {
+            $product = Mage::getModel('catalog/product')->load($item->getProductId());
+
+            if ($product->getId()) {
+                Mage::log('Product loaded with ID: ' . $product->getId(), null, 'orderSku.log');
+                $soldCount = (int) $product->getSoldCount();
+                $soldCount -= (int) $item->getQtyOrdered();
+                $product->setSoldCount($soldCount);
+                Mage::log('Product Sku: ' . $product->getSku() . ' - Updated Sold Count: ' . $soldCount, null, 'orderSku.log');
+                $product->save();
+            } else {
+                Mage::log('Failed to load product with ID: ' . $item->getProductId(), null, 'orderSku.log');
+            }
+        }
     }
-
-    $productModel = Mage::getModel('catalog/product')->load($productId);
-    $soldQty = $productModel->getData('sold_count') ? $productModel->getData('sold_count') : 0;
-
-    $soldCount = ($soldQty - $oldQty) + $newQty;
-    $productModel->setData('sold_count', $soldCount)->save();
-    Mage::log("Updated sold_count for product ID {$productId}: {$soldCount}", null, 'sold_count.log');
-
-    // Clear the session variable after use
-    Mage::getSingleton('core/session')->unsetData('old_qty_' . $item->getId());
-}
-
-public function customSalesOrderBeforeDelete(Varien_Event_Observer $observer) {
-    $order = $observer->getEvent()->getOrder();
-    foreach ($order->getAllItems() as $item) {
-        $productId = $item->getProductId();
-        $qty = $item->getQtyOrdered();
-        $productModel = Mage::getModel('catalog/product')->load($productId);
-        $soldQty = $productModel->getData('sold_count') ? $productModel->getData('sold_count') : 0;
-
-        $soldCount = $soldQty - $qty;
-        $productModel->setData('sold_count', $soldCount)->save();
-        Mage::log("Decremented sold_count for product ID {$productId}: {$soldCount}", null, 'sold_count.log');
-    }
-}
 }

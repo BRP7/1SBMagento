@@ -6,31 +6,25 @@
     </modules>
     <global>
         <events>
-            <sales_order_item_save_before>
+            <sales_order_place_after>
                 <observers>
-                    <repoer_sales_order_item_save_before_observer>
+                    <update_sold_count_before_order_save>
+                        <type>singleton</type>
                         <class>practice_reportmanager/observer</class>
-                        <method>customSalesOrderItemBeforeSave</method>
-                    </repoer_sales_order_item_save_before_observer>
+                        <method>updateSoldCountSaveBefore</method>
+                    </update_sold_count_before_order_save>
                 </observers>
-            </sales_order_item_save_before>
-            <sales_order_item_save_after>
-                <observers>
-                    <repoer_sales_order_item_save_after_observer>
-                        <class>practice_reportmanager/observer</class>
-                        <method>customSalesOrderItemAfterSave</method>
-                    </repoer_sales_order_item_save_after_observer>
-                </observers>
-            </sales_order_item_save_after>
+            </sales_order_place_after>
             <order_cancel_after>
                 <observers>
-                    <repoer_sales_order_save_delete_observer>
+                    <update_sold_count_before_order_delete>
+                        <type>singleton</type>
                         <class>practice_reportmanager/observer</class>
-                        <method>customSalesOrderBeforeDelete</method>
-                    </repoer_sales_order_save_delete_observer>
+                        <method>updateSoldCountDeleteBefore</method>
+                    </update_sold_count_before_order_delete>
                 </observers>
             </order_cancel_after>
-        </events>
+        </events>    
         <models>
             <practice_reportmanager>
                 <class>Practice_Reportmanager_Model</class>

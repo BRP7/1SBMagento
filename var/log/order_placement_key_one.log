@@ -406,3 +406,109 @@
 2024-05-24T12:47:20+00:00 DEBUG (7): Product excluded location check: 1
 2024-05-24T12:47:20+00:00 DEBUG (7): Product ID: 313
 2024-05-24T12:47:20+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T05:06:23+00:00 DEBUG (7): Product ID: 313
+2024-05-27T05:06:23+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T05:06:24+00:00 DEBUG (7): Product ID: 313
+2024-05-27T05:06:24+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T05:11:49+00:00 DEBUG (7): Product ID: 313
+2024-05-27T05:11:49+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T05:11:50+00:00 DEBUG (7): Product ID: 313
+2024-05-27T05:11:50+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T05:16:18+00:00 DEBUG (7): Product ID: 313
+2024-05-27T05:16:18+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T05:16:19+00:00 DEBUG (7): Product ID: 313
+2024-05-27T05:16:19+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T05:20:11+00:00 DEBUG (7): Product ID: 313
+2024-05-27T05:20:11+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T05:20:11+00:00 DEBUG (7): Product ID: 313
+2024-05-27T05:20:11+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T05:27:38+00:00 DEBUG (7): Product ID: 313
+2024-05-27T05:27:38+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T05:28:51+00:00 DEBUG (7): Product ID: 313
+2024-05-27T05:28:51+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T05:30:50+00:00 DEBUG (7): Product ID: 313
+2024-05-27T05:30:50+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T05:30:50+00:00 DEBUG (7): Product ID: 313
+2024-05-27T05:30:50+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T05:37:03+00:00 DEBUG (7): Product ID: 313
+2024-05-27T05:37:03+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T05:37:03+00:00 DEBUG (7): Product ID: 313
+2024-05-27T05:37:03+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T05:39:47+00:00 DEBUG (7): Product ID: 314
+2024-05-27T05:39:47+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T05:39:47+00:00 DEBUG (7): Product ID: 314
+2024-05-27T05:39:47+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T05:47:56+00:00 DEBUG (7): Product ID: 314
+2024-05-27T05:47:56+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T05:47:57+00:00 DEBUG (7): Product ID: 314
+2024-05-27T05:47:57+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T07:40:07+00:00 DEBUG (7): Product ID: 422
+2024-05-27T07:40:07+00:00 DEBUG (7): Product excluded location check: 
+2024-05-27T07:40:07+00:00 DEBUG (7): Product ID: 298
+2024-05-27T07:40:07+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T07:40:07+00:00 DEBUG (7): Product ID: 422
+2024-05-27T07:40:07+00:00 DEBUG (7): Product excluded location check: 
+2024-05-27T07:40:07+00:00 DEBUG (7): Product ID: 298
+2024-05-27T07:40:07+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T07:47:18+00:00 DEBUG (7): Product ID: 301
+2024-05-27T07:47:18+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T07:47:18+00:00 DEBUG (7): Product ID: 301
+2024-05-27T07:47:18+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T07:49:16+00:00 DEBUG (7): Product ID: 301
+2024-05-27T07:49:16+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T07:49:17+00:00 DEBUG (7): Product ID: 301
+2024-05-27T07:49:17+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T07:52:11+00:00 DEBUG (7): Product ID: 301
+2024-05-27T07:52:11+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T07:52:11+00:00 DEBUG (7): Product ID: 301
+2024-05-27T07:52:11+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T07:57:13+00:00 DEBUG (7): Product ID: 301
+2024-05-27T07:57:13+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T07:57:13+00:00 DEBUG (7): Product ID: 301
+2024-05-27T07:57:13+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T07:59:09+00:00 DEBUG (7): Product ID: 301
+2024-05-27T07:59:09+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T07:59:09+00:00 DEBUG (7): Product ID: 301
+2024-05-27T07:59:09+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T08:03:00+00:00 DEBUG (7): Product ID: 300
+2024-05-27T08:03:00+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T08:03:00+00:00 DEBUG (7): Product ID: 300
+2024-05-27T08:03:00+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T08:04:30+00:00 DEBUG (7): Product ID: 300
+2024-05-27T08:04:30+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T08:04:30+00:00 DEBUG (7): Product ID: 300
+2024-05-27T08:04:30+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T08:06:56+00:00 DEBUG (7): Product ID: 300
+2024-05-27T08:06:56+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T08:06:56+00:00 DEBUG (7): Product ID: 300
+2024-05-27T08:06:56+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T08:07:54+00:00 DEBUG (7): Product ID: 300
+2024-05-27T08:07:54+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T08:07:54+00:00 DEBUG (7): Product ID: 300
+2024-05-27T08:07:54+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T08:09:40+00:00 DEBUG (7): Product ID: 300
+2024-05-27T08:09:40+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T08:09:40+00:00 DEBUG (7): Product ID: 300
+2024-05-27T08:09:40+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T08:12:25+00:00 DEBUG (7): Product ID: 300
+2024-05-27T08:12:25+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T08:12:51+00:00 DEBUG (7): Product ID: 300
+2024-05-27T08:12:51+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T08:12:52+00:00 DEBUG (7): Product ID: 300
+2024-05-27T08:12:52+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T08:40:29+00:00 DEBUG (7): Product ID: 300
+2024-05-27T08:40:29+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T08:40:29+00:00 DEBUG (7): Product ID: 300
+2024-05-27T08:40:29+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T09:08:58+00:00 DEBUG (7): Product ID: 300
+2024-05-27T09:08:58+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T09:08:58+00:00 DEBUG (7): Product ID: 300
+2024-05-27T09:08:58+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T09:12:59+00:00 DEBUG (7): Product ID: 300
+2024-05-27T09:12:59+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T09:12:59+00:00 DEBUG (7): Product ID: 300
+2024-05-27T09:12:59+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T09:15:42+00:00 DEBUG (7): Product ID: 554
+2024-05-27T09:15:42+00:00 DEBUG (7): Product excluded location check: 
+2024-05-27T09:15:42+00:00 DEBUG (7): Product ID: 554
+2024-05-27T09:15:42+00:00 DEBUG (7): Product excluded location check: 
