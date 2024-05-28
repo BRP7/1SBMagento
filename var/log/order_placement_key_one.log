@@ -512,3 +512,7 @@
 2024-05-27T09:15:42+00:00 DEBUG (7): Product excluded location check: 
 2024-05-27T09:15:42+00:00 DEBUG (7): Product ID: 554
 2024-05-27T09:15:42+00:00 DEBUG (7): Product excluded location check: 
+2024-05-27T12:46:42+00:00 DEBUG (7): Product ID: 314
+2024-05-27T12:46:42+00:00 DEBUG (7): Product excluded location check: 1
+2024-05-27T12:46:44+00:00 DEBUG (7): Product ID: 314
+2024-05-27T12:46:44+00:00 DEBUG (7): Product excluded location check: 1

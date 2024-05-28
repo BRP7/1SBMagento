@@ -257,12 +257,22 @@ class Ccc_Locationcheck_Adminhtml_LocationcheckController extends Mage_Adminhtml
             $collection->addFieldToFilter('is_location_checked', $product_enable);
         }
 
+        //getSelect() - returns a Zend_Db_Select object,which is used to build SQL queries.
+        // ->join - method provided by the Zend_Db_Select class, 
+        //main_table.customer_id refers to the customer_id column in the primary table (the table represented by the collection)
+
         $collection->getSelect()
         ->join(
-            array('customer' => 'customer_entity'),
-            'main_table.customer_id = customer.entity_id',
-            array('customer.email')
+            array('customer' => 'customer_entity'),//key is an alias for the table, and the value is the actual table name.
+            'main_table.customer_id = customer.entity_id',//string that defines the condition for the join
+            array('customer.email')// an array of columns that you want to retrieve from the joined table. 
         );
+
+        // $select->join(
+        //     array('alias' => 'table_name'),
+        //     'join_condition',
+        //     array('columns_to_select')
+        // );
 
         $orderInfo = [];
         foreach ($collection as $order) {
