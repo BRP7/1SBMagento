@@ -6,7 +6,7 @@ class Practice_Reportmanager_Block_Adminhtml_Catalog_Product_Grid extends Mage_A
         $collection = Mage::getModel('catalog/product')->getCollection();
         // Apply saved filters if available
         $user = Mage::getSingleton('admin/session')->getUser();
-        $filterReport = Mage::getModel('company_module/cc_filter_report')->getCollection()
+        $filterReport = Mage::getModel('practice_reportmanager/reportmanager')->getCollection()
             ->addFieldToFilter('user_id', $user->getId())
             ->addFieldToFilter('report_type', 'product')
             ->addFieldToFilter('is_active', 1)

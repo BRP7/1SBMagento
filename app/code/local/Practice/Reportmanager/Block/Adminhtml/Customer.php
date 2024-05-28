@@ -1,13 +1,21 @@
 <?php
 
-class Practice_Reportmanager_Block_Adminhtml_Customer extends Mage_Adminhtml_Block_Customer{
+class Practice_Reportmanager_Block_Adminhtml_Customer extends Mage_Adminhtml_Block_Customer
+{
     public function __construct()
     {
+        $this->_controller = 'adminhtml_customer';
+        $this->_blockGroup = 'practice_reportmanager';
+        $this->_headerText = Mage::helper('practice_reportmanager')->__('Report Manager');
+        parent::__construct();
+        $this->setId('reportmanager');
         parent::__construct();
         $this->_addButton('save_report', array(
-            'label'     => Mage::helper('customer')->__('Save Report'),
-            'onclick'   => 'saveCustomerReport()',
-            'class'     => 'save',
-        ));
+            'label' => Mage::helper('customer')->__('Save Report'),
+            'onclick' => 'saveCustomerReport()',
+            'class' => 'save',
+        )
+        );
     }
+
 }

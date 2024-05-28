@@ -1,8 +1,13 @@
 <?php
-require_once 'Mage/Adminhtml/controllers/Catalog/ProductController.php';
-class Practice_Reportmanager_Adminhtml_Catalog_ProductController extends Mage_Adminhtml_Catalog_ProductController
-{
-    // public function saveReportAction()
+
+class Practice_Reportmanager_Adminhtml_IndexController extends  Mage_Adminhtml_Controller_Action{
+
+    public function indexAction(){
+        $this->loadLayout();
+        $this->renderLayout();
+    }
+
+      // public function saveReportAction()
     // {
     //     $user = Mage::getSingleton('admin/session')->getUser();
     //     $filters = $this->getRequest()->getParam('filter'); // Or retrieve filters in the way you use
@@ -70,8 +75,4 @@ class Practice_Reportmanager_Adminhtml_Catalog_ProductController extends Mage_Ad
 
     $this->_redirect('*/*/');
 }
-
-    
-
-    
 }

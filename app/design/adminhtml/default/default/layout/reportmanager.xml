@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <adminhtml_index_index>
+        <reference name="content">
+            <block type="practice_reportmanager/adminhtml_product" name="product.container.custom.reportmanager">
+                <block type="practice_reportmanager/adminhtml_product_grid" name="product.grid.reportmanager"/>
+            </block>
+            <block type="practice_reportmanager/adminhtml_customer" name="customer.container.custom.reportmanager">
+                <block type="practice_reportmanager/adminhtml_customer_grid" name="customer.grid.reportmanager"/>
+            </block>
+        </reference>
+        <!-- <reference name="head">
+            <action method="addJs"><script>reportmanager/jquery.js</script></action>
+            <action method="addJs"><script>reportmanager/grid.js</script></action>
+        </reference> -->
+    </adminhtml_index_index>
+</layout>

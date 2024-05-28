@@ -9,7 +9,8 @@
             <adminhtml>
                 <args>
                     <modules>
-                        <Practice_Reportmanager before="Mage_Adminhtml">Practice_Reportmanager_Adminhtml</Practice_Reportmanager>
+                        <Practice_Reportmanager before="Mage_Adminhtml">
+                            Practice_Reportmanager_Adminhtml</Practice_Reportmanager>
                     </modules>
                 </args>
             </adminhtml>
@@ -35,7 +36,7 @@
                     </update_sold_count_before_order_delete>
                 </observers>
             </order_cancel_after>
-        </events>    
+        </events>
         <models>
             <practice_reportmanager>
                 <class>Practice_Reportmanager_Model</class>
@@ -66,7 +67,24 @@
                     <catalog_product>Practice_Reportmanager_Block_Adminhtml_Catalog_Product</catalog_product>
                     <catalog_product_grid>Practice_Reportmanager_Block_Adminhtml_Catalog_Product_Grid</catalog_product_grid>
                 </rewrite>
+                <practice_reportmanager>
+                    <class>Practice_Reportmanager_Block_Adminhtml</class>
+                </practice_reportmanager>
             </adminhtml>
         </blocks>
+        <helpers>
+            <practice_reportmanager>
+                <class>Practice_Reportmanager_Helper</class>
+            </practice_reportmanager>
+        </helpers>
     </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <practice_reportmanager>
+                    <file>reportmanager.xml</file>
+                </practice_reportmanager>
+            </updates>
+        </layout>
+    </adminhtml>
 </config>

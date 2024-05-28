@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <practice_reportmanager module="practice_reportmanager">
+            <title>Report Manager</title>
+            <sort_order>100</sort_order>
+            <children>
+                <product>
+                    <title>Products</title>
+                    <action>adminhtml/index/index</action>
+                </product>
+            </children>
+        </practice_reportmanager>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <practice_reportmanager translate="title" module="practice_reportmanager">
+                        <title>Report Manager</title>
+                        <sort_order>100</sort_order>
+                        <children>
+                            <product translate="title">
+                                <title>Products</title>
+                            </product>
+                        </children>
+                    </practice_reportmanager>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

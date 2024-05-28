@@ -5430,3 +5430,363 @@ Stack trace:
 #14 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
 #15 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
 #16 {main}
+2024-05-28T06:30:54+00:00 ERR (3): 
+Mage_Core_Exception: Invalid block type: 
+                        Practice_Reportmanager_Block_Adminhtml_Catalog_Product_Grid in C:\xampp\htdocs\1SBMagento\app\Mage.php:598
+Stack trace:
+#0 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(495): Mage::throwException('Invalid block t...')
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('\n              ...', Array)
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Block\Catalog\Product.php(58): Mage_Core_Model_Layout->createBlock('adminhtml/catal...', 'product.grid')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Block\Abstract.php(297): Mage_Adminhtml_Block_Catalog_Product->_prepareLayout()
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(456): Mage_Core_Block_Abstract->setLayout(Object(Mage_Core_Model_Layout))
+#5 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(472): Mage_Core_Model_Layout->createBlock('adminhtml/catal...', 'products_list')
+#6 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(239): Mage_Core_Model_Layout->addBlock('adminhtml/catal...', 'products_list')
+#7 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(205): Mage_Core_Model_Layout->_generateBlock(Object(Mage_Core_Model_Layout_Element), Object(Mage_Core_Model_Layout_Element))
+#8 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(210): Mage_Core_Model_Layout->generateBlocks(Object(Mage_Core_Model_Layout_Element))
+#9 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(343): Mage_Core_Model_Layout->generateBlocks()
+#10 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(269): Mage_Core_Controller_Varien_Action->generateLayoutBlocks()
+#11 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Controller\Action.php(285): Mage_Core_Controller_Varien_Action->loadLayout(NULL, true, true)
+#12 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\controllers\Catalog\ProductController.php(179): Mage_Adminhtml_Controller_Action->loadLayout()
+#13 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Mage_Adminhtml_Catalog_ProductController->indexAction()
+#14 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#15 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#16 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#17 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#18 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#19 {main}
+2024-05-28T06:31:39+00:00 ERR (3): 
+Mage_Core_Exception: Invalid block type: 
+                        Practice_Reportmanager_Block_Adminhtml_Catalog_Product_Grid in C:\xampp\htdocs\1SBMagento\app\Mage.php:598
+Stack trace:
+#0 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(495): Mage::throwException('Invalid block t...')
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('\n              ...', Array)
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Block\Catalog\Product.php(58): Mage_Core_Model_Layout->createBlock('adminhtml/catal...', 'product.grid')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Block\Abstract.php(297): Mage_Adminhtml_Block_Catalog_Product->_prepareLayout()
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(456): Mage_Core_Block_Abstract->setLayout(Object(Mage_Core_Model_Layout))
+#5 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(472): Mage_Core_Model_Layout->createBlock('adminhtml/catal...', 'products_list')
+#6 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(239): Mage_Core_Model_Layout->addBlock('adminhtml/catal...', 'products_list')
+#7 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(205): Mage_Core_Model_Layout->_generateBlock(Object(Mage_Core_Model_Layout_Element), Object(Mage_Core_Model_Layout_Element))
+#8 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(210): Mage_Core_Model_Layout->generateBlocks(Object(Mage_Core_Model_Layout_Element))
+#9 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(343): Mage_Core_Model_Layout->generateBlocks()
+#10 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(269): Mage_Core_Controller_Varien_Action->generateLayoutBlocks()
+#11 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Controller\Action.php(285): Mage_Core_Controller_Varien_Action->loadLayout(NULL, true, true)
+#12 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\controllers\Catalog\ProductController.php(179): Mage_Adminhtml_Controller_Action->loadLayout()
+#13 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Mage_Adminhtml_Catalog_ProductController->indexAction()
+#14 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#15 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#16 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#17 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#18 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#19 {main}
+2024-05-28T06:32:13+00:00 ERR (3): 
+Mage_Core_Exception: Invalid block type: 
+                        Practice_Reportmanager_Block_Adminhtml_Catalog_Product_Grid in C:\xampp\htdocs\1SBMagento\app\Mage.php:598
+Stack trace:
+#0 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(495): Mage::throwException('Invalid block t...')
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('\n              ...', Array)
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Block\Catalog\Product.php(58): Mage_Core_Model_Layout->createBlock('adminhtml/catal...', 'product.grid')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Block\Abstract.php(297): Mage_Adminhtml_Block_Catalog_Product->_prepareLayout()
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(456): Mage_Core_Block_Abstract->setLayout(Object(Mage_Core_Model_Layout))
+#5 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(472): Mage_Core_Model_Layout->createBlock('adminhtml/catal...', 'products_list')
+#6 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(239): Mage_Core_Model_Layout->addBlock('adminhtml/catal...', 'products_list')
+#7 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(205): Mage_Core_Model_Layout->_generateBlock(Object(Mage_Core_Model_Layout_Element), Object(Mage_Core_Model_Layout_Element))
+#8 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(210): Mage_Core_Model_Layout->generateBlocks(Object(Mage_Core_Model_Layout_Element))
+#9 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(343): Mage_Core_Model_Layout->generateBlocks()
+#10 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(269): Mage_Core_Controller_Varien_Action->generateLayoutBlocks()
+#11 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Controller\Action.php(285): Mage_Core_Controller_Varien_Action->loadLayout(NULL, true, true)
+#12 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\controllers\Catalog\ProductController.php(179): Mage_Adminhtml_Controller_Action->loadLayout()
+#13 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Mage_Adminhtml_Catalog_ProductController->indexAction()
+#14 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#15 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#16 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#17 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#18 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#19 {main}
+2024-05-28T06:32:23+00:00 ERR (3): 
+Mage_Core_Exception: Invalid block type: 
+                        Practice_Reportmanager_Block_Adminhtml_Catalog_Product_Grid in C:\xampp\htdocs\1SBMagento\app\Mage.php:598
+Stack trace:
+#0 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(495): Mage::throwException('Invalid block t...')
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('\n              ...', Array)
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Block\Catalog\Product.php(58): Mage_Core_Model_Layout->createBlock('adminhtml/catal...', 'product.grid')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Block\Abstract.php(297): Mage_Adminhtml_Block_Catalog_Product->_prepareLayout()
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(456): Mage_Core_Block_Abstract->setLayout(Object(Mage_Core_Model_Layout))
+#5 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(472): Mage_Core_Model_Layout->createBlock('adminhtml/catal...', 'products_list')
+#6 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(239): Mage_Core_Model_Layout->addBlock('adminhtml/catal...', 'products_list')
+#7 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(205): Mage_Core_Model_Layout->_generateBlock(Object(Mage_Core_Model_Layout_Element), Object(Mage_Core_Model_Layout_Element))
+#8 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(210): Mage_Core_Model_Layout->generateBlocks(Object(Mage_Core_Model_Layout_Element))
+#9 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(343): Mage_Core_Model_Layout->generateBlocks()
+#10 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(269): Mage_Core_Controller_Varien_Action->generateLayoutBlocks()
+#11 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Controller\Action.php(285): Mage_Core_Controller_Varien_Action->loadLayout(NULL, true, true)
+#12 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\controllers\Catalog\ProductController.php(179): Mage_Adminhtml_Controller_Action->loadLayout()
+#13 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Mage_Adminhtml_Catalog_ProductController->indexAction()
+#14 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#15 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#16 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#17 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#18 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#19 {main}
+2024-05-28T06:32:38+00:00 ERR (3): 
+Mage_Core_Exception: Invalid block type: 
+                        Practice_Reportmanager_Block_Adminhtml_Catalog_Product_Grid in C:\xampp\htdocs\1SBMagento\app\Mage.php:598
+Stack trace:
+#0 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(495): Mage::throwException('Invalid block t...')
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('\n              ...', Array)
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Block\Catalog\Product.php(58): Mage_Core_Model_Layout->createBlock('adminhtml/catal...', 'product.grid')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Block\Abstract.php(297): Mage_Adminhtml_Block_Catalog_Product->_prepareLayout()
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(456): Mage_Core_Block_Abstract->setLayout(Object(Mage_Core_Model_Layout))
+#5 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(472): Mage_Core_Model_Layout->createBlock('adminhtml/catal...', 'products_list')
+#6 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(239): Mage_Core_Model_Layout->addBlock('adminhtml/catal...', 'products_list')
+#7 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(205): Mage_Core_Model_Layout->_generateBlock(Object(Mage_Core_Model_Layout_Element), Object(Mage_Core_Model_Layout_Element))
+#8 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(210): Mage_Core_Model_Layout->generateBlocks(Object(Mage_Core_Model_Layout_Element))
+#9 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(343): Mage_Core_Model_Layout->generateBlocks()
+#10 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(269): Mage_Core_Controller_Varien_Action->generateLayoutBlocks()
+#11 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Controller\Action.php(285): Mage_Core_Controller_Varien_Action->loadLayout(NULL, true, true)
+#12 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\controllers\Catalog\ProductController.php(179): Mage_Adminhtml_Controller_Action->loadLayout()
+#13 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Mage_Adminhtml_Catalog_ProductController->indexAction()
+#14 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#15 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#16 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#17 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#18 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#19 {main}
+2024-05-28T06:33:00+00:00 ERR (3): 
+Mage_Core_Exception: Invalid block type: 
+                        Practice_Reportmanager_Block_Adminhtml_Catalog_Product_Grid in C:\xampp\htdocs\1SBMagento\app\Mage.php:598
+Stack trace:
+#0 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(495): Mage::throwException('Invalid block t...')
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('\n              ...', Array)
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Block\Catalog\Product.php(58): Mage_Core_Model_Layout->createBlock('adminhtml/catal...', 'product.grid')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Block\Abstract.php(297): Mage_Adminhtml_Block_Catalog_Product->_prepareLayout()
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(456): Mage_Core_Block_Abstract->setLayout(Object(Mage_Core_Model_Layout))
+#5 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(472): Mage_Core_Model_Layout->createBlock('adminhtml/catal...', 'products_list')
+#6 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(239): Mage_Core_Model_Layout->addBlock('adminhtml/catal...', 'products_list')
+#7 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(205): Mage_Core_Model_Layout->_generateBlock(Object(Mage_Core_Model_Layout_Element), Object(Mage_Core_Model_Layout_Element))
+#8 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(210): Mage_Core_Model_Layout->generateBlocks(Object(Mage_Core_Model_Layout_Element))
+#9 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(343): Mage_Core_Model_Layout->generateBlocks()
+#10 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(269): Mage_Core_Controller_Varien_Action->generateLayoutBlocks()
+#11 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Controller\Action.php(285): Mage_Core_Controller_Varien_Action->loadLayout(NULL, true, true)
+#12 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\controllers\Catalog\ProductController.php(179): Mage_Adminhtml_Controller_Action->loadLayout()
+#13 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Mage_Adminhtml_Catalog_ProductController->indexAction()
+#14 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#15 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#16 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#17 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#18 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#19 {main}
+2024-05-28T06:33:22+00:00 ERR (3): 
+Mage_Core_Exception: Invalid block type: 
+                        Practice_Reportmanager_Block_Adminhtml_Catalog_Product_Grid in C:\xampp\htdocs\1SBMagento\app\Mage.php:598
+Stack trace:
+#0 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(495): Mage::throwException('Invalid block t...')
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('\n              ...', Array)
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Block\Catalog\Product.php(58): Mage_Core_Model_Layout->createBlock('adminhtml/catal...', 'product.grid')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Block\Abstract.php(297): Mage_Adminhtml_Block_Catalog_Product->_prepareLayout()
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(456): Mage_Core_Block_Abstract->setLayout(Object(Mage_Core_Model_Layout))
+#5 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(472): Mage_Core_Model_Layout->createBlock('adminhtml/catal...', 'products_list')
+#6 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(239): Mage_Core_Model_Layout->addBlock('adminhtml/catal...', 'products_list')
+#7 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(205): Mage_Core_Model_Layout->_generateBlock(Object(Mage_Core_Model_Layout_Element), Object(Mage_Core_Model_Layout_Element))
+#8 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(210): Mage_Core_Model_Layout->generateBlocks(Object(Mage_Core_Model_Layout_Element))
+#9 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(343): Mage_Core_Model_Layout->generateBlocks()
+#10 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(269): Mage_Core_Controller_Varien_Action->generateLayoutBlocks()
+#11 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Controller\Action.php(285): Mage_Core_Controller_Varien_Action->loadLayout(NULL, true, true)
+#12 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\controllers\Catalog\ProductController.php(179): Mage_Adminhtml_Controller_Action->loadLayout()
+#13 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Mage_Adminhtml_Catalog_ProductController->indexAction()
+#14 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#15 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#16 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#17 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#18 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#19 {main}
+2024-05-28T06:35:08+00:00 ERR (3): 
+Mage_Core_Exception: Invalid block type: 
+                        Practice_Reportmanager_Block_Adminhtml_Catalog_Product_Grid in C:\xampp\htdocs\1SBMagento\app\Mage.php:598
+Stack trace:
+#0 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(495): Mage::throwException('Invalid block t...')
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('\n              ...', Array)
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Block\Catalog\Product.php(58): Mage_Core_Model_Layout->createBlock('adminhtml/catal...', 'product.grid')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Block\Abstract.php(297): Mage_Adminhtml_Block_Catalog_Product->_prepareLayout()
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(456): Mage_Core_Block_Abstract->setLayout(Object(Mage_Core_Model_Layout))
+#5 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(472): Mage_Core_Model_Layout->createBlock('adminhtml/catal...', 'products_list')
+#6 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(239): Mage_Core_Model_Layout->addBlock('adminhtml/catal...', 'products_list')
+#7 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(205): Mage_Core_Model_Layout->_generateBlock(Object(Mage_Core_Model_Layout_Element), Object(Mage_Core_Model_Layout_Element))
+#8 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(210): Mage_Core_Model_Layout->generateBlocks(Object(Mage_Core_Model_Layout_Element))
+#9 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(343): Mage_Core_Model_Layout->generateBlocks()
+#10 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(269): Mage_Core_Controller_Varien_Action->generateLayoutBlocks()
+#11 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Controller\Action.php(285): Mage_Core_Controller_Varien_Action->loadLayout(NULL, true, true)
+#12 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\controllers\Catalog\ProductController.php(179): Mage_Adminhtml_Controller_Action->loadLayout()
+#13 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Mage_Adminhtml_Catalog_ProductController->indexAction()
+#14 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#15 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#16 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#17 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#18 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#19 {main}
+2024-05-28T06:35:34+00:00 ERR (3): 
+Mage_Core_Exception: Invalid block type: 
+                        Practice_Reportmanager_Block_Adminhtml_Catalog_Product_Grid in C:\xampp\htdocs\1SBMagento\app\Mage.php:598
+Stack trace:
+#0 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(495): Mage::throwException('Invalid block t...')
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('\n              ...', Array)
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Block\Catalog\Product.php(58): Mage_Core_Model_Layout->createBlock('adminhtml/catal...', 'product.grid')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Block\Abstract.php(297): Mage_Adminhtml_Block_Catalog_Product->_prepareLayout()
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(456): Mage_Core_Block_Abstract->setLayout(Object(Mage_Core_Model_Layout))
+#5 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(472): Mage_Core_Model_Layout->createBlock('adminhtml/catal...', 'products_list')
+#6 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(239): Mage_Core_Model_Layout->addBlock('adminhtml/catal...', 'products_list')
+#7 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(205): Mage_Core_Model_Layout->_generateBlock(Object(Mage_Core_Model_Layout_Element), Object(Mage_Core_Model_Layout_Element))
+#8 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(210): Mage_Core_Model_Layout->generateBlocks(Object(Mage_Core_Model_Layout_Element))
+#9 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(343): Mage_Core_Model_Layout->generateBlocks()
+#10 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(269): Mage_Core_Controller_Varien_Action->generateLayoutBlocks()
+#11 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Controller\Action.php(285): Mage_Core_Controller_Varien_Action->loadLayout(NULL, true, true)
+#12 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\controllers\Catalog\ProductController.php(179): Mage_Adminhtml_Controller_Action->loadLayout()
+#13 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Mage_Adminhtml_Catalog_ProductController->indexAction()
+#14 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#15 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#16 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#17 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#18 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#19 {main}
+2024-05-28T06:38:09+00:00 ERR (3): 
+Mage_Core_Exception: Invalid block type: 
+                        Practice_Reportmanager_Block_Adminhtml_Catalog_Product_Grid in C:\xampp\htdocs\1SBMagento\app\Mage.php:598
+Stack trace:
+#0 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(495): Mage::throwException('Invalid block t...')
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('\n              ...', Array)
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Block\Catalog\Product.php(58): Mage_Core_Model_Layout->createBlock('adminhtml/catal...', 'product.grid')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Block\Abstract.php(297): Mage_Adminhtml_Block_Catalog_Product->_prepareLayout()
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(456): Mage_Core_Block_Abstract->setLayout(Object(Mage_Core_Model_Layout))
+#5 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(472): Mage_Core_Model_Layout->createBlock('adminhtml/catal...', 'products_list')
+#6 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(239): Mage_Core_Model_Layout->addBlock('adminhtml/catal...', 'products_list')
+#7 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(205): Mage_Core_Model_Layout->_generateBlock(Object(Mage_Core_Model_Layout_Element), Object(Mage_Core_Model_Layout_Element))
+#8 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(210): Mage_Core_Model_Layout->generateBlocks(Object(Mage_Core_Model_Layout_Element))
+#9 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(343): Mage_Core_Model_Layout->generateBlocks()
+#10 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(269): Mage_Core_Controller_Varien_Action->generateLayoutBlocks()
+#11 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Controller\Action.php(285): Mage_Core_Controller_Varien_Action->loadLayout(NULL, true, true)
+#12 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\controllers\Catalog\ProductController.php(179): Mage_Adminhtml_Controller_Action->loadLayout()
+#13 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Mage_Adminhtml_Catalog_ProductController->indexAction()
+#14 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#15 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#16 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#17 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#18 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#19 {main}
+2024-05-28T06:39:38+00:00 ERR (3): 
+Mage_Core_Exception: Invalid block type: 
+                        Practice_Reportmanager_Block_Adminhtml_Catalog_Product_Grid in C:\xampp\htdocs\1SBMagento\app\Mage.php:598
+Stack trace:
+#0 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(495): Mage::throwException('Invalid block t...')
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('\n              ...', Array)
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Block\Catalog\Product.php(58): Mage_Core_Model_Layout->createBlock('adminhtml/catal...', 'product.grid')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Block\Abstract.php(297): Mage_Adminhtml_Block_Catalog_Product->_prepareLayout()
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(456): Mage_Core_Block_Abstract->setLayout(Object(Mage_Core_Model_Layout))
+#5 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(472): Mage_Core_Model_Layout->createBlock('adminhtml/catal...', 'products_list')
+#6 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(239): Mage_Core_Model_Layout->addBlock('adminhtml/catal...', 'products_list')
+#7 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(205): Mage_Core_Model_Layout->_generateBlock(Object(Mage_Core_Model_Layout_Element), Object(Mage_Core_Model_Layout_Element))
+#8 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(210): Mage_Core_Model_Layout->generateBlocks(Object(Mage_Core_Model_Layout_Element))
+#9 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(343): Mage_Core_Model_Layout->generateBlocks()
+#10 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(269): Mage_Core_Controller_Varien_Action->generateLayoutBlocks()
+#11 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Controller\Action.php(285): Mage_Core_Controller_Varien_Action->loadLayout(NULL, true, true)
+#12 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\controllers\Catalog\ProductController.php(179): Mage_Adminhtml_Controller_Action->loadLayout()
+#13 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Mage_Adminhtml_Catalog_ProductController->indexAction()
+#14 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#15 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#16 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#17 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#18 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#19 {main}
+2024-05-28T06:41:17+00:00 ERR (3): 
+Mage_Core_Exception: Invalid block type: 
+                        Practice_Reportmanager_Block_Adminhtml_Catalog_Product_Grid in C:\xampp\htdocs\1SBMagento\app\Mage.php:598
+Stack trace:
+#0 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(495): Mage::throwException('Invalid block t...')
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('\n              ...', Array)
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Block\Catalog\Product.php(58): Mage_Core_Model_Layout->createBlock('adminhtml/catal...', 'product.grid')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Block\Abstract.php(297): Mage_Adminhtml_Block_Catalog_Product->_prepareLayout()
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(456): Mage_Core_Block_Abstract->setLayout(Object(Mage_Core_Model_Layout))
+#5 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(472): Mage_Core_Model_Layout->createBlock('adminhtml/catal...', 'products_list')
+#6 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(239): Mage_Core_Model_Layout->addBlock('adminhtml/catal...', 'products_list')
+#7 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(205): Mage_Core_Model_Layout->_generateBlock(Object(Mage_Core_Model_Layout_Element), Object(Mage_Core_Model_Layout_Element))
+#8 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(210): Mage_Core_Model_Layout->generateBlocks(Object(Mage_Core_Model_Layout_Element))
+#9 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(343): Mage_Core_Model_Layout->generateBlocks()
+#10 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(269): Mage_Core_Controller_Varien_Action->generateLayoutBlocks()
+#11 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Controller\Action.php(285): Mage_Core_Controller_Varien_Action->loadLayout(NULL, true, true)
+#12 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\controllers\Catalog\ProductController.php(179): Mage_Adminhtml_Controller_Action->loadLayout()
+#13 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Mage_Adminhtml_Catalog_ProductController->indexAction()
+#14 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#15 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#16 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#17 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#18 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#19 {main}
+2024-05-28T06:41:56+00:00 ERR (3): 
+Mage_Core_Exception: Invalid block type: 
+                        Practice_Reportmanager_Block_Adminhtml_Catalog_Product_Grid in C:\xampp\htdocs\1SBMagento\app\Mage.php:598
+Stack trace:
+#0 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(495): Mage::throwException('Invalid block t...')
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('\n              ...', Array)
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Block\Catalog\Product.php(58): Mage_Core_Model_Layout->createBlock('adminhtml/catal...', 'product.grid')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Block\Abstract.php(297): Mage_Adminhtml_Block_Catalog_Product->_prepareLayout()
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(456): Mage_Core_Block_Abstract->setLayout(Object(Mage_Core_Model_Layout))
+#5 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(472): Mage_Core_Model_Layout->createBlock('adminhtml/catal...', 'products_list')
+#6 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(239): Mage_Core_Model_Layout->addBlock('adminhtml/catal...', 'products_list')
+#7 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(205): Mage_Core_Model_Layout->_generateBlock(Object(Mage_Core_Model_Layout_Element), Object(Mage_Core_Model_Layout_Element))
+#8 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(210): Mage_Core_Model_Layout->generateBlocks(Object(Mage_Core_Model_Layout_Element))
+#9 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(343): Mage_Core_Model_Layout->generateBlocks()
+#10 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(269): Mage_Core_Controller_Varien_Action->generateLayoutBlocks()
+#11 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Controller\Action.php(285): Mage_Core_Controller_Varien_Action->loadLayout(NULL, true, true)
+#12 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\controllers\Catalog\ProductController.php(179): Mage_Adminhtml_Controller_Action->loadLayout()
+#13 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Mage_Adminhtml_Catalog_ProductController->indexAction()
+#14 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#15 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#16 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#17 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#18 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#19 {main}
+2024-05-28T06:43:28+00:00 ERR (3): 
+Mage_Core_Exception: Invalid block type: 
+                        Practice_Reportmanager_Block_Adminhtml_Catalog_Product_Grid in C:\xampp\htdocs\1SBMagento\app\Mage.php:598
+Stack trace:
+#0 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(495): Mage::throwException('Invalid block t...')
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('\n              ...', Array)
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Block\Catalog\Product.php(58): Mage_Core_Model_Layout->createBlock('adminhtml/catal...', 'product.grid')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Block\Abstract.php(297): Mage_Adminhtml_Block_Catalog_Product->_prepareLayout()
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(456): Mage_Core_Block_Abstract->setLayout(Object(Mage_Core_Model_Layout))
+#5 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(472): Mage_Core_Model_Layout->createBlock('adminhtml/catal...', 'products_list')
+#6 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(239): Mage_Core_Model_Layout->addBlock('adminhtml/catal...', 'products_list')
+#7 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(205): Mage_Core_Model_Layout->_generateBlock(Object(Mage_Core_Model_Layout_Element), Object(Mage_Core_Model_Layout_Element))
+#8 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(210): Mage_Core_Model_Layout->generateBlocks(Object(Mage_Core_Model_Layout_Element))
+#9 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(343): Mage_Core_Model_Layout->generateBlocks()
+#10 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(269): Mage_Core_Controller_Varien_Action->generateLayoutBlocks()
+#11 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Controller\Action.php(285): Mage_Core_Controller_Varien_Action->loadLayout(NULL, true, true)
+#12 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\controllers\Catalog\ProductController.php(179): Mage_Adminhtml_Controller_Action->loadLayout()
+#13 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Mage_Adminhtml_Catalog_ProductController->indexAction()
+#14 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#15 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#16 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#17 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#18 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#19 {main}
+2024-05-28T06:43:45+00:00 ERR (3): 
+Mage_Core_Exception: Invalid block type: 
+                        Practice_Reportmanager_Block_Adminhtml_Catalog_Product_Grid in C:\xampp\htdocs\1SBMagento\app\Mage.php:598
+Stack trace:
+#0 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(495): Mage::throwException('Invalid block t...')
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('\n              ...', Array)
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Block\Catalog\Product.php(58): Mage_Core_Model_Layout->createBlock('adminhtml/catal...', 'product.grid')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Block\Abstract.php(297): Mage_Adminhtml_Block_Catalog_Product->_prepareLayout()
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(456): Mage_Core_Block_Abstract->setLayout(Object(Mage_Core_Model_Layout))
+#5 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(472): Mage_Core_Model_Layout->createBlock('adminhtml/catal...', 'products_list')
+#6 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(239): Mage_Core_Model_Layout->addBlock('adminhtml/catal...', 'products_list')
+#7 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(205): Mage_Core_Model_Layout->_generateBlock(Object(Mage_Core_Model_Layout_Element), Object(Mage_Core_Model_Layout_Element))
+#8 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(210): Mage_Core_Model_Layout->generateBlocks(Object(Mage_Core_Model_Layout_Element))
+#9 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(343): Mage_Core_Model_Layout->generateBlocks()
+#10 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(269): Mage_Core_Controller_Varien_Action->generateLayoutBlocks()
+#11 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\Controller\Action.php(285): Mage_Core_Controller_Varien_Action->loadLayout(NULL, true, true)
+#12 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Adminhtml\controllers\Catalog\ProductController.php(179): Mage_Adminhtml_Controller_Action->loadLayout()
+#13 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Mage_Adminhtml_Catalog_ProductController->indexAction()
+#14 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#15 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#16 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#17 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#18 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#19 {main}
