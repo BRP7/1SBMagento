@@ -1,14 +1,17 @@
 <?xml version="1.0"?>
+
 <config>
     <menu>
-        <practice_reportmanager module="practice_reportmanager">
+        <practice_reportmanager translate="title" module="practice_reportmanager">
             <title>Report Manager</title>
             <sort_order>100</sort_order>
             <children>
-                <product>
-                    <title>Products</title>
-                    <action>adminhtml/index/index</action>
-                </product>
+                <report_manager translate="title" module="practice_reportmanager">
+                    <title>Manage Custom Report</title>
+                    <action>adminhtml/custom/index</action>
+                    <sort_order>10</sort_order>
+                    <resource>practice_reportmanager/reportmanager</resource>
+                </report_manager>
             </children>
         </practice_reportmanager>
     </menu>
@@ -17,16 +20,79 @@
             <admin>
                 <children>
                     <practice_reportmanager translate="title" module="practice_reportmanager">
-                        <title>Report Manager</title>
+                        <title>Custom Report</title>
                         <sort_order>100</sort_order>
                         <children>
-                            <product translate="title">
-                                <title>Products</title>
-                            </product>
+                            <report_manager translate="title">
+                                <title>Manage Custom Report</title>
+                                <sort_order>10</sort_order>
+                                <children>
+                                    <index translate="title">
+                                        <title>Show</title>
+                                        <sort_order>1</sort_order>
+                                    </index>
+                                    <new translate="title">
+                                        <title>Add New</title>
+                                        <sort_order>2</sort_order>
+                                    </new>
+                                    <edit translate="title">
+                                        <title>Edit</title>
+                                        <sort_order>3</sort_order>
+                                    </edit>
+                                    <save translate="title">
+                                        <title>Save</title>
+                                        <sort_order>4</sort_order>
+                                    </save>
+                                    <delete translate="title">
+                                        <title>Delete</title>
+                                        <sort_order>5</sort_order>
+                                    </delete>
+                                </children>
+                            </report_manager>
                         </children>
                     </practice_reportmanager>
+                    <!-- <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <practice_exam_settings translate="title" module="practice_exam">
+                                        <title>Practice Settings</title>
+                                    </practice_exam_settings>
+                                </children>
+                            </config>
+                        </children>
+                    </system> -->
                 </children>
             </admin>
         </resources>
     </acl>
 </config>
+<!-- <config>
+    <menu>
+        <practice_reportmanager module="practice_reportmanager">
+            <title>Report Manager</title>
+            <sort_order>100</sort_order>
+            <children>
+                <report_manager>
+                    <title>Manage Report</title>
+                    <action>adminhtml/index/index</action>
+                </report_manager>
+            </children>
+        </practice_reportmanager>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <practice_reportmanager translate="title" module="practice_reportmanager">
+                    <title>Report Manager</title>
+                    <sort_order>100</sort_order>
+                    <children>
+                        <report_manager translate="title">
+                            <title>Products</title>
+                        </report_manager>
+                    </children>
+                </practice_reportmanager>
+            </admin>
+        </resources>
+    </acl>
+</config> -->

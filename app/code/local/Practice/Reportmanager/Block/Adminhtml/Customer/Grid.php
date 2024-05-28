@@ -1,21 +1,34 @@
 <?php
 class Practice_Reportmanager_Block_Adminhtml_Customer_Grid extends Mage_Adminhtml_Block_Customer_Grid
 {
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->setId('customerReportGrid');
+        $this->setDefaultSort('id');
+        $this->setDefaultDir('ASC');
+        $this->setSaveParametersInSession(true);
+    }
+    // protected function _prepareCollection()
+    // {
+    //     // $collection =Mage::getModel('practice_reportmanager/reportmanager')->getCollection();
+    //     $user = Mage::getSingleton('admin/session')->getUser();
+    //     $filterReport = Mage::getModel('practice_reportmanager/reportmanager')->getCollection();
+    //         // ->getData();
+
+    //     if (Mage::getModel('practice_reportmanager/reportmanager')->getId()) {
+    //         $filters = json_decode($filterReport->getFilterData(), true);
+    //         $this->setFilter($filters);
+    //     }
+
+    //     $this->setCollection($filterReport);
+    //     return parent::_prepareCollection();
+    // }
+
     protected function _prepareCollection()
     {
-        $collection = Mage::getModel('customer/customer')->getCollection();
-        $user = Mage::getSingleton('admin/session')->getUser();
-        $filterReport = Mage::getModel('practice_reportmanager/reportmanager')->getCollection()
-            ->addFieldToFilter('user_id', $user->getId())
-            ->addFieldToFilter('report_type', 'customer')
-            ->addFieldToFilter('is_active', 1)
-            ->getFirstItem();
-
-        if ($filterReport->getId()) {
-            $filters = json_decode($filterReport->getFilterData(), true);
-            $this->setFilter($filters);
-        }
-
+        $collection = Mage::getModel('practice_reportmanager/reportmanager')->getCollection();
         $this->setCollection($collection);
         return parent::_prepareCollection();
     }
@@ -49,6 +62,6 @@ class Practice_Reportmanager_Block_Adminhtml_Customer_Grid extends Mage_Adminhtm
             'index' => 'is_active',
         )
         );
-        return parent::_prepareColumns();
+        // return parent::_prepareColumns();
     }
 }

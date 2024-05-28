@@ -1,7 +1,7 @@
 <config>
     <menu>
         <practice_permissionpractice translate="title" module="practice_permissionpractice">
-            <title>permissionpractice YYYYYYYYYYYYYY</title>
+            <title>Permission Practice</title>
             <sort_order>100</sort_order>
             <children>
                 <permissionpractice translate="title" module="practice_permissionpractice">

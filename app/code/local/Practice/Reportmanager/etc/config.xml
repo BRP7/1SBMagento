@@ -9,8 +9,7 @@
             <adminhtml>
                 <args>
                     <modules>
-                        <Practice_Reportmanager before="Mage_Adminhtml">
-                            Practice_Reportmanager_Adminhtml</Practice_Reportmanager>
+                        <Practice_Reportmanager before="Mage_Adminhtml">Practice_Reportmanager_Adminhtml</Practice_Reportmanager>
                     </modules>
                 </args>
             </adminhtml>
@@ -67,10 +66,10 @@
                     <catalog_product>Practice_Reportmanager_Block_Adminhtml_Catalog_Product</catalog_product>
                     <catalog_product_grid>Practice_Reportmanager_Block_Adminhtml_Catalog_Product_Grid</catalog_product_grid>
                 </rewrite>
-                <practice_reportmanager>
-                    <class>Practice_Reportmanager_Block_Adminhtml</class>
-                </practice_reportmanager>
             </adminhtml>
+            <practice_reportmanager>
+                <class>Practice_Reportmanager_Block</class>
+            </practice_reportmanager>
         </blocks>
         <helpers>
             <practice_reportmanager>
