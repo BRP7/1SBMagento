@@ -46,17 +46,18 @@ Order Mark Location Check :
                     var data = JSON.parse(response);
                     console.log(response);
 
-                    var table = '<table border="1"><thead><tr><th>Order ID</th><th>Status</th><th>Grand Total</th><th>Product Execluded</th><th>Location Check</th></tr></thead><tbody>';
+                    var table = '<table border="1"><thead><tr><th>Order ID</th><th>Status</th><th>Grand Total</th><th>Product Excluded</th><th>Location Check</th><th>Customer Email</th></tr></thead><tbody>';
 
-                    data.forEach(function (order) {
-                        table += '<tr>';
-                        table += '<td>' + order.entity_id + '</td>';
-                        table += '<td>' + order.state + '</td>';
-                        table += '<td>' + order.grand_total + '</td>';
-                        table += '<td>' + order.is_location_checked + '</td>';
-                        table += '<td>' + order.product_execluded_location_checked + '</td>';
-                        table += '</tr>';
-                    });
+                data.forEach(function (order) {
+                    table += '<tr>';
+                    table += '<td>' + order.entity_id + '</td>';
+                    table += '<td>' + order.state + '</td>';
+                    table += '<td>' + order.grand_total + '</td>';
+                    table += '<td>' + order.is_location_checked + '</td>';
+                    table += '<td>' + order.product_execluded_location_checked + '</td>';
+                    table += '<td>' + order.customer_email + '</td>';
+                    table += '</tr>';
+                });
 
                     table += '</tbody></table>';
                     $('data-para').innerHTML = table;

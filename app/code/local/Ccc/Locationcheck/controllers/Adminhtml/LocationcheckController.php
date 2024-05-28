@@ -207,35 +207,72 @@ class Ccc_Locationcheck_Adminhtml_LocationcheckController extends Mage_Adminhtml
         $this->renderLayout();
     }
 
+    // public function productDetailAction()
+    // {
+    //     $data = $this->getRequest()->getPost();
+    //     $order_enable = $data['order_enable'];
+    //     if (isset($data['product_enable'])) {
+    //         $product_enable = $data['product_enable'];
+    //         $collection = Mage::getModel('sales/order')->getCollection()
+    //             ->addFieldToFilter('is_location_checked', $product_enable)
+    //             ->addFieldToFilter('product_execluded_location_checked', $order_enable);
+    //     } else {
+    //         $collection = Mage::getModel('sales/order')->getCollection()
+    //             ->addFieldToFilter('product_execluded_location_checked', $order_enable);
+    //     }
+
+    //     $collection = $collection->getData();
+    //     // $orderInfo = [];
+    //     // foreach ($collection as  $order) {
+    //     //    $orderInfo[]=$order['entity_id'];
+    //     //    print_r($orderInfo);
+    //     // }
+
+    //     $orderInfo = [];
+    //     foreach ($collection as $order) {
+    //         $orderInfo[] = [
+    //             'entity_id' => $order['entity_id'],
+    //             'state' => $order['status'],
+    //             'grand_total' => $order['grand_total'],
+    //             'product_execluded_location_checked' => $order['product_execluded_location_checked'],
+    //             'is_location_checked' => $order['is_location_checked'],
+    //         ];
+    //     }
+
+    //     $this->getResponse()->setBody(json_encode($orderInfo));
+    // }
+
+
+
     public function productDetailAction()
     {
         $data = $this->getRequest()->getPost();
         $order_enable = $data['order_enable'];
+
+        $collection = Mage::getModel('sales/order')->getCollection()
+            ->addFieldToFilter('product_execluded_location_checked', $order_enable);
+
         if (isset($data['product_enable'])) {
             $product_enable = $data['product_enable'];
-            $collection = Mage::getModel('sales/order')->getCollection()
-                ->addFieldToFilter('is_location_checked', $product_enable)
-                ->addFieldToFilter('product_execluded_location_checked', $order_enable);
-        } else {
-            $collection = Mage::getModel('sales/order')->getCollection()
-                ->addFieldToFilter('product_execluded_location_checked', $order_enable);
+            $collection->addFieldToFilter('is_location_checked', $product_enable);
         }
 
-        $collection = $collection->getData();
-        // $orderInfo = [];
-        // foreach ($collection as  $order) {
-        //    $orderInfo[]=$order['entity_id'];
-        //    print_r($orderInfo);
-        // }
+        $collection->getSelect()
+        ->join(
+            array('customer' => 'customer_entity'),
+            'main_table.customer_id = customer.entity_id',
+            array('customer.email')
+        );
 
         $orderInfo = [];
         foreach ($collection as $order) {
             $orderInfo[] = [
-                'entity_id' => $order['entity_id'],
-                'state' => $order['status'],
-                'grand_total' => $order['grand_total'],
-                'product_execluded_location_checked' => $order['product_execluded_location_checked'],
-                'is_location_checked' => $order['is_location_checked'],
+                'entity_id' => $order->getEntityId(),
+                'state' => $order->getStatus(),
+                'grand_total' => $order->getGrandTotal(),
+                'product_execluded_location_checked' => $order->getProductExecludedLocationChecked(),
+                'is_location_checked' => $order->getIsLocationChecked(),
+                'customer_email' => $order->getEmail(),
             ];
         }
 
