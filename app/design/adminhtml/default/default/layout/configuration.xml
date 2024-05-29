@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_configuration_index>
+        <reference name="content">
+            <block type="ccc_outlook/adminhtml_configuration" name="configuration.block" />
+        </reference>
+    </adminhtml_configuration_index>
+
+    <adminhtml_configuration_new>
+        <update handle="adminhtml_configuration_edit" />
+    </adminhtml_configuration_new>
+
+    <adminhtml_configuration_edit>
+        <update handle="editor" />
+        <reference name="content">
+            <block type="ccc_outlook/adminhtml_configuration_edit" name="ccc_configuration_edit"></block>
+        </reference>
+    </adminhtml_configuration_edit>
+    <adminhtml_configuration_report>
+        <reference name="content">
+            <block type="ccc_outlook/adminhtml_configuration" name="ccc_configuration_report"></block>
+        </reference>
+    </adminhtml_configuration_report>
+</layout>

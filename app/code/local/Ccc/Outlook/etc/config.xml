@@ -55,7 +55,7 @@
         <layout>
             <updates>
                 <ccc_outlook>
-                    <file>outlook.xml</file>
+                    <file>configuration.xml</file>
                 </ccc_outlook>
             </updates>
         </layout>

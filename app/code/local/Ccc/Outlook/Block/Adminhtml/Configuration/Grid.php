@@ -20,7 +20,7 @@ class Ccc_Outlook_Block_Adminhtml_Configuration_Grid extends Mage_Adminhtml_Bloc
             'header' => Mage::helper('ccc_outlook')->__('Id'),
             'align' => 'right',
             'width' => '50px',
-            'index' => 'id',
+            'index' => 'configuration_id',
         )
         );
 
@@ -28,6 +28,29 @@ class Ccc_Outlook_Block_Adminhtml_Configuration_Grid extends Mage_Adminhtml_Bloc
             'header' => Mage::helper('ccc_outlook')->__('User Name'),
             'align' => 'left',
             'index' => 'username',
+            'type' => 'text',
+            'column_css_class' => 'row_name',
+        )
+        );
+        $this->addColumn('email', array(
+            'header' => Mage::helper('ccc_outlook')->__('Email'),
+            'align' => 'left',
+            'index' => 'email',
+            'type' => 'text',
+        )
+        );
+        $this->addColumn('api_key', array(
+            'header' => Mage::helper('ccc_outlook')->__('API Key'),
+            'align' => 'left',
+            'index' => 'api_key',
+            'type' => 'text',
+            'column_css_class' => 'row_name',
+        )
+        );
+        $this->addColumn('token', array(
+            'header' => Mage::helper('ccc_outlook')->__('Token'),
+            'align' => 'left',
+            'index' => 'token',
             'type' => 'text',
             'column_css_class' => 'row_name',
         )

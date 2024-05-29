@@ -5,7 +5,7 @@ class Ccc_Outlook_Adminhtml_ConfigurationController extends Mage_Adminhtml_Contr
     protected function _initAction()
     {
         $this->loadLayout()
-            ->_setActiveMenu('ccc_locationcheck/locationcheck');
+            ->_setActiveMenu('ccc_configuration/index');
         return $this;
     }
 
@@ -60,19 +60,28 @@ class Ccc_Outlook_Adminhtml_ConfigurationController extends Mage_Adminhtml_Contr
     {
         if ($data = $this->getRequest()->getPost()) {
             $model = Mage::getModel('ccc_outlook/configuration');
-            var_dump($model);
-            if ($id = $this->getRequest()->getParam('id')) {
+            if ($id = $this->getRequest()->getParam('configuration_id')) {
+                // die;
                 $model->load($id);
+                if (!$model->getId()) {
+                    Mage::getSingleton('adminhtml/session')->addError(Mage::helper('ccc_outlook')->__('This configuration no longer exists.'));
+                    $this->_redirect('*/*/');
+                    return;
+                }
             }
+            
+            // Debugging to ensure ID and data are correct
+            var_dump($id);
+            var_dump($data);
+            var_dump($model->getData());
+    
             $model->setData($data);
-
+    
             try {
                 $model->save();
-
-                Mage::getSingleton('adminhtml/session')->addSuccess(
-                    Mage::helper('ccc_outlook')->__('The locationcheck has been saved.')
-                );
+                Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('ccc_outlook')->__('The configuration has been saved.'));
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
+    
                 if ($this->getRequest()->getParam('back')) {
                     $this->_redirect('*/*/edit', array('id' => $model->getId(), '_current' => true));
                     return;
@@ -82,10 +91,7 @@ class Ccc_Outlook_Adminhtml_ConfigurationController extends Mage_Adminhtml_Contr
             } catch (Mage_Core_Exception $e) {
                 $this->_getSession()->addError($e->getMessage());
             } catch (Exception $e) {
-                $this->_getSession()->addException(
-                    $e,
-                    Mage::helper('ccc_outlook')->__('An error occurred while saving the Configuration.')
-                );
+                $this->_getSession()->addException($e, Mage::helper('ccc_outlook')->__('An error occurred while saving the configuration.'));
             }
             $this->_getSession()->setFormData($data);
             $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
@@ -93,6 +99,7 @@ class Ccc_Outlook_Adminhtml_ConfigurationController extends Mage_Adminhtml_Contr
         }
         $this->_redirect('*/*/');
     }
+    
     public function deleteAction()
     {
         if ($id = $this->getRequest()->getParam('id')) {

@@ -34,7 +34,7 @@ class Ccc_Outlook_Block_Adminhtml_Configuration_Edit_Form extends Mage_Adminhtml
                 'configuration_id',
                 'hidden',
                 array(
-                    'name' => 'id',
+                    'name' => 'configuration_id', 
                 )
             );
         }
