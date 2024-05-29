@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <ccc_configuration translate="title">
+            <children>
+                <index translate="title" module="ccc_outlook">
+                    <title>Outlook</title>
+                    <action>adminhtml/configuration/index</action>
+                    <sort_order>10</sort_order>
+                </index>
+            </children>
+        </ccc_configuration>
+    </menu>
+</config>

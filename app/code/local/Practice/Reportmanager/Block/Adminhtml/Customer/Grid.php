@@ -5,7 +5,7 @@ class Practice_Reportmanager_Block_Adminhtml_Customer_Grid extends Mage_Adminhtm
     public function __construct()
     {
         parent::__construct();
-        $this->setId('customerReportGrid');
+        $this->setId('customGrid');
         $this->setDefaultSort('id');
         $this->setDefaultDir('ASC');
         $this->setSaveParametersInSession(true);

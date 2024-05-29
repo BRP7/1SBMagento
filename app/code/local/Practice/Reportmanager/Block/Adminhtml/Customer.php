@@ -12,7 +12,7 @@ class Practice_Reportmanager_Block_Adminhtml_Customer extends Mage_Adminhtml_Blo
         $this->setId('reportmanager');
         $this->_addButton('save_report', array(
             'label' => Mage::helper('customer')->__('Save Report'),
-            'onclick' => 'customerReportGridJsObject.saveCustomerReport()',
+            'onclick' => 'customGridJsObject.saveCustomerReport()',
             'class' => 'save_btn',
         )
         );

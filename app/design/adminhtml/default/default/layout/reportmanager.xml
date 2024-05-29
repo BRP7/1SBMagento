@@ -19,4 +19,11 @@
             <block type="practice_reportmanager/adminhtml_customer_edit" name="customer_custom_edit"/>
         </reference>
     </adminhtml_custom_edit>
+    <adminhtml_catalog_product_index>
+        <reference name="head">
+            <action method="addJs">
+                <script>reportmanager/reportmanager.js</script>
+            </action>
+        </reference>
+    </adminhtml_catalog_product_index>
 </layout>

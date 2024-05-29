@@ -21,7 +21,7 @@ class Practice_Reportmanager_Block_Adminhtml_Customer_Edit_Form extends Mage_Adm
         $form = new Varien_Data_Form(
             array(
                 'id' => 'edit_form',
-                'action' => $this->getUrl('*/*/saveReportAction', array('id' => $this->getRequest()->getParam('id'))),
+                'action' => $this->getUrl('*/*/save', array('id' => $this->getRequest()->getParam('id'))),
                 'method' => 'post'
             )
         );
@@ -44,17 +44,25 @@ class Practice_Reportmanager_Block_Adminhtml_Customer_Edit_Form extends Mage_Adm
             );
         }
 
-        $fieldset->addField('report_type', 'text', array(
+        $fieldset->addField('user_id','text', array(
+            'name'     => 'user_id',
+            'label'    => Mage::helper('practice_reportmanager')->__('User Id'),
+            'title'    => Mage::helper('practice_reportmanager')->__('User Id'),
+            'value'    => '1',
+        ));
+
+
+        $fieldset->addField('report_type', 'select', array(
             'name' => 'report_type',
             'label' => Mage::helper('practice_reportmanager')->__('Report Type'),
             'title' => Mage::helper('practice_reportmanager')->__('Report Type'),
             'values' => array(
                 array(
-                    'value' => 1,
+                    'value' => 'Product',
                     'label' => Mage::helper('practice_reportmanager')->__('Product')
                 ),
                 array(
-                    'value' => 0,
+                    'value' => 'Customer',
                     'label' => Mage::helper('practice_reportmanager')->__('Customer')
                 ),
             ),
