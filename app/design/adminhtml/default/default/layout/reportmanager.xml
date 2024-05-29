@@ -4,6 +4,11 @@
         <reference name="content">
             <block type="practice_reportmanager/adminhtml_customer" name="customer_custom"/>
         </reference>
+        <reference name="head">
+            <action method="addJs">
+                <script>reportmanager/reportmanager.js</script>
+            </action>
+        </reference>
     </adminhtml_custom_index>
     <adminhtml_custom_new>
         <update handle="adminhtml_custom_edit" />

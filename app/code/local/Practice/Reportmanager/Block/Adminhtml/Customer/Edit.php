@@ -3,7 +3,6 @@ class Practice_Reportmanager_Block_Adminhtml_Customer_Edit extends Mage_Adminhtm
 {
     public function __construct()
     {
-
         $this->_objectId = 'id';
         $this->_blockGroup = 'practice_reportmanager';
         $this->_controller = 'adminhtml_customer';
