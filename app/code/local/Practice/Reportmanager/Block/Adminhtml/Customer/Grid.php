@@ -1,5 +1,5 @@
 <?php
-class Practice_Reportmanager_Block_Adminhtml_Customer_Grid extends Mage_Adminhtml_Block_Customer_Grid
+class Practice_Reportmanager_Block_Adminhtml_Customer_Grid extends Mage_Adminhtml_Block_Widget_Grid
 {
 
     public function __construct()
@@ -39,7 +39,7 @@ class Practice_Reportmanager_Block_Adminhtml_Customer_Grid extends Mage_Adminhtm
             'header' => Mage::helper('practice_reportmanager')->__('ID'),
             'align' => 'right',
             'width' => '50px',
-            'index' => 'entity_id',
+            'index' => 'id',
         )
         );
 
@@ -57,11 +57,11 @@ class Practice_Reportmanager_Block_Adminhtml_Customer_Grid extends Mage_Adminhtm
         )
         );
         $this->addColumn('is_active', array(
-            'header' => Mage::helper('practice_reportmanager')->__('IS Active'),
+            'header' => Mage::helper('practice_reportmanager')->__('Is Active'),
             'align' => 'left',
             'index' => 'is_active',
         )
         );
-        // return parent::_prepareColumns();
+        return parent::_prepareColumns();
     }
 }

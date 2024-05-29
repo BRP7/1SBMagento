@@ -5,4 +5,13 @@
             <block type="practice_reportmanager/adminhtml_customer" name="customer_custom"/>
         </reference>
     </adminhtml_custom_index>
+    <adminhtml_custom_new>
+        <update handle="adminhtml_custom_edit" />
+    </adminhtml_custom_new>
+
+    <adminhtml_custom_edit>
+        <reference name="content">
+            <block type="practice_reportmanager/adminhtml_customer_edit" name="customer_custom_edit"/>
+        </reference>
+    </adminhtml_custom_edit>
 </layout>

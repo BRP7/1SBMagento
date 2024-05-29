@@ -4,13 +4,58 @@ class Practice_Reportmanager_Adminhtml_CustomController extends Mage_Adminhtml_C
 {
 
     public function indexAction()
-    { 
+    {
         $this->loadLayout();
-        // $this->_setActiveMenu('practice_reportmanager/report_manager');
-        // $this->_title($this->__('Report Manager'));
+        $this->_setActiveMenu('practice_reportmanager/report_manager');
+        $this->_title($this->__('Report Manager'));
         $this->renderLayout();
     }
 
+    public function newAction()
+    {
+        $this->_forward('edit');
+    }
+
+
+    public function editAction()
+    {
+        $this->_title($this->__('locationcheck'))->_title($this->__('locationcheck'));
+
+        $id = $this->getRequest()->getParam('id');
+        $model = Mage::getModel('practice_reportmanager/reportmanager');
+
+        if ($id) {
+            $model->load($id);
+            if (!$model->getId()) {
+                Mage::getSingleton('adminhtml/session')->addError(Mage::helper('locationcheck')->__('This locationcheck no longer exists.'));
+                $this->_redirect('*/*/');
+                return;
+            }
+        }
+
+        $this->_title($model->getId() ? $model->getTitle() : $this->__('New locationcheck'));
+
+        $data = Mage::getSingleton('adminhtml/session')->getFormData();
+        if (!empty($data)) {
+
+            $model->setData($data);
+        }
+
+        Mage::register('reportmanager_data', $model);
+        
+        $this->_initAction()
+            ->_addBreadcrumb($id ? Mage::helper('locationcheck')->__('Edit locationcheck') : Mage::helper('locationcheck')->__('New locationcheck'), $id ? Mage::helper('locationcheck')->__('Edit locationcheck') : Mage::helper('locationcheck')->__('New locationcheck'));
+        $this->renderLayout();
+
+    }
+
+    protected function _initAction()
+    {
+        // load layout, set active menu and breadcrumbs
+        $this->loadLayout();
+        $this->_setActiveMenu('practice_reportmanager/reportmanager');
+        return $this;
+    }
     // public function saveReportAction()
     // {
     //     $user = Mage::getSingleton('admin/session')->getUser();
@@ -53,30 +98,30 @@ class Practice_Reportmanager_Adminhtml_CustomController extends Mage_Adminhtml_C
         $this->_redirect('*/*/');
     }
 
-    public function saveCustomerReportAction()
-    {
-        $user = Mage::getSingleton('admin/session')->getUser();
-        $filters = $this->getRequest()->getParams(); // Retrieve the filters from the request
+    // public function saveCustomerReportAction()
+    // {
+    //     $user = Mage::getSingleton('admin/session')->getUser();
+    //     $filters = $this->getRequest()->getParams(); // Retrieve the filters from the request
 
-        if ($filters) {
-            try {
-                $model = Mage::getModel('practice_reportmanager/reportmanager');
-                $model->setUserId($user->getId());
-                $model->setReportType('customer'); // Set the report type to 'customer'
-                $model->setFilterData(json_encode($filters)); // Store the filters in JSON format
-                $model->setIsActive(1); // Set the report as active
-                $model->setCreatedAt(now());
-                $model->setUpdatedDate(now());
-                $model->save();
+    //     if ($filters) {
+    //         try {
+    //             $model = Mage::getModel('practice_reportmanager/reportmanager');
+    //             $model->setUserId($user->getId());
+    //             $model->setReportType('customer'); // Set the report type to 'customer'
+    //             $model->setFilterData(json_encode($filters)); // Store the filters in JSON format
+    //             $model->setIsActive(1); // Set the report as active
+    //             $model->setCreatedAt(now());
+    //             $model->setUpdatedDate(now());
+    //             $model->save();
 
-                Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('customer')->__('Customer report saved successfully.'));
-            } catch (Exception $e) {
-                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-            }
-        } else {
-            Mage::getSingleton('adminhtml/session')->addError(Mage::helper('customer')->__('No filters to save.'));
-        }
+    //             Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('customer')->__('Customer report saved successfully.'));
+    //         } catch (Exception $e) {
+    //             Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+    //         }
+    //     } else {
+    //         Mage::getSingleton('adminhtml/session')->addError(Mage::helper('customer')->__('No filters to save.'));
+    //     }
 
-        $this->_redirect('*/*/');
-    }
+    //     $this->_redirect('*/*/');
+    // }
 }
