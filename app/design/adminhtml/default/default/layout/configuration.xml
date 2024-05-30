@@ -15,10 +15,48 @@
         <reference name="content">
             <block type="ccc_outlook/adminhtml_configuration_edit" name="ccc_configuration_edit"></block>
         </reference>
+        <reference name="left">
+            <block type="ccc_outlook/adminhtml_configuration_edit_tabs" name="configuration_edit_tabs">
+                <block type="ccc_outlook/adminhtml_configuration_edit_tab_general" name="configuration_edit_tab_general" />
+                <block type="ccc_outlook/adminhtml_configuration_edit_tab_advance" name="configuration_edit_tab_advance" />
+                <action method="addTab">
+                    <name>general</name>
+                    <block>configuration_edit_tab_general</block>
+                </action>
+                <action method="addTab">
+                    <name>advance</name>
+                    <block>configuration_edit_tab_advance</block>
+                </action>
+            </block>
+        </reference>
     </adminhtml_configuration_edit>
     <adminhtml_configuration_report>
         <reference name="content">
             <block type="ccc_outlook/adminhtml_configuration" name="ccc_configuration_report"></block>
         </reference>
     </adminhtml_configuration_report>
+
+    <!-- <adminhtml_outlook_new>
+        <update handle="adminhtml_outlook_edit" />
+    </adminhtml_outlook_new>
+    <adminhtml_outlook_edit>
+        <update handle="editor" />
+        <reference name="content">
+            <block type="ccc_outlook/adminhtml_configuration_edit" name="ccc_configuration_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="ccc_outlook/adminhtml_configuration_edit_tabs" name="configuration_edit_tabs">
+                <block type="ccc_outlook/adminhtml_configuration_edit_tab_general" name="configuration_edit_tab_general" />
+                <block type="ccc_outlook/adminhtml_configuration_edit_tab_advance" name="configuration_edit_tab_advance" />
+                <action method="addTab">
+                    <name>general</name>
+                    <block>configuration_edit_tab_general</block>
+                </action>
+                <action method="addTab">
+                    <name>advance</name>
+                    <block>configuration_edit_tab_advance</block>
+                </action>
+            </block>
+        </reference>
+    </adminhtml_outlook_edit> -->
 </layout>

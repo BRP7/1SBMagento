@@ -70,11 +70,6 @@ class Ccc_Outlook_Adminhtml_ConfigurationController extends Mage_Adminhtml_Contr
                 }
             }
             
-            // Debugging to ensure ID and data are correct
-            var_dump($id);
-            var_dump($data);
-            var_dump($model->getData());
-    
             $model->setData($data);
     
             try {

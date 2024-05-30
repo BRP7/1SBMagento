@@ -16,13 +16,13 @@ $table = $installer->getConnection()
         'identity' => true,
         'nullable' => false,
         'primary' => true,
-    ), 'Banner Id')
+    ), 'Configuration Id')
     ->addColumn('username', Varien_Db_Ddl_Table::TYPE_VARCHAR, 255, array(
         'nullable' => false,
     ), 'User Name')
-    ->addColumn('email', Varien_Db_Ddl_Table::TYPE_VARCHAR, 255, array(
+    ->addColumn('password', Varien_Db_Ddl_Table::TYPE_VARCHAR, 255, array(
         'nullable' => false,
-    ), 'Email')
+    ), 'Password')
     ->addColumn('api_key', Varien_Db_Ddl_Table::TYPE_TEXT, null, array(
         'nullable' => false,
     ), 'API Key')

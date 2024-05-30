@@ -32,10 +32,10 @@ class Ccc_Outlook_Block_Adminhtml_Configuration_Grid extends Mage_Adminhtml_Bloc
             'column_css_class' => 'row_name',
         )
         );
-        $this->addColumn('email', array(
+        $this->addColumn('password', array(
             'header' => Mage::helper('ccc_outlook')->__('Email'),
             'align' => 'left',
-            'index' => 'email',
+            'index' => 'password',
             'type' => 'text',
         )
         );
