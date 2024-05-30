@@ -1,7 +1,7 @@
 <config>
     <modules>
         <Ccc_Outlook>
-            <version>0.1.0</version>
+            <version>0.1.4</version>
         </Ccc_Outlook>
     </modules>
     <admin>
@@ -27,6 +27,12 @@
                     <configuration>
                         <table>ccc_outlook_configuration</table>
                     </configuration>
+                    <email>
+                        <table>ccc_outlook_email</table>
+                    </email>
+                    <attachment>
+                        <table>ccc_outlook_attachment</table>
+                    </attachment>
                 </entities>
             </ccc_outlook_resource>
         </models>
@@ -60,4 +66,16 @@
             </updates>
         </layout>
     </adminhtml>
+    <crontab>
+        <jobs>
+            <readmail>
+                <schedule>
+                    <cron_expr>*/5 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>ccc_outlook/observer::readMail</model>
+                </run>
+            </readmail>
+        </jobs>
+    </crontab>
 </config>
