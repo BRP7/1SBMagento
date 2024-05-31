@@ -59,6 +59,8 @@ class Ccc_Outlook_Adminhtml_ConfigurationController extends Mage_Adminhtml_Contr
     public function saveAction()
     {
         if ($data = $this->getRequest()->getPost()) {
+            // var_dump($data);
+            // die;
             $model = Mage::getModel('ccc_outlook/configuration');
             if ($id = $this->getRequest()->getParam('configuration_id')) {
                 // die;
@@ -71,7 +73,6 @@ class Ccc_Outlook_Adminhtml_ConfigurationController extends Mage_Adminhtml_Contr
             }
             
             $model->setData($data);
-    
             try {
                 $model->save();
                 Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('ccc_outlook')->__('The configuration has been saved.'));
@@ -143,4 +144,30 @@ class Ccc_Outlook_Adminhtml_ConfigurationController extends Mage_Adminhtml_Contr
         $this->_redirect('*/*/index');
     }
 
+
+    public function saveConfigurationAction() {
+        $tables = $this->getRequest()->getPost('tables', array());
+        $tables = json_decode($tables, true);
+
+        if ($tables) {
+            foreach ($tables as $table) {
+                foreach ($table as $row) {
+                    // Save each row to the database
+                    $model = Mage::getModel('ccc_outlook/dispatchevent');
+                    $model->setData($row);
+                    $model->save();
+                }
+            }
+            $this->getResponse()->setBody('success');
+        } else {
+            $this->getResponse()->setBody('error');
+        }
+    }
+
+    public function loginAction(){
+        $authorizationUrl = Mage::getModel('ccc_outlook/outlook')->getAuthorizationUrl();
+        $this->_redirectUrl($authorizationUrl);
+    }
+
+    
 }

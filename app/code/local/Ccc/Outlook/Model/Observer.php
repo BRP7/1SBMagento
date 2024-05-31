@@ -1,21 +1,16 @@
 <?php
 
-// class Ccc_Outlook_Model_Observer{
-//     public function readMail(){
-//         $token = Mage::getModel('ccc_outlook/outlook')->getAccessToken();
-//         // $collections = Mage::getModel('ccc_outlook/configuration')->getCollection();
-//         // foreach($collections as $collection){
-//             Mage::getModel('ccc_outlook/outlook')->getMail($collection);
-//         // }
-//     }
-// }
+class Ccc_Outlook_Model_Observer{
 
-
-class Ccc_Outlook_Model_Observer {
-    public function readMail() {
-        $accessToken = Mage::getModel('ccc_outlook/outlook')->getAccessToken();
-        if ($accessToken) {
-            Mage::getModel('ccc_outlook/outlook')->processEmails($accessToken);
+public function readMail()
+    {
+        try {
+            $emails = Mage::getModel('ccc_outlook/outlook')->getEmails();
+            foreach ($emails as $email) {
+                print_r($email);
+            }
+        } catch (Exception $e) {
+            Mage::log('Error reading emails: ' . $e->getMessage(), null, 'outlook_emails.log');
         }
     }
 }

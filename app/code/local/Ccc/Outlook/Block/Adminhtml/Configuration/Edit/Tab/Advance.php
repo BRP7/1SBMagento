@@ -1,6 +1,12 @@
 <?php 
 class Ccc_Outlook_Block_Adminhtml_Configuration_Edit_Tab_Advance extends Mage_Adminhtml_Block_Widget_Form implements Mage_Adminhtml_Block_Widget_Tab_Interface
 {
+    protected function _construct()
+    {
+        parent::_construct();
+        $this->setTemplate('outlook/configuration.phtml');
+       
+    }
     protected function _prepareLayout()
     {
         parent::_prepareLayout();  

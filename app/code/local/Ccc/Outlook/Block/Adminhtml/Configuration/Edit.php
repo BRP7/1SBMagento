@@ -10,12 +10,18 @@ class Ccc_Outlook_Block_Adminhtml_Configuration_Edit extends Mage_Adminhtml_Bloc
 
         $this->_updateButton('save', 'label', Mage::helper('ccc_outlook')->__('Save Configuration'));
         $this->_updateButton('delete', 'label', Mage::helper('ccc_outlook')->__('Delete Configuration'));
+        $this->_updateButton('login', 'label', Mage::helper('ccc_outlook')->__('Login'));
 
         $this->_addButton('saveandcontinue', array(
             'label' => Mage::helper('ccc_outlook')->__('Save and Continue Edit'),
             'onclick' => 'saveAndContinueEdit()',
             'class' => 'save',
         ), -100);
+        $this->_addButton('login', array(
+            'label'     => Mage::helper('adminhtml')->__('Login'),
+            'onclick'   => 'setLocation(\'' . $this->getLoginUrl() . '\')',
+            'class'     => 'login',
+        ), -1);
 
         $this->_formScripts[] = "
         function toggleEditor() {
@@ -39,6 +45,13 @@ class Ccc_Outlook_Block_Adminhtml_Configuration_Edit extends Mage_Adminhtml_Bloc
         } else {
             return Mage::helper('ccc_outlook')->__('New Configuration');
         }
+    }
+
+    public function getLoginUrl()
+    {
+        return $this->getUrl('*/*/login', array(
+            Mage_Core_Model_Url::FORM_KEY => $this->getFormKey()
+        ));
     }
 }
 ?>

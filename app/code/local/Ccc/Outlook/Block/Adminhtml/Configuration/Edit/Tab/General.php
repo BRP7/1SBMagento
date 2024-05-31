@@ -31,18 +31,6 @@ class Ccc_Outlook_Block_Adminhtml_Configuration_Edit_Tab_General extends Mage_Ad
                 'title' => Mage::helper('ccc_outlook')->__('Email'),
             )
         );
-
-        $fieldset->addField(
-            'password',
-            'text',
-            array(
-                'name' => 'password',
-                'label' => Mage::helper('ccc_outlook')->__('User Name'),
-                'title' => Mage::helper('ccc_outlook')->__('User Name'),
-            )
-        );
-        
-     
         
         $fieldset->addField(
             'api_key',
@@ -55,12 +43,33 @@ class Ccc_Outlook_Block_Adminhtml_Configuration_Edit_Tab_General extends Mage_Ad
         );
         
         $fieldset->addField(
-            'token',
+            'client_id',
             'text',
             array(
-                'name' => 'token',
-                'label' => Mage::helper('ccc_outlook')->__('Token'),
-                'title' => Mage::helper('ccc_outlook')->__('Token'),
+                'name' => 'client_id',
+                'required' => true,
+                'label' => Mage::helper('ccc_outlook')->__('Client ID'),
+                'title' => Mage::helper('ccc_outlook')->__('Client ID'),
+            )
+        );
+        $fieldset->addField(
+            'tenant_id',
+            'text',
+            array(
+                'name' => 'tenant_id',
+                'required' => true,
+                'label' => Mage::helper('ccc_outlook')->__('Tenant Id'),
+                'title' => Mage::helper('ccc_outlook')->__('Tenant Id'),
+            )
+        );
+        $fieldset->addField(
+            'client_secret',
+            'text',
+            array(
+                'name' => 'client_secret',
+                'required' => true,
+                'label' => Mage::helper('ccc_outlook')->__('Client Secret'),
+                'title' => Mage::helper('ccc_outlook')->__('Client Secret'),
             )
         );
         $fieldset->addField(

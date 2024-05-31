@@ -4,6 +4,17 @@
             <version>0.1.4</version>
         </Ccc_Outlook>
     </modules>
+    <frontend>
+        <routers>
+            <outlook>
+                <use>standard</use>
+                <args>
+                    <module>Ccc_Outlook</module>
+                    <frontName>outlook</frontName>
+                </args>
+            </outlook>
+        </routers>
+    </frontend>
     <admin>
         <routers>
             <adminhtml>
@@ -16,6 +27,17 @@
         </routers>
     </admin>
     <global>
+        <events>
+            <!-- <last_stored_email_save_after>
+                <observers>
+                    <last_stored_email>
+                        <type>model</type>
+                        <class>ccc_outlook/observer</class>
+                        <method>storeLastReadedEmail</method>
+                    </last_stored_email>
+                </observers>
+            </last_stored_email_save_after> -->
+        </events>
         <models>
             <ccc_outlook>
                 <class>Ccc_Outlook_Model</class>
@@ -33,6 +55,9 @@
                     <attachment>
                         <table>ccc_outlook_attachment</table>
                     </attachment>
+                    <dispatchevent>
+                        <table>ccc_outlook_dispatchevent</table>
+                    </dispatchevent>
                 </entities>
             </ccc_outlook_resource>
         </models>

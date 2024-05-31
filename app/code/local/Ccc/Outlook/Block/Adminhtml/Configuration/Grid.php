@@ -32,25 +32,25 @@ class Ccc_Outlook_Block_Adminhtml_Configuration_Grid extends Mage_Adminhtml_Bloc
             'column_css_class' => 'row_name',
         )
         );
-        $this->addColumn('password', array(
-            'header' => Mage::helper('ccc_outlook')->__('Email'),
+        $this->addColumn('tenant_id', array(
+            'header' => Mage::helper('ccc_outlook')->__('Tenant Id'),
             'align' => 'left',
-            'index' => 'password',
+            'index' => 'tenant_id',
             'type' => 'text',
         )
         );
-        $this->addColumn('api_key', array(
-            'header' => Mage::helper('ccc_outlook')->__('API Key'),
+        $this->addColumn('client_secret', array(
+            'header' => Mage::helper('ccc_outlook')->__('Client Secret'),
             'align' => 'left',
-            'index' => 'api_key',
+            'index' => 'client_secret',
             'type' => 'text',
             'column_css_class' => 'row_name',
         )
         );
-        $this->addColumn('token', array(
-            'header' => Mage::helper('ccc_outlook')->__('Token'),
+        $this->addColumn('client_id', array(
+            'header' => Mage::helper('ccc_outlook')->__('Client Id'),
             'align' => 'left',
-            'index' => 'token',
+            'index' => 'client_id',
             'type' => 'text',
             'column_css_class' => 'row_name',
         )

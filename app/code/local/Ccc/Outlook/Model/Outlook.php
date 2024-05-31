@@ -1,120 +1,114 @@
 <?php
-require_once Mage::getBaseDir() . '/vendor/autoload.php';
-
-use Microsoft\Graph\Graph;
-use Microsoft\Graph\Model;
-
 class Ccc_Outlook_Model_Outlook
 {
-    protected $clientId;
-    protected $clientSecret;
-    protected $tenantId;
+    public $tenantId = 'common';
+    public $clientId = '2c5db537-aa16-4c09-838b-e74304d3b862';
+    public $clientSecret = 'Ouj8Q~uOOmsP7O3vU7PV~wxCHPi2TpRvyryG7dbZ';
+    public $redirectUri = 'http://localhost/1SBMagento/outlook';
+    // Update with your actual Magento URL
+    private $scope = 'https://graph.microsoft.com/Mail.Read';
 
-    public function __construct()
-    {
-        $this->clientId = '2c5db537-aa16-4c09-838b-e74304d3b862';
-        $this->clientSecret = 'Ouj8Q~uOOmsP7O3vU7PV~wxCHPi2TpRvyryG7dbZ';
-        $this->tenantId = 'f8cdef31-a31e-4b4a-93e4-5f571e91255a';
-        // $this->clientId = Mage::getStoreConfig('ccc_outlook/general/client_id');
-        // $this->clientSecret = Mage::getStoreConfig('ccc_outlook/general/client_secret');
-        // $this->tenantId = Mage::getStoreConfig('ccc_outlook/general/tenant_id');
-    }
+    public function getAuthorizationUrl()
+{
+    $authorizationEndpoint = "https://login.microsoftonline.com/{$this->tenantId}/oauth2/v2.0/authorize";
+    $redirectUriEncoded = urlencode($this->redirectUri);
+    $authUrl = "$authorizationEndpoint?client_id={$this->clientId}&response_type=code&redirect_uri={$redirectUriEncoded}&scope={$this->scope}";
+    return $authUrl;
+}
 
-    public function getAccessToken()
+
+    public function getAccessToken($authorizationCode)
     {
-        $url = "https://login.microsoftonline.com/{$this->tenantId}/oauth2/v2.0/token";
-        $postFields = http_build_query([
-            'grant_type' => 'client_credentials',
+        $tokenEndpoint = "https://login.microsoftonline.com/{$this->tenantId}/oauth2/v2.0/token";
+
+        $data = [
             'client_id' => $this->clientId,
             'client_secret' => $this->clientSecret,
-            'scope' => 'https://graph.microsoft.com/.default'
-        ]);
-    
+            'code' => $authorizationCode,
+            'redirect_uri' => $this->redirectUri,
+            'grant_type' => 'authorization_code',
+            // 'grant_type' => 'client_credentials',
+            'scope' => $this->scope
+        ];
+
+        $ch = curl_init($tokenEndpoint);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+
+        $response = curl_exec($ch);
+        if ($response === false) {
+            throw new Exception('Error fetching access token: ' . curl_error($ch));
+        }
+        curl_close($ch);
+
+        $result = json_decode($response, true);
+        if (isset($result['error'])) {
+            throw new Exception('Error in response: ' . $result['error_description']);
+        }
+        return $result['access_token'];
+    }
+
+    public function getEmails()
+    {
+        // $authCode = Mage::getStoreConfig('ccc_outlook/general/auth_code');
+        $accessToken = $this->readTokenFromFile();
+        $url = "https://graph.microsoft.com/v1.0/me/messages/";
+        $headers = [
+            'Authorization: Bearer ' . $accessToken,
+            'Accept: application/json'
+        ];
+
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $postFields);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
         $response = curl_exec($ch);
         curl_close($ch);
-    
-        $json = json_decode($response, true);
-        var_dump($json);
-        return $json['access_token'] ?? null;
+        return json_decode($response, true);
     }
-    
-
-    public function processEmails($accessToken)
+    public function saveTokenToFile($data)
     {
-        $lastReadEmailId = Mage::getStoreConfig('ccc_outlook/general/last_read_email_id') ?? 0;
-        $graph = new Graph();
-        $graph->setAccessToken($accessToken);
+        $filePath = Mage::getBaseDir('var') . DS . 'export' . DS . 'savedata.txt';
+        try {
+            $io = new Varien_Io_File();
+            $io->setAllowCreateFolders(true);
+            $io->open(array('path' => Mage::getBaseDir('var') . DS . 'export'));
+            $io->streamOpen($filePath, 'w+');
+            $io->streamLock(true);
+            $io->streamWrite($data);
+            $io->streamUnlock();
+            $io->streamClose();
+            
+            return true;
+        } catch (Exception $e) {
+            Mage::logException($e);
+            return false;
+        }
+    }
+    public function readTokenFromFile()
+    {
+        $filePath = Mage::getBaseDir('var') . DS . 'export' . DS . 'savedata.txt';
 
-        $messages = $graph->createRequest("GET", "/me/messages?\$top=10&\$orderby=receivedDateTime desc&\$filter=id gt '$lastReadEmailId'")
-            ->setReturnType(Model\Message::class)
-            ->execute();
-
-        $parser = Mage::getModel('ccc_outlook/parser');
-
-        foreach ($messages as $message) {
-            $parsedEmail = $parser->parseEmail($message);
-            $emailId = $this->saveEmail($parsedEmail);
-
-            if (!empty($message->getAttachments())) {
-                $this->saveAttachments($message->getAttachments(), $emailId);
+        try {
+            $io = new Varien_Io_File();
+            if ($io->fileExists($filePath)) {
+                $io->open(array('path' => Mage::getBaseDir('var') . DS . 'export'));
+                $data = $io->read($filePath);
+                return $data;
+            } else {
+                return 'File does not exist.';
             }
-
-            // Update last read email ID
-            Mage::getConfig()->saveConfig('ccc_outlook/general/last_read_email_id', $message->getId());
+        } catch (Exception $e) {
+            Mage::logException($e);
+            return false;
         }
     }
-
-    protected function saveEmail($emailData)
-    {
-        $emailModel = Mage::getModel('ccc_outlook/email');
-        $emailModel->setData($emailData);
-        $emailModel->save();
-        return $emailModel->getId();
-    }
-
-    protected function saveAttachments($attachments, $emailId)
-    {
-        foreach ($attachments as $attachment) {
-            $attachmentModel = Mage::getModel('ccc_outlook/attachment');
-            $attachmentModel->setEmailId($emailId);
-            $attachmentModel->setFilename($attachment->getName());
-            $attachmentModel->setFileContent(base64_encode($attachment->getContentBytes()));
-            $attachmentModel->save();
-        }
-    }
-
-    public function getMail($token)
-    {
-        if (!$token) {
-            // Handle case where access token is not provided
-            // You can log an error or throw an exception
-            throw new Exception("No access token provided");
-        }
-    
-        $graph = new Graph();
-        $graph->setAccessToken($token);
-    
-        // Assuming you want to read the 10 most recent emails
-        $messages = $graph->createRequest("GET", "/users/me/messages?\$top=10&\$orderby=receivedDateTime desc")
-            ->setReturnType(Model\Message::class)
-            ->execute();
-    
-        // Loop through each message and print subject and body
-        foreach ($messages as $message) {
-            $subject = $message->getSubject();
-            $body = $message->getBody()->getContent(); // Assuming HTML content
-    
-            // Print subject and body
-            echo "Subject: $subject" . PHP_EOL;
-            echo "Body: $body" . PHP_EOL;
-            echo "------------------------------" . PHP_EOL;
-        }
-    }
-    
 }
+
+
+

@@ -9,12 +9,13 @@ class Ccc_Outlook_IndexController extends Mage_Core_Controller_Front_Action
         if ($this->getRequest()->getParam('code')) {
             $authCode = $this->getRequest()->getParam('code');
             $tokens = $outlookModel->getAccessToken($authCode);
-            $emails = $outlookModel->getEmails($tokens['access_token']);
+            $outlookModel->saveTokenToFile($tokens);
+            // $emails = $outlookModel->getEmails();
 
             // Display emails
-            foreach ($emails as $email) {
-                echo $email->getSubject() . '<br>';
-            }
+            // foreach ($emails as $email) {
+            //     echo $email->getSubject() . '<br>';
+            // }
         } else {
             // Redirect to Microsoft login page
             $authorizationUrl = 'https://login.microsoftonline.com/' . $outlookModel->tenantId . '/oauth2/v2.0/authorize?' . http_build_query([

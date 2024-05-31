@@ -22,9 +22,9 @@ $table = $installer->getConnection()
     ->addColumn('filename', Varien_Db_Ddl_Table::TYPE_VARCHAR, 255, array(
         'nullable' => false,
     ), 'Filename')
-    ->addColumn('file_content', Varien_Db_Ddl_Table::TYPE_BLOB, null, array(
-        'nullable' => false,
-    ), 'File Content')
+    // ->addColumn('file_content', Varien_Db_Ddl_Table::TYPE_BLOB, null, array(
+    //     'nullable' => false,
+    // ), 'File Content')
     ->addColumn('created_at', Varien_Db_Ddl_Table::TYPE_TIMESTAMP, null, array(
         'nullable' => false,
         'default' => Varien_Db_Ddl_Table::TIMESTAMP_INIT,
