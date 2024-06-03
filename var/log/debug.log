@@ -1,0 +1,694 @@
+2024-06-01T14:42:24+00:00 DEBUG (7): Array
+(
+    [tables] => [[{"group_id":0,"condition_name":"subject","operator":"=","value":"Hey","event_name":"sales_Order_save_after"},{"group_id":0,"condition_name":"from","operator":"%Like%","value":"Ram","event_name":"sales_Order_save_after"},{"group_id":0,"condition_name":"to","operator":"Like","value":"Margin","event_name":"sales_Order_save_after"}],[{"group_id":1,"condition_name":"subject","operator":"=","value":"get","event_name":"sales_Order_save_before"},{"group_id":1,"condition_name":"from","operator":"%Like%","value":"there","event_name":"sales_Order_save_before"},{"group_id":1,"condition_name":"to","operator":"%Like%","value":"you","event_name":"sales_Order_save_before"}]]
+    [form_key] => BujhiBULIQKXBViF
+    [config_id] => 1
+)
+
+2024-06-01T14:45:01+00:00 DEBUG (7): Array
+(
+    [tables] => [[{"group_id":0,"condition_name":"subject","operator":"=","value":"Hey","event_name":"sales_Order_save_after"},{"group_id":0,"condition_name":"from","operator":"%Like%","value":"Ram","event_name":"sales_Order_save_after"},{"group_id":0,"condition_name":"to","operator":"Like","value":"Margin","event_name":"sales_Order_save_after"}],[{"group_id":1,"condition_name":"subject","operator":"%Like%","value":"get","event_name":"sales_Order_save_before"},{"group_id":1,"condition_name":"from","operator":"%Like%","value":"Ram","event_name":"sales_Order_save_before"},{"group_id":1,"condition_name":"to","operator":"Like","value":"Margin","event_name":"sales_Order_save_before"}]]
+    [form_key] => BujhiBULIQKXBViF
+    [config_id] => 1
+)
+
+2024-06-01T14:45:01+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 1
+    [group_id] => 0
+    [condition_name] => subject
+    [operator] => =
+    [value] => Hey
+    [event_name] => sales_Order_save_after
+)
+
+2024-06-01T14:45:01+00:00 DEBUG (7): SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`magento`.`ccc_outlook_dispatchevent`, CONSTRAINT `FK_09A2898A04116B7BF3FA20C18EDC741B` FOREIGN KEY (`configuration_id`) REFERENCES `ccc_outlook_configuration` (`configuration_id`) ON DELETE C), query was: INSERT INTO `ccc_outlook_dispatchevent` (`group_id`, `operator`, `value`) VALUES (\?, \?, \?)
+2024-06-01T15:13:20+00:00 DEBUG (7): Array
+(
+    [tables] => [[{"group_id":0,"condition_name":"subject","operator":"%Like%","value":"Hey","event_name":"sales_Order_save_after"},{"group_id":0,"condition_name":"from","operator":"%Like%","value":"Ram","event_name":"sales_Order_save_after"},{"group_id":0,"condition_name":"to","operator":"Like","value":"Margin","event_name":"sales_Order_save_after"}],[{"group_id":1,"condition_name":"subject","operator":"=","value":"get","event_name":"sales_Order_save_before"},{"group_id":1,"condition_name":"from","operator":"%Like%","value":"Margin","event_name":"sales_Order_save_before"},{"group_id":1,"condition_name":"to","operator":"Like","value":"Ram","event_name":"sales_Order_save_before"}]]
+    [form_key] => BujhiBULIQKXBViF
+    [config_id] => 1
+)
+
+2024-06-01T15:13:20+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 1
+    [group_id] => 0
+    [condition_name] => subject
+    [operator] => %Like%
+    [value] => Hey
+    [event_name] => sales_Order_save_after
+)
+
+2024-06-01T15:13:20+00:00 DEBUG (7): SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`magento`.`ccc_outlook_dispatchevent`, CONSTRAINT `FK_09A2898A04116B7BF3FA20C18EDC741B` FOREIGN KEY (`configuration_id`) REFERENCES `ccc_outlook_configuration` (`configuration_id`) ON DELETE C), query was: INSERT INTO `ccc_outlook_dispatchevent` (`group_id`, `operator`, `value`) VALUES (\?, \?, \?)
+2024-06-01T15:25:13+00:00 DEBUG (7): Array
+(
+    [tables] => [[{"group_id":0,"condition_name":"subject","operator":"%Like%","value":"Hey","event_name":"sales_order_save_after"},{"group_id":0,"condition_name":"from","operator":"%Like%","value":"Ram","event_name":"sales_order_save_after"},{"group_id":0,"condition_name":"to","operator":"Like","value":"Margin","event_name":"sales_order_save_after"}],[{"group_id":1,"condition_name":"subject","operator":"%Like%","value":"get","event_name":"sales_order_save_before"},{"group_id":1,"condition_name":"from","operator":"Like","value":"Margin","event_name":"sales_order_save_before"},{"group_id":1,"condition_name":"to","operator":"%Like%","value":"Ram","event_name":"sales_order_save_before"}]]
+    [form_key] => BujhiBULIQKXBViF
+    [config_id] => 1
+)
+
+2024-06-01T15:25:13+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 1
+    [group_id] => 0
+    [condition_name] => subject
+    [operator] => %Like%
+    [value] => Hey
+    [event_name] => sales_order_save_after
+)
+
+2024-06-01T15:25:13+00:00 DEBUG (7): SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`magento`.`ccc_outlook_dispatchevent`, CONSTRAINT `FK_09A2898A04116B7BF3FA20C18EDC741B` FOREIGN KEY (`configuration_id`) REFERENCES `ccc_outlook_configuration` (`configuration_id`) ON DELETE C), query was: INSERT INTO `ccc_outlook_dispatchevent` (`group_id`, `operator`, `value`) VALUES (\?, \?, \?)
+2024-06-01T15:25:13+00:00 DEBUG (7): #0 C:\xampp\htdocs\1SBMagento\lib\Varien\Db\Statement\Pdo\Mysql.php(110): Zend_Db_Statement_Pdo->_execute(Array)
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Zend\Db\Statement.php(291): Varien_Db_Statement_Pdo_Mysql->_execute(Array)
+#2 C:\xampp\htdocs\1SBMagento\lib\Zend\Db\Adapter\Abstract.php(481): Zend_Db_Statement->execute(Array)
+#3 C:\xampp\htdocs\1SBMagento\lib\Zend\Db\Adapter\Pdo\Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO `cc...', Array)
+#4 C:\xampp\htdocs\1SBMagento\lib\Varien\Db\Adapter\Pdo\Mysql.php(504): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO `cc...', Array)
+#5 C:\xampp\htdocs\1SBMagento\lib\Zend\Db\Adapter\Abstract.php(578): Varien_Db_Adapter_Pdo_Mysql->query('INSERT INTO `cc...', Array)
+#6 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Resource\Db\Abstract.php(453): Zend_Db_Adapter_Abstract->insert('ccc_outlook_dis...', Array)
+#7 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Abstract.php(318): Mage_Core_Model_Resource_Db_Abstract->save(Object(Ccc_Outlook_Model_Dispatchevent))
+#8 C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php(222): Mage_Core_Model_Abstract->save()
+#9 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Ccc_Outlook_Adminhtml_ConfigurationController->saveConfigurationEventAction()
+#10 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('saveConfigurati...')
+#11 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#12 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#13 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#14 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#15 {main}
+2024-06-01T15:28:28+00:00 DEBUG (7): Array
+(
+    [tables] => [[{"group_id":0,"condition_name":"subject","operator":"=","value":"Hey","event_name":"sales_Order_save_after"},{"group_id":0,"condition_name":"from","operator":"Like","value":"Ram","event_name":"sales_Order_save_after"},{"group_id":0,"condition_name":"to","operator":"%Like%","value":"Margin","event_name":"sales_Order_save_after"}],[{"group_id":1,"condition_name":"subject","operator":"=","value":"Hey","event_name":"sales_Order_save_before"},{"group_id":1,"condition_name":"to","operator":"%Like%","value":"Margin","event_name":"sales_Order_save_before"}]]
+    [form_key] => BujhiBULIQKXBViF
+    [config_id] => 1
+)
+
+2024-06-01T15:28:28+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 1
+    [group_id] => 0
+    [condition_name] => subject
+    [operator] => =
+    [value] => Hey
+    [event_name] => sales_Order_save_after
+)
+
+2024-06-01T15:28:28+00:00 DEBUG (7): SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`magento`.`ccc_outlook_dispatchevent`, CONSTRAINT `FK_09A2898A04116B7BF3FA20C18EDC741B` FOREIGN KEY (`configuration_id`) REFERENCES `ccc_outlook_configuration` (`configuration_id`) ON DELETE C), query was: INSERT INTO `ccc_outlook_dispatchevent` (`group_id`, `operator`, `value`) VALUES (\?, \?, \?)
+2024-06-01T15:28:28+00:00 DEBUG (7): #0 C:\xampp\htdocs\1SBMagento\lib\Varien\Db\Statement\Pdo\Mysql.php(110): Zend_Db_Statement_Pdo->_execute(Array)
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Zend\Db\Statement.php(291): Varien_Db_Statement_Pdo_Mysql->_execute(Array)
+#2 C:\xampp\htdocs\1SBMagento\lib\Zend\Db\Adapter\Abstract.php(481): Zend_Db_Statement->execute(Array)
+#3 C:\xampp\htdocs\1SBMagento\lib\Zend\Db\Adapter\Pdo\Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO `cc...', Array)
+#4 C:\xampp\htdocs\1SBMagento\lib\Varien\Db\Adapter\Pdo\Mysql.php(504): Zend_Db_Adapter_Pdo_Abstract->query('INSERT INTO `cc...', Array)
+#5 C:\xampp\htdocs\1SBMagento\lib\Zend\Db\Adapter\Abstract.php(578): Varien_Db_Adapter_Pdo_Mysql->query('INSERT INTO `cc...', Array)
+#6 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Resource\Db\Abstract.php(453): Zend_Db_Adapter_Abstract->insert('ccc_outlook_dis...', Array)
+#7 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Abstract.php(318): Mage_Core_Model_Resource_Db_Abstract->save(Object(Ccc_Outlook_Model_Dispatchevent))
+#8 C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php(222): Mage_Core_Model_Abstract->save()
+#9 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Ccc_Outlook_Adminhtml_ConfigurationController->saveConfigurationEventAction()
+#10 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('saveConfigurati...')
+#11 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#12 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#13 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#14 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#15 {main}
+2024-06-01T15:34:36+00:00 DEBUG (7): Array
+(
+    [tables] => [[{"group_id":0,"condition_name":"subject","operator":"%Like%","value":"Hey","event_name":"sales_order_save_after"},{"group_id":0,"condition_name":"from","operator":"%Like%","value":"Ram","event_name":"sales_order_save_after"},{"group_id":0,"condition_name":"to","operator":"Like","value":"Margin","event_name":"sales_order_save_after"}],[{"group_id":1,"condition_name":"subject","operator":"%Like%","value":"get","event_name":"sales_order_save_before"},{"group_id":1,"condition_name":"from","operator":"Like","value":"there","event_name":"sales_order_save_before"}]]
+    [form_key] => BujhiBULIQKXBViF
+    [config_id] => 1
+)
+
+2024-06-01T15:34:36+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 1
+    [group_id] => 0
+    [condition_name] => subject
+    [operator] => %Like%
+    [value] => Hey
+    [event_name] => sales_order_save_after
+)
+
+2024-06-01T15:34:36+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 1
+    [group_id] => 0
+    [condition_name] => from
+    [operator] => %Like%
+    [value] => Ram
+    [event_name] => sales_order_save_after
+)
+
+2024-06-01T15:34:36+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 1
+    [group_id] => 0
+    [condition_name] => to
+    [operator] => Like
+    [value] => Margin
+    [event_name] => sales_order_save_after
+)
+
+2024-06-01T15:34:36+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 1
+    [group_id] => 1
+    [condition_name] => subject
+    [operator] => %Like%
+    [value] => get
+    [event_name] => sales_order_save_before
+)
+
+2024-06-01T15:34:36+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 1
+    [group_id] => 1
+    [condition_name] => from
+    [operator] => Like
+    [value] => there
+    [event_name] => sales_order_save_before
+)
+
+2024-06-03T01:27:22+00:00 DEBUG (7): Array
+(
+    [tables] => [{"rows":[{"group_id":0,"condition_name":"subject","operator":"=","value":"Hey"},{"group_id":0,"condition_name":"from","operator":"\<=","value":"Ram"}],"event_name":"sales_Order_save_after"},{"rows":[{"group_id":1,"condition_name":"subject","operator":"=","value":"Hey"}],"event_name":"sales_Order_save_after"},{"rows":[{"group_id":2,"condition_name":"subject","operator":"=","value":"get"}],"event_name":"sales_Order_save_after"}]
+    [form_key] => 4m25XvPjeWtTJSUO
+    [config_id] => 2
+)
+
+2024-06-03T01:27:22+00:00 DEBUG (7): Notice: Undefined index: condition_name  in C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php on line 216
+2024-06-03T01:27:22+00:00 DEBUG (7): #0 C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php(216): mageCoreErrorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 216, Array)
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Ccc_Outlook_Adminhtml_ConfigurationController->saveConfigurationEventAction()
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('saveConfigurati...')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#5 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#6 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#7 {main}
+2024-06-03T01:28:02+00:00 DEBUG (7): Array
+(
+    [tables] => [{"rows":[{"group_id":0,"condition_name":"subject","operator":"=","value":"Hey"},{"group_id":0,"condition_name":"from","operator":"\<=","value":"Ram"}],"event_name":"sales_Order_save_after"},{"rows":[{"group_id":1,"condition_name":"subject","operator":"=","value":"Hey"}],"event_name":"sales_Order_save_after"},{"rows":[{"group_id":2,"condition_name":"subject","operator":"=","value":"get"}],"event_name":"sales_Order_save_after"}]
+    [form_key] => 4m25XvPjeWtTJSUO
+    [config_id] => 2
+)
+
+2024-06-03T01:28:02+00:00 DEBUG (7): Notice: Undefined index: condition  in C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php on line 216
+2024-06-03T01:28:02+00:00 DEBUG (7): #0 C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php(216): mageCoreErrorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 216, Array)
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Ccc_Outlook_Adminhtml_ConfigurationController->saveConfigurationEventAction()
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('saveConfigurati...')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#5 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#6 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#7 {main}
+2024-06-03T01:28:32+00:00 DEBUG (7): Array
+(
+    [tables] => [{"rows":[{"group_id":0,"condition_name":"subject","operator":"=","value":"Hey"},{"group_id":0,"condition_name":"from","operator":"\<=","value":"Ram"}],"event_name":"sales_Order_save_after"},{"rows":[{"group_id":1,"condition_name":"subject","operator":"=","value":"Hey"}],"event_name":"sales_Order_save_after"},{"rows":[{"group_id":2,"condition_name":"subject","operator":"=","value":"get"}],"event_name":"sales_Order_save_after"}]
+    [form_key] => 4m25XvPjeWtTJSUO
+    [config_id] => 2
+)
+
+2024-06-03T01:28:32+00:00 DEBUG (7): Notice: Undefined index: condition  in C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php on line 217
+2024-06-03T01:28:32+00:00 DEBUG (7): #0 C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php(217): mageCoreErrorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 217, Array)
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Ccc_Outlook_Adminhtml_ConfigurationController->saveConfigurationEventAction()
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('saveConfigurati...')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#5 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#6 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#7 {main}
+2024-06-03T01:29:05+00:00 DEBUG (7): Array
+(
+    [tables] => [{"rows":[{"group_id":0,"condition_name":"subject","operator":"=","value":"Hey"},{"group_id":0,"condition_name":"from","operator":"\<=","value":"Ram"}],"event_name":"sales_Order_save_after"},{"rows":[{"group_id":1,"condition_name":"subject","operator":"=","value":"Hey"}],"event_name":"sales_Order_save_after"},{"rows":[{"group_id":2,"condition_name":"subject","operator":"=","value":"get"}],"event_name":"sales_Order_save_after"}]
+    [form_key] => 4m25XvPjeWtTJSUO
+    [config_id] => 2
+)
+
+2024-06-03T01:29:05+00:00 DEBUG (7): Notice: Undefined index: condition_name  in C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php on line 217
+2024-06-03T01:29:05+00:00 DEBUG (7): #0 C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php(217): mageCoreErrorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 217, Array)
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Ccc_Outlook_Adminhtml_ConfigurationController->saveConfigurationEventAction()
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('saveConfigurati...')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#5 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#6 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#7 {main}
+2024-06-03T01:29:27+00:00 DEBUG (7): Array
+(
+    [tables] => [{"rows":[{"group_id":0,"condition_name":"subject","operator":"=","value":"Hey"},{"group_id":0,"condition_name":"from","operator":"\<=","value":"Ram"}],"event_name":"sales_Order_save_after"},{"rows":[{"group_id":1,"condition_name":"subject","operator":"=","value":"Hey"}],"event_name":"sales_Order_save_after"},{"rows":[{"group_id":2,"condition_name":"subject","operator":"=","value":"get"}],"event_name":"sales_Order_save_after"}]
+    [form_key] => 4m25XvPjeWtTJSUO
+    [config_id] => 2
+)
+
+2024-06-03T01:29:27+00:00 DEBUG (7): Notice: Undefined index: operator  in C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php on line 218
+2024-06-03T01:29:27+00:00 DEBUG (7): #0 C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php(218): mageCoreErrorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 218, Array)
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Ccc_Outlook_Adminhtml_ConfigurationController->saveConfigurationEventAction()
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('saveConfigurati...')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#5 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#6 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#7 {main}
+2024-06-03T01:31:29+00:00 DEBUG (7): Array
+(
+    [tables] => [{"rows":[{"group_id":0,"condition_name":"subject","operator":"=","value":"Hey"},{"group_id":0,"condition_name":"from","operator":"\<=","value":"Ram"}],"event_name":"sales_Order_save_after"},{"rows":[{"group_id":1,"condition_name":"subject","operator":"=","value":"Hey"}],"event_name":"sales_Order_save_after"},{"rows":[{"group_id":2,"condition_name":"subject","operator":"=","value":"get"}],"event_name":"sales_Order_save_after"}]
+    [form_key] => 4m25XvPjeWtTJSUO
+    [config_id] => 2
+)
+
+2024-06-03T01:31:29+00:00 DEBUG (7): Notice: Undefined index: condition_name  in C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php on line 217
+2024-06-03T01:31:29+00:00 DEBUG (7): #0 C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php(217): mageCoreErrorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 217, Array)
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Ccc_Outlook_Adminhtml_ConfigurationController->saveConfigurationEventAction()
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('saveConfigurati...')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#5 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#6 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#7 {main}
+2024-06-03T01:33:01+00:00 DEBUG (7): Array
+(
+    [tables] => [{"rows":[{"group_id":0,"condition_name":"subject","operator":"=","value":"Hey"},{"group_id":0,"condition_name":"from","operator":"\<=","value":"Ram"}],"event_name":"sales_Order_save_after"},{"rows":[{"group_id":1,"condition_name":"subject","operator":"=","value":"Hey"}],"event_name":"sales_Order_save_after"},{"rows":[{"group_id":2,"condition_name":"subject","operator":"=","value":"get"}],"event_name":"sales_Order_save_after"}]
+    [form_key] => 4m25XvPjeWtTJSUO
+    [config_id] => 2
+)
+
+2024-06-03T01:33:36+00:00 DEBUG (7): Array
+(
+    [tables] => [{"rows":[{"group_id":0,"condition_name":"subject","operator":"=","value":"Hey"},{"group_id":0,"condition_name":"from","operator":"\<=","value":"Ram"}],"event_name":"sales_Order_save_after"},{"rows":[{"group_id":1,"condition_name":"subject","operator":"=","value":"Hey"}],"event_name":"sales_Order_save_after"},{"rows":[{"group_id":2,"condition_name":"subject","operator":"=","value":"get"}],"event_name":"sales_Order_save_after"}]
+    [form_key] => 4m25XvPjeWtTJSUO
+    [config_id] => 2
+)
+
+2024-06-03T01:35:20+00:00 DEBUG (7): Array
+(
+    [tables] => [{"rows":[{"group_id":0,"condition_name":"subject","operator":"=","value":"Hey"},{"group_id":0,"condition_name":"from","operator":"\<=","value":"Ram"}],"event_name":"sales_Order_save_after"},{"rows":[{"group_id":1,"condition_name":"subject","operator":"=","value":"Hey"}],"event_name":"sales_Order_save_after"},{"rows":[{"group_id":2,"condition_name":"subject","operator":"=","value":"get"}],"event_name":"sales_Order_save_after"}]
+    [form_key] => 4m25XvPjeWtTJSUO
+    [config_id] => 2
+)
+
+2024-06-03T01:35:20+00:00 DEBUG (7): Notice: Undefined index: condition_name  in C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php on line 217
+2024-06-03T01:35:20+00:00 DEBUG (7): #0 C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php(217): mageCoreErrorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 217, Array)
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Ccc_Outlook_Adminhtml_ConfigurationController->saveConfigurationEventAction()
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('saveConfigurati...')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#5 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#6 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#7 {main}
+2024-06-03T01:36:10+00:00 DEBUG (7): Array
+(
+    [tables] => [{"rows":[{"group_id":0,"condition_name":"subject","operator":"=","value":"Hey"},{"group_id":0,"condition_name":"from","operator":"Like","value":"Ram"},{"group_id":0,"condition_name":"to","operator":"%Like%","value":"Margin"}],"event_name":"sales_Order_save_after"},{"rows":[{"group_id":1,"condition_name":"subject","operator":"=","value":"get"}],"event_name":"sales_Order_save_after"},{"rows":[{"group_id":2,"condition_name":"subject","operator":"=","value":"get"}],"event_name":"sales_Order_save_after"}]
+    [form_key] => 4m25XvPjeWtTJSUO
+    [config_id] => 2
+)
+
+2024-06-03T01:36:10+00:00 DEBUG (7): Notice: Undefined index: condition_name  in C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php on line 217
+2024-06-03T01:36:10+00:00 DEBUG (7): #0 C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php(217): mageCoreErrorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 217, Array)
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Ccc_Outlook_Adminhtml_ConfigurationController->saveConfigurationEventAction()
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('saveConfigurati...')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#5 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#6 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#7 {main}
+2024-06-03T01:39:09+00:00 DEBUG (7): Array
+(
+    [tables] => [{"rows":[{"group_id":0,"condition_name":"subject","operator":"=","value":"Hey"},{"group_id":0,"condition_name":"from","operator":"Like","value":"Ram"},{"group_id":0,"condition_name":"to","operator":"%Like%","value":"Margin"}],"event_name":"sales_Order_save_after"},{"rows":[{"group_id":1,"condition_name":"subject","operator":"=","value":"get"}],"event_name":"sales_Order_save_after"},{"rows":[{"group_id":2,"condition_name":"subject","operator":"=","value":"get"}],"event_name":"sales_Order_save_after"}]
+    [form_key] => 4m25XvPjeWtTJSUO
+    [config_id] => 2
+)
+
+2024-06-03T01:39:09+00:00 DEBUG (7): Notice: Undefined index: condition_name  in C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php on line 217
+2024-06-03T01:39:09+00:00 DEBUG (7): #0 C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php(217): mageCoreErrorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 217, Array)
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Ccc_Outlook_Adminhtml_ConfigurationController->saveConfigurationEventAction()
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('saveConfigurati...')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#5 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#6 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#7 {main}
+2024-06-03T01:40:17+00:00 DEBUG (7): Array
+(
+    [tables] => [{"rows":[{"group_id":0,"condition_name":"subject","operator":"=","value":"Hey"},{"group_id":0,"condition_name":"from","operator":"Like","value":"Ram"},{"group_id":0,"condition_name":"to","operator":"%Like%","value":"Margin"}],"event_name":"sales_Order_save_after"},{"rows":[{"group_id":1,"condition_name":"subject","operator":"=","value":"Hey"}],"event_name":"sales"},{"rows":[{"group_id":2,"condition_name":"subject","operator":"=","value":"get"}],"event_name":"sales_order_save_before"}]
+    [form_key] => 4m25XvPjeWtTJSUO
+    [config_id] => 2
+)
+
+2024-06-03T01:40:17+00:00 DEBUG (7): Notice: Undefined index: condition_name  in C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php on line 217
+2024-06-03T01:40:17+00:00 DEBUG (7): #0 C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php(217): mageCoreErrorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 217, Array)
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Ccc_Outlook_Adminhtml_ConfigurationController->saveConfigurationEventAction()
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('saveConfigurati...')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#5 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#6 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#7 {main}
+2024-06-03T01:42:27+00:00 DEBUG (7): Array
+(
+    [tables] => [{"rows":[{"group_id":0,"condition_name":"subject","operator":"=","value":"Hey"},{"group_id":0,"condition_name":"from","operator":"Like","value":"Ram"},{"group_id":0,"condition_name":"to","operator":"%Like%","value":"Margin"}],"event_name":"sales_Order_save_after"},{"rows":[{"group_id":1,"condition_name":"subject","operator":"=","value":"Hey"}],"event_name":"sales"},{"rows":[{"group_id":2,"condition_name":"subject","operator":"=","value":"get"}],"event_name":"sales_order_save_before"}]
+    [form_key] => 4m25XvPjeWtTJSUO
+    [config_id] => 2
+)
+
+2024-06-03T01:42:27+00:00 DEBUG (7): Notice: Undefined index: event_name  in C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php on line 220
+2024-06-03T01:42:27+00:00 DEBUG (7): #0 C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php(220): mageCoreErrorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 220, Array)
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Ccc_Outlook_Adminhtml_ConfigurationController->saveConfigurationEventAction()
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('saveConfigurati...')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#5 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#6 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#7 {main}
+2024-06-03T01:43:34+00:00 DEBUG (7): Array
+(
+    [tables] => [{"rows":[{"group_id":0,"condition_name":"subject","operator":"=","value":"Hey"},{"group_id":0,"condition_name":"from","operator":"Like","value":"Ram"},{"group_id":0,"condition_name":"to","operator":"%Like%","value":"Margin"}],"event_name":"sales_Order_save_after"},{"rows":[{"group_id":1,"condition_name":"subject","operator":"=","value":"Hey"}],"event_name":"sales"},{"rows":[{"group_id":2,"condition_name":"subject","operator":"=","value":"get"}],"event_name":"sales_order_save_before"}]
+    [form_key] => 4m25XvPjeWtTJSUO
+    [config_id] => 2
+)
+
+2024-06-03T01:43:34+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 2
+    [group_id] => 0
+    [condition_name] => subject
+    [operator] => =
+    [value] => Hey
+    [event_name] => sales_Order_save_after
+)
+
+2024-06-03T01:43:34+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 2
+    [group_id] => 0
+    [condition_name] => from
+    [operator] => Like
+    [value] => Ram
+    [event_name] => sales_Order_save_after
+)
+
+2024-06-03T01:43:34+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 2
+    [group_id] => 0
+    [condition_name] => to
+    [operator] => %Like%
+    [value] => Margin
+    [event_name] => sales_Order_save_after
+)
+
+2024-06-03T01:43:34+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 2
+    [group_id] => 1
+    [condition_name] => subject
+    [operator] => =
+    [value] => Hey
+    [event_name] => sales
+)
+
+2024-06-03T01:43:34+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 2
+    [group_id] => 2
+    [condition_name] => subject
+    [operator] => =
+    [value] => get
+    [event_name] => sales_order_save_before
+)
+
+2024-06-03T04:07:05+00:00 DEBUG (7): Array
+(
+    [tables] => [{"rows":[{"group_id":0,"operator":"=","value":"Hey"},{"group_id":0,"operator":"Like","value":"Ram"},{"group_id":0,"operator":"%Like%","value":"Margin"},{"group_id":0,"operator":">=","value":"dfb"}],"event_name":"sales_Order_save_after"},{"rows":[{"group_id":1,"operator":"=","value":"Hey"}],"event_name":"sales"},{"rows":[{"group_id":2,"operator":"=","value":"get"}],"event_name":"sales_order_save_before"}]
+    [form_key] => 9Eaesf0JuoDXSJRH
+    [config_id] => 2
+)
+
+2024-06-03T04:07:05+00:00 DEBUG (7): Notice: Undefined index: condition_name  in C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php on line 218
+2024-06-03T04:07:05+00:00 DEBUG (7): #0 C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php(218): mageCoreErrorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 218, Array)
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Ccc_Outlook_Adminhtml_ConfigurationController->saveConfigurationEventAction()
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('saveConfigurati...')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#5 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#6 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#7 {main}
+2024-06-03T04:07:11+00:00 DEBUG (7): Array
+(
+    [tables] => [{"rows":[{"group_id":0,"operator":"=","value":"Hey"},{"group_id":0,"operator":"Like","value":"Ram"},{"group_id":0,"operator":"%Like%","value":"Margin"},{"group_id":0,"operator":">=","value":"dfb"}],"event_name":"sales_Order_save_after"},{"rows":[{"group_id":1,"operator":"=","value":"Hey"}],"event_name":"sales"},{"rows":[{"group_id":2,"operator":"=","value":"get"}],"event_name":"sales_order_save_before"}]
+    [form_key] => 9Eaesf0JuoDXSJRH
+    [config_id] => 2
+)
+
+2024-06-03T04:07:11+00:00 DEBUG (7): Notice: Undefined index: condition_name  in C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php on line 218
+2024-06-03T04:07:11+00:00 DEBUG (7): #0 C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php(218): mageCoreErrorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 218, Array)
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Ccc_Outlook_Adminhtml_ConfigurationController->saveConfigurationEventAction()
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('saveConfigurati...')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#5 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#6 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#7 {main}
+2024-06-03T04:38:55+00:00 DEBUG (7): Array
+(
+    [tables] => [{"rows":[{"group_id":0,"condition_name":"subject","operator":"=","value":"Hey"}],"event_name":"sales_Order_save_after"}]
+    [form_key] => 9Eaesf0JuoDXSJRH
+    [config_id] => 2
+)
+
+2024-06-03T04:38:55+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 2
+    [group_id] => 0
+    [condition_name] => subject
+    [operator] => =
+    [value] => Hey
+    [event_name] => sales_Order_save_after
+)
+
+2024-06-03T04:39:42+00:00 DEBUG (7): Array
+(
+    [tables] => [{"rows":[{"group_id":0,"operator":"=","value":"Hey"},{"group_id":0,"operator":"%Like%","value":"get"}],"event_name":"sales_Order_save_after"}]
+    [form_key] => 9Eaesf0JuoDXSJRH
+    [config_id] => 2
+)
+
+2024-06-03T04:39:42+00:00 DEBUG (7): Notice: Undefined index: condition_name  in C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php on line 226
+2024-06-03T04:39:42+00:00 DEBUG (7): #0 C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php(226): mageCoreErrorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 226, Array)
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Ccc_Outlook_Adminhtml_ConfigurationController->saveConfigurationEventAction()
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('saveConfigurati...')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#5 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#6 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#7 {main}
+2024-06-03T04:47:25+00:00 DEBUG (7): Array
+(
+    [tables] => [{"rows":[{"group_id":0,"condition_name":"subject","operator":"=","value":"Hey"},{"group_id":0,"condition_name":"subject","operator":"Like","value":"Margin"}],"event_name":"sales_Order_save_after"}]
+    [form_key] => 9Eaesf0JuoDXSJRH
+    [config_id] => 2
+)
+
+2024-06-03T04:47:25+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 2
+    [group_id] => 0
+    [condition_name] => subject
+    [operator] => =
+    [value] => Hey
+    [event_name] => sales_Order_save_after
+)
+
+2024-06-03T04:47:25+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 2
+    [group_id] => 0
+    [condition_name] => subject
+    [operator] => Like
+    [value] => Margin
+    [event_name] => sales_Order_save_after
+)
+
+2024-06-03T04:47:58+00:00 DEBUG (7): Array
+(
+    [tables] => [{"rows":[{"group_id":0,"operator":"=","value":"Hey"},{"group_id":0,"operator":"Like","value":"Margin"},{"group_id":0,"operator":"%Like%","value":"Ram"}],"event_name":"sales_Order_save_after"}]
+    [form_key] => 9Eaesf0JuoDXSJRH
+    [config_id] => 2
+)
+
+2024-06-03T04:47:58+00:00 DEBUG (7): Notice: Undefined index: condition_name  in C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php on line 226
+2024-06-03T04:47:58+00:00 DEBUG (7): #0 C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Outlook\controllers\Adminhtml\ConfigurationController.php(226): mageCoreErrorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 226, Array)
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Ccc_Outlook_Adminhtml_ConfigurationController->saveConfigurationEventAction()
+#2 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('saveConfigurati...')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#5 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#6 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#7 {main}
+2024-06-03T04:50:39+00:00 DEBUG (7): Array
+(
+    [tables] => [{"rows":[{"group_id":0,"condition_name":"subject","operator":"=","value":"Hey"},{"group_id":0,"condition_name":"from","operator":"%Like%","value":"Ram"},{"group_id":0,"condition_name":"from","operator":"Like","value":"Margin"}],"event_name":"sales_Order_save_after"},{"rows":[{"group_id":1,"condition_name":"subject","operator":"=","value":"Hey"}],"event_name":"sales"}]
+    [form_key] => 9Eaesf0JuoDXSJRH
+    [config_id] => 2
+)
+
+2024-06-03T04:50:39+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 2
+    [group_id] => 0
+    [condition_name] => subject
+    [operator] => =
+    [value] => Hey
+    [event_name] => sales_Order_save_after
+)
+
+2024-06-03T04:50:39+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 2
+    [group_id] => 0
+    [condition_name] => from
+    [operator] => %Like%
+    [value] => Ram
+    [event_name] => sales_Order_save_after
+)
+
+2024-06-03T04:50:39+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 2
+    [group_id] => 0
+    [condition_name] => from
+    [operator] => Like
+    [value] => Margin
+    [event_name] => sales_Order_save_after
+)
+
+2024-06-03T04:50:39+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 2
+    [group_id] => 1
+    [condition_name] => subject
+    [operator] => =
+    [value] => Hey
+    [event_name] => sales
+)
+
+2024-06-03T04:50:55+00:00 DEBUG (7): Array
+(
+    [tables] => [{"rows":[{"group_id":0,"condition_name":"subject","operator":"=","value":"Hey"},{"group_id":0,"condition_name":"from","operator":"%Like%","value":"Ram"},{"group_id":0,"condition_name":"from","operator":"Like","value":"Margin"},{"group_id":0,"condition_name":"to","operator":"%Like%","value":"Margin"}],"event_name":"sales_Order_save_after"},{"rows":[{"group_id":1,"condition_name":"subject","operator":"=","value":"Hey"}],"event_name":"sales"}]
+    [form_key] => 9Eaesf0JuoDXSJRH
+    [config_id] => 2
+)
+
+2024-06-03T04:50:55+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 2
+    [group_id] => 0
+    [condition_name] => subject
+    [operator] => =
+    [value] => Hey
+    [event_name] => sales_Order_save_after
+)
+
+2024-06-03T04:50:55+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 2
+    [group_id] => 0
+    [condition_name] => from
+    [operator] => %Like%
+    [value] => Ram
+    [event_name] => sales_Order_save_after
+)
+
+2024-06-03T04:50:55+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 2
+    [group_id] => 0
+    [condition_name] => from
+    [operator] => Like
+    [value] => Margin
+    [event_name] => sales_Order_save_after
+)
+
+2024-06-03T04:50:55+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 2
+    [group_id] => 0
+    [condition_name] => to
+    [operator] => %Like%
+    [value] => Margin
+    [event_name] => sales_Order_save_after
+)
+
+2024-06-03T04:50:55+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 2
+    [group_id] => 1
+    [condition_name] => subject
+    [operator] => =
+    [value] => Hey
+    [event_name] => sales
+)
+
+2024-06-03T04:51:19+00:00 DEBUG (7): Array
+(
+    [tables] => [{"rows":[{"group_id":0,"condition_name":"subject","operator":"=","value":"Hey"},{"group_id":0,"condition_name":"from","operator":"%Like%","value":"Ram"},{"group_id":0,"condition_name":"from","operator":"Like","value":"Margin"},{"group_id":0,"condition_name":"to","operator":"%Like%","value":"Margin"}],"event_name":"sales_Order_save_after"},{"rows":[{"group_id":1,"condition_name":"subject","operator":"=","value":"Hey"},{"group_id":1,"condition_name":"from","operator":"!=","value":"Hey"}],"event_name":"sales"}]
+    [form_key] => 9Eaesf0JuoDXSJRH
+    [config_id] => 2
+)
+
+2024-06-03T04:51:19+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 2
+    [group_id] => 0
+    [condition_name] => subject
+    [operator] => =
+    [value] => Hey
+    [event_name] => sales_Order_save_after
+)
+
+2024-06-03T04:51:19+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 2
+    [group_id] => 0
+    [condition_name] => from
+    [operator] => %Like%
+    [value] => Ram
+    [event_name] => sales_Order_save_after
+)
+
+2024-06-03T04:51:19+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 2
+    [group_id] => 0
+    [condition_name] => from
+    [operator] => Like
+    [value] => Margin
+    [event_name] => sales_Order_save_after
+)
+
+2024-06-03T04:51:19+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 2
+    [group_id] => 0
+    [condition_name] => to
+    [operator] => %Like%
+    [value] => Margin
+    [event_name] => sales_Order_save_after
+)
+
+2024-06-03T04:51:19+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 2
+    [group_id] => 1
+    [condition_name] => subject
+    [operator] => =
+    [value] => Hey
+    [event_name] => sales
+)
+
+2024-06-03T04:51:19+00:00 DEBUG (7): Array
+(
+    [configuration_id] => 2
+    [group_id] => 1
+    [condition_name] => from
+    [operator] => !=
+    [value] => Hey
+    [event_name] => sales
+)
+

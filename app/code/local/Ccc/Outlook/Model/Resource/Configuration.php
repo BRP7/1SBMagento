@@ -6,4 +6,5 @@ class Ccc_Outlook_Model_Resource_Configuration extends Mage_Core_Model_Resource_
     {
         $this->_init('ccc_outlook/configuration', 'configuration_id');
     }
+    
 }

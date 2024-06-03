@@ -16,9 +16,20 @@
             <block type="ccc_outlook/adminhtml_configuration_edit" name="ccc_configuration_edit"></block>
         </reference>
         <reference name="left">
-            <block type="ccc_outlook/adminhtml_configuration_edit_tabs" name="configuration_edit_tabs">
-                <block type="ccc_outlook/adminhtml_configuration_edit_tab_general" name="configuration_edit_tab_general" />
-                <block type="ccc_outlook/adminhtml_configuration_edit_tab_advance" name="configuration_edit_tab_advance" />
+            <block type="ccc_outlook/adminhtml_configuration_edit_tabs"
+                name="configuration_edit_tabs">
+                <block type="ccc_outlook/adminhtml_configuration_edit_tab_general"
+                    name="configuration_edit_tab_general" />
+                <block type="ccc_outlook/adminhtml_configuration_edit_tab_advance"
+                    name="configuration_edit_tab_advance">
+                    <reference name="head">
+                        <action method="addJs"><file>lib/jquery/jquery-1.10.2.js</file></action>
+                        <action method="addJs">
+                            <script>outlook/configuration.js</script>
+                        </action>
+                    </reference>
+                </block>
+
                 <action method="addTab">
                     <name>general</name>
                     <block>configuration_edit_tab_general</block>
@@ -46,8 +57,10 @@
         </reference>
         <reference name="left">
             <block type="ccc_outlook/adminhtml_configuration_edit_tabs" name="configuration_edit_tabs">
-                <block type="ccc_outlook/adminhtml_configuration_edit_tab_general" name="configuration_edit_tab_general" />
-                <block type="ccc_outlook/adminhtml_configuration_edit_tab_advance" name="configuration_edit_tab_advance" />
+                <block type="ccc_outlook/adminhtml_configuration_edit_tab_general"
+    name="configuration_edit_tab_general" />
+                <block type="ccc_outlook/adminhtml_configuration_edit_tab_advance"
+    name="configuration_edit_tab_advance" />
                 <action method="addTab">
                     <name>general</name>
                     <block>configuration_edit_tab_general</block>

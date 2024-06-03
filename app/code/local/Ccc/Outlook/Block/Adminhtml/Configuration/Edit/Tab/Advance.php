@@ -3,6 +3,7 @@ class Ccc_Outlook_Block_Adminhtml_Configuration_Edit_Tab_Advance extends Mage_Ad
 {
     protected function _construct()
     {
+        echo 121231;
         parent::_construct();
         $this->setTemplate('outlook/configuration.phtml');
        

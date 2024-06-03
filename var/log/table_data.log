@@ -1,0 +1,297 @@
+2024-06-03T04:38:55+00:00 DEBUG (7): Array
+(
+    [0] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => subject
+                            [operator] => =
+                            [value] => Hey
+                        )
+
+                )
+
+            [event_name] => sales_Order_save_after
+        )
+
+)
+
+2024-06-03T04:39:42+00:00 DEBUG (7): Array
+(
+    [0] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 0
+                            [operator] => =
+                            [value] => Hey
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 0
+                            [operator] => %Like%
+                            [value] => get
+                        )
+
+                )
+
+            [event_name] => sales_Order_save_after
+        )
+
+)
+
+2024-06-03T04:47:25+00:00 DEBUG (7): Array
+(
+    [0] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => subject
+                            [operator] => =
+                            [value] => Hey
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => subject
+                            [operator] => Like
+                            [value] => Margin
+                        )
+
+                )
+
+            [event_name] => sales_Order_save_after
+        )
+
+)
+
+2024-06-03T04:47:58+00:00 DEBUG (7): Array
+(
+    [0] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 0
+                            [operator] => =
+                            [value] => Hey
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 0
+                            [operator] => Like
+                            [value] => Margin
+                        )
+
+                    [2] => Array
+                        (
+                            [group_id] => 0
+                            [operator] => %Like%
+                            [value] => Ram
+                        )
+
+                )
+
+            [event_name] => sales_Order_save_after
+        )
+
+)
+
+2024-06-03T04:50:39+00:00 DEBUG (7): Array
+(
+    [0] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => subject
+                            [operator] => =
+                            [value] => Hey
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => from
+                            [operator] => %Like%
+                            [value] => Ram
+                        )
+
+                    [2] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => from
+                            [operator] => Like
+                            [value] => Margin
+                        )
+
+                )
+
+            [event_name] => sales_Order_save_after
+        )
+
+    [1] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => subject
+                            [operator] => =
+                            [value] => Hey
+                        )
+
+                )
+
+            [event_name] => sales
+        )
+
+)
+
+2024-06-03T04:50:55+00:00 DEBUG (7): Array
+(
+    [0] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => subject
+                            [operator] => =
+                            [value] => Hey
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => from
+                            [operator] => %Like%
+                            [value] => Ram
+                        )
+
+                    [2] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => from
+                            [operator] => Like
+                            [value] => Margin
+                        )
+
+                    [3] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => to
+                            [operator] => %Like%
+                            [value] => Margin
+                        )
+
+                )
+
+            [event_name] => sales_Order_save_after
+        )
+
+    [1] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => subject
+                            [operator] => =
+                            [value] => Hey
+                        )
+
+                )
+
+            [event_name] => sales
+        )
+
+)
+
+2024-06-03T04:51:19+00:00 DEBUG (7): Array
+(
+    [0] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => subject
+                            [operator] => =
+                            [value] => Hey
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => from
+                            [operator] => %Like%
+                            [value] => Ram
+                        )
+
+                    [2] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => from
+                            [operator] => Like
+                            [value] => Margin
+                        )
+
+                    [3] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => to
+                            [operator] => %Like%
+                            [value] => Margin
+                        )
+
+                )
+
+            [event_name] => sales_Order_save_after
+        )
+
+    [1] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => subject
+                            [operator] => =
+                            [value] => Hey
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => from
+                            [operator] => !=
+                            [value] => Hey
+                        )
+
+                )
+
+            [event_name] => sales
+        )
+
+)
+
