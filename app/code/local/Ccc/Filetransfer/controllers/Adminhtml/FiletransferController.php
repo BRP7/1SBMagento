@@ -185,7 +185,9 @@ class Ccc_Filetransfer_Adminhtml_FiletransferController extends Mage_Adminhtml_C
         $id = $this->getRequest()->getParam('id');
         $configId = $this->getRequest()->getParam('config_id');
         $filePath = base64_decode($this->getRequest()->getParam('file_path'));
-        Mage::getModel('ccc_filetransfer/filetransferobserver')->convertXml($id,$configId,$filePath);
+        $path = Mage::getModel('ccc_filetransfer/filetransferobserver')->convertXml($id, $configId, $filePath);
+        $this->_prepareDownloadResponse(pathinfo($path[0], PATHINFO_FILENAME) . '.csv', $path[1], 'text/csv');
+
     }
 
 
@@ -194,12 +196,7 @@ class Ccc_Filetransfer_Adminhtml_FiletransferController extends Mage_Adminhtml_C
         $id = $this->getRequest()->getParam('id');
         $configId = $this->getRequest()->getParam('config_id');
         $encodedFilePath = base64_decode($this->getRequest()->getParam('file_path'));
-
-
-        Mage::getModel('ccc_filetransfer/filetransferobserver')->extractXml($id,$configId,$encodedFilePath);
-
-        
-
+        Mage::getModel('ccc_filetransfer/filetransferobserver')->extractXml($id, $configId, $encodedFilePath);
         $this->_redirect('*/*/');
     }
 }

@@ -719,3 +719,68 @@
 2024-06-10T13:10:41+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\filemanager/index.phtml
 2024-06-11T04:11:01+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\filemanager/index.phtml
 2024-06-12T05:41:33+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\filemanager/index.phtml
+2024-06-12T11:41:56+00:00 CRIT (2): Not valid template file:adminhtml\base\default\template\filemanager/index.phtml
+2024-06-12T12:25:28+00:00 DEBUG (7): HEADERS ALREADY SENT: \<pre>[0] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Response\Http.php:52
+[1] C:\xampp\htdocs\1SBMagento\lib\Zend\Controller\Response\Abstract.php:768
+[2] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Response\Http.php:84
+[3] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php:184
+[4] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php:365
+[5] C:\xampp\htdocs\1SBMagento\app\Mage.php:686
+[6] C:\xampp\htdocs\1SBMagento\index.php:83
+\</pre>
+2024-06-12T12:25:47+00:00 DEBUG (7): HEADERS ALREADY SENT: \<pre>[0] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Response\Http.php:52
+[1] C:\xampp\htdocs\1SBMagento\lib\Zend\Controller\Response\Abstract.php:768
+[2] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Response\Http.php:84
+[3] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php:184
+[4] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php:365
+[5] C:\xampp\htdocs\1SBMagento\app\Mage.php:686
+[6] C:\xampp\htdocs\1SBMagento\index.php:83
+\</pre>
+2024-06-12T12:27:23+00:00 DEBUG (7): HEADERS ALREADY SENT: \<pre>[0] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Response\Http.php:52
+[1] C:\xampp\htdocs\1SBMagento\lib\Zend\Controller\Response\Abstract.php:768
+[2] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Response\Http.php:84
+[3] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php:184
+[4] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php:365
+[5] C:\xampp\htdocs\1SBMagento\app\Mage.php:686
+[6] C:\xampp\htdocs\1SBMagento\index.php:83
+\</pre>
+2024-06-12T12:28:07+00:00 DEBUG (7): HEADERS ALREADY SENT: \<pre>[0] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Response\Http.php:52
+[1] C:\xampp\htdocs\1SBMagento\lib\Zend\Controller\Response\Abstract.php:768
+[2] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Response\Http.php:84
+[3] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php:184
+[4] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php:365
+[5] C:\xampp\htdocs\1SBMagento\app\Mage.php:686
+[6] C:\xampp\htdocs\1SBMagento\index.php:83
+\</pre>
+2024-06-12T12:28:33+00:00 DEBUG (7): HEADERS ALREADY SENT: \<pre>[0] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Response\Http.php:52
+[1] C:\xampp\htdocs\1SBMagento\lib\Zend\Controller\Response\Abstract.php:768
+[2] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Response\Http.php:84
+[3] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php:184
+[4] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php:365
+[5] C:\xampp\htdocs\1SBMagento\app\Mage.php:686
+[6] C:\xampp\htdocs\1SBMagento\index.php:83
+\</pre>
+2024-06-12T12:29:04+00:00 DEBUG (7): HEADERS ALREADY SENT: \<pre>[0] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Response\Http.php:52
+[1] C:\xampp\htdocs\1SBMagento\lib\Zend\Controller\Response\Abstract.php:768
+[2] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Response\Http.php:84
+[3] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php:184
+[4] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php:365
+[5] C:\xampp\htdocs\1SBMagento\app\Mage.php:686
+[6] C:\xampp\htdocs\1SBMagento\index.php:83
+\</pre>
+2024-06-12T12:29:58+00:00 DEBUG (7): HEADERS ALREADY SENT: \<pre>[0] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Response\Http.php:52
+[1] C:\xampp\htdocs\1SBMagento\lib\Zend\Controller\Response\Abstract.php:768
+[2] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Response\Http.php:84
+[3] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php:184
+[4] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php:365
+[5] C:\xampp\htdocs\1SBMagento\app\Mage.php:686
+[6] C:\xampp\htdocs\1SBMagento\index.php:83
+\</pre>
+2024-06-12T12:30:18+00:00 DEBUG (7): HEADERS ALREADY SENT: \<pre>[0] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Response\Http.php:52
+[1] C:\xampp\htdocs\1SBMagento\lib\Zend\Controller\Response\Abstract.php:768
+[2] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Response\Http.php:84
+[3] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php:184
+[4] C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php:365
+[5] C:\xampp\htdocs\1SBMagento\app\Mage.php:686
+[6] C:\xampp\htdocs\1SBMagento\index.php:83
+\</pre>

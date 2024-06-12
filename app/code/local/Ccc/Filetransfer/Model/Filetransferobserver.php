@@ -116,9 +116,9 @@ class Ccc_Filetransfer_Model_Filetransferobserver extends Varien_Io_Ftp
     {
         $pathInfo = pathinfo($filepath);
         $filename = $pathInfo['basename'];
-        var_dump($filename);
+        // var_dump($filename);
         $destinationPath = 'downloadedfiles/' . $filename;
-        var_dump($destinationPath);
+        // var_dump($destinationPath);
 
         if (!is_dir('downloadedfiles')) {
             mkdir('downloadedfiles', 0777, true);
@@ -146,7 +146,7 @@ class Ccc_Filetransfer_Model_Filetransferobserver extends Varien_Io_Ftp
             ->setConfigurationId($configurationId)
             ->setFileDate($creationDate)
             ->save();
-        var_dump($fileData->getData());
+        // var_dump($fileData->getData());
     }
 
     public function getProperFileName($filepath, $configId = '', $date = "")
@@ -249,74 +249,73 @@ class Ccc_Filetransfer_Model_Filetransferobserver extends Varien_Io_Ftp
     // }
 
 
-    public function convertXml($id, $configId, $path)
-    {
-        $dataObj = Mage::getModel('ccc_filetransfer/filetransfer')->load($id);
-        $date = $dataObj->getFileDate();
-        $filepath = $this->getProperFileName($path, $configId, $date);
-        $filePath = Mage::getBaseDir('var') . DS . 'filetransfer' . DS . $configId . DS . $filepath;
-        $csvFilePath = str_replace('.xml', '.csv', $filePath);
+    // public function convertXml($id, $configId, $path)
+    // {
+    //     $dataObj = Mage::getModel('ccc_filetransfer/filetransfer')->load($id);
+    //     $date = $dataObj->getFileDate();
+    //     $filepath = $this->getProperFileName($path, $configId, $date);
+    //     $filePath = Mage::getBaseDir('var') . DS . 'filetransfer' . DS . $configId . DS . $filepath;
+    //     $csvFilePath = str_replace('.xml', '.csv', $filePath);
 
-        // Check if the file exists and is not empty
-        if (!file_exists($filePath)) {
-            throw new Exception('File not found: ' . $filePath);
-        } elseif (filesize($filePath) == 0) {
-            throw new Exception('File is empty: ' . $filePath);
-        }
+    //     if (!file_exists($filePath)) {
+    //         throw new Exception('File not found: ' . $filePath);
+    //     } elseif (filesize($filePath) == 0) {
+    //         throw new Exception('File is empty: ' . $filePath);
+    //     }
 
-        // $xmlContent = file_get_contents($filePath);
-        // if ($xmlContent === false) {
-        //     throw new Exception('Failed to read XML file: ' . $filePath);
-        // }
+    //     // $xmlContent = file_get_contents($filePath);
+    //     // if ($xmlContent === false) {
+    //     //     throw new Exception('Failed to read XML file: ' . $filePath);
+    //     // }
 
-        // Log the content to check for hidden characters
-        // Mage::log('XML Content: ' . $xmlContent, null, 'filetransfer.log', true);
+    //     // Log the content to check for hidden characters
+    //     // Mage::log('XML Content: ' . $xmlContent, null, 'filetransfer.log', true);
 
-        // $xml = simplexml_load_string($xmlContent);
+    //     // $xml = simplexml_load_string($xmlContent);
       
-        if ($filePath === false) {
-            throw new Exception('Failed to load XML content. Possible syntax error in XML file: ' . $filePath);
-        }
+    //     if ($filePath === false) {
+    //         throw new Exception('Failed to load XML content. Possible syntax error in XML file: ' . $filePath);
+    //     }
 
-        // Set memory and execution time limits
-        // ini_set('memory_limit', '1024M');
-        // set_time_limit(0);
+    //     // Set memory and execution time limits
+    //     // ini_set('memory_limit', '1024M');
+    //     // set_time_limit(0);
 
-        // Open the CSV file for writing
-        $outputHandle = fopen($csvFilePath, 'w');
+    //     // Open the CSV file for writing
+    //     $outputHandle = fopen($csvFilePath, 'w');
 
-        $reader = new XMLReader();
-        $reader->open($filePath);
+    //     $reader = new XMLReader();
+    //     $reader->open($filePath);
 
-        $headers = [];
-        $rows = [];
+    //     $headers = [];
+    //     $rows = [];
 
-        while ($reader->read()) {
-            if ($reader->nodeType == XMLReader::ELEMENT && $reader->localName == 'items') {
-                $node = $reader->expand();
-                $data = $this->processNode($node);
-                $headers = array_unique(array_merge($headers, array_keys($data)));
-                $rows[] = $data;
-            }
-        }
+    //     while ($reader->read()) {
+    //         if ($reader->nodeType == XMLReader::ELEMENT && $reader->localName == 'items') {
+    //             $node = $reader->expand();
+    //             $data = $this->processNode($node);
+    //             $headers = array_unique(array_merge($headers, array_keys($data)));
+    //             $rows[] = $data;
+    //         }
+    //     }
 
-        // Write headers to CSV
-        fputcsv($outputHandle, $headers);
+    //     // Write headers to CSV
+    //     fputcsv($outputHandle, $headers);
 
-        // Write rows to CSV
-        foreach ($rows as $row) {
-            $rowData = [];
-            foreach ($headers as $header) {
-                $rowData[] = isset($row[$header]) ? $row[$header] : '';
-            }
-            fputcsv($outputHandle, $rowData);
-        }
+    //     // Write rows to CSV
+    //     foreach ($rows as $row) {
+    //         $rowData = [];
+    //         foreach ($headers as $header) {
+    //             $rowData[] = isset($row[$header]) ? $row[$header] : '';
+    //         }
+    //         fputcsv($outputHandle, $rowData);
+    //     }
 
-        $reader->close();
-        fclose($outputHandle);
+    //     $reader->close();
+    //     fclose($outputHandle);
 
-        echo "Conversion complete. CSV file saved to $csvFilePath\n";
-    }
+    //     echo "Conversion complete. CSV file saved to $csvFilePath\n";
+    // }
 
     function processNode($node, $prefix = '')
 {
@@ -354,6 +353,80 @@ class Ccc_Filetransfer_Model_Filetransferobserver extends Varien_Io_Ftp
 }
 
 
+    public function convertXml($id,$configId,$path){
+        $fileModel = Mage::getModel('ccc_filetransfer/filetransfer')
+        ->load($id);
+        if ($fileModel && $fileModel->getId()) {
+            $date = ($fileModel->getFileDate());
+            $filepath = $this->getProperFileName($path, $configId, $date);
+            $filePath = Mage::getBaseDir('var') . DS . 'filetransfer' . DS . $configId . DS . $filepath;
+            // echo $filePath;
+        // var_dump($filePath);
+        if (file_exists($filePath) && pathinfo($filePath, PATHINFO_EXTENSION) === 'xml') {
+            $xmlContent = file_get_contents($filePath);
+            $xml = new SimpleXMLElement($xmlContent);
+            $xmlArray = $this->convertXmlToArray($xml);
+            $data = $this->convertArrayToCsv($xmlArray);
+            // var_dump([pathinfo($filePath, PATHINFO_FILENAME),$data ]);
+            return [pathinfo($filePath, PATHINFO_FILENAME),$data];
+            // $this->_prepareDownloadResponse(pathinfo($filePath, PATHINFO_FILENAME) . '.csv', $csvData, 'text/csv');
+
+            // print_r($xmlArray);
+    }
+    }
+}
+
+protected function convertXmlToArray($xml, $parent = '')
+{
+    $rows = [];
+    foreach ($xml->items->children() as $key => $child) {
+        $row = [];
+        $this->parseXml($child, $row, $key);
+        $rows[] = $row;
+        }
+        return $rows;
+        }
+        
+        protected function parseXml($xml, &$row, $parent)
+        {
+            
+       foreach ($xml->children() as $key => $child) {
+        $header = $parent ? $parent . '_' . $key : $key;
+        if ($child->count() > 0) {
+            $this->parseXml($child, $row, $header);
+            } else {
+                $value = isset($child['value'])
+                ? (string) $child['value'] : null;
+                $row[$header] = $value;
+        }
+    }
+}
+protected function convertArrayToCsv($array)
+{
+    if (empty($array)) {
+        return '';
+        }
+        $csv = '';
+        $headers = [];
+        foreach ($array as $row) {
+        foreach ($row as $key => $value) {
+            if (!in_array($key, $headers)) {
+                $headers[] = $key;
+            }
+        }
+    }
+    $csv .= implode(',', $headers) . "\n";
+    foreach ($array as $row) {
+        $csvRow = [];
+        foreach ($headers as $header) {
+            $csvRow[] = isset($row[$header]) ? $row[$header] : '';
+        }
+        $csv .= implode(',', $csvRow) . "\n";
+    }
+    return $csv;
+}
+
+
 
 
 
@@ -367,6 +440,8 @@ class Ccc_Filetransfer_Model_Filetransferobserver extends Varien_Io_Ftp
         if (!file_exists($filePath)) {
             throw new Exception('File not found: ' . $filePath);
         }
+
+       
 
         if (pathinfo($filePath, PATHINFO_EXTENSION) !== 'zip') {
             Mage::getSingleton('adminhtml/session')->addError('The selected file is not a ZIP file.');
