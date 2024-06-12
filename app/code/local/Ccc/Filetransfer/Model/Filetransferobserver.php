@@ -292,7 +292,7 @@ class Ccc_Filetransfer_Model_Filetransferobserver extends Varien_Io_Ftp
         $rows = [];
 
         while ($reader->read()) {
-            if ($reader->nodeType == XMLReader::ELEMENT && $reader->localName == 'item') {
+            if ($reader->nodeType == XMLReader::ELEMENT && $reader->localName == 'items') {
                 $node = $reader->expand();
                 $data = $this->processNode($node);
                 $headers = array_unique(array_merge($headers, array_keys($data)));
@@ -319,28 +319,40 @@ class Ccc_Filetransfer_Model_Filetransferobserver extends Varien_Io_Ftp
     }
 
     function processNode($node, $prefix = '')
-    {
-        $result = [];
+{
+    $result = [];
 
-        if ($node->hasAttributes()) {
-            foreach ($node->attributes as $attr) {
-                $key = $prefix . $node->localName . '_' . $attr->name;
-                $result[$key] = $attr->value;
-            }
+    // Process attributes first
+    if ($node->hasAttributes()) {
+        foreach ($node->attributes as $attr) {
+            // Append attribute name to prefix
+            $key = $prefix . $attr->name;
+            // Store attribute value
+            $result[$key] = $attr->value;
         }
-
-        foreach ($node->childNodes as $child) {
-            if ($child->nodeType == XML_ELEMENT_NODE) {
-                $childResult = $this->processNode($child, $prefix . $node->localName . '_');
-                $result = array_merge($result, $childResult);
-            } elseif ($child->nodeType == XML_TEXT_NODE && trim($child->textContent) !== '') {
-                $key = $prefix . $node->localName;
-                $result[$key] = $child->textContent;
-            }
-        }
-
-        return $result;
     }
+
+    // Process child nodes
+    foreach ($node->childNodes as $child) {
+        if ($child->nodeType == XML_ELEMENT_NODE) {
+            // Recursively process child elements
+            $childResult = $this->processNode($child, $prefix . $node->localName . '_');
+            // Merge child results with current result
+            $result = array_merge($result, $childResult);
+        }
+    }
+
+    // If no child elements, store text content as value
+    if (empty($result) && $node->nodeType == XML_TEXT_NODE && trim($node->textContent) !== '') {
+        // Append tag name to prefix
+        $key = $prefix . $node->localName;
+        // Store text content as value
+        $result[$key] = $node->textContent;
+    }
+
+    return $result;
+}
+
 
 
 
