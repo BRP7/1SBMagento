@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_filetransfer_index>
+        <reference name="content">
+            <block type="ccc_filetransfer/adminhtml_configuration" name="ccc.filetransfer.configuration" />
+        </reference>
+    </adminhtml_filetransfer_index>
+    <adminhtml_filetransfer_view>
+        <reference name="content">
+            <block type="ccc_filetransfer/adminhtml_filetransfer" name="ccc.filetransfer.ftpfile.block" />
+        </reference>
+    </adminhtml_filetransfer_view>
+    <adminhtml_filetransfer_new>
+        <update handle="adminhtml_filetransfer_edit" />
+    </adminhtml_filetransfer_new>
+
+    <adminhtml_filetransfer_edit>
+        <update handle="editor" />
+        <reference name="content">
+            <block type="ccc_filetransfer/adminhtml_configuration_edit" name="ccc_filetransfer_edit"></block>
+        </reference>
+    </adminhtml_filetransfer_edit>
+</layout>

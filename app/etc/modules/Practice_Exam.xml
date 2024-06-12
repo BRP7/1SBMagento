@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Practice_Exam>
-            <active>true</active>
+            <active>false</active>
             <codePool>local</codePool>
         </Practice_Exam>
     </modules>

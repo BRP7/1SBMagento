@@ -1,7 +1,7 @@
 <config>
   <modules>
     <Ccc_Test>
-      <active>true</active>
+      <active>false</active>
       <codePool>local</codePool>
     </Ccc_Test>
   </modules>

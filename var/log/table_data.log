@@ -295,3 +295,1089 @@
 
 )
 
+2024-06-04T12:50:10+00:00 DEBUG (7): Array
+(
+    [0] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => subject
+                            [operator] => Like
+                            [value] => JJJ
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => from_email
+                            [operator] => =
+                            [value] => margin7878@outlook.com
+                        )
+
+                    [2] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => to_email
+                            [operator] => =
+                            [value] => abcexample77789@outlook.com
+                        )
+
+                )
+
+            [event_name] => sales_order_save_after
+        )
+
+    [1] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => subject
+                            [operator] => %Like%
+                            [value] => JJJ
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => from_email
+                            [operator] => %Like%
+                            [value] => margin
+                        )
+
+                )
+
+            [event_name] => sales_order_save_before
+        )
+
+)
+
+2024-06-04T12:52:47+00:00 DEBUG (7): Array
+(
+    [0] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => subject
+                            [operator] => =
+                            [value] => Hey
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => from_email
+                            [operator] => %Like%
+                            [value] => abcexample77789@outlook.com
+                        )
+
+                    [2] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => to_email
+                            [operator] => Like
+                            [value] => abcexample77789@outlook.com
+                        )
+
+                    [3] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => subject
+                            [operator] => %Like%
+                            [value] => abcexample77789@outlook.com
+                        )
+
+                )
+
+            [event_name] => sales_Order_save_after
+        )
+
+    [1] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => subject
+                            [operator] => =
+                            [value] => Hey
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => to_email
+                            [operator] => !=
+                            [value] => Hey
+                        )
+
+                )
+
+            [event_name] => sales
+        )
+
+)
+
+2024-06-04T12:54:45+00:00 DEBUG (7): Array
+(
+    [0] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => subject
+                            [operator] => =
+                            [value] => Hey
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => from_email
+                            [operator] => %Like%
+                            [value] => abcexample77789@outlook.com
+                        )
+
+                    [2] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => to_email
+                            [operator] => Like
+                            [value] => margin7878@outlook.com
+                        )
+
+                    [3] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => subject
+                            [operator] => %Like%
+                            [value] => abcexample77789@outlook.com
+                        )
+
+                )
+
+            [event_name] => sales_Order_save_after
+        )
+
+    [1] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => subject
+                            [operator] => =
+                            [value] => Hey
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => to_email
+                            [operator] => !=
+                            [value] => Hey
+                        )
+
+                )
+
+            [event_name] => sales
+        )
+
+)
+
+2024-06-04T12:54:46+00:00 DEBUG (7): Array
+(
+    [0] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => subject
+                            [operator] => =
+                            [value] => Hey
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => from_email
+                            [operator] => %Like%
+                            [value] => abcexample77789@outlook.com
+                        )
+
+                    [2] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => to_email
+                            [operator] => Like
+                            [value] => margin7878@outlook.com
+                        )
+
+                    [3] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => subject
+                            [operator] => %Like%
+                            [value] => abcexample77789@outlook.com
+                        )
+
+                )
+
+            [event_name] => sales_Order_save_after
+        )
+
+    [1] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => subject
+                            [operator] => =
+                            [value] => Hey
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => to_email
+                            [operator] => !=
+                            [value] => Hey
+                        )
+
+                )
+
+            [event_name] => sales
+        )
+
+)
+
+2024-06-04T12:54:48+00:00 DEBUG (7): Array
+(
+    [0] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => subject
+                            [operator] => =
+                            [value] => Hey
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => from_email
+                            [operator] => %Like%
+                            [value] => abcexample77789@outlook.com
+                        )
+
+                    [2] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => to_email
+                            [operator] => Like
+                            [value] => margin7878@outlook.com
+                        )
+
+                    [3] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => subject
+                            [operator] => %Like%
+                            [value] => abcexample77789@outlook.com
+                        )
+
+                )
+
+            [event_name] => sales_Order_save_after
+        )
+
+    [1] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => subject
+                            [operator] => =
+                            [value] => Hey
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => to_email
+                            [operator] => !=
+                            [value] => Hey
+                        )
+
+                )
+
+            [event_name] => sales
+        )
+
+)
+
+2024-06-04T12:55:21+00:00 DEBUG (7): Array
+(
+    [0] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => subject
+                            [operator] => =
+                            [value] => Hey
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => from_email
+                            [operator] => %Like%
+                            [value] => abcexample77789@outlook.com
+                        )
+
+                    [2] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => to_email
+                            [operator] => Like
+                            [value] => margin7878@outlook.com
+                        )
+
+                    [3] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => subject
+                            [operator] => %Like%
+                            [value] => Hey
+                        )
+
+                )
+
+            [event_name] => sales_Order_save_after
+        )
+
+    [1] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => subject
+                            [operator] => =
+                            [value] => Hey
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => to_email
+                            [operator] => !=
+                            [value] => Hey
+                        )
+
+                )
+
+            [event_name] => sales
+        )
+
+)
+
+2024-06-04T12:55:27+00:00 DEBUG (7): Array
+(
+    [0] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => subject
+                            [operator] => =
+                            [value] => Hey
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => from_email
+                            [operator] => %Like%
+                            [value] => abcexample77789@outlook.com
+                        )
+
+                    [2] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => to_email
+                            [operator] => Like
+                            [value] => margin7878@outlook.com
+                        )
+
+                    [3] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => subject
+                            [operator] => %Like%
+                            [value] => Hey
+                        )
+
+                )
+
+            [event_name] => sales_Order_save_after
+        )
+
+    [1] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => subject
+                            [operator] => =
+                            [value] => Hey
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => to_email
+                            [operator] => !=
+                            [value] => Hey
+                        )
+
+                )
+
+            [event_name] => sales
+        )
+
+)
+
+2024-06-04T12:59:26+00:00 DEBUG (7): Array
+(
+    [0] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => subject
+                            [operator] => %Like%
+                            [value] => JJJ
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => from_email
+                            [operator] => =
+                            [value] => margin7878@outlook.com
+                        )
+
+                    [2] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => to_email
+                            [operator] => =
+                            [value] => abcexample77789@outlook.com
+                        )
+
+                )
+
+            [event_name] => sales_order_save_after
+        )
+
+    [1] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => subject
+                            [operator] => %Like%
+                            [value] => JJJ
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => from_email
+                            [operator] => %Like%
+                            [value] => margin
+                        )
+
+                )
+
+            [event_name] => sales_order_save_before
+        )
+
+)
+
+2024-06-04T13:00:54+00:00 DEBUG (7): Array
+(
+    [0] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => subject
+                            [operator] => %Like%
+                            [value] => JJJ
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => from_email
+                            [operator] => =
+                            [value] => margin7878@outlook.com
+                        )
+
+                    [2] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => to_email
+                            [operator] => =
+                            [value] => abcexample77789@outlook
+                        )
+
+                )
+
+            [event_name] => sales_order_save_after
+        )
+
+    [1] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => subject
+                            [operator] => %Like%
+                            [value] => JJJ
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => from_email
+                            [operator] => %Like%
+                            [value] => margin
+                        )
+
+                )
+
+            [event_name] => sales_order_save_before
+        )
+
+)
+
+2024-06-04T13:03:16+00:00 DEBUG (7): Array
+(
+    [0] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => subject
+                            [operator] => %Like%
+                            [value] => JJJ
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => from_email
+                            [operator] => =
+                            [value] => margin7878@outlook.com
+                        )
+
+                    [2] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => to_email
+                            [operator] => =
+                            [value] => margin7878@outlook.com
+                        )
+
+                )
+
+            [event_name] => sales_order_save_after
+        )
+
+    [1] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => subject
+                            [operator] => %Like%
+                            [value] => JJJ
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => from_email
+                            [operator] => %Like%
+                            [value] => margin
+                        )
+
+                )
+
+            [event_name] => sales_order_save_before
+        )
+
+)
+
+2024-06-04T13:04:59+00:00 DEBUG (7): Array
+(
+    [0] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => subject
+                            [operator] => %Like%
+                            [value] => JJJ
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => from_email
+                            [operator] => =
+                            [value] => abcexample77789@outlook.com
+                        )
+
+                    [2] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => to_email
+                            [operator] => =
+                            [value] => margin7878@outlook.com
+                        )
+
+                )
+
+            [event_name] => sales_order_save_after
+        )
+
+    [1] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => subject
+                            [operator] => %Like%
+                            [value] => JJJ
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => from_email
+                            [operator] => %Like%
+                            [value] => margin
+                        )
+
+                )
+
+            [event_name] => sales_order_save_before
+        )
+
+)
+
+2024-06-04T13:05:44+00:00 DEBUG (7): Array
+(
+    [0] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => subject
+                            [operator] => %Like%
+                            [value] => JJJ
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => from_email
+                            [operator] => %Like%
+                            [value] => abcexample77789@outlook.com
+                        )
+
+                    [2] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => to_email
+                            [operator] => %Like%
+                            [value] => margin7878@outlook.com
+                        )
+
+                )
+
+            [event_name] => sales_order_save_after
+        )
+
+    [1] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => subject
+                            [operator] => %Like%
+                            [value] => JJJ
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => from_email
+                            [operator] => %Like%
+                            [value] => margin
+                        )
+
+                )
+
+            [event_name] => sales_order_save_before
+        )
+
+)
+
+2024-06-04T13:06:21+00:00 DEBUG (7): Array
+(
+    [0] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => subject
+                            [operator] => %Like%
+                            [value] => JJJ
+                        )
+
+                )
+
+            [event_name] => sales_order_save_after
+        )
+
+    [1] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => subject
+                            [operator] => %Like%
+                            [value] => JJJ
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => from_email
+                            [operator] => %Like%
+                            [value] => margin
+                        )
+
+                )
+
+            [event_name] => sales_order_save_before
+        )
+
+)
+
+2024-06-04T13:18:03+00:00 DEBUG (7): Array
+(
+    [0] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => subject
+                            [operator] => =
+                            [value] => HeyCCCC
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => from_email
+                            [operator] => %Like%
+                            [value] => abcexample77789@outlook.com
+                        )
+
+                    [2] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => to_email
+                            [operator] => Like
+                            [value] => margin7878@outlook.com
+                        )
+
+                    [3] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => subject
+                            [operator] => %Like%
+                            [value] => Hey
+                        )
+
+                )
+
+            [event_name] => sales_Order_save_after
+        )
+
+    [1] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => subject
+                            [operator] => =
+                            [value] => Hey
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => to_email
+                            [operator] => !=
+                            [value] => Hey
+                        )
+
+                )
+
+            [event_name] => sales
+        )
+
+)
+
+2024-06-04T13:18:53+00:00 DEBUG (7): Array
+(
+    [0] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => subject
+                            [operator] => =
+                            [value] => HeyCCCC
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => from_email
+                            [operator] => %Like%
+                            [value] => abcexample77789@outlook.com
+                        )
+
+                    [2] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => to_email
+                            [operator] => Like
+                            [value] => margin7878@outlook.com
+                        )
+
+                    [3] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => subject
+                            [operator] => %Like%
+                            [value] => Hey
+                        )
+
+                )
+
+            [event_name] => Configuration_2_dispatch_1
+        )
+
+    [1] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => subject
+                            [operator] => =
+                            [value] => Hey
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => to_email
+                            [operator] => !=
+                            [value] => Hey
+                        )
+
+                )
+
+            [event_name] => Configuration_2_dispatch_2
+        )
+
+)
+
+2024-06-05T04:12:25+00:00 DEBUG (7): Array
+(
+    [0] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => subject
+                            [operator] => %Like%
+                            [value] => JJJ
+                        )
+
+                )
+
+            [event_name] => Dispatch_Event_1_Table_1
+        )
+
+    [1] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => subject
+                            [operator] => %Like%
+                            [value] => JJJ
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => from_email
+                            [operator] => !=
+                            [value] => margin
+                        )
+
+                )
+
+            [event_name] => Dispatch_Event_1_Table_2
+        )
+
+)
+
+2024-06-05T04:13:58+00:00 DEBUG (7): Array
+(
+    [0] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => subject
+                            [operator] => %Like%
+                            [value] => Hey
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => from_email
+                            [operator] => =
+                            [value] => abcexample77789@outlook.com
+                        )
+
+                    [2] => Array
+                        (
+                            [group_id] => 0
+                            [condition_name] => to_email
+                            [operator] => =
+                            [value] => margin7878@outlook.com
+                        )
+
+                )
+
+            [event_name] => Configuration_2_dispatch_1
+        )
+
+    [1] => Array
+        (
+            [rows] => Array
+                (
+                    [0] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => subject
+                            [operator] => =
+                            [value] => Hey
+                        )
+
+                    [1] => Array
+                        (
+                            [group_id] => 1
+                            [condition_name] => to_email
+                            [operator] => !=
+                            [value] => Hey
+                        )
+
+                )
+
+            [event_name] => Configuration_2_dispatch_2
+        )
+
+)
+

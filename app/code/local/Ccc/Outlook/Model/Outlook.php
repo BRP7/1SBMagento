@@ -23,7 +23,7 @@ class Ccc_Outlook_Model_Outlook
     }
 
 
-    public function getAuthorizationUrl(Ccc_Outlook_Model_Configuration $configuration)
+    public function getAuthorizationUrl()
     {
 
         $authorizationEndpoint = sprintf(
@@ -33,28 +33,28 @@ class Ccc_Outlook_Model_Outlook
         $authUrl = sprintf(
             "%s?client_id=%s&response_type=code&redirect_uri=%s&scope=%s",
             $authorizationEndpoint,
-            $configuration->getClientId(),
-            urlencode($configuration->getRedirectUrl() . $configuration->getId()),
-            urlencode($configuration->getScope())
+            $this->getConfigurationData()->getClientId(),
+            urlencode($this->getConfigurationData()->getRedirectUrl() .  $this->getConfigurationData()->getId()),
+            urlencode($this->getConfigurationData()->getScope())
         );
         return $authUrl;
     }
 
 
-    public function getAccessToken(Ccc_Outlook_Model_Configuration $configuration, $authorizationCode)
+    public function getAccessToken($authorizationCode)
     {
         $tokenEndpoint = sprintf(
             "https://login.microsoftonline.com/%s/oauth2/v2.0/token",
             $this->tenantId
         );
         $data = [
-            'client_id' => $configuration->getClientId(),
-            'client_secret' => $configuration->getClientSecret(),
+            'client_id' => $this->getConfigurationData()->getClientId(),
+            'client_secret' => $this->getConfigurationData()->getClientSecret(),
             'code' => $authorizationCode,
-            'redirect_uri' => $configuration->getRedirectUrl() . $configuration->getId(),
+            'redirect_uri' => $this->getConfigurationData()->getRedirectUrl() . $this->getConfigurationData()->getId(),
             'grant_type' => 'authorization_code',
             // 'grant_type' => 'client_credentials',
-            'scope' => $configuration->getScope(),
+            'scope' => $this->getConfigurationData()->getScope(),
         ];
         $ch = curl_init($tokenEndpoint);
         curl_setopt($ch, CURLOPT_POST, true);
@@ -81,7 +81,7 @@ class Ccc_Outlook_Model_Outlook
         $baseUrl = "https://graph.microsoft.com/v1.0/me/messages";
         $lastReadDateTime = (new DateTime($this->_configurationData->getLastReadedEmails()))->format(DateTime::ATOM);
         $lastReadDateTime = new DateTime($this->_configurationData->getLastReadedEmails(), new DateTimeZone('UTC'));
-        $lastReadDateTime->modify('+1 second');
+        // $lastReadDateTime->modify('+1 second');
         $lastReadDateTimeFormatted = $lastReadDateTime->format(DateTime::ATOM);
         $params = [
             '$filter' => "receivedDateTime gt {$lastReadDateTimeFormatted}"
@@ -109,9 +109,9 @@ class Ccc_Outlook_Model_Outlook
         return $baseUrl . '?' . http_build_query($params);
     }
 
-    public function saveTokenToFile($data, Ccc_Outlook_Model_Configuration $configuration)
+    public function saveTokenToFile($data)
     {
-        $filePath = Mage::getBaseDir('var') . DS . 'export' . DS . $configuration->getId() . '.txt';
+        $filePath = Mage::getBaseDir('var') . DS . 'export' . DS . $this->getConfigurationData()->getId() . '.txt';
         try {
             $io = new Varien_Io_File();
             $io->setAllowCreateFolders(true);
@@ -133,7 +133,8 @@ class Ccc_Outlook_Model_Outlook
     }
     public function readTokenFromFile()
     {
-        $filePath = Mage::getBaseDir('var') . DS . 'export' . DS . $this->_configurationData->getId() . '.txt';
+        $configObj = $this->getConfigurationData() ??  $this->getEmailData()->getConfigData();
+        $filePath = Mage::getBaseDir('var') . DS . 'export' . DS . $configObj->getId() . '.txt';
         try {
             $io = new Varien_Io_File();
             if ($io->fileExists($filePath)) {
@@ -151,12 +152,10 @@ class Ccc_Outlook_Model_Outlook
 
     public function parseMails($message)
     {
-        // var_dump($message['value']);
         $emails = $message['value'];
         if (isset($message['error'])) {
             $this->handleError($message['error']);
         } else {
-            // Mage::getModel('ccc_outlook/email')->saveEmails($emails);
             $parsedEmails = array();
             foreach ($emails as $email) {
                 $toAddresses = isset($email['toRecipients'])
@@ -178,37 +177,28 @@ class Ccc_Outlook_Model_Outlook
                 );
                 $parsedEmails[] = $parsedEmail;
             }
-            var_dump($parsedEmails);
+            // var_dump($parsedEmails['has_attachments']);
             return $parsedEmails;
         }
     }
 
     private function handleError($error)
     {
-        echo "1321";
         switch ($error['code']) {
             case 'InvalidAuthenticationToken':
-                print_r('Error: Invalid authentication token.');
-                Mage::log('Error: Invalid authentication token.', null, 'outlook_emails.log');
-                break;
-                case 'InvalidGrant':
-                print_r('Error: Invalid grant. This may be due to an expired authorization code.');
-                Mage::log('Error: Invalid grant. This may be due to an expired authorization code.', null, 'outlook_emails.log');
-                break;
+                throw new Exception('Error: Invalid authentication token.');
+            case 'InvalidGrant':
+                throw new Exception('Error: Invalid grant. This may be due to an expired authorization code.');
             case 'ServiceNotAvailable':
-                print_r('Error: Microsoft service is currently unavailable.');
-                Mage::log('Error: Microsoft service is currently unavailable.', null, 'outlook_emails.log');
-                break;
+                throw new Exception('Error: Microsoft service is currently unavailable.');
             default:
-                print_r($error['message']);
-                Mage::log('Error: ' . $error['message'], null, 'outlook_emails.log');
-                break;
+                throw new Exception('Error: ' . $error['message']);
         }
     }
+    
 
     public function fetchAllAttachments(){
         $messageId =$this->getEmailData()->getMessageId(); 
-        // var_dump($this->getConfigurationData());
         $url = "https://graph.microsoft.com/v1.0/me/messages/{$messageId}/attachments";
         $headers = [
             'Authorization: Bearer ' . $this->readTokenFromFile(),
@@ -224,64 +214,66 @@ class Ccc_Outlook_Model_Outlook
         curl_close($ch);
 
         $attachments = json_decode($response, true);
-        $downloadedAttachments = [];
-        foreach ($attachments['value'] as $attachment) {
-            if (isset($attachment['contentBytes'])) {
-                $fileName = $attachment['name'];
-                $this->saveAttachment($attachment);
-                $downloadedAttachment[] = [
-                    'id' => $this->getEmailData()->getId(),
-                    'filename' => $fileName,
-                ];
-            }
-            $downloadedAttachments[] = $downloadedAttachment;
-        }
-        return $downloadedAttachments;
+        return $attachments;
+        // $downloadedAttachments = [];
+        // foreach ($attachments['value'] as $attachment) {
+        //     if (isset($attachment['contentBytes'])) {
+        //         $fileName = $attachment['name'];
+        //         $this->saveAttachment($attachment);
+        //         $downloadedAttachment[] = [
+        //             'id' => $this->getEmailData()->getId(),
+        //             'filename' => $fileName,
+        //         ];
+        //     }
+        //     $downloadedAttachments[] = $downloadedAttachment;
+        // }
+        // return $downloadedAttachments;
     }
 
-    public function downloadAttachments(Ccc_Outlook_Model_Configuration $configuration, $params)
-    {
+    // public function downloadAttachments(Ccc_Outlook_Model_Configuration $configuration, $params)
+    // {
 
-        $messageId = $params['message_id'];
-        $url = "https://graph.microsoft.com/v1.0/me/messages/{$messageId}/attachments";
-        $headers = [
-            'Authorization: Bearer ' . $params['accesstoken'],
-            'Accept: application/json'
-        ];
+    //     $messageId = $params['message_id'];
+    //     $url = "https://graph.microsoft.com/v1.0/me/messages/{$messageId}/attachments";
+    //     $headers = [
+    //         'Authorization: Bearer ' . $params['accesstoken'],
+    //         'Accept: application/json'
+    //     ];
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-        $response = curl_exec($ch);
-        curl_close($ch);
+    //     $ch = curl_init();
+    //     curl_setopt($ch, CURLOPT_URL, $url);
+    //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    //     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    //     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    //     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+    //     $response = curl_exec($ch);
+    //     curl_close($ch);
 
-        $attachments = json_decode($response, true);
-        $downloadedAttachments = [];
-        foreach ($attachments['value'] as $attachment) {
-            if (isset($attachment['contentBytes'])) {
-                $fileName = $attachment['name'];
-                $this->saveAttachment($configuration, $attachment, $params['email_id']);
-                $downloadedAttachment[] = [
-                    'id' => $attachment['id'],
-                    'filename' => $fileName,
-                ];
-            }
-            $downloadedAttachments[] = $downloadedAttachment;
-        }
-        return $downloadedAttachments;
-    }
+    //     $attachments = json_decode($response, true);
+    //     $downloadedAttachments = [];
+    //     foreach ($attachments['value'] as $attachment) {
+    //         if (isset($attachment['contentBytes'])) {
+    //             $fileName = $attachment['name'];
+    //             $this->saveAttachment($configuration, $attachment, $params['email_id']);
+    //             $downloadedAttachment[] = [
+    //                 'id' => $attachment['id'],
+    //                 'filename' => $fileName,
+    //             ];
+    //         }
+    //         $downloadedAttachments[] = $downloadedAttachment;
+    //     }
+    //     return $downloadedAttachments;
+    // }
 
-    public function saveAttachment( $attachment)
-    {
-        $filePath = Mage::getBaseDir('var') . DS . 'attachment' . DS . $this->getConfigurationData()->getId() . DS . $this->getEmailData()->getId() . DS . $attachment['name'];
-        if (!file_exists(dirname($filePath))) {
-            mkdir(dirname($filePath), 0755, true);
-        }
-        file_put_contents($filePath, base64_decode($attachment['contentBytes']));
-    }
+    // public function saveAttachment( $attachment)
+    // {
+    //     $configObj = $this->getConfigurationData() ??  $this->getEmailData()->getConfigData();
+    //     $filePath = Mage::getBaseDir('var') . DS . 'attachment' . DS . $configObj->getId() . DS . $this->getEmailData()->getId() . DS . $attachment['name'];
+    //     if (!file_exists(dirname($filePath))) {
+    //         mkdir(dirname($filePath), 0755, true);
+    //     }
+    //     file_put_contents($filePath, base64_decode($attachment['contentBytes']));
+    // }
 
 
 

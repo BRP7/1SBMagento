@@ -1,7 +1,7 @@
 <config>
     <modules>
         <Ccc_Outlook>
-            <version>0.1.8</version>
+            <version>0.1.9</version>
         </Ccc_Outlook>
     </modules>
     <frontend>
@@ -28,15 +28,15 @@
     </admin>
     <global>
         <events>
-            <!-- <last_stored_email_save_after>
+            <Configuration_2_dispatch_2>
                 <observers>
-                    <last_stored_email>
-                        <type>model</type>
+                    <ccc_outlook_email_save_after>
                         <class>ccc_outlook/observer</class>
-                        <method>storeLastReadedEmail</method>
-                    </last_stored_email>
+                        <method>checkConditionAfterEmailSave</method>
+                        <type>singleton</type>
+                    </ccc_outlook_email_save_after>
                 </observers>
-            </last_stored_email_save_after> -->
+            </Configuration_2_dispatch_2>
         </events>
         <models>
             <ccc_outlook>

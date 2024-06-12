@@ -462,6 +462,7 @@ class Mage_Adminhtml_Block_Widget_Grid extends Mage_Adminhtml_Block_Widget
 
     protected function _addColumnFilterToCollection($column)
     {
+        Mage::log('Applying filter for column: ' . $column->getIndex(), null, 'filters.log');
         if ($this->getCollection()) {
             $field = ( $column->getFilterIndex() ) ? $column->getFilterIndex() : $column->getIndex();
             if ($column->getFilterConditionCallback()) {

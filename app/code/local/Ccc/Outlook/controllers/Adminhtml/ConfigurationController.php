@@ -168,10 +168,11 @@ class Ccc_Outlook_Adminhtml_ConfigurationController extends Mage_Adminhtml_Contr
 
     public function loginAction()
     {
-        echo "<pre>";
         $id = $this->getRequest()->getParam('configuration_id');
         $configurationModel = Mage::getModel('ccc_outlook/configuration')->load($id);
-        $authorizationUrl = Mage::getModel('ccc_outlook/outlook')->getAuthorizationUrl($configurationModel);
+        $authorizationUrl = Mage::getModel('ccc_outlook/outlook')
+        ->setConfigurationData($configurationModel)
+        ->getAuthorizationUrl();
         $this->_redirectUrl($authorizationUrl);
 
     }

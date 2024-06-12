@@ -44,11 +44,12 @@ Configuration.prototype = {
                         tables.forEach(function (table) {
                             self.isFirstRowAddedByScript = true;
                             self.addNewTable();
+                            self.isFirstRowAddedByScript = false;
                             table.forEach(function (row) {
                                 var lastTableIndex = self.tableCounter - 1;
                                 var table = j("#table_" + lastTableIndex);
                                 var tr = j("<tr></tr>");
-                                tr.append(j("<td></td>").append(self.createDropDown(["subject", "from", "to"], "condition_name_" + row.group_id).val(row.condition_name)));
+                                tr.append(j("<td></td>").append(self.createDropDown(["subject", "from_email", "to_email"], "condition_name_" + row.group_id).val(row.condition_name)));
                                 tr.append(j("<td></td>").append(self.createDropDown(["=", "%Like%", "Like", ">=", "<=", "!="], "operator_" + row.group_id).val(row.operator)));
                                 tr.append(j("<td></td>").append(j("<input>").attr({ type: "text", name: "value_" + row.group_id }).val(row.value)));
                                 tr.append(j("<td></td>").append(j("<button></button>").text("Add").addClass("add-button").on("click", function (event) {
@@ -125,7 +126,7 @@ Configuration.prototype = {
         var table = j("#table_" + tableId);
         var tr = j("<tr></tr>").attr("id", "row_" + self.rowCounter);
 
-        tr.append(j("<td></td>").append(self.createDropDown(["subject", "from", "to"], "condition_name_" + self.rowCounter)));
+        tr.append(j("<td></td>").append(self.createDropDown(["subject", "from_email", "to_email"], "condition_name_" + self.rowCounter)));
         tr.append(j("<td></td>").append(self.createDropDown(["=", "%Like%", "Like", ">=", "<=", "!="], "operator_" + self.rowCounter)));
         tr.append(j("<td></td>").append(j("<input>").attr({ type: "text", name: "value_" + self.rowCounter })));
 

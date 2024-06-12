@@ -1,0 +1,9 @@
+﻿sku,instock,instock_qty,restock_date,restock_qty,status,discontinued
+msj000,yes,123,23-04-2023,232,enable,no
+msj001,yes,34,24-04-2023,133,enable,no
+msj002,no,3,25-04-2023,3243,enable,yes
+msj003,no,4,26-04-2023,232,enable,yes
+msj004,yes,45,27-04-2023,233,enable,no
+msj005,no,2,28-04-2023,3123,enable,no
+msj006,yes,1323,29-04-2023,233,enable,yes
+msj007,no,1,30-04-2023,3534,enable,yes

@@ -1,0 +1,41 @@
+2024-06-06T11:40:41+00:00 DEBUG (7): Array
+(
+    [created_date] => Array
+        (
+            [locale] => en_US
+        )
+
+    [basename] => 1.csv
+)
+
+2024-06-06T11:42:29+00:00 DEBUG (7): Array
+(
+    [created_date] => Array
+        (
+            [locale] => en_US
+        )
+
+    [basename] => 1.csv
+)
+
+2024-06-06T11:42:48+00:00 DEBUG (7): Array
+(
+    [created_date] => Array
+        (
+            [locale] => en_US
+        )
+
+    [extension] => csv
+)
+
+2024-06-06T11:50:39+00:00 DEBUG (7): Array
+(
+    [created_date] => Array
+        (
+            [locale] => en_US
+        )
+
+    [dirname] => 232
+    [extension] => csv
+)
+
