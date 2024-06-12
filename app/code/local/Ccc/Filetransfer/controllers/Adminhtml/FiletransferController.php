@@ -180,14 +180,18 @@ class Ccc_Filetransfer_Adminhtml_FiletransferController extends Mage_Adminhtml_C
         $this->_redirect('*/*/index');
     }
 
+    public function convertXmlAction()
+    {
+        $id = $this->getRequest()->getParam('id');
+        Mage::getModel('ccc_filetransfer/filetransferobserver')->convertXml($id);
+    }
 
 
 
 
 
-    
 
 
-  
-   
+
+
 }

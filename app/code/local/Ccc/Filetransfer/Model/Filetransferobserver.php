@@ -192,5 +192,8 @@ class Ccc_Filetransfer_Model_Filetransferobserver extends Varien_Io_Ftp
     // }
 
 
+    public function convertXml($id){
+      
+    }
 
 }
