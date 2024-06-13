@@ -272,7 +272,7 @@ class Ccc_Filetransfer_Model_Filetransferobserver extends Varien_Io_Ftp
     //     // Mage::log('XML Content: ' . $xmlContent, null, 'filetransfer.log', true);
 
     //     // $xml = simplexml_load_string($xmlContent);
-      
+
     //     if ($filePath === false) {
     //         throw new Exception('Failed to load XML content. Possible syntax error in XML file: ' . $filePath);
     //     }
@@ -318,113 +318,117 @@ class Ccc_Filetransfer_Model_Filetransferobserver extends Varien_Io_Ftp
     // }
 
     function processNode($node, $prefix = '')
-{
-    $result = [];
+    {
+        $result = [];
 
-    // Process attributes first
-    if ($node->hasAttributes()) {
-        foreach ($node->attributes as $attr) {
-            // Append attribute name to prefix
-            $key = $prefix . $attr->name;
-            // Store attribute value
-            $result[$key] = $attr->value;
+        // Process attributes first
+        if ($node->hasAttributes()) {
+            foreach ($node->attributes as $attr) {
+                // Append attribute name to prefix
+                $key = $prefix . $attr->name;
+                // Store attribute value
+                $result[$key] = $attr->value;
+            }
         }
-    }
 
-    // Process child nodes
-    foreach ($node->childNodes as $child) {
-        if ($child->nodeType == XML_ELEMENT_NODE) {
-            // Recursively process child elements
-            $childResult = $this->processNode($child, $prefix . $node->localName . '_');
-            // Merge child results with current result
-            $result = array_merge($result, $childResult);
+        // Process child nodes
+        foreach ($node->childNodes as $child) {
+            if ($child->nodeType == XML_ELEMENT_NODE) {
+                // Recursively process child elements
+                $childResult = $this->processNode($child, $prefix . $node->localName . '_');
+                // Merge child results with current result
+                $result = array_merge($result, $childResult);
+            }
         }
+
+        // If no child elements, store text content as value
+        if (empty($result) && $node->nodeType == XML_TEXT_NODE && trim($node->textContent) !== '') {
+            // Append tag name to prefix
+            $key = $prefix . $node->localName;
+            // Store text content as value
+            $result[$key] = $node->textContent;
+        }
+
+        return $result;
     }
 
-    // If no child elements, store text content as value
-    if (empty($result) && $node->nodeType == XML_TEXT_NODE && trim($node->textContent) !== '') {
-        // Append tag name to prefix
-        $key = $prefix . $node->localName;
-        // Store text content as value
-        $result[$key] = $node->textContent;
-    }
 
-    return $result;
-}
-
-
-    public function convertXml($id,$configId,$path){
+    public function convertXml($id, $configId, $path)
+    {
         $fileModel = Mage::getModel('ccc_filetransfer/filetransfer')
-        ->load($id);
+            ->load($id);
         if ($fileModel && $fileModel->getId()) {
             $date = ($fileModel->getFileDate());
             $filepath = $this->getProperFileName($path, $configId, $date);
             $filePath = Mage::getBaseDir('var') . DS . 'filetransfer' . DS . $configId . DS . $filepath;
             // echo $filePath;
-        // var_dump($filePath);
-        if (file_exists($filePath) && pathinfo($filePath, PATHINFO_EXTENSION) === 'xml') {
-            $xmlContent = file_get_contents($filePath);
-            $xml = new SimpleXMLElement($xmlContent);
-            $xmlArray = $this->convertXmlToArray($xml);
-            $data = $this->convertArrayToCsv($xmlArray);
-            // var_dump([pathinfo($filePath, PATHINFO_FILENAME),$data ]);
-            return [pathinfo($filePath, PATHINFO_FILENAME),$data];
-            // $this->_prepareDownloadResponse(pathinfo($filePath, PATHINFO_FILENAME) . '.csv', $csvData, 'text/csv');
+            // var_dump($filePath);
+            if (file_exists($filePath) && pathinfo($filePath, PATHINFO_EXTENSION) === 'xml') {
+                $xmlContent = file_get_contents($filePath);
+                $xml = new SimpleXMLElement($xmlContent);
+                $xmlArray = $this->convertXmlToArray($xml);
+                $data = $this->xmlArrayToCsv($xmlArray);
+                // var_dump([pathinfo($filePath, PATHINFO_FILENAME),$data ]);
+                return [pathinfo($filePath, PATHINFO_FILENAME), $data, $xmlArray];
+                // $this->_prepareDownloadResponse(pathinfo($filePath, PATHINFO_FILENAME) . '.csv', $csvData, 'text/csv');
 
-            // print_r($xmlArray);
+                // print_r($xmlArray);
+            }
+        }
     }
-    }
-}
 
-protected function convertXmlToArray($xml, $parent = '')
-{
-    $rows = [];
-    foreach ($xml->items->children() as $key => $child) {
-        $row = [];
-        $this->parseXml($child, $row, $key);
-        $rows[] = $row;
+    protected function convertXmlToArray($xml, $parent = '')
+    {
+        $rows = [];
+        foreach ($xml->items->children() as $key => $child) {
+            $row = [];
+            $this->parseXml($child, $row, $key);
+            $rows[] = $row;
         }
         return $rows;
-        }
-        
-        protected function parseXml($xml, &$row, $parent)
-        {
-            
-       foreach ($xml->children() as $key => $child) {
-        $header = $parent ? $parent . '_' . $key : $key;
-        if ($child->count() > 0) {
-            $this->parseXml($child, $row, $header);
+    }
+
+    protected function parseXml($xml, &$row, $parent)
+    {
+
+        foreach ($xml->children() as $key => $child) {
+            $header = $parent ? $parent . '_' . $key : $key;
+            if ($child->count() > 0) {
+                $this->parseXml($child, $row, $header);
             } else {
-                $value = isset($child['value'])
-                ? (string) $child['value'] : null;
+                // $value = isset($child['value'])
+                //     ? (string) $child['value'] : '';
+                $value = isset($child)
+                    ? $child : '';
                 $row[$header] = $value;
+            }
         }
     }
-}
-protected function convertArrayToCsv($array)
-{
-    if (empty($array)) {
-        return '';
+    public function xmlArrayToCsv($array)
+    {
+        if (empty($array)) {
+            return '';
         }
         $csv = '';
         $headers = [];
         foreach ($array as $row) {
-        foreach ($row as $key => $value) {
-            if (!in_array($key, $headers)) {
-                $headers[] = $key;
+            foreach ($row as $key => $value) {
+                if (!in_array($key, $headers)) {
+                    $headers[] = $key;
+                }
             }
         }
-    }
-    $csv .= implode(',', $headers) . "\n";
-    foreach ($array as $row) {
-        $csvRow = [];
-        foreach ($headers as $header) {
-            $csvRow[] = isset($row[$header]) ? $row[$header] : '';
+        $csv .= implode(',', $headers) . "\n";
+        foreach ($array as $row) {
+            $csvRow = [];
+            foreach ($headers as $header) {
+                $csvRow[] = isset($row[$header]) ? $row[$header] : '';
+            }
+            $csv .= implode(',', $csvRow) . "\n";
         }
-        $csv .= implode(',', $csvRow) . "\n";
+        // var_dump($csv);
+        return $csv;
     }
-    return $csv;
-}
 
 
 
@@ -441,7 +445,7 @@ protected function convertArrayToCsv($array)
             throw new Exception('File not found: ' . $filePath);
         }
 
-       
+
 
         if (pathinfo($filePath, PATHINFO_EXTENSION) !== 'zip') {
             Mage::getSingleton('adminhtml/session')->addError('The selected file is not a ZIP file.');
