@@ -25,8 +25,9 @@ class Ccc_Filetransfer_Model_Cron
             $xmlArray = $ftpModel->convertXmlToArray($xml);
             $filterdata = Mage::helper('ccc_filetransfer')
                 ->getXmlData();
-                $attribute = $this->getXmlAttribute($xmlArray,$filterdata);
-                print_r($attribute);
+                // $attribute = $this->getXmlAttribute($xmlArray,$filterdata);
+                $attribute =  $ftpModel->getXmlAttribute($xmlArray, $filterdata);
+                Mage::getModel('ccc_filetransfer/master')->saveDataToMaster($attribute);
             // $storeInMainTable = $this->readMainTableData($xmlArray, $filterdata);
             // $csvData = $ftpModel->convertArrayToCsv($attribute);
             // if (!empty($csvData)) {

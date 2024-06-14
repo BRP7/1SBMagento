@@ -50,9 +50,9 @@
                     <ftpconfiguration>
                         <table>ccc_filetransfer_ftpconfiguration</table>
                     </ftpconfiguration>
-                    <mastertable>
-                        <table>ccc_mastertable</table>
-                    </mastertable>
+                    <master>
+                        <table>main_master_table</table>
+                    </master>
                     <newtable>
                         <table>ccc_newtable</table>
                     </newtable>

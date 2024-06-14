@@ -39,9 +39,30 @@ class Ccc_Filetransfer_Model_Ftp extends Mage_Core_Model_Abstract
             } else {
                 $value = isset($child)
                     ? $child : null;
-                $row[$header][] = $value;
+                $row[$header] = $value;
             }
         }
+    }
+
+    public function getXmlAttribute($xml, $data)
+    {
+        $attribute = [];
+        foreach ($data as $datakey => $row) {
+            $splitArray = explode(':', $row);
+            $tag = str_replace('.', '_', $splitArray[0]);
+            $att = $splitArray[1];
+            foreach ($xml as $key => $item) {
+                if (!isset($attribute[$key])) {
+                    $attribute[$key] = [];
+                }
+                foreach ($item as $itemkey => $value) {
+                    if ($itemkey == $tag) {
+                        $attribute[$key][$datakey] = (string) $value->attributes()->$att;
+                    }
+                }
+            }
+        }
+        return $attribute;
     }
     public function convertArrayToCsv($array)
     {
