@@ -14,6 +14,11 @@
                     <action>adminhtml/filetransfer/ftp</action>
                     <sort_order>10</sort_order>
                 </ftp>
+                <master translate="title" module="ccc_filetransfer">
+                    <title>Master Table</title>
+                    <action>adminhtml/filetransfer/master</action>
+                    <sort_order>10</sort_order>
+                </master>
             </children>
         </ccc_filetransfer>
     </menu>

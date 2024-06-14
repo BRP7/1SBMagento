@@ -192,5 +192,12 @@ class Ccc_Filetransfer_Adminhtml_FiletransferController extends Mage_Adminhtml_C
     }
 
 
+    public function masterAction(){
+        $this->_title($this->__('Manage Configuration'));
+        $this->_initAction();
+        $this->renderLayout();
+    }
+
+
 }
 

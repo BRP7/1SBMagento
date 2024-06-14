@@ -18,6 +18,7 @@ class Ccc_Filetransfer_Model_Cron
 
     public function readXmlFiles(){
         $filePath = "C:/xampp\htdocs/1SBMagento/var\FileZilla/1\888-3061700-0-20240519162055_20240612_084829\888-3061700-0-20240519162055.xml";
+        // $filePath="C:/xampp\htdocs/1SBMagento/var\FileZilla/1/newXmll_20240614_063328/newXmll.xml";
         if (file_exists($filePath) && pathinfo($filePath, PATHINFO_EXTENSION) === 'xml') {
             $xmlContent = file_get_contents($filePath);
             $xml = new SimpleXMLElement($xmlContent);
@@ -28,6 +29,7 @@ class Ccc_Filetransfer_Model_Cron
                 // $attribute = $this->getXmlAttribute($xmlArray,$filterdata);
                 $attribute =  $ftpModel->getXmlAttribute($xmlArray, $filterdata);
                 Mage::getModel('ccc_filetransfer/master')->saveDataToMaster($attribute);
+                // Mage::getModel('ccc_filetransfer/master')->saveDataToMaster($attribute);
             // $storeInMainTable = $this->readMainTableData($xmlArray, $filterdata);
             // $csvData = $ftpModel->convertArrayToCsv($attribute);
             // if (!empty($csvData)) {

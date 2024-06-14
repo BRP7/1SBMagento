@@ -54,10 +54,10 @@
                         <table>main_master_table</table>
                     </master>
                     <newtable>
-                        <table>ccc_newtable</table>
+                        <table>main_newtable</table>
                     </newtable>
                     <distable>
-                        <table>ccc_discontinuetable</table>
+                        <table>main_discontinued</table>
                     </distable>
                 </entities>
             </ccc_filetransfer_resource>

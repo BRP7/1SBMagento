@@ -61,6 +61,8 @@ class Mage_Adminhtml_Block_Widget_Grid_Container extends Mage_Adminhtml_Block_Wi
 
     protected function _prepareLayout()
     {
+        // var_dump(get_class( $this->getLayout()->createBlock( $this->_blockGroup.'/' . $this->_controller . '_grid',
+        // $this->_controller . '.grid')));
         $this->setChild( 'grid',
             $this->getLayout()->createBlock( $this->_blockGroup.'/' . $this->_controller . '_grid',
             $this->_controller . '.grid')->setSaveParametersInSession(true) );
