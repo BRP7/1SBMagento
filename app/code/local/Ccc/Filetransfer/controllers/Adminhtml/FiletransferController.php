@@ -1,5 +1,4 @@
 <?php
-
 class Ccc_Filetransfer_Adminhtml_FiletransferController extends Mage_Adminhtml_Controller_Action
 {
     protected function _initAction()
@@ -8,80 +7,57 @@ class Ccc_Filetransfer_Adminhtml_FiletransferController extends Mage_Adminhtml_C
             ->_setActiveMenu('ccc_filetransfer/filetransfer');
         return $this;
     }
-
-
     public function indexAction()
     {
         $this->_title($this->__('Manage Configuration'));
         $this->_initAction();
         $this->renderLayout();
-
     }
-    public function viewAction()
-    {
-        $this->_title($this->__('Manage Ftp File'));
-        $this->_initAction();
-        $this->renderLayout();
-
-    }
-
-    public function newAction()
+    protected function newAction()
     {
         $this->_forward('edit');
     }
-
-    public function editAction()
+    protected function editAction()
     {
-
-        $this->_title($this->__('File Configuration'))->_title($this->__('File Configuration'));
-
-        $id = $this->getRequest()->getParam('id');
+        $this->_title($this->__('ccc_filetransfer'))->_title($this->__('Filetransfer'));
+        $id = $this->getRequest()->getParam('configuration_id');
         $model = Mage::getModel('ccc_filetransfer/configuration');
-
         if ($id) {
             $model->load($id);
             if (!$model->getId()) {
-                Mage::getSingleton('adminhtml/session')->addError(Mage::helper('ccc_filetransfer')->__('This ccc_filetransfer no longer exists.'));
+                Mage::getSingleton('adminhtml/session')->
+                    addError(Mage::helper('ccc_filetransfer')->
+                        __('This File configuration no longer exists.'));
                 $this->_redirect('*/*/');
                 return;
             }
         }
-
-        $this->_title($model->getId() ? $model->getTitle() : $this->__('New ccc filetransfer'));
-
+        $this->_title($model->getId() ? $model->getTitle() : $this->__('New Configuration'));
         $data = Mage::getSingleton('adminhtml/session')->getFormData(true);
         if (!empty($data)) {
-
             $model->setData($data);
         }
-
-        Mage::register('configuration_data', $model);
-
+        Mage::register('configuration_model', $model);
         $this->_initAction()
-            ->_addBreadcrumb($id ? Mage::helper('ccc_filetransfer')->__('Edit ccc filetransfer') : Mage::helper('ccc_filetransfer')->__('New ccc filetransfer'), $id ? Mage::helper('ccc_filetransfer')->__('Edit ccc_filetransfer') : Mage::helper('ccc_filetransfer')->__('New ccc_filetransfer'));
+            ->_addBreadcrumb($id ? Mage::helper('ccc_filetransfer')->__('Edit Configuration') : Mage::helper('ccc_filetransfer')->__('New Configuration'), $id ? Mage::helper('ccc_filetransfer')->__('Edit Configuration') : Mage::helper('ccc_filetransfer')->__('New Configuration'));
         $this->renderLayout();
     }
-
-
-    public function saveAction()
+    protected function saveAction()
     {
-        if ($data = $this->getRequest()->getPost()) {
+        if ($data = $this->getRequest()->getParams()) {
             $model = Mage::getModel('ccc_filetransfer/configuration');
-            // var_dump($model);
-            if ($id = $this->getRequest()->getParam('id')) {
+            if ($id = $this->getRequest()->getParam('configuration_id')) {
                 $model->load($id);
             }
             $model->setData($data);
-
             try {
                 $model->save();
-
                 Mage::getSingleton('adminhtml/session')->addSuccess(
-                    Mage::helper('ccc_filetransfer')->__('The ccc_filetransfer has been saved.')
+                    Mage::helper('ccc_filetransfer')->__('The Configuration has been saved.')
                 );
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
-                    $this->_redirect('*/*/edit', array('id' => $model->getId(), '_current' => true));
+                    $this->_redirect('*/*/edit', array('configuration_id' => $model->getId(), '_current' => true));
                     return;
                 }
                 $this->_redirect('*/*/');
@@ -91,18 +67,18 @@ class Ccc_Filetransfer_Adminhtml_FiletransferController extends Mage_Adminhtml_C
             } catch (Exception $e) {
                 $this->_getSession()->addException(
                     $e,
-                    Mage::helper('ccc_filetransfer')->__('An error occurred while saving the ccc_filetransfer.')
+                    Mage::helper('ccc_filetransfer')->__('An error occurred while saving the Configuration.')
                 );
             }
             $this->_getSession()->setFormData($data);
-            $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+            $this->_redirect('*/*/edit', array('configuration_id' => $this->getRequest()->getParam('configuration_id')));
             return;
         }
         $this->_redirect('*/*/');
     }
     public function deleteAction()
     {
-        if ($id = $this->getRequest()->getParam('id')) {
+        if ($id = $this->getRequest()->getParam('configuration_id')) {
             $title = "";
             try {
                 $model = Mage::getModel('ccc_filetransfer/configuration');
@@ -110,113 +86,111 @@ class Ccc_Filetransfer_Adminhtml_FiletransferController extends Mage_Adminhtml_C
                 $title = $model->getTitle();
                 $model->delete();
                 Mage::getSingleton('adminhtml/session')->addSuccess(
-                    Mage::helper('ccc_filetransfer')->__('The page has been deleted.')
+                    Mage::helper('ccc_filetransfer')->__('The product has been deleted.')
                 );
-                Mage::dispatchEvent('adminhtml_cmspage_on_delete', array('title' => $title, 'status' => 'success'));
                 $this->_redirect('*/*/');
                 return;
             } catch (Exception $e) {
-                Mage::dispatchEvent('adminhtml_cmspage_on_delete', array('title' => $title, 'status' => 'fail'));
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                $this->_redirect('*/*/edit', array('id' => $id));
+                $this->_redirect('*/*/edit', array('mfr_id' => $id));
                 return;
             }
         }
-        Mage::getSingleton('adminhtml/session')->addError(Mage::helper('ccc_filetransfer')->__('Unable to find a page to delete.'));
+        Mage::getSingleton('adminhtml/session')->addError(Mage::helper('ccc_filetransfer')->__('Unable to find a product to delete.'));
         $this->_redirect('*/*/');
     }
-    public function massDeleteAction()
+    public function ftpAction()
     {
-        $locationcheckIds = $this->getRequest()->getParam('id');
-        if (!is_array($locationcheckIds)) {
-            $this->_getSession()->addError($this->__('Please select ccc_filetransfer(s).'));
-        } else {
-            if (!empty($locationcheckIds)) {
-                try {
-                    foreach ($locationcheckIds as $locationcheckId) {
-                        $location = Mage::getSingleton('ccc_filetransfer/filetransferconfiguration')->load($locationcheckId);
-                        $location->delete();
-                    }
-                    $this->_getSession()->addSuccess(
-                        $this->__('Total of %d record(s) have been deleted.', count($locationcheckIds))
-                    );
-                } catch (Exception $e) {
-                    $this->_getSession()->addError($e->getMessage());
-                }
-            }
-        }
-        $this->_redirect('*/*/index');
+        $this->_title($this->__('Manage FTP'));
+        $this->_initAction();
+        $this->renderLayout();
     }
-
-    public function massStatusAction()
-    {
-        $locationcheckIds = $this->getRequest()->getParam('id');
-        $isActive = $this->getRequest()->getParam('is_active');
-
-        if (!is_array($locationcheckIds)) {
-            $locationcheckIds = array($locationcheckIds);
-        }
-
-        try {
-            foreach ($locationcheckIds as $locationcheckId) {
-                $Location = Mage::getModel('ccc_filetransfer/configuration')->load($locationcheckId);
-                if ($Location->getIsActive() != $isActive) {
-                    $Location->setIsActive($isActive)->save();
-                }
-            }
-            if ($isActive == 1) {
-                $this->_getSession()->addSuccess(
-                    $this->__('Total of %d record(s) have been Yes.', count($locationcheckIds))
-                );
-            } else {
-                $this->_getSession()->addSuccess(
-                    $this->__('Total of %d record(s) have been No.', count($locationcheckIds))
-                );
-            }
-        } catch (Exception $e) {
-            $this->_getSession()->addError($e->getMessage());
-        }
-
-        $this->_redirect('*/*/index');
-    }
-
-    public function convertXmlAction()
-    {
-        $id = $this->getRequest()->getParam('id');
-        $configId = $this->getRequest()->getParam('config_id');
-        $filePath = base64_decode($this->getRequest()->getParam('file_path'));
-        $path = Mage::getModel('ccc_filetransfer/filetransferobserver')->convertXml($id, $configId, $filePath);
-        // var_dump($path[1]);
-        $data = array(
-            'part_number' => 'items.item.itemIdentification.itemIdentifier:itemNumber',
-            'depth' => 'items.item.itemIdentification.itemCharacteristics.itemDimensions.depth:value',
-            'height' => 'items.item.itemIdentification.itemCharacteristics.itemDimensions.height:value',
-            'length' => 'items.item.itemIdentification.itemCharacteristics.itemDimensions.length:value',
-            'weight' => 'items.item.itemIdentification.itemCharacteristics.itemDimensions.weight:value'
-            );
-            $xmlArrayData =  Mage::helper('ccc_filetransfer')->getXmlAttribute($data,$path[2]);
-            Mage::getModel('ccc_filetransfer/filetransferobserver')->xmlArrayToCsv($xmlArrayData);
-            $this->_prepareDownloadResponse(pathinfo($path[0], PATHINFO_FILENAME) . '.csv', $path[1], 'text/csv');
-
-
-    }
-
-
     public function extractZipAction()
     {
-        $id = $this->getRequest()->getParam('id');
-        $configId = $this->getRequest()->getParam('config_id');
-        $encodedFilePath = base64_decode($this->getRequest()->getParam('file_path'));
-        Mage::getModel('ccc_filetransfer/filetransferobserver')->extractXml($id, $configId, $encodedFilePath);
-        $this->_redirect('*/*/view');
+        $fileModel = Mage::getModel('ccc_filetransfer/ftp')
+            ->load($this->getRequest()->getParam('id'));
+            var_dump($this->getRequest()->getParam('id'));
+        
+        if ($fileModel && $fileModel->getId()) {
+
+            $rootPath = Mage::helper('ccc_filetransfer')->getFileUrl();
+            $filePath = $rootPath . $fileModel->getFilePath() . DS . $fileModel->getFileName();
+            if (file_exists($filePath) && pathinfo($filePath, PATHINFO_EXTENSION) === 'zip') {
+                $zip = new ZipArchive;
+                if ($zip->open($filePath) === TRUE) {
+                    $extractedPath = $rootPath . $fileModel->getFilePath() . DS . pathinfo($filePath, PATHINFO_FILENAME);
+                    ;
+                    if (!file_exists($extractedPath)) {
+                        mkdir($extractedPath, 0777, true);
+                    }
+                    $result = $zip->extractTo($extractedPath);
+                    $zip->close();
+                    if ($result) {
+                        Mage::getModel('ccc_filetransfer/ftp')
+                            ->saveExtractedFilesData($extractedPath, $fileModel->getConfigurationId());
+                    }
+                    $this->_getSession()->addSuccess($this->__('ZIP file extracted successfully.'));
+                } else {
+                    $this->_getSession()->addError($this->__('Failed to open the ZIP file.'));
+                }
+            }
+        }
+        $this->_redirect('*/*/ftp');
     }
+
+    public function downloadCsvAction()
+    {
+        $fileModel = Mage::getModel('ccc_filetransfer/ftp')
+            ->load($this->getRequest()->getParam('id'));
+        if ($fileModel && $fileModel->getId()) {
+            $filePath = Mage::helper('ccc_filetransfer')->getFileUrl() .
+                $fileModel->getFilePath() . DS . $fileModel->getFileName();
+            if (file_exists($filePath) && pathinfo($filePath, PATHINFO_EXTENSION) === 'xml') {
+                $xmlContent = file_get_contents($filePath);
+                $xml = new SimpleXMLElement($xmlContent);
+
+                $ftpModel = Mage::getModel('ccc_filetransfer/ftp');
+                $xmlArray = $ftpModel->convertXmlToArray($xml);
+                // $csvData = $ftpModel->convertArrayToCsv($xmlArray);
+                $filterdata = Mage::helper('ccc_filetransfer')
+                    ->getXmlData();
+                // print_r($xmlArray);
+                $attribute = $this->getXmlAttribute($xmlArray, $filterdata);
+                // $storeInMainTable = $this->readMainTableData($xmlArray, $filterdata);
+                $csvData = $ftpModel->convertArrayToCsv($attribute);
+                if (!empty($csvData)) {
+                    $this->_prepareDownloadResponse(pathinfo($filePath, PATHINFO_FILENAME) . '.csv', $csvData, 'text/csv');
+                    return;
+                } else {
+                    Mage::getSingleton('adminhtml/session')->addError('Failed to generate CSV data.');
+                }
+            }
+        }
+        // $this->_redirect('*/*/ftp');
+    }
+    protected function getXmlAttribute($xml, $data)
+    {
+        $attribute = [];
+        foreach ($data as $datakey => $row) {
+            $splitArray = explode(':', $row);
+            $tag = str_replace('.', '_', $splitArray[0]);
+            $att = $splitArray[1];
+            foreach ($xml as $key => $item) {
+                if (!isset($attribute[$key])) {
+                    $attribute[$key] = [];
+                }
+                foreach ($item as $itemkey => $value) {
+                    foreach ($value as $attKey => $attValue) {
+                        if ($itemkey == $tag) {
+                            $attribute[$key][$datakey][] = (string) $attValue->attributes()->$att;
+                        }
+                    }
+                }
+            }
+        }
+        return $attribute;
+    }
+
+
 }
-
-
-
-
-
-
-
-
 

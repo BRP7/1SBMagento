@@ -4,78 +4,58 @@ class Ccc_Filetransfer_Block_Adminhtml_Ftpfile_Grid extends Mage_Adminhtml_Block
     public function __construct($attributes = array())
     {
         parent::__construct($attributes);
-    }
 
+    }
     protected function _prepareCollection()
     {
-        $collection = Mage::getModel('ccc_filetransfer/filetransfer')->getCollection();
+        $collection = Mage::getModel('ccc_filetransfer/ftp')->getCollection();
         $this->setCollection($collection);
-        return parent::_prepareCollection();
+        parent::_prepareCollection();
+        return $this;
     }
 
     protected function _prepareColumns()
     {
-        $this->addColumn('filetransfer_id', array(
-            'header' => Mage::helper('ccc_filetransfer')->__('Id'),
-            'align' => 'right',
-            'width' => '50px',
-            'index' => 'filetransfer_id',
-        ));
-    
-        $this->addColumn('file_path', array(
-            'header' => Mage::helper('ccc_filetransfer')->__('File Path'),
-            'align' => 'left',
-            'index' => 'file_path',
-            'type' => 'text',
-            'column_css_class' => 'row_name',
-        ));
-    
-        $this->addColumn('file_date', array(
-            'header' => Mage::helper('ccc_filetransfer')->__('File Date'),
-            'align' => 'left',
-            'index' => 'file_date',
-            'type' => 'text',
-            'column_css_class' => 'row_name',
-        ));
-    
-        $this->addColumn('action', array(
-            'header' => Mage::helper('ccc_filetransfer')->__('Action'),
-            'align' => 'left',
-            'type' => 'text',
-            'getter' => 'getId',
-            'renderer' => 'ccc_filetransfer/adminhtml_ftpfile_grid_column_renderer_action', // Custom renderer for action column
-            'filter' => false,
-            'sortable' => false,
-        ));
-    
-        $this->addColumn('configuration_id', array(
-            'header' => Mage::helper('ccc_filetransfer')->__('Configuration Id'),
-            'align' => 'left',
-            'index' => 'configuration_id',
-            'type' => 'text',
-            'column_css_class' => 'row_name',
-        ));
-    
-        return parent::_prepareColumns();
-    }
-    
-    
-
-    protected function _prepareMassaction()
-    {
-        $this->setMassactionIdField('id');
-        $this->getMassactionBlock()->setFormFieldName('id');
-
-        $this->getMassactionBlock()->addItem(
-            'delete',
+        $this->addColumn(
+            'file_name',
             array(
-                'label' => Mage::helper('ccc_filetransfer')->__('Delete'),
-                'url' => $this->getUrl('*/*/massDelete'),
-                'confirm' => Mage::helper('ccc_filetransfer')->__('Are you sure you want to delete selected configuration?')
+                'header' => Mage::helper('ccc_filetransfer')->__('File Name'),
+                'id'=> 'file_name',
+                'align' => 'center',
+                'width' => '200px',
+                'index' => 'file_name',
             )
         );
-
-        Mage::dispatchEvent('filetransfer_adminhtml_configuration_grid_prepare_massaction', array('block' => $this));
-        return $this;
+        $this->addColumn(
+            'file_path',
+            array(
+                'header' => Mage::helper('ccc_filetransfer')->__('File Path'),
+                'id'=> 'file_path',
+                'align' => 'center',
+                'width' => '200px',
+                'index' => 'file_path',
+            )
+        );
+       
+        $this->addColumn(
+            'configuration_id',
+            array(
+                'header' => Mage::helper('ccc_filetransfer')->__('Configuraton Id'),
+                'align' => 'center',
+                'width' => '100px',
+                'index' => 'configuration_id',
+            )
+        );
+        $this->addColumn('action', [
+            'header' => Mage::helper('ccc_filetransfer')->__('Action'),
+            'width' => '100',
+            'type' => 'action',
+            'renderer' => 'Ccc_Filetransfer_Block_Adminhtml_FtpFile_Grid_Renderer_Action',
+            'filter' => false,
+            'sortable' => false,
+            'is_system' => true,
+        ]);
+        return parent::_prepareColumns();
     }
+   
 }

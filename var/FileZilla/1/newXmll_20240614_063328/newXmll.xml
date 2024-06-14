@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<itemAlign:itemAlignment xmlns:itemAlign="http://xml.ashleyfurniture.com/xml/schemas/afItemAlign_v1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:afParty="http://xml.ashleyfurniture.com/xml/schemas/afParty_v1.5" xmlns:afItem="http://xml.ashleyfurniture.com/xml/schemas/afItem_v1.7" xmlns:afBase="http://xml.ashleyfurniture.com/xml/schemas/afBase_v1.9" xsi:schemaLocation="http://xml.ashleyfurniture.com/xml/schemas/afItemAlign_v1.2 http://xml.ashleyfurniture.com/xml/schemas/af_ItemAlign_v1.2.xsd">
+  <document id="0" status="Original" type="888" language="EN">
+    <creationDate>2024-05-19</creationDate>
+    <creationTime>16:18:02</creationTime>
+  </document>
+  <buyer>
+    <afParty:partyIdentifier partyIdentifierCode="3061700" partyIdentifierQualifierCode="SenderAssigned" />
+  </buyer>
+  <seller>
+    <sellerIdentification>
+      <afParty:partyIdentifier partyIdentifierCode="052738531" partyIdentifierQualifierCode="DUNS" />
+    </sellerIdentification>
+  </seller>
+  <shipTo>
+    <afParty:partyIdentifier partyIdentifierCode="11" partyIdentifierQualifierCode="SenderAssigned" />
+  </shipTo>
+  <items>
+    <item itemType="1" itemClass="ZABC" retailSalesCategory="AB" itemGroupCode="B192" itemStatus="Active" itemIsAvailable="true" itemIsPackage="false" harmonizationCode="9403910080" itemIsExpressShipEligible="false" itemStatusDate="2021-01-12" itemMfgWarrantyDays="365" itemColor="Whitewash" itemsPerCase="1">
+      <itemIdentification>
+        <itemIdentifier itemNumber="B192-157" itemNumberQualifier="SellerAssigned" />
+        <itemIdentifier itemNumber="B192-157" itemNumberQualifier="BuyerAssigned" />
+        <itemIdentifier itemNumber="024052783902" itemNumberQualifier="UPC" />
+        <itemDescription descriptionValue="Queen UPH Panel Headboard" itemDescriptionQualifier="SellerAssigned" itemDescriptionClassification="Product" />
+        <itemDescription descriptionValue="Queen UPH Panel Headboard" itemDescriptionQualifier="SellerAssigned" itemDescriptionClassification="Friendly" />
+        <itemCharacteristics>
+          <itemUnits unitOfMeasure="Each" value="1" />
+          <itemUnitDescription>Queen UPH Panel Headboard</itemUnitDescription>
+          <itemDimensions>
+            <depth unitOfMeasure="Inches" value="3.94" />
+            <height unitOfMeasure="Inches" value="61.73" />
+            <length unitOfMeasure="Inches" value="66.46" />
+            <weight unitOfMeasure="Pounds" value="89" weightQualifier="NetWeight" />
+          </itemDimensions>
+        </itemCharacteristics>
+        <itemCharacteristics>
+          <itemUnits unitOfMeasure="Each" value="1" />
+          <itemUnitDescription>Queen UPH Panel Headboard</itemUnitDescription>
+          <itemDimensions>
+            <depth unitOfMeasure="Millimeters" value="100" />
+            <height unitOfMeasure="Millimeters" value="1568" />
+            <length unitOfMeasure="Millimeters" value="1688" />
+            <weight unitOfMeasure="Kilograms" value="40.37" weightQualifier="NetWeight" />
+          </itemDimensions>
+        </itemCharacteristics>
+        <packageCharacteristics>
+          <packageUnits unitOfMeasure="Each" value="1" />
+          <packageUnitDescription>Queen UPH Panel Headboard</packageUnitDescription>
+          <packageDimensions>
+            <depth unitOfMeasure="Inches" value="37.5" />
+            <height unitOfMeasure="Inches" value="8.5" />
+            <length unitOfMeasure="Inches" value="71.75" />
+            <volume unitOfMeasure="CubicFeet" value="13.24" />
+            <weight unitOfMeasure="Pounds" value="105" weightQualifier="GrossWeight" />
+          </packageDimensions>
+        </packageCharacteristics>
+        <packageCharacteristics>
+          <packageUnits unitOfMeasure="Each" value="1" />
+          <packageUnitDescription>Queen UPH Panel Headboard</packageUnitDescription>
+          <packageDimensions>
+            <depth unitOfMeasure="Millimeters" value="952.5" />
+            <height unitOfMeasure="Millimeters" value="215.9" />
+            <length unitOfMeasure="Millimeters" value="1822.45" />
+            <volume unitOfMeasure="CubicMeters" value="0.37" />
+            <weight unitOfMeasure="Kilograms" value="47.63" weightQualifier="GrossWeight" />
+          </packageDimensions>
+        </packageCharacteristics>
+      </itemIdentification>
+      <itemVendor>
+        <afParty:partyIdentifier partyIdentifierCode="052738531" partyIdentifierQualifierCode="DUNS" />
+        <afParty:partyName>Ashley</afParty:partyName>
+      </itemVendor>
+      <itemPricing PriceQualifierCode="Standard">
+        <unitPrice fobPoint="LEESPORT PA">119.00</unitPrice>
+        <wholesalePriceWithoutFreight>123.42</wholesalePriceWithoutFreight>
+        <netPrice>141.09</netPrice>
+        <freightAmount freightPriceQualifier="StandardFreight">17.67</freightAmount>
+        <discountAmount>6.55</discountAmount>
+        <dfiDiscountAmount>.93</dfiDiscountAmount>
+      </itemPricing>
+      <image quality="MediumResolution" name="B192-157-SW_BIG.jpg" url="B192-157-SW_BIG.jpg" />
+      <referenceDocument url="https://www.ashleydirect.com/GraphicsVault/Assembly_Instr/10504854.pdf" name="10504854.pdf" referenceDocumentQualifier="AssemblyInstructions" />
+      <referenceDocument url="https://www.ashleydirect.com/GraphicsVault/Parts_Drawing/35440.pdf" name="35440.pdf" referenceDocumentQualifier="PartsDrawing" />
+      <itemFeatures>
+        <itemFeature id="1">Made of engineered wood (MDF/particleboard) and decorative laminate</itemFeature>
+        <itemFeature id="2">Wispy white finish over replicated oak grain with authentic touch</itemFeature>
+        <itemFeature id="3">Polyester upholstery</itemFeature>
+        <itemFeature id="4">Nailhead accents</itemFeature>
+        <itemFeature id="5">2 slim-profile USB charging stations</itemFeature>
+        <itemFeature id="6">Power cord included; UL Listed</itemFeature>
+        <itemFeature id="7">Hardware not included</itemFeature>
+        <itemFeature id="8">¼" bolts are needed to attach headboard to existing bed frame</itemFeature>
+        <itemFeature id="9">Bolt length depends on thickness of your bed frame</itemFeature>
+        <itemFeature id="10">Assembly required</itemFeature>
+      </itemFeatures>
+      <itemFluffs>
+        <itemFluff id="1">What a delightful take on rustic industrial style. Whether modern loft or modern farmhouse, this upholstered headboard makes itself at home. The wispy whitewash palette enhances without covering the grain for that weathered look you crave. Smoothly padded upholstered panels punctuated by metal nailhead trim add to the elegance. Discreetly placed USB ports located on the side of the headboard keep your electronics charged up and close at hand. </itemFluff>
+      </itemFluffs>
+      <itemExtraDimensions>
+        <itemExtraDimension>
+          <standardDimension>Assembled queen bed: Width:66.5 in Depth:85.75 in Height:61.75 in </standardDimension>
+          <metricDimension>Assembled queen bed: Width:1689.1 mm Depth:2178.05 mm Height:1568.45 mm </metricDimension>
+        </itemExtraDimension>
+        <itemExtraDimension>
+          <standardDimension>Panel to floor: 24.75 in</standardDimension>
+          <metricDimension>Panel to floor: 628.65 mm</metricDimension>
+        </itemExtraDimension>
+        <itemExtraDimension>
+          <standardDimension>Rail to floor: 7.25 in</standardDimension>
+          <metricDimension>Rail to floor: 184.15 mm</metricDimension>
+        </itemExtraDimension>
+      </itemExtraDimensions>
+    </item>
+    <item itemType="1" itemClass="ZABC" retailSalesCategory="AB" itemGroupCode="B192" itemStatus="Active" itemIsAvailable="true" itemIsPackage="false" harmonizationCode="9403910080" itemIsExpressShipEligible="false" itemStatusDate="2021-04-01" itemMfgWarrantyDays="365" itemColor="Whitewash" itemsPerCase="1">
+      <itemIdentification>
+        <itemIdentifier itemNumber="B192-158" itemNumberQualifier="SellerAssigned" />
+        <itemIdentifier itemNumber="B192-158" itemNumberQualifier="BuyerAssigned" />
+        <itemIdentifier itemNumber="024052783919" itemNumberQualifier="UPC" />
+        <itemDescription descriptionValue="King UPH Panel Headboard" itemDescriptionQualifier="SellerAssigned" itemDescriptionClassification="Product" />
+        <itemDescription descriptionValue="King UPH Panel Headboard" itemDescriptionQualifier="SellerAssigned" itemDescriptionClassification="Friendly" />
+        <itemCharacteristics>
+          <itemUnits unitOfMeasure="Each" value="1" />
+          <itemUnitDescription>King UPH Panel Headboard</itemUnitDescription>
+          <itemDimensions>
+            <depth unitOfMeasure="Inches" value="3.94" />
+            <height unitOfMeasure="Inches" value="61.73" />
+            <length unitOfMeasure="Inches" value="82.95" />
+            <weight unitOfMeasure="Pounds" value="106" weightQualifier="NetWeight" />
+          </itemDimensions>
+        </itemCharacteristics>
+        <itemCharacteristics>
+          <itemUnits unitOfMeasure="Each" value="1" />
+          <itemUnitDescription>King UPH Panel Headboard</itemUnitDescription>
+          <itemDimensions>
+            <depth unitOfMeasure="Millimeters" value="100" />
+            <height unitOfMeasure="Millimeters" value="1568" />
+            <length unitOfMeasure="Millimeters" value="2107" />
+            <weight unitOfMeasure="Kilograms" value="48.08" weightQualifier="NetWeight" />
+          </itemDimensions>
+        </itemCharacteristics>
+        <packageCharacteristics>
+          <packageUnits unitOfMeasure="Each" value="1" />
+          <packageUnitDescription>King UPH Panel Headboard</packageUnitDescription>
+          <packageDimensions>
+            <depth unitOfMeasure="Inches" value="37.5" />
+            <height unitOfMeasure="Inches" value="8.5" />
+            <length unitOfMeasure="Inches" value="88.25" />
+            <volume unitOfMeasure="CubicFeet" value="16.28" />
+            <weight unitOfMeasure="Pounds" value="120" weightQualifier="GrossWeight" />
+          </packageDimensions>
+        </packageCharacteristics>
+        <packageCharacteristics>
+          <packageUnits unitOfMeasure="Each" value="1" />
+          <packageUnitDescription>King UPH Panel Headboard</packageUnitDescription>
+          <packageDimensions>
+            <depth unitOfMeasure="Millimeters" value="952.5" />
+            <height unitOfMeasure="Millimeters" value="215.9" />
+            <length unitOfMeasure="Millimeters" value="2241.55" />
+            <volume unitOfMeasure="CubicMeters" value="0.46" />
+            <weight unitOfMeasure="Kilograms" value="54.43" weightQualifier="GrossWeight" />
+          </packageDimensions>
+        </packageCharacteristics>
+      </itemIdentification>
+      <itemVendor>
+        <afParty:partyIdentifier partyIdentifierCode="052738531" partyIdentifierQualifierCode="DUNS" />
+        <afParty:partyName>Ashley</afParty:partyName>
+      </itemVendor>
+      <itemPricing PriceQualifierCode="Standard">
+        <unitPrice fobPoint="LEESPORT PA">179.00</unitPrice>
+        <wholesalePriceWithoutFreight>185.65</wholesalePriceWithoutFreight>
+        <netPrice>212.23</netPrice>
+        <freightAmount freightPriceQualifier="StandardFreight">26.58</freightAmount>
+        <discountAmount>9.85</discountAmount>
+        <dfiDiscountAmount>1.40</dfiDiscountAmount>
+      </itemPricing>
+      <image quality="MediumResolution" name="B192-157-SW_BIG.jpg" url="B192-157-SW_BIG.jpg" />
+      <referenceDocument url="https://www.ashleydirect.com/GraphicsVault/Assembly_Instr/10504854.pdf" name="10504854.pdf" referenceDocumentQualifier="AssemblyInstructions" />
+      <referenceDocument url="https://www.ashleydirect.com/GraphicsVault/Parts_Drawing/35441.pdf" name="35441.pdf" referenceDocumentQualifier="PartsDrawing" />
+      <itemFeatures>
+        <itemFeature id="1">Made of engineered wood (MDF/particleboard) and decorative laminate</itemFeature>
+        <itemFeature id="2">Wispy white finish over replicated oak grain with authentic touch</itemFeature>
+        <itemFeature id="3">Polyester upholstery</itemFeature>
+        <itemFeature id="4">Nailhead accents</itemFeature>
+        <itemFeature id="5">2 slim-profile USB charging stations</itemFeature>
+        <itemFeature id="6">Power cord included; UL Listed</itemFeature>
+        <itemFeature id="7">Hardware not included</itemFeature>
+        <itemFeature id="8">¼" bolts are needed to attach headboard to existing bed frame</itemFeature>
+        <itemFeature id="9">Bolt length depends on thickness of your bed frame</itemFeature>
+        <itemFeature id="10">Assembly required</itemFeature>
+      </itemFeatures>
+      <itemFluffs>
+        <itemFluff id="1">What a delightful take on rustic industrial style. Whether modern loft or modern farmhouse, this upholstered headboard makes itself at home. The wispy whitewash palette enhances without covering the grain for that weathered look you crave. Smoothly padded upholstered panels punctuated by metal nailhead trim add to the elegance. Discreetly placed USB ports located on the side of the headboard keep your electronics charged up and close at hand. </itemFluff>
+      </itemFluffs>
+      <itemExtraDimensions>
+        <itemExtraDimension>
+          <standardDimension>Assembled king bed: Width:83 in Depth:85.75 in Height:61.75 in </standardDimension>
+          <metricDimension>Assembled king bed: Width:2108.2 mm Depth:2178.05 mm Height:1568.45 mm </metricDimension>
+        </itemExtraDimension>
+        <itemExtraDimension>
+          <standardDimension>Panel to floor: 24.75 in</standardDimension>
+          <metricDimension>Panel to floor: 628.65 mm</metricDimension>
+        </itemExtraDimension>
+        <itemExtraDimension>
+          <standardDimension>Rail to floor: 7.25 in</standardDimension>
+          <metricDimension>Rail to floor: 184.15 mm</metricDimension>
+        </itemExtraDimension>
+      </itemExtraDimensions>
+    </item>
+    <item itemType="9" itemClass="ZBBR" retailSalesCategory="AB" itemGroupCode="B537" itemStatus="Discontinued" itemIsAvailable="false" itemIsPackage="false" harmonizationCode="9403910080" itemIsExpressShipEligible="false" itemStatusDate="2021-12-01" itemMfgWarrantyDays="365" itemColor="Grayish Brown" itemsPerCase="1">
+      <itemIdentification>
+        <itemIdentifier itemNumber="B537-58" itemNumberQualifier="SellerAssigned" />
+        <itemIdentifier itemNumber="B537-58" itemNumberQualifier="BuyerAssigned" />
+        <itemIdentifier itemNumber="024052514773" itemNumberQualifier="UPC" />
+        <itemDescription descriptionValue="King/Cal King Panel Headboard" itemDescriptionQualifier="SellerAssigned" itemDescriptionClassification="Product" />
+        <itemDescription descriptionValue="King/Cal King Panel Headboard" itemDescriptionQualifier="SellerAssigned" itemDescriptionClassification="Friendly" />
+        <itemCharacteristics>
+          <itemUnits unitOfMeasure="Each" value="1" />
+          <itemUnitDescription>King/Cal King Panel Headboard</itemUnitDescription>
+          <itemDimensions>
+            <depth unitOfMeasure="Inches" value="4" />
+            <height unitOfMeasure="Inches" value="57" />
+            <length unitOfMeasure="Inches" value="79.63" />
+            <weight unitOfMeasure="Pounds" value="77" weightQualifier="NetWeight" />
+          </itemDimensions>
+        </itemCharacteristics>
+        <itemCharacteristics>
+          <itemUnits unitOfMeasure="Each" value="1" />
+          <itemUnitDescription>King/Cal King Panel Headboard</itemUnitDescription>
+          <itemDimensions>
+            <depth unitOfMeasure="Millimeters" value="101.6" />
+            <height unitOfMeasure="Millimeters" value="1447.8" />
+            <length unitOfMeasure="Millimeters" value="2022.6" />
+            <weight unitOfMeasure="Kilograms" value="34.93" weightQualifier="NetWeight" />
+          </itemDimensions>
+        </itemCharacteristics>
+        <packageCharacteristics>
+          <packageUnits unitOfMeasure="Each" value="1" />
+          <packageUnitDescription>King/Cal King Panel Headboard</packageUnitDescription>
+          <packageDimensions>
+            <depth unitOfMeasure="Inches" value="37.63" />
+            <height unitOfMeasure="Inches" value="5.88" />
+            <length unitOfMeasure="Inches" value="82.25" />
+            <volume unitOfMeasure="CubicFeet" value="10.52" />
+            <weight unitOfMeasure="Pounds" value="88" weightQualifier="GrossWeight" />
+          </packageDimensions>
+        </packageCharacteristics>
+        <packageCharacteristics>
+          <packageUnits unitOfMeasure="Each" value="1" />
+          <packageUnitDescription>King/Cal King Panel Headboard</packageUnitDescription>
+          <packageDimensions>
+            <depth unitOfMeasure="Millimeters" value="955.8" />
+            <height unitOfMeasure="Millimeters" value="149.35" />
+            <length unitOfMeasure="Millimeters" value="2089.15" />
+            <volume unitOfMeasure="CubicMeters" value="0.3" />
+            <weight unitOfMeasure="Kilograms" value="39.92" weightQualifier="GrossWeight" />
+          </packageDimensions>
+        </packageCharacteristics>
+      </itemIdentification>
+      <itemVendor>
+        <afParty:partyIdentifier partyIdentifierCode="052738531" partyIdentifierQualifierCode="DUNS" />
+        <afParty:partyName>Ashley</afParty:partyName>
+      </itemVendor>
+      <itemPricing PriceQualifierCode="Standard">
+        <unitPrice fobPoint="LEESPORT PA">125.99</unitPrice>
+        <wholesalePriceWithoutFreight>130.67</wholesalePriceWithoutFreight>
+        <netPrice>149.38</netPrice>
+        <freightAmount freightPriceQualifier="StandardFreight">18.71</freightAmount>
+        <discountAmount>6.93</discountAmount>
+        <dfiDiscountAmount>.99</dfiDiscountAmount>
+      </itemPricing>
+      <image quality="MediumResolution" name="B537-58-56S_BIG.jpg" url="B537-58-56S_BIG.jpg" />
+      <referenceDocument url="https://www.ashleydirect.com/GraphicsVault/Assembly_Instr/B537-54S56S56SW1575858SW194SAIS.pdf" name="B537-54S56S56SW1575858SW194SAIS.pdf" referenceDocumentQualifier="AssemblyInstructions" />
+      <referenceDocument url="https://www.ashleydirect.com/GraphicsVault/Parts_Drawing/B537-54S,56S,57,58,94S_RPDF.pdf" name="B537-54S,56S,57,58,94S_RPDF.pdf" referenceDocumentQualifier="PartsDrawing" />
+      <itemFeatures>
+        <itemFeature id="1">This item is compatible with other items in this series, sold separately.</itemFeature>
+      </itemFeatures>
+      <itemFluffs>
+        <itemFluff id="1">This item does not stand alone. It is compatible with other items in this series, sold separately.</itemFluff>
+      </itemFluffs>
+      <itemExtraDimensions>
+        <itemExtraDimension>
+          <standardDimension>Panel to floor: 23 in</standardDimension>
+          <metricDimension>Panel to floor: 584.2 mm</metricDimension>
+        </itemExtraDimension>
+      </itemExtraDimensions>
+    </item>
+    <item itemType="9" itemClass="ZNBM" retailSalesCategory="MB" itemGroupCode="B553" itemStatus="Discontinued" itemIsAvailable="false" itemIsPackage="false" harmonizationCode="9403509080" itemIsExpressShipEligible="false" itemStatusDate="2024-03-01" itemMfgWarrantyDays="365" itemColor="Dark Brown" itemsPerCase="1">
+      <itemIdentification>
+        <itemIdentifier itemNumber="B553-131" itemNumberQualifier="SellerAssigned" />
+        <itemIdentifier itemNumber="B553-131" itemNumberQualifier="BuyerAssigned" />
+        <itemIdentifier itemNumber="024052082746" itemNumberQualifier="UPC" />
+        <itemDescription descriptionValue="Dresser" itemDescriptionQualifier="SellerAssigned" itemDescriptionClassification="Product" />
+        <itemDescription descriptionValue="Dresser" itemDescriptionQualifier="SellerAssigned" itemDescriptionClassification="Friendly" />
+        <itemCharacteristics>
+          <itemUnits unitOfMeasure="Each" value="1" />
+          <itemUnitDescription>Dresser</itemUnitDescription>
+          <itemDimensions>
+            <depth unitOfMeasure="Inches" value="20" />
+            <height unitOfMeasure="Inches" value="39.13" />
+            <length unitOfMeasure="Inches" value="74" />
+            <weight unitOfMeasure="Pounds" value="304" weightQualifier="NetWeight" />
+          </itemDimensions>
+        </itemCharacteristics>
+        <itemCharacteristics>
+          <itemUnits unitOfMeasure="Each" value="1" />
+          <itemUnitDescription>Dresser</itemUnitDescription>
+          <itemDimensions>
+            <depth unitOfMeasure="Millimeters" value="508" />
+            <height unitOfMeasure="Millimeters" value="993.78" />
+            <length unitOfMeasure="Millimeters" value="1879.6" />
+            <weight unitOfMeasure="Kilograms" value="137.89" weightQualifier="NetWeight" />
+          </itemDimensions>
+        </itemCharacteristics>
+        <packageCharacteristics>
+          <packageUnits unitOfMeasure="Each" value="1" />
+          <packageUnitDescription>Dresser</packageUnitDescription>
+          <packageDimensions>
+            <depth unitOfMeasure="Inches" value="22.5" />
+            <height unitOfMeasure="Inches" value="42.25" />
+            <length unitOfMeasure="Inches" value="76" />
+            <volume unitOfMeasure="CubicFeet" value="41.81" />
+            <weight unitOfMeasure="Pounds" value="350" weightQualifier="GrossWeight" />
+          </packageDimensions>
+        </packageCharacteristics>
+        <packageCharacteristics>
+          <packageUnits unitOfMeasure="Each" value="1" />
+          <packageUnitDescription>Dresser</packageUnitDescription>
+          <packageDimensions>
+            <depth unitOfMeasure="Millimeters" value="571.5" />
+            <height unitOfMeasure="Millimeters" value="1073.15" />
+            <length unitOfMeasure="Millimeters" value="1930.4" />
+            <volume unitOfMeasure="CubicMeters" value="1.18" />
+            <weight unitOfMeasure="Kilograms" value="158.76" weightQualifier="GrossWeight" />
+          </packageDimensions>
+        </packageCharacteristics>
+      </itemIdentification>
+      <itemVendor>
+        <afParty:partyIdentifier partyIdentifierCode="052738531" partyIdentifierQualifierCode="DUNS" />
+        <afParty:partyName>Ashley</afParty:partyName>
+      </itemVendor>
+      <itemPricing PriceQualifierCode="Standard">
+        <unitPrice fobPoint="LEESPORT PA">660.00</unitPrice>
+        <wholesalePriceWithoutFreight>684.53</wholesalePriceWithoutFreight>
+        <netPrice>768.02</netPrice>
+        <freightAmount freightPriceQualifier="StandardFreight">83.49</freightAmount>
+        <discountAmount>36.30</discountAmount>
+        <dfiDiscountAmount>5.17</dfiDiscountAmount>
+      </itemPricing>
+      <image quality="MediumResolution" name="B553-131-36-SW_BIG.jpg" url="B553-131-36-SW_BIG.jpg" />
+      <referenceDocument url="https://www.ashleydirect.com/GraphicsVault/Assembly_Instr/B553-131,39,46,193_AIS.pdf" name="B553-131,39,46,193_AIS.pdf" referenceDocumentQualifier="AssemblyInstructions" />
+      <referenceDocument url="https://www.ashleydirect.com/GraphicsVault/Parts_Drawing/B553-131,36_RPDF.pdf" name="B553-131,36_RPDF.pdf" referenceDocumentQualifier="PartsDrawing" />
+      <itemFeatureText>Constructed with birch veneers and hardwood solids.</itemFeatureText>
+      <itemFeatures>
+        <itemFeature id="1">Made of wood, wood veneer, engineered wood and cast resin</itemFeature>
+        <itemFeature id="2">Diamond-patterned inlay marble veneer top</itemFeature>
+        <itemFeature id="3">Antiqued goldtone hardware</itemFeature>
+        <itemFeature id="4">Faux keyhole</itemFeature>
+        <itemFeature id="5">Serpentine-shaped drawer fronts</itemFeature>
+        <itemFeature id="6">Top drawers with felt bottoms</itemFeature>
+        <itemFeature id="7">9 drawers</itemFeature>
+        <itemFeature id="8">Includes tipover restraint device</itemFeature>
+      </itemFeatures>
+      <itemFluffs>
+        <itemFluff id="1">Inspired by the grandeur and grace of Old World style, this dresser is nothing short of stunning. A choice blend of materials is accented by detailed ornamental appliques. The diamond-patterned marble veneer tops off the opulence. Nine smooth-gliding drawers serve your storage needs exceptionally well.</itemFluff>
+      </itemFluffs>
+      <itemExtraDimensions>
+        <itemExtraDimension>
+          <standardDimension>Top side drawer interior (lined) (2): Width:13.13 in Depth:13.63 in Height:6.75 in </standardDimension>
+          <metricDimension>Top side drawer interior (lined) (2): Width:333.5 mm Depth:346.2 mm Height:171.45 mm </metricDimension>
+        </itemExtraDimension>
+        <itemExtraDimension>
+          <standardDimension>Top center drawer interior (lined): Width:26.63 in Depth:14.63 in Height:6.75 in </standardDimension>
+          <metricDimension>Top center drawer interior (lined): Width:676.4 mm Depth:371.6 mm Height:171.45 mm </metricDimension>
+        </itemExtraDimension>
+        <itemExtraDimension>
+          <standardDimension>Middle and bottom side drawer interior (4): Width:13.13 in Depth:13.75 in Height:5.75 in </standardDimension>
+          <metricDimension>Middle and bottom side drawer interior (4): Width:333.5 mm Depth:349.25 mm Height:146.05 mm </metricDimension>
+        </itemExtraDimension>
+        <itemExtraDimension>
+          <standardDimension>Middle and bottom center drawer interior (2): Width:26.63 in Depth:14.63 in Height:5.75 in </standardDimension>
+          <metricDimension>Middle and bottom center drawer interior (2): Width:676.4 mm Depth:371.6 mm Height:146.05 mm </metricDimension>
+        </itemExtraDimension>
+      </itemExtraDimensions>
+    </item>
+  </items>
+</itemAlign:itemAlignment>

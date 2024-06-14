@@ -1,48 +1,10 @@
+<?xml version="1.0"?>
 <config>
     <modules>
         <Ccc_Filetransfer>
-            <version>1.0.0</version>
+            <version>0.1.3</version>
         </Ccc_Filetransfer>
     </modules>
-    <global>
-        <models>
-            <ccc_filetransfer>
-                <class>Ccc_Filetransfer_Model</class>
-                <resourceModel>ccc_filetransfer_resource</resourceModel>
-            </ccc_filetransfer>
-            <ccc_filetransfer_resource>
-                <class>Ccc_Filetransfer_Model_Resource</class>
-                <entities>
-                    <configuration>
-                        <table>ccc_filetransfer_ftpconfiguration</table>
-                    </configuration>
-                    <filetransfer>
-                        <table>ccc_filetransfer_ftpfile</table>
-                    </filetransfer>
-                </entities>
-            </ccc_filetransfer_resource>
-        </models>
-        <resources>
-            <filetransfer_setup>
-                <setup>
-                    <module>Ccc_Filetransfer</module>
-                </setup>
-                <connection>
-                    <use>core_setup</use>
-                </connection>
-            </filetransfer_setup>
-        </resources>
-        <blocks>
-            <ccc_filetransfer>
-                <class>Ccc_Filetransfer_Block</class>
-            </ccc_filetransfer>
-        </blocks>
-        <helpers>
-            <ccc_filetransfer>
-                <class>Ccc_Filetransfer_Helper</class>
-            </ccc_filetransfer>
-        </helpers>
-    </global>
     <admin>
         <routers>
             <adminhtml>
@@ -53,23 +15,83 @@
                 </args>
             </adminhtml>
         </routers>
-    </admin>    
+    </admin>
     <adminhtml>
         <layout>
             <updates>
                 <ccc_filetransfer>
-                    <file>filetransfer.xml</file>
+                    <file>ccc_filetransfer.xml</file>
                 </ccc_filetransfer>
             </updates>
         </layout>
     </adminhtml>
+    <global>
+        <blocks>
+            <ccc_filetransfer>
+                <class>Ccc_Filetransfer_Block</class>
+            </ccc_filetransfer>
+        </blocks>
+        <helpers>
+            <ccc_filetransfer>
+                <class>Ccc_Filetransfer_Helper</class>
+            </ccc_filetransfer>
+        </helpers>
+        <models>
+            <ccc_filetransfer>
+                <class>Ccc_Filetransfer_Model</class>
+                <resourceModel>ccc_filetransfer_resource</resourceModel>
+            </ccc_filetransfer>
+            <ccc_filetransfer_resource>
+                <class>Ccc_Filetransfer_Model_Resource</class>
+                <entities>
+                    <ftpfile>
+                        <table>ccc_filetransfer_ftpfile</table>
+                    </ftpfile>
+                    <ftpconfiguration>
+                        <table>ccc_filetransfer_ftpconfiguration</table>
+                    </ftpconfiguration>
+                    <mastertable>
+                        <table>ccc_mastertable</table>
+                    </mastertable>
+                    <newtable>
+                        <table>ccc_newtable</table>
+                    </newtable>
+                    <distable>
+                        <table>ccc_discontinuetable</table>
+                    </distable>
+                </entities>
+            </ccc_filetransfer_resource>
+        </models>
+        <resources>
+            <filetransfer_setup>
+                <setup>
+                    <module>Ccc_Filetransfer</module>
+                    <class>Mage_Core_Model_Resource_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </filetransfer_setup>
+        </resources>
+    </global>
     <crontab>
         <jobs>
-            <filetransfer>
+            <readfile>
+                <schedule>
+                    <cron_expr>*/5 * * * *</cron_expr>
+                </schedule>
                 <run>
-                    <model>ccc_filetransfer/ftp::readFiles</model>
+                    <model>ccc_filetransfer/cron::readFile</model>
                 </run>
-            </filetransfer>
+            </readfile>
+            <readXmlFile>
+                <schedule>
+                    <cron_expr>*/5 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>ccc_filetransfer/cron::readXmlFiles</model>
+                </run>
+            </readXmlFile>
         </jobs>
     </crontab>
 </config>
