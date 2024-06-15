@@ -19,8 +19,8 @@ class Ccc_Filetransfer_Model_Master extends Mage_Core_Model_Abstract
 
     public function saveDataToMaster($xmlPartNumbers)
     {
+        if (empty($this->getMasterTableData())) {
         foreach ($xmlPartNumbers as $part) {
-            if (empty($this->getMasterTableData())) {
                 $model = Mage::getModel('ccc_filetransfer/master');
                 $model->setData($part);
                 try {
@@ -29,18 +29,20 @@ class Ccc_Filetransfer_Model_Master extends Mage_Core_Model_Abstract
                     Mage::logException($e);
                     echo 'Error saving part number: ' . $e->getMessage();
                 }
+            }
             } else {
                 $masterData = $this->getMasterTableData();
                 $this->processPartNumbers($xmlPartNumbers, $masterData);
-                break;
             }
-        }
+        
     }
+
+    
 
     function processPartNumbers($xmlPartNumbers, $masterData)
     {
-        $newPartNumbers = array_diff($xmlPartNumbers, array_keys($masterData));
-        $existingPartNumbers = array_intersect($xmlPartNumbers, array_keys($masterData));
+        // $newPartNumbers = array_diff($xmlPartNumbers, array_keys($masterData));
+        // $existingPartNumbers = array_intersect($xmlPartNumbers, array_keys($masterData));
         // $discontinuedPartNumbersKeys = array_diff(array_keys($masterData), $xmlPartNumbers);
         // $discontinuedPartNumbers = [];
 
@@ -58,23 +60,22 @@ class Ccc_Filetransfer_Model_Master extends Mage_Core_Model_Abstract
 
 
         foreach ($masterData as $key => $partNumber) {
-            $xmlPartNumbersFlat = array_column($newPartNumbers, 'part_no');
+            $xmlPartNumbersFlat = array_column($xmlPartNumbers, 'part_no');
             if (!in_array($key, $xmlPartNumbersFlat)) {
-                // $disModel=;
-                if (!Mage::getModel('ccc_filetransfer/distable')->getCollection()->addFieldToFilter('port_no', $key)) {
-                    $entityId = $masterData[$partNumber];
+                // if (!Mage::getModel('ccc_filetransfer/distable')->getCollection()->addFieldToFilter('part_no', $key)) {
+                    // $entityId = $masterData[$partNumber];
                     $model = Mage::getModel('ccc_filetransfer/distable');
                     $model->setEntityId($partNumber);
                     $model->setPartNo($key);
                     $model->save();
-                    $result = array_filter($xmlPartNumbersFlat, function($value) use ($key) {
-                        return $value != $key;
-                    });
-                    $xmlPartNumbersFlat = array_values($result);
-                }
-            } else {
-               $this->masterSaveNewPort($xmlPartNumbersFlat);
-                break;
+                    // $result = array_filter($xmlPartNumbersFlat, function ($value) use ($key) {
+                    //     return $value != $key;
+                    // });
+                    // $xmlPartNumbersFlat = array_values($result);
+                    
+                    // var_dump($xmlPartNumbersFlat);
+                // }
+            }
 
                 // foreach($xmlPartNumbersFlat as $partNumber){
                 // $model = Mage::getModel('ccc_filetransfer/master');
@@ -84,44 +85,68 @@ class Ccc_Filetransfer_Model_Master extends Mage_Core_Model_Abstract
                 //     $model->save();
                 // }
             }
-            }
+        }
+
+
+        // foreach ($existingPartNumbers as $partNumber) {
+        //     $entityId = $masterData[$partNumber]['entity_id'];
+        //     if (in_array($partNumber, array_column($newPartNumbers, 'part_no'))) {
+        //         $model = Mage::getModel('ccc_filetransfer/master')->load($entityId);
+        //         $model->setPartNo($partNumber);
+        //         $model->save();
+        //     }
+        // }
+
+
+        // foreach ($newPartNumbers as $partNumber) {
+        //     $model = Mage::getModel('ccc_filetransfer/master');
+        //     $model->setPartNo($partNumber['part_no']);
+        //     $model->save();
+        //     $entityId = $model->getId();
+        //     $newTableModel = Mage::getModel('ccc_filetransfer/newtable');
+        //     $newTableModel->setPartNo($partNumber['part_no']);
+        //     $newTableModel->setEntityId($entityId);
+        //     $newTableModel->save();
+        // }
+
         
-
-        foreach ($existingPartNumbers as $partNumber) {
-            $entityId = $masterData[$partNumber]['entity_id'];
-            if (in_array($partNumber, array_column($newPartNumbers, 'part_no'))) {
-                $model = Mage::getModel('ccc_filetransfer/master')->load($entityId);
-                $model->setPartNo($partNumber);
-                $model->save();
-            }
-        }
-
-
-        foreach ($newPartNumbers as $partNumber) {
-            $model = Mage::getModel('ccc_filetransfer/master');
-            $model->setPartNo($partNumber['part_no']);
-            $model->save();
-            $entityId = $model->getId();
-            $newTableModel = Mage::getModel('ccc_filetransfer/newtable');
-            $newTableModel->setPartNo($partNumber['part_no']);
-            $newTableModel->setEntityId($entityId);
-            $newTableModel->save();
-        }
-
-    }
-
-    public function masterSaveNewPort($data){
-            foreach($data as $port){
-            $model = Mage::getModel('ccc_filetransfer/master');
-            $Id=$model->setPartNo($data)->save();
-            $this->newSaveNewPort($port,$Id);
+    
+    public function NewEntries($xmlPartNumbers,$masterData){
+        $masterArray = array_column($masterData, 'part_no');
+        foreach ($xmlPartNumbers as $key => $partNumber) {
+            if (!in_array($key, $masterArray)) {
+                $this->masterSaveNewPort($key);
             }
     }
+}
 
-    public function newSaveNewPort($port,$id){
+    public function masterSaveNewPort($data)
+    {
+        foreach ($data as $port) {
+            $model = Mage::getModel('ccc_filetransfer/master');
+            if (!$model->getCollection()->addFieldToFilter('port_no', $port)) {
+                $Id = $model->setPartNo($data)->save();
+                $this->newSaveNewPort($port, $Id);
+            } else {
+                $Id = $model->getCollection()->addFieldToFilter('port_no', $port)->getFirstItem()->getId();
+                var_dump($Id);
+                $this->newSaveNewPort($port, $Id);
+            }
+        }
+    }
+
+    public function newSaveNewPort($port, $id)
+    {
         $newTableModel = Mage::getModel('ccc_filetransfer/newtable');
-            $newTableModel->setPartNo($port);
-            $newTableModel->setEntityId($id);
-            $newTableModel->save();
+        if ($item = $newTableModel->getCollection()->addFieldToFilter('entity_id', $id)->getFirstItem()) {
+            $newTableModel->setId($item->getId())
+                ->setPartNo($port)
+                ->setEntityId($id)
+                ->save();
+        } else {
+            $newTableModel->setPartNo($port)
+                ->setEntityId($id)
+                ->save();
+        }
     }
 }
