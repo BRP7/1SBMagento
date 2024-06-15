@@ -115,8 +115,7 @@ class Ccc_Filetransfer_Model_Master extends Mage_Core_Model_Abstract
 
 
     public function NewEntries($xmlPartNumbers, $masterData)
-    {
-       
+    { 
         $masterArray = array_column($masterData, 'part_no');
         foreach ($xmlPartNumbers as $key => $partNumber) {
             if (!in_array($key, $masterArray)) {
@@ -128,32 +127,36 @@ class Ccc_Filetransfer_Model_Master extends Mage_Core_Model_Abstract
     public function masterSaveNewPort($port)
     {
         $model = Mage::getModel('ccc_filetransfer/master');
-        $collection = $model->getCollection()->addFieldToFilter('part_no', $port);
+        $collection = $model->getCollection()
+                            ->addFieldToFilter('main_table.part_no', $port);
         if ($collection->getSize() == 0) {
             $model->setPartNo($port)->save();
             $this->newSaveNewPort($port, $model->getId());
         } else {
             $firstItem = $collection->getFirstItem();
             $id = $firstItem->getId(); 
-            $model->setData(['entity_id'=>$id,'part_no'=>$port])->save();
+            $model->setData(['entity_id'=>$id, 'part_no'=>$port])->save();
         }
     }
+    
 
 
 
     public function newSaveNewPort($port, $id)
     {
         $newTableModel = Mage::getModel('ccc_filetransfer/newtable');
-        $collection = $newTableModel->getCollection()->addFieldToFilter('entity_id', $id);
+        $collection = $newTableModel->getCollection()
+                                    ->addFieldToFilter('main_table.entity_id', $id);
         if ($collection->getSize() !== 0) {
-            $newTableModel->setId($collection->getId())
-                ->setPartNo($port)
-                ->setEntityId($id)
-                ->save();
+            $newTableModel->setId($collection->getFirstItem()->getId())
+                          ->setPartNo($port)
+                          ->setEntityId($id)
+                          ->save();
         } else {
             $newTableModel->setPartNo($port)
-                ->setEntityId($id)
-                ->save();
+                          ->setEntityId($id)
+                          ->save();
         }
     }
+    
 }
