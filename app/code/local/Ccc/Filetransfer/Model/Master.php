@@ -60,8 +60,9 @@ class Ccc_Filetransfer_Model_Master extends Mage_Core_Model_Abstract
         // print_r($discontinuedPartNumbers);
         foreach ($masterData as $key => $partNumber) {
             $xmlPartNumbersFlat = array_column($xmlPartNumbers, 'part_no');
+            $collection =Mage::getModel('ccc_filetransfer/distable')->getCollection()->addFieldToFilter('entity_id', $partNumber);
             if (!in_array($key, $xmlPartNumbersFlat)) {
-                // if (!Mage::getModel('ccc_filetransfer/distable')->getCollection()->addFieldToFilter('part_no', $key)) {
+                if ($collection->getSize() == 0) {
                 // $entityId = $masterData[$partNumber];
                 $model = Mage::getModel('ccc_filetransfer/distable');
                 $model->setEntityId($partNumber);
@@ -73,7 +74,7 @@ class Ccc_Filetransfer_Model_Master extends Mage_Core_Model_Abstract
                 // $xmlPartNumbersFlat = array_values($result);
 
                 // var_dump($xmlPartNumbersFlat);
-                // }
+                }
             }
 
 
@@ -129,8 +130,12 @@ class Ccc_Filetransfer_Model_Master extends Mage_Core_Model_Abstract
         $model = Mage::getModel('ccc_filetransfer/master');
         $collection = $model->getCollection()->addFieldToFilter('part_no', $port);
         if ($collection->getSize() == 0) {
-            $model->setPartNo($port)->save(); // Ensure save() method correctly handles ID assignment
-            $this->newSaveNewPort($port, $model->getId()); // Ensure newSaveNewPort handles saving logic correctly
+            $model->setPartNo($port)->save();
+            $this->newSaveNewPort($port, $model->getId());
+        } else {
+            $firstItem = $collection->getFirstItem();
+            $id = $firstItem->getId(); 
+            $model->setData(['entity_id'=>$id,'part_no'=>$port])->save();
         }
     }
 
@@ -139,8 +144,9 @@ class Ccc_Filetransfer_Model_Master extends Mage_Core_Model_Abstract
     public function newSaveNewPort($port, $id)
     {
         $newTableModel = Mage::getModel('ccc_filetransfer/newtable');
-        if ($item = $newTableModel->getCollection()->addFieldToFilter('entity_id', $id)->getFirstItem()) {
-            $newTableModel->setId($item->getId())
+        $collection = $newTableModel->getCollection()->addFieldToFilter('entity_id', $id);
+        if ($collection->getSize() !== 0) {
+            $newTableModel->setId($collection->getId())
                 ->setPartNo($port)
                 ->setEntityId($id)
                 ->save();
