@@ -13,6 +13,15 @@ class Ccc_Ticketsystem_Block_Adminhtml_Ticketsystemviewcomment extends Mage_Admi
         $collection = Mage::getModel('ccc_ticketsystem/comment')->getCollection()->addFieldToFilter('ticket_id',$id);
         return $collection;
     }
+    public function getComments()
+    {
+        $ticketId = $this->getRequest()->getParam('id');
+        $comments = Mage::getModel('ccc_ticketsystem/comment')
+        ->getCollection()
+        ->addFieldToFilter('ticket_id', $ticketId)
+        ->setOrder('created_at', 'DESC');
+        return $comments;
+    }
 
     // public function getStatusColor($statusId)
     // {

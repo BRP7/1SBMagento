@@ -14,7 +14,6 @@
             <block type="ccc_ticketsystem/adminhtml_ticket" name="ticketsystem.block"/>
         </reference>
     </default>
-    
     <adminhtml_ticketsystem_index>
         <reference name="content">
             <block type="ccc_ticketsystem/adminhtml_ticketsystem" name="ticketsystem2"  />

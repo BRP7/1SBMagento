@@ -55,38 +55,79 @@ class Ccc_Ticketsystem_Adminhtml_TicketsystemController extends Mage_Adminhtml_C
     }
 
 
+    // public function addCommentAction()
+    // {
+    //     if ($this->getRequest()->isPost()) {
+    //         $title = $this->getRequest()->getPost('title');
+    //         $description = $this->getRequest()->getPost('description');
+    //         $description = htmlspecialchars($description, ENT_QUOTES, 'UTF-8');
+
+    //         $ticketId = $this->getRequest()->getPost('ticketid');
+    //         $userId = $this->getRequest()->getPost('userid');
+
+    //         try {
+    //             $comment = Mage::getModel('ccc_ticketsystem/comment');
+    //             $comment->setTitle($title)
+    //                 ->setDescription($description)
+    //                 ->setTicketId($ticketId)
+    //                 ->setUserId($userId)
+    //                 ->save();
+
+    //             $comments = Mage::getModel('ccc_ticketsystem/comment')
+    //                 ->getCollection()
+    //                 ->addFieldToFilter('ticket_id', $ticketId)
+    //                 ->setOrder('created_at', 'DESC')
+    //                 ->getData();
+
+    //             $result = [
+    //                 'status' => 'success',
+    //                 'comments' => $comments
+    //             ];
+    //         } catch (Exception $e) {
+    //             $result = ['status' => 'error', 'message' => $e->getMessage()];
+    //         }
+
+    //         $this->getResponse()->setHeader('Content-Type', 'application/json');
+    //         $this->getResponse()->setBody(json_encode($result));
+    //     }
+    // }
+
+
+
     public function addCommentAction()
-    {
+{
+    if ($this->getRequest()->isPost()) {
+        $title = $this->getRequest()->getPost('title');
+        $description = htmlspecialchars($this->getRequest()->getPost('description'), ENT_QUOTES, 'UTF-8');
+        $ticketId = $this->getRequest()->getPost('ticketid');
+        $userId = Mage::getSingleton('admin/session')->getUser()->getId();
 
-        var_dump($this->getRequest()->isPost());
-        if ($this->getRequest()->isPost()) {
-            $title = $this->getRequest()->getPost('title');
-            $description = $this->getRequest()->getPost('description');
-            
-            try {
-                $comment = Mage::getModel('yourmodule/comment');
-                $comment->setTitle($title);
-                $comment->setDescription($description);
-                // $comment->setCreatedAt(Mage::getModel('core/date')->gmtDate());
-                $comment->save();
+        try {
+            $comment = Mage::getModel('ccc_ticketsystem/comment');
+            $comment->setTitle($title)
+                ->setDescription($description)
+                ->setTicketId($ticketId)
+                ->setUserId($userId)
+                ->save();
 
-                $result = [
-                    'status' => 'success',
-                    'comment' => [
-                        'title' => $title,
-                        'description' => $description,
-                        // 'created_at' => Mage::helper('core')->formatDate($comment->getCreatedAt(), 'medium', true)
-                    ]
-                ];
-            } catch (Exception $e) {
-                $result = ['status' => 'error', 'message' => $e->getMessage()];
-            }
+            $comments = Mage::getModel('ccc_ticketsystem/comment')
+                ->getCollection()
+                ->addFieldToFilter('ticket_id', $ticketId)
+                ->setOrder('created_at', 'DESC')
+                ->toArray();
 
-            $this->getResponse()->setHeader('Content-Type', 'application/json');
-            $this->getResponse()->setBody(json_encode($result));
+            $result = [
+                'status' => 'success',
+                'comments' => $comments['items']
+            ];
+        } catch (Exception $e) {
+            $result = ['status' => 'error', 'message' => $e->getMessage()];
         }
-    }
 
+        $this->getResponse()->setHeader('Content-Type', 'application/json');
+        $this->getResponse()->setBody(json_encode($result));
+    }
+}
 
 
 }

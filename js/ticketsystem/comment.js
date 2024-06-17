@@ -1,61 +1,62 @@
-
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('add-comment-btn').addEventListener('click', function() {
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('add-comment-btn').addEventListener('click', function () {
         document.getElementById('comment-form-container').style.display = 'block';
-        CKEDITOR.replace('comment-description', {
-            height: 300
-        });
+        if (!CKEDITOR.instances['comment-description']) {
+            CKEDITOR.replace('comment-description', {
+                height: 300
+            });
+        }
     });
 
-    // document.getElementById('submit-comment').addEventListener('click', function(event) {
-    //     event.preventDefault();
-    //     for (var instance in CKEDITOR.instances) {
-    //         CKEDITOR.instances[instance].updateElement();
-    //     }
-
-    //     var form = document.getElementById('comment-form');
-    //     var formData = new FormData(form);
-
-    //     new Ajax.Request(form.action, {
-    //         method: 'post',
-    //         parameters: formData,
-    //         onSuccess: function(response) {
-    //             alert('Comment added successfully!');
-    //             form.reset();
-    //             document.getElementById('comment-form-container').style.display = 'none';
-    //             for (var instance in CKEDITOR.instances) {
-    //                 CKEDITOR.instances[instance].destroy(true);
-    //             }
-    //         },
-    //         onFailure: function() {
-    //             alert('An error occurred while submitting the comment.');
-    //         }
-    //     });
-    // });
-
-    $('submit-comment').observe('click',function(){
-        var formKey=FROM_KEY;
+    document.getElementById('submit-comment').addEventListener('click', function () {
         var form = document.getElementById('comment-form');
-        var formData = new FormData(form);
-        formData.append("title");
-        formData.append("description");
-        formData.append("form_key",formKey);
-        var url = $('submit-comment').getAttribute('data-url');
-        console.log(url);
+        var formKey = form.querySelector('[name="form_key"]').value;
+        var formData = {
+            title: form.querySelector('[name="title"]').value,
+            ticketid: form.querySelector('[name="ticketid"]').value,
+            userid: form.querySelector('[name="userid"]').value,
+            description: CKEDITOR.instances['comment-description'].getData(),
+            form_key: formKey
+        };
+
+        var url = form.getAttribute('data-url');
+
         new Ajax.Request(url, {
             method: 'post',
             parameters: formData,
-            onSuccess: function(response) {
-                alert('Comment added successfully!');
-                form.reset();
-                document.getElementById('comment-form-container').style.display = 'none';
-                for (var instance in CKEDITOR.instances) {
-                    CKEDITOR.instances[instance].destroy(true);
+            onSuccess: function (response) {
+                var result = response.responseJSON;
+                if (result.status === 'success') {
+                    alert('Comment added successfully!');
+                    form.reset();
+                    document.getElementById('comment-form-container').style.display = 'none';
+                    for (var instance in CKEDITOR.instances) {
+                        CKEDITOR.instances[instance].destroy(true);
+                    }
+
+                    // Clear the current comments table
+                    var commentsTableBody = document.querySelector('#comments-table tbody');
+                    commentsTableBody.innerHTML = '';
+
+                    // Append new comments to the comments table
+                    result.comments.forEach(function (comment) {
+                        var newRow = '<tr><td>' + comment.title + '</td><td>' + comment.description + '</td><td>' + comment.created_at + '</td></tr>';
+                        commentsTableBody.insertAdjacentHTML('beforeend', newRow);
+                    });
+
+                    // Reinitialize CKEditor
+                    if (!CKEDITOR.instances['comment-description']) {
+                        CKEDITOR.replace('comment-description', {
+                            height: 300
+                        });
+                    }
+                } else {
+                    alert('An error occurred: ' + result.message);
                 }
             },
-            onFailure: function() {
+            onFailure: function () {
                 alert('An error occurred while submitting the comment.');
             }
         });
     });
-    });
+});

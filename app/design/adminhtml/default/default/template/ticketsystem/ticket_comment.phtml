@@ -1,21 +1,39 @@
-<div class="add-comment-container">
+<div class="comments-section">
     <button id="add-comment-btn">Add Comment</button>
     <div id="comment-form-container" style="display: none;">
-        <form id="comment-form" method="post" action="<?php echo $this->getUrl("*/ticket/addComment") ?>">
+        <form id="comment-form" method="post" data-url="<?php echo $this->getUrl('*/*/addComment') ?>">
             <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+            <input name="userid" type="hidden" value="<?php echo Mage::getSingleton('admin/session')->getUser()->getId() ?>" />
+            <input type="hidden" name="ticketid" value="<?php echo $this->getRequest()->getParam('id') ?>" />
             <label for="comment-title">Title</label>
             <input type="text" id="comment-title" name="title" required><br>
 
-            <label for="comment-description" class="ckeditor">Description</label>
+            <label for="comment-description">Description</label>
             <textarea id="comment-description" name="description" class="editor"></textarea><br>
 
-            <button type="submit" id="submit-comment" data-url="<?php echo $this->getUrl('*/*/addComment') ?>">Submit</button>
+            <button type="button" id="submit-comment">Submit</button>
         </form>
     </div>
+
+    <table id="comments-table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $comments = $this->getComments(); ?>
+            <?php foreach ($comments as $comment): ?>
+                <tr>
+                    <td><?php echo $comment->getTitle(); ?></td>
+                    <td><?php echo htmlspecialchars_decode($comment->getDescription(), ENT_QUOTES); ?></td>
+                    <td><?php echo $comment->getCreatedAt(); ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 </div>
 
-
 <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
-
-
-
