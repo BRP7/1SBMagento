@@ -4,6 +4,6 @@ class Ccc_Ticketsystem_Model_Resource_Ticketsystem extends Mage_Core_Model_Resou
 {
     protected function _construct()
     {
-        $this->_init('ccc_ticketsystem/ticketsystem', 'ticketsystem_id');
+        $this->_init('ccc_ticketsystem/ticketsystem', 'ticket_id');
     }
 }

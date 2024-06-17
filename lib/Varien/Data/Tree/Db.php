@@ -184,7 +184,6 @@ class Varien_Data_Tree_Db extends Varien_Data_Tree
         $data[$this->_parentField] = $parentNode->getId();
         $data[$this->_levelField]  = $parentNode->getData($this->_levelField)+1;
         $data[$this->_orderField]  = $order+1;
-
         $this->_conn->insert($this->_table, $data);
         $data[$this->_idField] = $this->_conn->lastInsertId();
 

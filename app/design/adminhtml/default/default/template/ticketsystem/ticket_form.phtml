@@ -1,31 +1,36 @@
+<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 <div id="form-popup" style="display:none;">
-    <form id="popup-form" method="post">
+    <form id="popup-form" method="post" action="<?php echo $this->getUrl('*/ticketsystem/saveData') ?>">
+        <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+        
         <label for="title">Title</label>
         <input type="text" id="title" name="title" required>
-
+        
         <label for="description">Description</label>
-        <textarea id="description" name="description" class="magento"></textarea>
-
+        <textarea id="description" name="description" class="ckeditor"></textarea>
+        
         <label for="assign_by">Assign By</label>
         <select id="assign_by" name="assign_by" required>
             <?php foreach ($this->getUsers() as $userId => $username): ?>
-                <option value="<?php echo $userId; ?>"><?php echo $username; ?></option>
+                <?php $selected = ($userId == $this->getCurrentUserId()) ? 'selected' : ''; ?>
+                <option value="<?php echo $userId; ?>" <?php echo $selected; ?>><?php echo $username; ?></option>
             <?php endforeach; ?>
         </select>
+        
         <label for="assign_to">Assign To</label>
         <select id="assign_to" name="assign_to" required>
-
             <?php foreach ($this->getUsers() as $userId => $username): ?>
                 <option value="<?php echo $userId; ?>"><?php echo $username; ?></option>
             <?php endforeach; ?>
         </select>
-
+        
         <label for="status">Status</label>
         <select id="status" name="status" required>
-            <option value="new">New</option>
-            <option value="in_progress">In Progress</option>
-            <option value="completed">Completed</option>
+            <?php foreach ($this->getStatusOptions() as $code => $label): ?>
+                <option value="<?php echo $code; ?>"><?php echo $label; ?></option>
+            <?php endforeach; ?>
         </select>
+        
         <button type="button" id="submit-form">Submit</button>
     </form>
 </div>

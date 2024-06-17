@@ -14,4 +14,24 @@
             <block type="ccc_ticketsystem/adminhtml_ticket" name="ticketsystem.block"/>
         </reference>
     </default>
+    
+    <adminhtml_ticketsystem_index>
+        <reference name="content">
+            <block type="ccc_ticketsystem/adminhtml_ticketsystem" name="ticketsystem2"  />
+        </reference>
+    </adminhtml_ticketsystem_index>
+    <adminhtml_ticketsystem_view>
+        <reference name="head">
+            <action method="addJs"><file>ticketsystem/comment.js</file></action>
+        </reference>
+        <reference>
+            <action method="addCss"><file>ticketsystem/ticketsystem.css</file></action>
+        </reference>
+        <reference name="content">
+            <block type="ccc_ticketsystem/adminhtml_ticketsystemview" name="ticketsystem.view"/>
+        </reference>
+        <reference name="ticketsystem.view">
+            <block type="ccc_ticketsystem/adminhtml_ticketsystemviewcomment" name="ticketsystem.view.comment"/>
+        </reference>
+    </adminhtml_ticketsystem_view>
 </layout>

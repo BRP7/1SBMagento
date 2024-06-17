@@ -570,11 +570,11 @@ abstract class Zend_Db_Adapter_Abstract
             . ' (' . implode(', ', $cols) . ') '
             . 'VALUES (' . implode(', ', $vals) . ')';
 
+            // print_r($sql);
         // execute the statement and return the number of affected rows
         if ($this->supportsParameters('positional')) {
             $bind = array_values($bind);
         }
-        // print_r($sql);
         $stmt = $this->query($sql, $bind);
         $result = $stmt->rowCount();
         return $result;

@@ -1,0 +1,21 @@
+<div class="add-comment-container">
+    <button id="add-comment-btn">Add Comment</button>
+    <div id="comment-form-container" style="display: none;">
+        <form id="comment-form" method="post" action="<?php echo $this->getUrl("*/ticket/addComment") ?>">
+            <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+            <label for="comment-title">Title</label>
+            <input type="text" id="comment-title" name="title" required><br>
+
+            <label for="comment-description" class="ckeditor">Description</label>
+            <textarea id="comment-description" name="description" class="editor"></textarea><br>
+
+            <button type="submit" id="submit-comment" data-url="<?php echo $this->getUrl('*/*/addComment') ?>">Submit</button>
+        </form>
+    </div>
+</div>
+
+
+<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+
+
+
