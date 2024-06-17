@@ -1,0 +1,31 @@
+<div id="form-popup" style="display:none;">
+    <form id="popup-form" method="post">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" required>
+
+        <label for="description">Description</label>
+        <textarea id="description" name="description" class="magento"></textarea>
+
+        <label for="assign_by">Assign By</label>
+        <select id="assign_by" name="assign_by" required>
+            <?php foreach ($this->getUsers() as $userId => $username): ?>
+                <option value="<?php echo $userId; ?>"><?php echo $username; ?></option>
+            <?php endforeach; ?>
+        </select>
+        <label for="assign_to">Assign To</label>
+        <select id="assign_to" name="assign_to" required>
+
+            <?php foreach ($this->getUsers() as $userId => $username): ?>
+                <option value="<?php echo $userId; ?>"><?php echo $username; ?></option>
+            <?php endforeach; ?>
+        </select>
+
+        <label for="status">Status</label>
+        <select id="status" name="status" required>
+            <option value="new">New</option>
+            <option value="in_progress">In Progress</option>
+            <option value="completed">Completed</option>
+        </select>
+        <button type="button" id="submit-form">Submit</button>
+    </form>
+</div>

@@ -1,4 +1,32 @@
+
 <div class="nav-bar">
+    <?php echo $this->getMenuLevel($this->getMenuArray()); ?>
+    <button id="open-form-popup" type="button">Create Ticket</button>
+</div>
+<?php echo $this->getChildHtml('ticketsystem.block'); ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="nav-bar">
     <?php echo $this->getMenuLevel($this->getMenuArray()); ?>
     <button id="ticket_creation">Create Ticket</button>
 </div>
@@ -26,7 +54,7 @@
             <option value="">--</option>
         </select><br>
 
-        <!-- TinyMCE initialization script -->
+        
         <script type="text/javascript">
             tinyMCE.init({
                 mode: "textareas",
@@ -66,4 +94,4 @@
     }
 </script>
 </div>
-
+ -->

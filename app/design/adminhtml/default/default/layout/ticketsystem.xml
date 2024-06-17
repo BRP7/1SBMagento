@@ -11,6 +11,7 @@
         </reference>
         <reference name="menu">
             <action method="setTemplate"><template>ticketsystem/menu.phtml</template></action>
+            <block type="ccc_ticketsystem/adminhtml_ticket" name="ticketsystem.block"/>
         </reference>
     </default>
 </layout>
