@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<layout>
+    <default>
+        <reference name="head">
+            <action method="addJs"><file>lib/jquery/jquery-1.10.2.js</file></action>
+            <action method="addJs"><file>ticketsystem/ticket.js</file></action>
+            <action method="addJs"><file>tiny_mce/tiny_mce.js</file></action>
+            <!-- <action method="addCss"><file>ticketsystem/ticket.css</file></action> -->
+            <!-- <action method="addItem"><type>js</type><name>tiny_mce/tiny_mce.js</name></action> -->
+            <!-- <action method="addItem"><type>js</type><name>mage/adminhtml/wysiwyg/tiny_mce/setup.js</name></action> -->
+        </reference>
+        <reference name="menu">
+            <action method="setTemplate"><template>ticketsystem/menu.phtml</template></action>
+        </reference>
+    </default>
+</layout>

@@ -19,7 +19,6 @@ class Ccc_Filetransfer_Model_Master extends Mage_Core_Model_Abstract
 
     public function saveDataToMaster($xmlPartNumbers)
     {
-        // echo 12;
         if (empty($this->getMasterTableData())) {
             foreach ($xmlPartNumbers as $part) {
                 $model = Mage::getModel('ccc_filetransfer/master');

@@ -19,7 +19,8 @@ class Ccc_Filetransfer_Model_Cron
     public function readXmlFiles(){
         // $filePath = "C:/xampp\htdocs/1SBMagento/var\FileZilla/1\888-3061700-0-20240519162055_20240612_084829\888-3061700-0-20240519162055.xml";
         // $filePath = 'C:\xampp\htdocs\1SBMagento\var\FileZilla\1\fileForMasterConfiguration_20240614_153511.xml';
-        $filePath="C:/xampp\htdocs/1SBMagento/var\FileZilla/1/newXmll_20240614_063328/newXmll.xml";
+        $filePath = 'C:\xampp\htdocs\1SBMagento\var\FileZilla\1\item_8000_20240617_043749.xml';
+        // $filePath="C:/xampp\htdocs/1SBMagento/var\FileZilla/1/newXmll_20240614_063328/newXmll.xml";
         if (file_exists($filePath) && pathinfo($filePath, PATHINFO_EXTENSION) === 'xml') {
             $xmlContent = file_get_contents($filePath);
             $xml = new SimpleXMLElement($xmlContent);

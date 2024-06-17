@@ -1,0 +1,69 @@
+<div class="nav-bar">
+    <?php echo $this->getMenuLevel($this->getMenuArray()); ?>
+    <button id="ticket_creation">Create Ticket</button>
+</div>
+
+<div id="ticket_popup" style="display:none;">
+    <form id="ticket_form" action="[your_form_action]" method="post">
+        <label for="ticket_title">Title:</label><br>
+        <input type="text" id="ticket_title" name="ticket_title"><br>
+
+        <label for="ticket_description">Description:</label><br>
+        <textarea id="ticket_description" name="ticket_description"></textarea><br>
+
+        <label for="ticket_assign_by">Assign By:</label><br>
+        <select id="ticket_assign_by" name="assign_by">
+            <option value=""></option>
+        </select><br>
+
+        <label for="ticket_assign_to">Assign To:</label><br>
+        <select id="ticket_assign_to" name="assign_to">
+            <option value="">--</option>
+        </select><br>
+
+        <label for="ticket_status">Status:</label><br>
+        <select id="ticket_status" name="status">
+            <option value="">--</option>
+        </select><br>
+
+        <!-- TinyMCE initialization script -->
+        <script type="text/javascript">
+            tinyMCE.init({
+                mode: "textareas",
+                theme: "advanced",
+                theme_advanced_buttons1: "bold,italic,underline,strikethrough,|,bullist,numlist,|,undo,redo,|,link,unlink,image,|,preview,code",
+                theme_advanced_buttons2: "",
+                theme_advanced_buttons3: "",
+                theme_advanced_toolbar_location: "top",
+                theme_advanced_toolbar_align: "left",
+                theme_advanced_statusbar_location: "bottom",
+                theme_advanced_resizing: true,
+                width: "100%",
+                height: "200"
+            });
+        </script>
+
+        <br>
+        <button type="submit">Submit</button>
+        <button type="button" onclick="closeTicketPopup()">Cancel</button>
+    </form>
+
+    <script type="text/javascript">
+    document.observe('dom:loaded', function() {
+        $('ticket_creation').observe('click', function() {
+            showTicketPopup();
+        });
+    });
+
+    function showTicketPopup() {
+        $('ticket_popup').style.display = 'block';
+        $$('.overlay').invoke('setStyle', {display: 'block'});
+    }
+
+    function closeTicketPopup() {
+        $('ticket_popup').style.display = 'none';
+        $$('.overlay').invoke('setStyle', {display: 'none'});
+    }
+</script>
+</div>
+
