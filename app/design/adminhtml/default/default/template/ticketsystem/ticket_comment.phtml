@@ -1,5 +1,6 @@
 <div class="comments-section">
-    <button id="add-comment-btn">Add Comment</button>
+   Click To add Comments → <button id="add-comment-btn">Add Comment</button>
+    <br>
     <div id="comment-form-container" style="display: none;">
         <form id="comment-form" method="post" data-url="<?php echo $this->getUrl('*/*/addComment') ?>">
             <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
@@ -15,7 +16,8 @@
         </form>
     </div>
 
-    <table id="comments-table">
+    <br>
+    <table border="1px" id="comments-table">
         <thead>
             <tr>
                 <th>Title</th>

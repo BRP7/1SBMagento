@@ -1,33 +1,67 @@
-<?php $ticketDetail = $this->getTicket(); ?>
-<?php $status = $this->getStatus($ticketDetail->getStatusId()); ?>
+<?php $ticketDetail = $this->getTicket();
+$status = $this->getStatus($ticketDetail->getStatus());
 
-<div class="ticket-details">
-    <h2 class="editable" id="ticket-title" data-field="title">
-        <?php echo $this->escapeHtml($ticketDetail->getTitle()); ?></h2>
-    <div class="description editable" id="ticket-description" data-field="description">
-        <?php echo htmlspecialchars_decode($ticketDetail->getDescription()); ?></div>
-    <div class="assigned-details">
-        <div class="assign-by editable" id="ticket-assign-by" data-field="assign_by">Assigned By:
-            <?php echo $this->escapeHtml($ticketDetail->getAssignBy()); ?></div>
-        <div class="assign-to editable" id="ticket-assign-to" data-field="assign_to">Assigned To:
-            <?php echo $this->escapeHtml($ticketDetail->getAssignTo()); ?></div>
-        <div class="status editable" id="ticket-status" data-field="status">
-            Status: <span class="status-color" style="background-color: <?php echo $status->getColorCode(); ?>;"></span>
-            <?php echo $this->escapeHtml($status->getLabel()); ?>
+?>
+<?php $users = $this->getUsers(); ?>
+<div style="border:2px dashed black;padding:3px;padding-left:20px;padding-right:20px">
+    <br>
+    <h1 style="text-decoration:underline">Ticket Details</h1>
+    <div class="ticket-details">
+        <div class="editable" id="ticket-title" data-field="title">
+            <b>Title:</b> <?php echo $this->escapeHtml($ticketDetail->getTitle()); ?>
+        </div>
+
+
+        <hr>
+        <div class="assigned-details">
+            <div class="assign-by editable" id="ticket-assign-by" data-field="assign_by"><b>Assigned By:</b>
+                <?php echo $this->escapeHtml($ticketDetail->getAssignBy()); ?>
+            </div>
+            <hr>
+            <div class="assign-to editable" id="ticket-assign-to" data-field="assign_to"><b>Assigned To:</b>
+                <?php echo $this->escapeHtml($ticketDetail->getAssignTo()); ?>
+            </div>
+            <hr>
+            <div class="status editable" id="ticket-status" data-field="status">
+                <b>Status:</b> <span class="status-color"
+                    style="background-color: <?php echo $status->getColorCode(); ?>;"></span>
+                <?php echo $this->escapeHtml($status->getLabel()); ?>
+                <!-- <hr> -->
+            </div>
+            <hr>
+
+            <div class="description editable" id="ticket-description" data-field="description">
+                <b>Description:</b><?php echo htmlspecialchars_decode($ticketDetail->getDescription()); ?>
+            </div>
         </div>
     </div>
+    <br>
 </div>
 
-<?php echo $this->getChildHtml('ticketsystem.view.comment'); ?>
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<div  style="border:2px dashed black;padding:3px;padding-left:20px;padding-right:20px">
+    <h1 style="text-decoration:underline">Add Comments</h1>
+<?php echo $this->getChildHtml('ticketsystem.view.comment'); ?>
+</div>
 <script type="text/javascript">
     document.observe('dom:loaded', function () {
         var ticketId = '<?php echo $ticketDetail->getId(); ?>';
         var formKey = '<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>';
+        // var user=
         var ticketEditor = new TicketEditor(
             ticketId,
             '<?php echo $this->getUrl('*/*/edit') ?>',
             formKey,
+            <?php echo json_encode($users) ?>,
+            <?php echo json_encode($this->getStatusOptions()) ?>
         );
     });
 </script>

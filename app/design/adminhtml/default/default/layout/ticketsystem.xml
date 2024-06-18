@@ -14,11 +14,12 @@
             <block type="ccc_ticketsystem/adminhtml_ticket" name="ticketsystem.block"/>
         </reference>
     </default>
-    <adminhtml_ticketsystem_index>
+    <!-- <adminhtml_ticketsystem_index>
         <reference name="content">
             <block type="ccc_ticketsystem/adminhtml_ticketsystem" name="ticketsystem2"  />
+            <block type="page/html_pager" name="custom.pager"/>
         </reference>
-    </adminhtml_ticketsystem_index>
+    </adminhtml_ticketsystem_index> -->
     <adminhtml_ticketsystem_view>
         <reference name="head">
             <action method="addJs"><file>ticketsystem/comment.js</file></action>

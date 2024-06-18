@@ -2,7 +2,6 @@
 
 class Ccc_Ticketsystem_Block_Adminhtml_Ticket extends Mage_Adminhtml_Block_Template
 {
-    protected $_collection;
     public function _construct(){
         $this->setTemplate('ticketsystem/ticket_form.phtml');
     }
@@ -34,22 +33,6 @@ class Ccc_Ticketsystem_Block_Adminhtml_Ticket extends Mage_Adminhtml_Block_Templ
             $options[$status->getId()] = $status->getLabel();
         }
         return $options;
-    }
-
-    public function getCollection()
-    {
-        if (is_null($this->_collection)) {
-            $this->_collection = Mage::getModel('ccc_ticketsystem/ticketsystem')->getCollection();
-            $this->_collection->setOrder('created_at', 'DESC');
-        }
-        return $this->_collection;
-    }
-
-    public function getPagerHtml()
-    {
-        $pagerBlock = $this->getLayout()->createBlock('page/html_pager', 'custom.pager');
-        $pagerBlock->setCollection($this->getCollection());
-        return $pagerBlock->toHtml();
     }
 
 }

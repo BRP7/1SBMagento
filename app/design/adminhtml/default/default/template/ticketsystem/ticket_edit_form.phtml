@@ -16,13 +16,18 @@ $ticketCollection = $this->getTicketCollection();
     </thead>
     <tbody>
         <?php foreach ($ticketCollection as $ticket): 
-            $statusColor = $this->getStatusColor($ticket->getStatusId());?>
-        
+            // print_r($ticket->getStatus());
+            $statusModel = $this->getStatus($ticket->getStatus());
+            // $statusColor = $this->getStatusColor($ticket->getStatus());
+            
+            ?>
             <tr>
                 <td><?php echo $ticket->getTicketId(); ?></td>
                 <td><?php echo $ticket->getTitle(); ?></td>
                 <td><?php echo htmlspecialchars_decode($ticket->getDescription()); ?></td>
-                <td bgcolor="<? $statusColor ?>"><?php echo $ticket->getStatusId(); ?></td>
+                <td bgcolor="<?php echo $statusModel->getColorCode(); ?>"><?php echo $statusModel->getLabel(); ?></td>
+
+                <!-- <td bgcolor="<?php //echo $statusColor ?>"><?php //echo $ticket->getStatus(); ?></td> -->
                 <td><?php echo $ticket->getCreatedAt(); ?></td>
                 <td><a href="<?php echo $this->getUrl('*/ticketsystem/view', array('id' => $ticket->getTicketId())); ?>">View</a></td>
                 <!-- <td><button onclick="viewTicket('<?php //echo $ticket->getTicketId(); ?>')">View</button></td> -->
@@ -31,4 +36,8 @@ $ticketCollection = $this->getTicketCollection();
     </tbody>
 </table>
 
+
+<div class="pagination">
+    <?php echo $this->getPaginationHtml(); ?>
+</div>
 

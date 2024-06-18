@@ -7,13 +7,31 @@ class Ccc_Ticketsystem_Adminhtml_TicketsystemController extends Mage_Adminhtml_C
             ->_setActiveMenu('ccc_ticketsystem/ticketsystem');
         return $this;
     }
+    // public function indexAction()
+    // {
+    //     $this->_title($this->__('Manage Ticket system'));
+    //     $this->_initAction();
+    //         $page = (int) $this->getRequest()->getParam('page', 1);
+    //         $limit = (int) $this->getRequest()->getParam('limit', 1);
+    //         $block = $this->getLayout()->createBlock('ccc_ticketsystem/adminhtml_ticketsystem');
+    //         $block->setPage($page)->setLimit($limit);
+    //         $this->loadLayout();
+    //         $this->getLayout()->getBlock('content')->append($block);
+    //     $this->renderLayout();
+    // }
+
+ 
     public function indexAction()
     {
-        $this->_title($this->__('Manage Ticket system'));
-        $this->_initAction();
+        $page = (int) $this->getRequest()->getParam('page', 1);
+        $limit = (int) $this->getRequest()->getParam('limit', 2);
+        $block = $this->getLayout()->createBlock('ccc_ticketsystem/adminhtml_ticketsystem');
+        $block->setPage($page)->setLimit($limit);
+        $this->loadLayout();
+        $this->getLayout()->getBlock('content')->append($block);
         $this->renderLayout();
     }
-
+ 
     public function saveDataAction()
     {
         if ($data = $this->getRequest()->getPost()) {
