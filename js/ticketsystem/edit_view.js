@@ -1,8 +1,10 @@
 var TicketEditor = Class.create({
-    initialize: function (ticketId, redirectUrl, formKey) {
+    initialize: function (ticketId, redirectUrl, formKey,userArray,statusArray) {
         this.ticketId = ticketId
         this.redirectUrl = redirectUrl
         this.formKey = formKey
+        this.userArray = userArray
+        this.statusArray = statusArray
         this.editableElements = $$('.editable');
         this.attachEvents();
     },
@@ -14,9 +16,10 @@ var TicketEditor = Class.create({
     makeElementEditable: function (event) {
         var element = event.element();
         var field = element.dataset.field;
+        console.log(this.statusArray);
         var originalContent = element.innerHTML;
         element.hide();
-        console.log(element);
+        // console.log(element);
         var inputElement;
         if (field === 'description') {
             inputElement = new Element('textarea', { 'class': 'edit-input' }).update(element.innerHTML.trim());
@@ -48,6 +51,7 @@ var TicketEditor = Class.create({
     saveField: function (element, inputElement, field, originalContent) {
         var newValue = inputElement.value;
         var ticketId = this.ticketId;
+        console.log(ticketId);
 
         new Ajax.Request(this.redirectUrl, {
             method: 'post',
