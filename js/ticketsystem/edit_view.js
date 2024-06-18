@@ -26,9 +26,13 @@ var TicketEditor = Class.create({
             inputElement = new Element('textarea', { 'class': 'edit-input', id: uniqueId }).update(element.innerHTML.trim());
             element.insert({ after: inputElement });
             CKEDITOR.replace(uniqueId);
-        } else if (field === 'assign_by' || field === 'assign_to' || field === 'status') {
+
+            var saveButton = new Element('button', { 'class': 'save-button' }).update('Save');
+            inputElement.insert({ after: saveButton });
+            saveButton.observe('click', this.saveField.bind(this, element, inputElement, field, originalContent));
+        } else if (field === 'assign_by' || field === 'assign_to' || field === 'status_id') {
             inputElement = new Element('select', { 'class': 'edit-input' });
-            if (field === 'status' && this.status && typeof this.status === 'object') {
+            if (field === 'status_id' && this.status && typeof this.status === 'object') {
                 options = Object.keys(this.status).map(function (key) {
                     return { value: key, text: this.status[key] };
                 }, this);
@@ -37,23 +41,22 @@ var TicketEditor = Class.create({
                     return { value: key, text: this.users[key] };
                 }, this);
             }
-
             options.forEach(function (option) {
-                inputElement.insert(new Element('option', { value: option.value }).update(option.text));
+                var optionElement = new Element('option', { value: option.value }).update(option.text);
+                if (option.text.trim() == originalContent.trim()) {
+                    optionElement.setAttribute('selected', 'selected');
+                }
+                inputElement.insert(optionElement);
             });
             element.insert({ after: inputElement });
         } else {
             inputElement = new Element('input', { type: 'text', 'class': 'edit-input', value: element.innerHTML.trim() });
             element.insert({ after: inputElement });
         }
-
-        var saveButton = new Element('button', { 'class': 'save-button' }).update('Save');
         var cancelButton = new Element('button', { 'class': 'cancel-button' }).update('Cancel');
-        inputElement.insert({ after: saveButton });
-        saveButton.insert({ after: cancelButton });
-
-        saveButton.observe('click', this.saveField.bind(this, element, inputElement, field, originalContent));
-        cancelButton.observe('click', this.cancelEdit.bind(this, element, inputElement, saveButton, cancelButton));
+        inputElement.insert({ after: cancelButton });
+        inputElement.observe('change', this.saveField.bind(this, element, inputElement, field, originalContent));
+        cancelButton.observe('click', this.cancelEdit.bind(this, element, inputElement, cancelButton));
     },
     saveField: function (element, inputElement, field, originalContent) {
         var newValue;
@@ -64,6 +67,7 @@ var TicketEditor = Class.create({
         } else {
             newValue = inputElement.value;
         }
+
         var ticketId = this.ticketId;
         new Ajax.Request(this.redirectUrl, {
             method: 'post',
@@ -76,27 +80,40 @@ var TicketEditor = Class.create({
             onSuccess: function (response) {
                 var json = response.responseText.evalJSON();
                 if (json.success) {
-                    element.innerHTML = json.newValue;
+                    if (field === 'assign_by' || field === 'assign_to' || field === 'status_id') {
+                        var displayText = '';
+                        if (field === 'status_id') {
+                            displayText = this.status[newValue] || newValue;
+                        } else {
+                            displayText = this.users[newValue] || newValue;
+                        }
+                        element.innerHTML = displayText;
+                    } else {
+                        element.innerHTML = json.newValue;
+                    }
                     element.show();
                     inputElement.remove();
-                    element.next('.save-button').remove();
-                    element.next('.cancel-button').remove();
+                    if (element.next('.cancel-button')) {
+                        element.next('.cancel-button').remove();
+                    }
+                    if (element.next('.save-button')) {
+                        element.next('.save-button').remove();
+                    }
                 } else {
                     alert('Failed to update the field.');
                     element.innerHTML = originalContent;
                     element.show();
                 }
-            }
+            }.bind(this)
         });
     },
-    cancelEdit: function (element, inputElement, saveButton, cancelButton) {
+    cancelEdit: function (element, inputElement, cancelButton) {
         var uniqueId = 'edit-' + element.dataset.field + '-' + this.ticketId;
         if (CKEDITOR.instances[uniqueId]) {
             CKEDITOR.instances[uniqueId].destroy();
         }
         element.show();
         inputElement.remove();
-        saveButton.remove();
         cancelButton.remove();
     }
 });

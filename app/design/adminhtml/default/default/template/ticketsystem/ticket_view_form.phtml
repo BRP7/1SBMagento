@@ -1,50 +1,44 @@
-<?php $ticketDetail = $this->getTicket();
+<?php
+$ticketDetail = $this->getTicket();
 $status = $this->getStatus($ticketDetail->getStatus());
-
-?>
-<?php $users = $this->getUsers(); ?>
-<div style="border:2px dashed black;padding:3px;padding-left:20px;padding-right:20px">
-    <br>
-    <h1 style="text-decoration:underline">Ticket Details</h1>
-    <div class="ticket-details">
-        <div class="editable" id="ticket-title" data-field="title">
-            <b>Title:</b> <?php echo $this->escapeHtml($ticketDetail->getTitle()); ?>
-        </div>
-
-
-        <hr>
-        <div class="assigned-details">
-            <div class="assign-by editable" id="ticket-assign-by" data-field="assign_by"><b>Assigned By:</b>
-                <?php echo $this->escapeHtml($ticketDetail->getAssignBy()); ?>
-            </div>
-            <hr>
-            <div class="assign-to editable" id="ticket-assign-to" data-field="assign_to"><b>Assigned To:</b>
-                <?php echo $this->escapeHtml($ticketDetail->getAssignTo()); ?>
-            </div>
-            <hr>
-            <div class="status editable" id="ticket-status" data-field="status">
-                <b>Status:</b> <span class="status-color"
-                    style="background-color: <?php echo $status->getColorCode(); ?>;"></span>
+$users = $this->getUsers(); ?>
+<div class="ticket-details">
+<h1 style="text-decoration:underline">Ticket</h1>
+    <table class="ticket-table">
+        <tr>
+            <td class="label">Title:</td>
+            <td class="editable" id="ticket-title" data-field="title">
+                <?php echo $this->escapeHtml($ticketDetail->getTitle()); ?>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">Description:</td>
+            <td class="editable description" id="ticket-description" data-field="description">
+                <?php echo htmlspecialchars_decode($ticketDetail->getDescription()); ?>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">Assigned By:</td>
+            <td class="editable assign-by" id="ticket-assign-by" data-field="assign_by">
+                <?php echo $this->escapeHtml($users[$ticketDetail->getAssignBy()]); ?>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">Assigned To:</td>
+            <td class="editable assign-to" id="ticket-assign-to" data-field="assign_to">
+                <?php echo $this->escapeHtml($users[$ticketDetail->getAssignTo()]); ?>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">Status:</td>
+            <td class="editable status" id="ticket-status" data-field="status_id">
+                <span class="status-color" style="background-color: <?php echo $status->getColorCode(); ?>;"></span>
                 <?php echo $this->escapeHtml($status->getLabel()); ?>
-                <!-- <hr> -->
-            </div>
-            <hr>
-
-            <div class="description editable" id="ticket-description" data-field="description">
-                <b>Description:</b><?php echo htmlspecialchars_decode($ticketDetail->getDescription()); ?>
-            </div>
-        </div>
-    </div>
-    <br>
+            </td>
+        </tr>
+    </table>
 </div>
 
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 
 <div  style="border:2px dashed black;padding:3px;padding-left:20px;padding-right:20px">

@@ -16,6 +16,7 @@ class Ccc_Ticketsystem_Block_Adminhtml_Ticketsystemview extends Mage_Adminhtml_B
     }
     public function getStatus($statusId)
     {
+      
         return Mage::getModel('ccc_ticketsystem/status')->load($statusId);
        
     }
