@@ -22,6 +22,7 @@
     <adminhtml_ticketsystem_view>
         <reference name="head">
             <action method="addJs"><file>ticketsystem/comment.js</file></action>
+            <action method="addJs"><file>ticketsystem/edit_view.js</file></action>
         </reference>
         <reference>
             <action method="addCss"><file>ticketsystem/ticketsystem.css</file></action>

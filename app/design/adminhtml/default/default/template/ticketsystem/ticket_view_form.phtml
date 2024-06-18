@@ -1,53 +1,33 @@
-<style>.ticket-details {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 20px;
-    max-width: 600px;
-    margin: 20px auto;
-    font-family: Arial, sans-serif;
-}
+<?php $ticketDetail = $this->getTicket(); ?>
+<?php $status = $this->getStatus($ticketDetail->getStatusId()); ?>
 
-.ticket-details div {
-    margin-bottom: 10px;
-}
-
-.ticket-details .ticket-id,
-.ticket-details .ticket-title,
-.ticket-details .ticket-description,
-.ticket-details .ticket-status {
-    font-size: 16px;
-    color: #333;
-}
-
-.ticket-details .ticket-description {
-    white-space: pre-wrap; /* Preserves line breaks and spacing */
-}
-
-.ticket-details .no-ticket {
-    text-align: center;
-    font-size: 16px;
-    color: #999;
-}
-
-.ticket-details strong {
-    color: #000;
-}
-</style>
 <div class="ticket-details">
-    <?php
-    $ticket = Mage::registry('ticket_data');
-    
-    if ($ticket && $ticket->getId()) {
-        echo "<div class='ticket-id'><strong>Ticket ID:</strong> " . $ticket->getId() . "</div>";
-        echo "<div class='ticket-title'><strong>Ticket Title:</strong> " . $ticket->getTitle() . "</div>";
-        echo "<div class='ticket-description'><strong>Ticket Description:</strong> " .htmlspecialchars_decode($ticket->getDescription()) . "</div>";
-        echo "<div class='ticket-status'><strong>Ticket Status:</strong> " . $ticket->getStatus() . "</div>";
-    } else {
-        echo "<div class='no-ticket'>No ticket data available.</div>";
-    }
-    ?>
+    <h2 class="editable" id="ticket-title" data-field="title">
+        <?php echo $this->escapeHtml($ticketDetail->getTitle()); ?></h2>
+    <div class="description editable" id="ticket-description" data-field="description">
+        <?php echo htmlspecialchars_decode($ticketDetail->getDescription()); ?></div>
+    <div class="assigned-details">
+        <div class="assign-by editable" id="ticket-assign-by" data-field="assign_by">Assigned By:
+            <?php echo $this->escapeHtml($ticketDetail->getAssignBy()); ?></div>
+        <div class="assign-to editable" id="ticket-assign-to" data-field="assign_to">Assigned To:
+            <?php echo $this->escapeHtml($ticketDetail->getAssignTo()); ?></div>
+        <div class="status editable" id="ticket-status" data-field="status">
+            Status: <span class="status-color" style="background-color: <?php echo $status->getColorCode(); ?>;"></span>
+            <?php echo $this->escapeHtml($status->getLabel()); ?>
+        </div>
+    </div>
 </div>
 
 <?php echo $this->getChildHtml('ticketsystem.view.comment'); ?>
 
+<script type="text/javascript">
+    document.observe('dom:loaded', function () {
+        var ticketId = '<?php echo $ticketDetail->getId(); ?>';
+        var formKey = '<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>';
+        var ticketEditor = new TicketEditor(
+            ticketId,
+            '<?php echo $this->getUrl('*/*/edit') ?>',
+            formKey
+        );
+    });
+</script>

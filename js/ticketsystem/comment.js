@@ -34,17 +34,14 @@ document.addEventListener('DOMContentLoaded', function () {
                         CKEDITOR.instances[instance].destroy(true);
                     }
 
-                    // Clear the current comments table
                     var commentsTableBody = document.querySelector('#comments-table tbody');
                     commentsTableBody.innerHTML = '';
 
-                    // Append new comments to the comments table
                     result.comments.forEach(function (comment) {
                         var newRow = '<tr><td>' + comment.title + '</td><td>' + comment.description + '</td><td>' + comment.created_at + '</td></tr>';
                         commentsTableBody.insertAdjacentHTML('beforeend', newRow);
                     });
 
-                    // Reinitialize CKEditor
                     if (!CKEDITOR.instances['comment-description']) {
                         CKEDITOR.replace('comment-description', {
                             height: 300

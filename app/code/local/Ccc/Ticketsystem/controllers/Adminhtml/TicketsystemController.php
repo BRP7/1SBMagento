@@ -44,6 +44,67 @@ class Ccc_Ticketsystem_Adminhtml_TicketsystemController extends Mage_Adminhtml_C
         $this->_redirect('*/*/');
     }
 
+    // public function updateTicketAction()
+    // {
+    //     if ($this->getRequest()->isPost()) {
+    //         $postData = $this->getRequest()->getPost();
+    //         $ticketId = $postData['ticket_id'];
+    //         $title = $postData['title'];
+    //         $description = $postData['description'];
+    //         $status = $postData['status'];
+    
+    //         if ($ticketId) {
+    //             try {
+    //                 $ticket = Mage::getModel('ticketsystem/ticket')->load($ticketId);
+    //                 $ticket->setTitle($title);
+    //                 $ticket->setDescription($description);
+    //                 $ticket->setStatus($status);
+    //                 $ticket->save();
+    
+    //                 $response = ['status' => 'success'];
+    //             } catch (Exception $e) {
+    //                 $response = ['status' => 'error', 'message' => $e->getMessage()];
+    //             }
+    //         } else {
+    //             $response = ['status' => 'error', 'message' => 'Invalid ticket ID'];
+    //         }
+    //     } else {
+    //         $response = ['status' => 'error', 'message' => 'Invalid request'];
+    //     }
+    
+    //     $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($response));
+    // }
+    
+    
+
+    public function editAction()
+    {
+        $ticketId = $this->getRequest()->getPost('ticket_id');
+        $field = $this->getRequest()->getPost('field');
+        $value = $this->getRequest()->getPost('value');
+        try {
+            $ticket = Mage::getModel('ccc_ticketsystem/ticketsystem')->load($ticketId);
+            if ($ticket->getId()) {
+                $ticket->setData($field, $value);
+                $ticket->save();
+
+                $response = [
+                    'success' => true,
+                    'newValue' => $ticket->getData($field)
+                ];
+            } else {
+                throw new Exception('Invalid Ticket ID');
+            }
+        } catch (Exception $e) {
+            $response = [
+                'success' => false,
+                'error' => $e->getMessage()
+            ];
+        }
+        $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($response));
+    }
+
+
 
     public function viewAction()
     {
@@ -95,39 +156,39 @@ class Ccc_Ticketsystem_Adminhtml_TicketsystemController extends Mage_Adminhtml_C
 
 
     public function addCommentAction()
-{
-    if ($this->getRequest()->isPost()) {
-        $title = $this->getRequest()->getPost('title');
-        $description = htmlspecialchars($this->getRequest()->getPost('description'), ENT_QUOTES, 'UTF-8');
-        $ticketId = $this->getRequest()->getPost('ticketid');
-        $userId = Mage::getSingleton('admin/session')->getUser()->getId();
+    {
+        if ($this->getRequest()->isPost()) {
+            $title = $this->getRequest()->getPost('title');
+            $description = htmlspecialchars($this->getRequest()->getPost('description'), ENT_QUOTES, 'UTF-8');
+            $ticketId = $this->getRequest()->getPost('ticketid');
+            $userId = Mage::getSingleton('admin/session')->getUser()->getId();
 
-        try {
-            $comment = Mage::getModel('ccc_ticketsystem/comment');
-            $comment->setTitle($title)
-                ->setDescription($description)
-                ->setTicketId($ticketId)
-                ->setUserId($userId)
-                ->save();
+            try {
+                $comment = Mage::getModel('ccc_ticketsystem/comment');
+                $comment->setTitle($title)
+                    ->setDescription($description)
+                    ->setTicketId($ticketId)
+                    ->setUserId($userId)
+                    ->save();
 
-            $comments = Mage::getModel('ccc_ticketsystem/comment')
-                ->getCollection()
-                ->addFieldToFilter('ticket_id', $ticketId)
-                ->setOrder('created_at', 'DESC')
-                ->toArray();
+                $comments = Mage::getModel('ccc_ticketsystem/comment')
+                    ->getCollection()
+                    ->addFieldToFilter('ticket_id', $ticketId)
+                    ->setOrder('created_at', 'DESC')
+                    ->toArray();
 
-            $result = [
-                'status' => 'success',
-                'comments' => $comments['items']
-            ];
-        } catch (Exception $e) {
-            $result = ['status' => 'error', 'message' => $e->getMessage()];
+                $result = [
+                    'status' => 'success',
+                    'comments' => $comments['items']
+                ];
+            } catch (Exception $e) {
+                $result = ['status' => 'error', 'message' => $e->getMessage()];
+            }
+
+            $this->getResponse()->setHeader('Content-Type', 'application/json');
+            $this->getResponse()->setBody(json_encode($result));
         }
-
-        $this->getResponse()->setHeader('Content-Type', 'application/json');
-        $this->getResponse()->setBody(json_encode($result));
     }
-}
 
 
 }
