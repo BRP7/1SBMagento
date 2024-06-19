@@ -20,18 +20,19 @@ class Ccc_Ticketsystem_Adminhtml_TicketsystemController extends Mage_Adminhtml_C
     //     $this->renderLayout();
     // }
 
- 
+
     public function indexAction()
     {
         $page = (int) $this->getRequest()->getParam('page', 1);
-        $limit = (int) $this->getRequest()->getParam('limit', 2);
-        $block = $this->getLayout()->createBlock('ccc_ticketsystem/adminhtml_ticketsystem');
+        $limit = (int) $this->getRequest()->getParam('limit', 3);
+        $block = $this->getLayout()->createBlock('ccc_ticketsystem/adminhtml_ticketsystem')
+            ->setNameInLayout('ticketsystem_edit');
         $block->setPage($page)->setLimit($limit);
         $this->loadLayout();
         $this->getLayout()->getBlock('content')->append($block);
         $this->renderLayout();
     }
- 
+
     public function saveDataAction()
     {
         if ($data = $this->getRequest()->getPost()) {
@@ -62,6 +63,37 @@ class Ccc_Ticketsystem_Adminhtml_TicketsystemController extends Mage_Adminhtml_C
         $this->_redirect('*/*/');
     }
 
+
+   public function saveFilterAction()
+{
+    $data = $this->getRequest()->getPost();
+
+    foreach ($data as $key => $value) {
+        // Separate key and value using the '=' delimiter
+        list($fieldName, $fieldValue) = explode('=', $value);
+
+        $model = Mage::getModel('ccc_ticketsystem/filter');
+        try {
+            $model->setData([
+                'label' => $fieldName,
+                'value' => $fieldValue
+            ])->save();
+        } catch (Exception $e) {
+            Mage::logException($e);
+        }
+    }
+
+    $response = [
+        'success' => true
+    ];
+
+    $this->getResponse()->setHeader('Content-Type', 'application/json');
+    $this->getResponse()->setBody(json_encode($response));
+}
+
+        
+    
+
     // public function updateTicketAction()
     // {
     //     if ($this->getRequest()->isPost()) {
@@ -70,7 +102,7 @@ class Ccc_Ticketsystem_Adminhtml_TicketsystemController extends Mage_Adminhtml_C
     //         $title = $postData['title'];
     //         $description = $postData['description'];
     //         $status = $postData['status'];
-    
+
     //         if ($ticketId) {
     //             try {
     //                 $ticket = Mage::getModel('ticketsystem/ticket')->load($ticketId);
@@ -78,7 +110,7 @@ class Ccc_Ticketsystem_Adminhtml_TicketsystemController extends Mage_Adminhtml_C
     //                 $ticket->setDescription($description);
     //                 $ticket->setStatus($status);
     //                 $ticket->save();
-    
+
     //                 $response = ['status' => 'success'];
     //             } catch (Exception $e) {
     //                 $response = ['status' => 'error', 'message' => $e->getMessage()];
@@ -89,11 +121,11 @@ class Ccc_Ticketsystem_Adminhtml_TicketsystemController extends Mage_Adminhtml_C
     //     } else {
     //         $response = ['status' => 'error', 'message' => 'Invalid request'];
     //     }
-    
+
     //     $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($response));
     // }
-    
-    
+
+
 
     public function editAction()
     {
@@ -189,22 +221,22 @@ class Ccc_Ticketsystem_Adminhtml_TicketsystemController extends Mage_Adminhtml_C
                     ->setUserId($userId)
                     ->save();
 
-                $comments = Mage::getModel('ccc_ticketsystem/comment')
-                    ->getCollection()
-                    ->addFieldToFilter('ticket_id', $ticketId)
-                    ->setOrder('created_at', 'DESC')
-                    ->toArray();
+                // $comments = Mage::getModel('ccc_ticketsystem/comment')
+                //     ->getCollection()
+                //     ->addFieldToFilter('ticket_id', $ticketId)
+                //     ->setOrder('created_at', 'DESC')
+                //     ->toArray();
 
-                $result = [
-                    'status' => 'success',
-                    'comments' => $comments['items']
-                ];
+                $block = $this->getLayout()->createBlock('ccc_filemanager/adminhtml_ticketsystemviewcomment');
+                $html = $block->toHtml();
+                // $this->getResponse()->setHeader('Content-Type', 'application/json');
+                $this->getResponse()->setBody($html);
+
             } catch (Exception $e) {
                 $result = ['status' => 'error', 'message' => $e->getMessage()];
+                $this->getResponse()->setBody(json_encode($result));
             }
 
-            $this->getResponse()->setHeader('Content-Type', 'application/json');
-            $this->getResponse()->setBody(json_encode($result));
         }
     }
 

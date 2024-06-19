@@ -43,8 +43,15 @@ var TicketEditor = Class.create({
             }
             options.forEach(function (option) {
                 var optionElement = new Element('option', { value: option.value }).update(option.text);
-                if (option.text.trim() == originalContent.trim()) {
-                    optionElement.setAttribute('selected', 'selected');
+                if (field === 'status') {
+                    if (option.text.trim() == element.querySelectorAll('span')[1].textContent) {
+                        optionElement.setAttribute('selected', 'selected');
+                    }
+                }
+                else {
+                    if (option.text.trim() == originalContent.trim()) {
+                        optionElement.setAttribute('selected', 'selected');
+                    }
                 }
                 inputElement.insert(optionElement);
             });

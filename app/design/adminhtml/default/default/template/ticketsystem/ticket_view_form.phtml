@@ -2,37 +2,41 @@
 $ticketDetail = $this->getTicket();
 $status = $this->getStatus($ticketDetail->getStatus());
 $users = $this->getUsers(); ?>
-<div class="ticket-details">
-<h1 style="text-decoration:underline">Ticket</h1>
+<?php echo $status->getColorCode(); ?>
+<div class="ticket-details" style="border:2px dashed black;padding:3px;padding-left:20px;padding-right:20px">
+    <h1 style="text-decoration:underline">Ticket</h1>
+    <br>
     <table class="ticket-table">
         <tr>
-            <td class="label">Title:</td>
+            <td class="label"><b>Title:</b></td>
             <td class="editable" id="ticket-title" data-field="title">
                 <?php echo $this->escapeHtml($ticketDetail->getTitle()); ?>
             </td>
         </tr>
         <tr>
-            <td class="label">Description:</td>
+            <td class="label"><b>Description:</b></td>
             <td class="editable description" id="ticket-description" data-field="description">
                 <?php echo htmlspecialchars_decode($ticketDetail->getDescription()); ?>
             </td>
         </tr>
         <tr>
-            <td class="label">Assigned By:</td>
+            <td class="label"><b>Assigned By:</b></td>
             <td class="editable assign-by" id="ticket-assign-by" data-field="assign_by">
                 <?php echo $this->escapeHtml($users[$ticketDetail->getAssignBy()]); ?>
             </td>
         </tr>
         <tr>
-            <td class="label">Assigned To:</td>
+            <td class="label"><b>Assigned To:</b></td>
             <td class="editable assign-to" id="ticket-assign-to" data-field="assign_to">
                 <?php echo $this->escapeHtml($users[$ticketDetail->getAssignTo()]); ?>
             </td>
         </tr>
         <tr>
-            <td class="label">Status:</td>
+            <td class="label"><b>Status:</b></td>
             <td class="editable status" id="ticket-status" data-field="status_id">
-                <span class="status-color" style="background-color: <?php echo $status->getColorCode(); ?>;"></span>
+                <span class="status-color" style="background-color:<?php echo $status->getColorCode();?>;height:10px;border-radius:50%;">
+                    <div style="background-color:<?php echo $status->getColorCode();?>;width:20px;height:20px;border-radius:50%;"></div>
+                </span>
                 <?php echo $this->escapeHtml($status->getLabel()); ?>
             </td>
         </tr>
@@ -40,10 +44,20 @@ $users = $this->getUsers(); ?>
 </div>
 
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-<div  style="border:2px dashed black;padding:3px;padding-left:20px;padding-right:20px">
+
+
+<div style="border:2px dashed black;padding:3px;padding-left:20px;padding-right:20px">
     <h1 style="text-decoration:underline">Add Comments</h1>
-<?php echo $this->getChildHtml('ticketsystem.view.comment'); ?>
+    <?php echo $this->getChildHtml('ticketsystem.view.comment'); ?>
 </div>
 <script type="text/javascript">
     document.observe('dom:loaded', function () {

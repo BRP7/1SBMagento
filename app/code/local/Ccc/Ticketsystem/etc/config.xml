@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Ccc_Ticketsystem>
-            <version>0.1.1</version>
+            <version>0.1.2</version>
         </Ccc_Ticketsystem>
     </modules>
     <frontend>
@@ -37,6 +37,9 @@
                     <status>
                         <table>ccc_status</table>
                     </status>
+                    <filter>
+                        <table>ccc_store_filter</table>
+                    </filter>
                 </entities>
             </ccc_ticketsystem_resource>
         </models>
