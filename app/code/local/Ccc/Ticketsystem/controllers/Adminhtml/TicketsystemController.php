@@ -64,35 +64,68 @@ class Ccc_Ticketsystem_Adminhtml_TicketsystemController extends Mage_Adminhtml_C
     }
 
 
-   public function saveFilterAction()
-{
-    $data = $this->getRequest()->getPost();
+    //    public function saveFilterAction()
+// {
+//     $data = $this->getRequest()->getPost();
 
-    foreach ($data as $key => $value) {
-        // Separate key and value using the '=' delimiter
-        list($fieldName, $fieldValue) = explode('=', $value);
+    //     foreach ($data as $key => $value) {
+//         // Separate key and value using the '=' delimiter
+//         list($fieldName, $fieldValue) = explode('=', $value);
 
-        $model = Mage::getModel('ccc_ticketsystem/filter');
-        try {
-            $model->setData([
-                'label' => $fieldName,
-                'value' => $fieldValue
-            ])->save();
-        } catch (Exception $e) {
-            Mage::logException($e);
+    //         $model = Mage::getModel('ccc_ticketsystem/filter');
+//         try {
+//             $model->setData([
+//                 'label' => $fieldName,
+//                 'value' => $fieldValue
+//             ])->save();
+//         } catch (Exception $e) {
+//             Mage::logException($e);
+//         }
+//     }
+
+    //     $response = [
+//         'success' => true
+//     ];
+
+    //     $this->getResponse()->setHeader('Content-Type', 'application/json');
+//     $this->getResponse()->setBody(json_encode($response));
+// }
+
+    public function saveFilterAction()
+    {
+        if ($this->getRequest()->isPost()) {
+            $data = $this->getRequest()->getPost('data');
+            $paramPairs = explode('&', $data);
+            $outputArray = [];
+            foreach ($paramPairs as $pair) {
+                list($key, $value) = explode('=', $pair);
+                if ($key === 'label') {
+                    $label['label'] = $value;
+                } else {
+                    $outputArray[] = [
+                        'field' => $key,
+                        'value' => $value,
+                    ];
+                }
+            }
+            foreach ($outputArray as &$entry) {
+                $entry['label'] = $label['label'];
+            }
+
+            try {
+                $resource = Mage::getSingleton('core/resource');
+                $writeConnection = $resource->getConnection('core_write');
+                $tableName = $resource->getTableName('ccc_ticketsystem/filter');
+                $writeConnection->insertMultiple($tableName, $outputArray);
+                $this->getResponse()->setBody(json_encode(['success' => true]));
+            } catch (Exception $e) {
+                $this->getResponse()->setBody(json_encode(['success' => false, 'message' => $e->getMessage()]));
+            }
         }
     }
 
-    $response = [
-        'success' => true
-    ];
 
-    $this->getResponse()->setHeader('Content-Type', 'application/json');
-    $this->getResponse()->setBody(json_encode($response));
-}
 
-        
-    
 
     // public function updateTicketAction()
     // {
@@ -238,6 +271,41 @@ class Ccc_Ticketsystem_Adminhtml_TicketsystemController extends Mage_Adminhtml_C
             }
 
         }
+    }
+
+
+    public function applyFilterAction()
+    {
+
+        $label = $this->getRequest()->getPost('label');
+        $data = Mage::getModel('ccc_ticketsystem/filter')->getCollection()->addFieldToFilter('label', $label);
+        $field = "";
+        $values = [];
+        foreach ($data as $row) {
+            $collection = Mage::getModel('ccc_ticketsystem/filter')->getCollection();
+
+            if ($row->getField() == $field) {
+                array_push($values, $row->getValue());
+            } else {
+                if (!empty($values)) {
+                    $collection .= $collection->addFieldToFilter('field', $row->getField())
+                        ->addFieldToFilter('value', array('in' => $values));
+                }
+                $values = [];
+                array_push($values, $row->getValue());
+                $field = $row->getField();
+            }
+
+            // $collection = $collection->addFieldToFilter('field', array('in' => $values));
+            print_r($collection);
+            // print_r($row->getValue());
+        }
+        $select = $collection->getSelect();
+        $query = (string) $select;
+
+        // Print or log the query
+        Mage::log($query);
+        $this->getResponse()->setBody(json_encode(['success' => true]));
     }
 
 

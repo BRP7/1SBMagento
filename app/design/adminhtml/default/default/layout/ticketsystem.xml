@@ -34,10 +34,13 @@
         <reference name="ticketsystem_edit">
             <block type="ccc_ticketsystem/adminhtml_ticketsystemfilter" name="ticketsystem.filter" />
         </reference>
-        
         <reference name="head">
             <action method="addJs"><file>lib/jquery/jquery-1.10.2.js</file></action> 
             <action method="addJs"><file>ticketsystem/edit_filter.js</file></action>
+            <action method="addJs"><file>ticketsystem/apply_filter.js</file></action>
+        </reference>
+        <reference name="ticketsystem.filter">
+            <block type="ccc_ticketsystem/adminhtml_ticketsystemfilterbutton" name="ticketsystem.filter.button" />
         </reference>
     </adminhtml_ticketsystem_index> 
 

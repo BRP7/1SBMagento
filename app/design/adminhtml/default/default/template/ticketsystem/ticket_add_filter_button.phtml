@@ -1,0 +1,15 @@
+<?php 
+foreach ($this->getFilterButton() as $button): ?>
+   <button onclick="filter.applyFilter(this)"><?php echo $button ?></button>
+<?php endforeach; ?>
+
+
+<script type="text/javascript">
+    document.observe('dom:loaded', function () {
+        var filter = new ApplyFilter(
+            '<?php echo $this->getUrl('*/*/applyFilter') ?>',
+            FORM_KEY,
+        );
+        window.filter=filter
+    });
+</script>

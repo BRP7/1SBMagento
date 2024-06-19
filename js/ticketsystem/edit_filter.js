@@ -36,9 +36,9 @@ var customFilter = Class.create({
         }.bind(this));
     },
 
-    
+
     openPopup: function () {
-        var popup =this.container;
+        var popup = this.container;
         popup.style.display = 'block';
         popup.style.position = 'absolute';
         popup.style.top = '50%';
@@ -69,10 +69,13 @@ var customFilter = Class.create({
     saveFilter: function () {
         var formData = this.form.serialize();
         console.log(this.redirectUrl);
-        console.log({formData});
+        console.log({ formData });
         new Ajax.Request(this.redirectUrl, {
             method: 'post',
-            parameters: formData,
+            parameters:
+            {
+                data: formData
+            },
             onSuccess: function (response) {
                 if (response.success) {
                     var label = customFilter.form.find('input[name="label"]').val();
