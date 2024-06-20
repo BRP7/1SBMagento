@@ -1,19 +1,20 @@
 <style>
-.comment {
+    .comment {
     margin-left: 20px;
 }
 
 .children {
-    margin-left: 20px;
+    margin-left: 4vw;
 }
 </style>
+
+
+
 <?php
 $comments = $this->getComments();
-$saveUrl = Mage::getUrl('yourmodule/comment/save');
-$loadUrl = Mage::getUrl('yourmodule/comment/load');
+$saveUrl = Mage::getUrl('*/*/save');
+$loadUrl = Mage::getUrl('*/*/load');
 ?>
-
-
 
 <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js"></script>
@@ -23,8 +24,7 @@ $loadUrl = Mage::getUrl('yourmodule/comment/load');
         <tr class="comment" data-comment-id="<?php echo $comment->getId(); ?>" data-parent-id="<?php echo $comment->getParentId(); ?>">
             <td>
                 <div class="comment-content">
-                    <textarea id="comment-<?php echo $comment->getId(); ?>"><?php echo htmlspecialchars($comment->getDescription()); ?></textarea>
-                    <button class="save">Save</button>
+                    <div><?php echo htmlspecialchars_decode($comment->getDescription()); ?></div>
                     <?php if ($comment->getParentId() == 0): ?>
                         <button class="add-new">Add New</button>
                     <?php endif; ?>
@@ -45,11 +45,9 @@ document.observe('dom:loaded', function() {
         loadUrl: '<?php echo $loadUrl; ?>'
     });
 
-    // Initialize CKEditor for existing comments
+    // Initialize CKEditor for new comments only
     $$('.comment textarea').each(function(textarea) {
         CKEDITOR.replace(textarea);
     });
 });
 </script>
-
-
