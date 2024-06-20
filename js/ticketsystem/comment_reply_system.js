@@ -8,11 +8,16 @@ var CommentSystem = Class.create({
     },
 
     handleCommentActions: function (e) {
-        var self=this;
+        var self = this;
         if (e.target && e.target.hasClassName('add-new')) {
             let parentComment = e.target.up('.comment');
+            console.log(parentComment); // Log the entire element
             let parentId = parentComment.readAttribute('data-comment-id');
+            let ticketId = parentComment.readAttribute('data-ticket-id');
+            console.log('parentId:', parentId); // Log the parent comment ID
+            console.log('ticketId:', ticketId); // Log the ticket ID
             let newCommentBox = this.createCommentBox(parentId, true);
+            newCommentBox.writeAttribute('data-ticket-id', ticketId); // Set the ticket ID for the new comment box
             parentComment.down('.children').insert(newCommentBox);
             CKEDITOR.replace(newCommentBox.down('textarea'));
         } else if (e.target && e.target.hasClassName('save')) {
@@ -22,19 +27,25 @@ var CommentSystem = Class.create({
             let commentData = editorInstance.getData();
             let parentId = commentBox.readAttribute('data-parent-id');
             let commentId = commentBox.readAttribute('data-comment-id');
-
-            this.saveComment(commentData, parentId, commentId,self.saveUrl, function (response) {
+            let ticketId = commentBox.readAttribute('data-ticket-id');
+            console.log(commentBox); // Log the entire comment box
+            console.log('parentId:', parentId); // Log the parent comment ID
+            console.log('commentId:', commentId); // Log the comment ID
+            console.log('ticketId:', ticketId); // Log the ticket ID
+    
+            this.saveComment(commentData, parentId, commentId, ticketId, this.saveUrl, function (response) {
                 if (response.success && !commentId) {
                     commentBox.writeAttribute('data-comment-id', response.comment_id);
                 }
                 alert('Comment saved!');
             });
         }
-    },
+    }
+    ,
 
     createCommentBox: function (parentId, includeAddNewButton) {
         let commentId = 'comment-' + new Date().getTime();
-        let commentBox = new Element('tr', { 'class': 'comment', 'data-parent-id': parentId, 'data-comment-id': '' });
+        let commentBox = new Element('tr', { 'class': 'comment', 'data-parent-id': parentId, 'data-comment-id': '', 'data-ticket-id': this.container.readAttribute('data-ticket-id') });
         let buttonsHtml = `<button class="save">Save</button>`;
         if (includeAddNewButton) {
             buttonsHtml += `<button class="add-new">Add New</button>`;
@@ -50,6 +61,7 @@ var CommentSystem = Class.create({
         `);
         return commentBox;
     },
+    
 
     // saveComment: function (comment, parentId, commentId, callback) {
     //     console.log({ comment: comment, parent_id: parentId, comment_id: commentId });
@@ -86,15 +98,15 @@ var CommentSystem = Class.create({
     //     });
     // },
 
-    saveComment: function (comment, parentId, commentId, url ,callback) {
-        // console.log(url);
+    saveComment: function (comment, parentId, commentId, ticketId, url, callback) {
         new Ajax.Request(url, {
             method: 'post',
             parameters: {
-                form_key:FORM_KEY,
+                form_key: FORM_KEY,
                 comment: comment,
                 parent_id: parentId,
-                comment_id: commentId
+                comment_id: commentId,
+                ticket_id: ticketId,
             },
             onSuccess: function (response) {
                 callback(response);
@@ -110,7 +122,8 @@ var CommentSystem = Class.create({
                 alert('An error occurred while saving the comment.');
             }
         });
-    },
+    }
+    ,
     
 
     addInitialComment: function () {
