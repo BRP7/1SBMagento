@@ -321,9 +321,15 @@ class Ccc_Ticketsystem_Adminhtml_TicketsystemController extends Mage_Adminhtml_C
         $comment->setParentId($data['parent_id']);
         $comment->setUserId(Mage::getSingleton('admin/session')->getUser()->getId());
         try {
-            $comment->save();
-            $this->getResponse()->setBody(json_encode(['success' => true, 'comment_id' => $comment->getId()]));
-        } catch (Exception $e) {
+           $commentId = $comment->save();
+            header('Content-Type: application/json');
+            $response = [
+                'status' => 'success',
+                'comment_id' => $commentId, 
+                'message' => 'Comment saved successfully.'
+            ];
+            echo json_encode($response);
+                    } catch (Exception $e) {
             $this->getResponse()->setBody(json_encode(['success' => false, 'message' => $e->getMessage()]));
         }
     }

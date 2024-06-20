@@ -20,23 +20,21 @@ $loadUrl = Mage::getUrl('*/*/load');
 <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js"></script>
 
 <table id="comment-container">
-<?php foreach ($comments as $comment): ?>
-    <tr class="comment"
-        data-ticket-id="<?php echo htmlspecialchars($comment->getTicketId(), ENT_QUOTES, 'UTF-8'); ?>"
-        data-comment-id="<?php echo htmlspecialchars($comment->getId(), ENT_QUOTES, 'UTF-8'); ?>"
-        data-parent-id="<?php echo htmlspecialchars($comment->getParentId(), ENT_QUOTES, 'UTF-8'); ?>">
-        <td>
-            <div class="comment-content">
-                <div><?php echo htmlspecialchars_decode($comment->getDescription()); ?></div>
-                <?php if ($comment->getParentId() == 0): ?>
-                    <button class="add-new">Add New</button>
-                <?php endif; ?>
-            </div>
-            <table class="children"></table>
-        </td>
-    </tr>
-<?php endforeach; ?>
-
+    <?php foreach ($comments as $comment):
+        // print_r($comment->getTicketId());
+        ?>
+        <tr class="comment"  data-ticket-id="<?php echo $comment->getTicketId();?>"  data-comment-id="<?php echo $comment->getId(); ?>" data-parent-id="<?php echo $comment->getParentId();?>" >
+            <td>
+                <div class="comment-content">
+                    <div><?php echo htmlspecialchars_decode($comment->getDescription()); ?></div>
+                    <?php if ($comment->getParentId() == 0): ?>
+                        <button class="add-new">Add New</button>
+                    <?php endif; ?>
+                </div>
+                <table class="children"></table>
+            </td>
+        </tr>
+    <?php endforeach; ?>
 </table>
 <button id="add-initial-comment" class="add-initial">Add Initial Comment</button>
 
@@ -60,5 +58,4 @@ document.observe('dom:loaded', function() {
         commentSystem.addInitialComment();
     });
 });
-
 </script>
