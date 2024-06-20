@@ -38,16 +38,23 @@ $loadUrl = Mage::getUrl('*/*/load');
 
 <script type="text/javascript">
 document.observe('dom:loaded', function() {
-    new CommentSystem({
+    // Initialize CKEditor for existing comments
+    $$('.comment-content textarea').each(function(textarea) {
+        CKEDITOR.replace(textarea);
+    });
+
+    // Initialize CKEditor for new comments added later
+    var commentSystem = new CommentSystem({
         containerId: 'comment-container',
         addInitialCommentButtonId: 'add-initial-comment',
         saveUrl: '<?php echo $saveUrl; ?>',
         loadUrl: '<?php echo $loadUrl; ?>'
     });
 
-    // Initialize CKEditor for new comments only
-    $$('.comment textarea').each(function(textarea) {
-        CKEDITOR.replace(textarea);
+    // Handle adding new comments
+    document.getElementById('add-initial-comment').addEventListener('click', function() {
+        commentSystem.addInitialComment();
     });
 });
+
 </script>

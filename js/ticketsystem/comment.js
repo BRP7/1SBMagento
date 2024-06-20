@@ -55,5 +55,30 @@ document.addEventListener('DOMContentLoaded', function () {
                 alert('An error occurred while submitting the comment.');
             }
         });
+
+        // new Ajax.Request(element.getAttribute("data-url"), {
+        //     method: 'post',
+        //     parameters: {
+        //         oldFilename: oldFileName,
+        //         newFilename: newValue,
+        //         filePath: element.getAttribute("data-filepath"),
+        //         form_key: formKey
+        //     },
+        //     onSuccess: function (response) {
+        //         var result = response.responseText.evalJSON();
+        //         console.log(result);
+        //         if (result.status === 'success') {
+        //             alert("File Rename successfully");
+        //             element.update(newValue);
+        //             element.removeClassName("editing");
+        //         } else {
+    
+        //             alert(result.message);
+        //         }
+        //     },
+        //     onFailure: function () {
+        //         alert('An error occurred while renaming the file.');
+        //     }
+        // });
     });
 });
