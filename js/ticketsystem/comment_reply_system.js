@@ -1,45 +1,71 @@
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('comment-container').addEventListener('click', function(e) {
-        if (e.target && e.target.classList.contains('add-new')) {
-            let parentComment = e.target.closest('.comment');
-            let newCommentBox = createCommentBox();
-            parentComment.querySelector('.children').appendChild(newCommentBox);
-            CKEDITOR.replace(newCommentBox.querySelector('textarea'));
-        } else if (e.target && e.target.classList.contains('save')) {
-            let textBox = e.target.closest('.comment').querySelector('textarea');
-            let editorInstance = CKEDITOR.instances[textBox.id];
+var CommentSystem = Class.create({
+    initialize: function(config) {
+        this.container = $(config.containerId);
+        this.addInitialCommentButton = $(config.addInitialCommentButtonId);
+        this.saveUrl = config.saveUrl;
+
+        this.addInitialCommentButton.observe('click', this.addInitialComment.bind(this));
+        this.container.observe('click', this.handleCommentActions.bind(this));
+    },
+
+    handleCommentActions: function(e) {
+        if (e.target && e.target.hasClassName('add-new')) {
+            let parentComment = e.target.up('.comment');
+            let parentId = parentComment.readAttribute('data-comment-id');
+            let newCommentBox = this.createCommentBox(parentId, true);
+            parentComment.down('.children').insert(newCommentBox);
+            CKEDITOR.replace(newCommentBox.down('textarea'));
+        } else if (e.target && e.target.hasClassName('save')) {
+            let commentBox = e.target.up('.comment');
+            let textBox = commentBox.down('textarea');
+            let editorInstance = CKEDITOR.instances[textBox.identify()];
             let commentData = editorInstance.getData();
-            saveComment(commentData, function(response) {
+            let parentId = commentBox.readAttribute('data-parent-id');
+            let commentId = commentBox.readAttribute('data-comment-id');
+
+            this.saveComment(commentData, parentId, commentId, function(response) {
+                if (response.success && !commentId) {
+                    commentBox.writeAttribute('data-comment-id', response.comment_id);
+                }
                 alert('Comment saved!');
             });
         }
-    });
-});
+    },
 
-function createCommentBox() {
-    let commentBox = document.createElement('tr');
-    commentBox.classList.add('comment');
-    commentBox.innerHTML = `
-        <td>
-            <div class="comment-content">
-                <textarea placeholder="Enter your comment"></textarea>
-                <button class="save">Save</button>
-                <button class="add-new">Add New</button>
-            </div>
-            <table class="children"></table>
-        </td>
-    `;
-    return commentBox;
-}
-
-function saveComment(comment, callback) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/path-to-magento-controller');
-    xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            callback(xhr.responseText);
+    createCommentBox: function(parentId, includeAddNewButton) {
+        let commentId = 'comment-' + new Date().getTime();
+        let commentBox = new Element('tr', { 'class': 'comment', 'data-parent-id': parentId, 'data-comment-id': '' });
+        let buttonsHtml = `<button class="save">Save</button>`;
+        if (includeAddNewButton) {
+            buttonsHtml += `<button class="add-new">Add New</button>`;
         }
-    };
-    xhr.send(JSON.stringify({ comment: comment }));
-}
+        commentBox.update(`
+            <td>
+                <div class="comment-content">
+                    <textarea id="${commentId}" placeholder="Enter your comment"></textarea>
+                    ${buttonsHtml}
+                </div>
+                <table class="children"></table>
+            </td>
+        `);
+        return commentBox;
+    },
+
+    saveComment: function(comment, parentId, commentId, callback) {
+        new Ajax.Request(this.saveUrl, {
+            method: 'post',
+            contentType: 'application/json',
+            postBody: JSON.stringify({ comment: comment, parent_id: parentId, comment_id: commentId }),
+            onSuccess: function(response) {
+                callback(JSON.parse(response.responseText));
+            }
+        });
+    },
+
+    addInitialComment: function() {
+        let newCommentBox = this.createCommentBox(0, false);
+        this.container.insert(newCommentBox);
+        CKEDITOR.replace(newCommentBox.down('textarea'));
+        this.addInitialCommentButton.hide();
+    }
+});

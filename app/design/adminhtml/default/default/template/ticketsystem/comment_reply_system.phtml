@@ -7,16 +7,49 @@
     margin-left: 20px;
 }
 </style>
+<?php
+$comments = $this->getComments();
+$saveUrl = Mage::getUrl('yourmodule/comment/save');
+$loadUrl = Mage::getUrl('yourmodule/comment/load');
+?>
+
+
+
 <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js"></script>
 
 <table id="comment-container">
-        <tr class="comment">
+    <?php foreach ($comments as $comment): ?>
+        <tr class="comment" data-comment-id="<?php echo $comment->getId(); ?>" data-parent-id="<?php echo $comment->getParentId(); ?>">
             <td>
                 <div class="comment-content">
-                    Initial comment
-                    <button class="add-new">Add New</button>
+                    <textarea id="comment-<?php echo $comment->getId(); ?>"><?php echo htmlspecialchars($comment->getDescription()); ?></textarea>
+                    <button class="save">Save</button>
+                    <?php if ($comment->getParentId() == 0): ?>
+                        <button class="add-new">Add New</button>
+                    <?php endif; ?>
                 </div>
                 <table class="children"></table>
             </td>
         </tr>
-    </table>
+    <?php endforeach; ?>
+</table>
+<button id="add-initial-comment" class="add-initial">Add Initial Comment</button>
+
+<script type="text/javascript">
+document.observe('dom:loaded', function() {
+    new CommentSystem({
+        containerId: 'comment-container',
+        addInitialCommentButtonId: 'add-initial-comment',
+        saveUrl: '<?php echo $saveUrl; ?>',
+        loadUrl: '<?php echo $loadUrl; ?>'
+    });
+
+    // Initialize CKEditor for existing comments
+    $$('.comment textarea').each(function(textarea) {
+        CKEDITOR.replace(textarea);
+    });
+});
+</script>
+
+

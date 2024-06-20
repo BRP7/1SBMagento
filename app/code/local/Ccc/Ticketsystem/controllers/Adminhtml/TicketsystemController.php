@@ -309,5 +309,36 @@ class Ccc_Ticketsystem_Adminhtml_TicketsystemController extends Mage_Adminhtml_C
     }
 
 
+    public function saveAction()
+    {
+        $data = json_decode($this->getRequest()->getRawBody(), true);
+        $comment = Mage::getModel('yourmodule/comment');
+        if (!empty($data['comment_id'])) {
+            $comment->load($data['comment_id']);
+        }
+        $comment->setDescription($data['comment']);
+        $comment->setParentId($data['parent_id']);
+        try {
+            $comment->save();
+            $this->getResponse()->setBody(json_encode(['success' => true, 'comment_id' => $comment->getId()]));
+        } catch (Exception $e) {
+            $this->getResponse()->setBody(json_encode(['success' => false, 'message' => $e->getMessage()]));
+        }
+    }
+
+    public function loadAction()
+    {
+        $comments = Mage::getModel('yourmodule/comment')->getCollection();
+        $commentData = [];
+        foreach ($comments as $comment) {
+            $commentData[] = [
+                'comment_id' => $comment->getId(),
+                'description' => $comment->getDescription(),
+                'parent_id' => $comment->getParentId()
+            ];
+        }
+        $this->getResponse()->setBody(json_encode($commentData));
+    }
+
 }
 
