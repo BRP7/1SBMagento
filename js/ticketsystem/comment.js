@@ -34,14 +34,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         CKEDITOR.instances[instance].destroy(true);
                     }
 
-                    var commentsTableBody = document.querySelector('#comments-table tbody');
-                    commentsTableBody.innerHTML = '';
+                    // Update the comments section with the new HTML
+                    document.querySelector('.comments-section').innerHTML = result.html;
 
-                    result.comments.forEach(function (comment) {
-                        var newRow = '<tr><td>' + comment.title + '</td><td>' + comment.description + '</td><td>' + comment.created_at + '</td></tr>';
-                        commentsTableBody.insertAdjacentHTML('beforeend', newRow);
-                    });
-
+                    // Reinitialize CKEditor
                     if (!CKEDITOR.instances['comment-description']) {
                         CKEDITOR.replace('comment-description', {
                             height: 300
@@ -55,30 +51,5 @@ document.addEventListener('DOMContentLoaded', function () {
                 alert('An error occurred while submitting the comment.');
             }
         });
-
-        // new Ajax.Request(element.getAttribute("data-url"), {
-        //     method: 'post',
-        //     parameters: {
-        //         oldFilename: oldFileName,
-        //         newFilename: newValue,
-        //         filePath: element.getAttribute("data-filepath"),
-        //         form_key: formKey
-        //     },
-        //     onSuccess: function (response) {
-        //         var result = response.responseText.evalJSON();
-        //         console.log(result);
-        //         if (result.status === 'success') {
-        //             alert("File Rename successfully");
-        //             element.update(newValue);
-        //             element.removeClassName("editing");
-        //         } else {
-    
-        //             alert(result.message);
-        //         }
-        //     },
-        //     onFailure: function () {
-        //         alert('An error occurred while renaming the file.');
-        //     }
-        // });
     });
 });

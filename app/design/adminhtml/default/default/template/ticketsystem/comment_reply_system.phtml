@@ -1,61 +1,38 @@
 <style>
     .comment {
-    margin-left: 20px;
-}
+        margin-left: 20px;
+    }
 
-.children {
-    margin-left: 4vw;
-}
+    .children {
+        margin-left: 4vw;
+    }
 </style>
-
-
 
 <?php
 $comments = $this->getComments();
 $saveUrl = Mage::getUrl('*/*/save');
-$loadUrl = Mage::getUrl('*/*/load');
 ?>
 
 <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js"></script>
 
-<table id="comment-container">
-    <?php foreach ($comments as $comment):
-        // print_r($comment->getTicketId());
-        ?>
-        <tr class="comment"  data-ticket-id="<?php echo $comment->getTicketId();?>"  data-comment-id="<?php echo $comment->getId(); ?>" data-parent-id="<?php echo $comment->getParentId();?>" >
-            <td>
-                <div class="comment-content">
-                    <div><?php echo htmlspecialchars_decode($comment->getDescription()); ?></div>
-                    <?php if ($comment->getParentId() == 0): ?>
-                        <button class="add-new">Add New</button>
-                    <?php endif; ?>
-                </div>
-                <table class="children"></table>
-            </td>
-        </tr>
-    <?php endforeach; ?>
-</table>
-<button id="add-initial-comment" class="add-initial">Add Initial Comment</button>
+<div id="comment-section">
+    <table id="comment-container">
+        <?php echo $this->renderComments($comments, 0); ?>
+    </table>
+    <button id="add-initial-comment" class="add-initial">Add Initial Comment</button>
+</div>
 
 <script type="text/javascript">
 document.observe('dom:loaded', function() {
-    // Initialize CKEditor for existing comments
-    $$('.comment-content textarea').each(function(textarea) {
-        CKEDITOR.replace(textarea);
-    });
-
-    // Initialize CKEditor for new comments added later
-    var commentSystem = new CommentSystem({
+    new CommentSystem({
         containerId: 'comment-container',
         addInitialCommentButtonId: 'add-initial-comment',
-        saveUrl: '<?php echo $saveUrl; ?>',
-        loadUrl: '<?php echo $loadUrl; ?>'
+        saveUrl: '<?php echo $saveUrl; ?>'
     });
 
-    // Handle adding new comments
-    document.getElementById('add-initial-comment').addEventListener('click', function() {
-        commentSystem.addInitialComment();
+    $$('.comment textarea').each(function(textarea) {
+        CKEDITOR.replace(textarea);
     });
 });
 </script>

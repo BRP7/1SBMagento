@@ -17,29 +17,8 @@
     </div>
 
     <br>
-    <table border="1px" id="comments-table">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Created At</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php $comments = $this->getComments(); ?>
-            <?php foreach ($comments as $comment): ?>
-                <tr>
-                    <td><?php echo $comment->getTitle(); ?></td>
-                    <td><?php echo htmlspecialchars_decode($comment->getDescription(), ENT_QUOTES); ?></td>
-                    <td><?php echo $comment->getCreatedAt(); ?></td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-</div>
+
 
 <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
 
-<!-- //child add -->
 <?php echo $this->getChildHtml('ticketsystem.view.comment.reply'); ?>
-

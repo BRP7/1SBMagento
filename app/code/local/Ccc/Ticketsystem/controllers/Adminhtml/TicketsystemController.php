@@ -245,7 +245,7 @@ class Ccc_Ticketsystem_Adminhtml_TicketsystemController extends Mage_Adminhtml_C
             $description = htmlspecialchars($this->getRequest()->getPost('description'), ENT_QUOTES, 'UTF-8');
             $ticketId = $this->getRequest()->getPost('ticketid');
             $userId = Mage::getSingleton('admin/session')->getUser()->getId();
-
+    
             try {
                 $comment = Mage::getModel('ccc_ticketsystem/comment');
                 $comment->setTitle($title)
@@ -253,25 +253,30 @@ class Ccc_Ticketsystem_Adminhtml_TicketsystemController extends Mage_Adminhtml_C
                     ->setTicketId($ticketId)
                     ->setUserId($userId)
                     ->save();
-
-                // $comments = Mage::getModel('ccc_ticketsystem/comment')
-                //     ->getCollection()
-                //     ->addFieldToFilter('ticket_id', $ticketId)
-                //     ->setOrder('created_at', 'DESC')
-                //     ->toArray();
-
-                $block = $this->getLayout()->createBlock('ccc_filemanager/adminhtml_ticketsystemviewcomment');
+    
+                // Create the block
+                $block = $this->getLayout()->createBlock('ccc_ticketsystem/adminhtml_ticketsystemviewcomment')
+                    ->setTemplate('ticketsystem/ticket_comment.phtml');
+    
+                // Ensure block is created properly
+                if (!$block) {
+                    throw new Exception("Block not created.");
+                }
+    
                 $html = $block->toHtml();
-                // $this->getResponse()->setHeader('Content-Type', 'application/json');
-                $this->getResponse()->setBody($html);
-
+    
+                $result = ['status' => 'success', 'html' => $html];
+                $this->getResponse()->setHeader('Content-Type', 'application/json');
+                $this->getResponse()->setBody(json_encode($result));
+    
             } catch (Exception $e) {
                 $result = ['status' => 'error', 'message' => $e->getMessage()];
                 $this->getResponse()->setBody(json_encode($result));
             }
-
         }
     }
+    
+    
 
 
     public function applyFilterAction()

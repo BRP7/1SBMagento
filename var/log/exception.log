@@ -8903,3 +8903,42 @@ Stack trace:
 #7 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
 #8 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
 #9 {main}
+2024-06-20T13:17:10+00:00 ERR (3): 
+Mage_Core_Exception: Invalid block type: Ccc_Filemanager_Block_Adminhtml_Ticketsystemviewcomment in C:\xampp\htdocs\1SBMagento\app\Mage.php:598
+Stack trace:
+#0 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(495): Mage::throwException('Invalid block t...')
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('Ccc_Filemanager...', Array)
+#2 C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Ticketsystem\controllers\Adminhtml\TicketsystemController.php(263): Mage_Core_Model_Layout->createBlock('ccc_filemanager...')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Ccc_Ticketsystem_Adminhtml_TicketsystemController->addCommentAction()
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('addComment')
+#5 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#6 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#7 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#8 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#9 {main}
+2024-06-20T13:18:21+00:00 ERR (3): 
+Mage_Core_Exception: Invalid block type: Ccc_Filemanager_Block_Adminhtml_Ticketsystemviewcomment in C:\xampp\htdocs\1SBMagento\app\Mage.php:598
+Stack trace:
+#0 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(495): Mage::throwException('Invalid block t...')
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('Ccc_Filemanager...', Array)
+#2 C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Ticketsystem\controllers\Adminhtml\TicketsystemController.php(263): Mage_Core_Model_Layout->createBlock('ccc_filemanager...')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Ccc_Ticketsystem_Adminhtml_TicketsystemController->addCommentAction()
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('addComment')
+#5 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#6 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#7 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#8 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#9 {main}
+2024-06-20T13:28:22+00:00 ERR (3): 
+Mage_Core_Exception: Invalid block type: Ccc_Ticketsystem_Block_Adminhtml_Ticketsystem_View_Comment in C:\xampp\htdocs\1SBMagento\app\Mage.php:598
+Stack trace:
+#0 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(495): Mage::throwException('Invalid block t...')
+#1 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('Ccc_Ticketsyste...', Array)
+#2 C:\xampp\htdocs\1SBMagento\app\code\local\Ccc\Ticketsystem\controllers\Adminhtml\TicketsystemController.php(258): Mage_Core_Model_Layout->createBlock('ccc_ticketsyste...')
+#3 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Action.php(417): Ccc_Ticketsystem_Adminhtml_TicketsystemController->addCommentAction()
+#4 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('addComment')
+#5 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#6 C:\xampp\htdocs\1SBMagento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#7 C:\xampp\htdocs\1SBMagento\app\Mage.php(686): Mage_Core_Model_App->run(Array)
+#8 C:\xampp\htdocs\1SBMagento\index.php(83): Mage::run('', 'store')
+#9 {main}
