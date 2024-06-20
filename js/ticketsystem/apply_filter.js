@@ -1,29 +1,31 @@
 var j = jQuery.noConflict();
 var ApplyFilter = Class.create({
-    initialize: function ( redirectUrl, formKey) {
-     
-        this.redirectUrl = redirectUrl;
-        this.formKey = formKey;
+        initialize: function (redirectUrl, formKey) {
+            this.redirectUrl = redirectUrl;
+            this.formKey = formKey
+        },
+        addFilter: function (element) {
     
-    },
-    applyFilter:function name(element) {
-        // console.log(this.redirectUrl);
-        let label = element.innerHTML;
-        new Ajax.Request(this.redirectUrl, {
-            method: 'post',
-            parameters: {'label' : label},
-            onSuccess: function (response) {
-                var result = response.responseJSON;
-                if (result.status === 'success') {
-                    alert('filter applied successfully!');       
-                } else {
-                    alert('An error occurred: ' + result.message);
+            new Ajax.Request(this.redirectUrl, {
+                method: 'post',
+                parameters:
+                {
+                    buttonName: element.textContent,
+                    formKey: this.formKey
+                },
+                onSuccess: function (response) {
+                    var tableContainer = $$('.ticket-table-container')[0];
+                    if (tableContainer) {
+                        tableContainer.update(response.responseText);
+                    } else {
+                        console.error('ticket-table-container element not found.');
+                    }
+                },
+                onerror: function (error) {
+                    console.error('Error in AJAX request');
                 }
-            },
-            onFailure: function () {
-                alert('An error occurred while submitting the comment.');
-            }
-        });
-    }
-
-})
+    
+            });
+        }
+    });
+ 
