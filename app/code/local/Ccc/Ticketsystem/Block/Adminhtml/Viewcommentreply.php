@@ -1,6 +1,5 @@
 <?php
 
-
 class Ccc_Ticketsystem_Block_Adminhtml_Viewcommentreply extends Mage_Adminhtml_Block_Template
 {
     public function _construct(){
@@ -22,6 +21,7 @@ class Ccc_Ticketsystem_Block_Adminhtml_Viewcommentreply extends Mage_Adminhtml_B
         }
         return $comments;
     }
+   
 
     public function renderComments($comments, $parentId)
     {
