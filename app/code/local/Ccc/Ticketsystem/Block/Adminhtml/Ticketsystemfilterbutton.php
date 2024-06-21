@@ -16,4 +16,15 @@ class Ccc_Ticketsystem_Block_Adminhtml_Ticketsystemfilterbutton extends Mage_Adm
        return $distinctValues;
     }
 
+    public function getButtons()
+    {
+        $collection = Mage::getModel('ccc_ticketsystem/filter')->getCollection();
+        $collection->getSelect()->distinct(true)->reset(Zend_Db_Select::COLUMNS)->columns('label');
+        $labels = [];
+        foreach ($collection as $item) {
+            $labels[] = $item->getLabel();
+        }
+        return $labels;
+    }
+
 }

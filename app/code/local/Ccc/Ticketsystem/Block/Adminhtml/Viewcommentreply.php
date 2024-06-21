@@ -4,6 +4,7 @@ class Ccc_Ticketsystem_Block_Adminhtml_Viewcommentreply extends Mage_Adminhtml_B
 {
     public function _construct(){
         $this->setTemplate('ticketsystem/comment_reply_system.phtml');
+        $this->getCommentIds();
     }
 
     public function getComments()
@@ -19,6 +20,24 @@ class Ccc_Ticketsystem_Block_Adminhtml_Viewcommentreply extends Mage_Adminhtml_B
             }
             $comments[$parentId][] = $comment;
         }
+        // echo "<pre>";
+        // print_r($comments);
+        return $comments;
+    }
+    public function getCommentIds()
+    {
+        $id = $this->getRequest()->getParam('id');
+        $collection = Mage::getModel('ccc_ticketsystem/comment')->getCollection()->addFieldToFilter('ticket_id', $id);
+
+        $comments = [];
+        foreach ($collection as $comment) {
+            $parentId = $comment->getParentId();
+            if (!isset($comments[$parentId])) {
+                $comments[$parentId] = [];
+            }
+            $comments[$parentId][] = $comment->getId();
+        }
+        print_r($comments);
         return $comments;
     }
    
@@ -28,7 +47,7 @@ class Ccc_Ticketsystem_Block_Adminhtml_Viewcommentreply extends Mage_Adminhtml_B
         if (!isset($comments[$parentId])) {
             return '';
         }
-
+    
         $html = '';
         foreach ($comments[$parentId] as $comment) {
             $commentId = $comment->getId();
@@ -36,6 +55,11 @@ class Ccc_Ticketsystem_Block_Adminhtml_Viewcommentreply extends Mage_Adminhtml_B
             $html .= '<td>';
             $html .= '<div class="comment-content">';
             $html .= '<div>' . htmlspecialchars_decode($comment->getDescription()) . '</div>';
+            
+
+            if ($comment->getParentId() == 0) {
+                $html .= '<button class="lock">Lock</button>';
+            } 
             $html .= '<button class="add-new">Add New</button>';
             $html .= '</div>';
             $html .= '<table class="children">';
@@ -44,7 +68,8 @@ class Ccc_Ticketsystem_Block_Adminhtml_Viewcommentreply extends Mage_Adminhtml_B
             $html .= '</td>';
             $html .= '</tr>';
         }
-
+    
         return $html;
     }
+    
 }

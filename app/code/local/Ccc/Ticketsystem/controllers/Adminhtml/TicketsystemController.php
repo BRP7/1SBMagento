@@ -279,43 +279,41 @@ class Ccc_Ticketsystem_Adminhtml_TicketsystemController extends Mage_Adminhtml_C
     
 
 
-    public function applyFilterAction()
-    {
+    // public function applyFilterAction()
+    // {
+    //     $label = $this->getRequest()->getPost('label');
+    //     $data = Mage::getModel('ccc_ticketsystem/filter')->getCollection()->addFieldToFilter('label', $label);
+    //     $field = "";
+    //     $values = [];
+    //     foreach ($data as $row) {
+    //         $collection = Mage::getModel('ccc_ticketsystem/filter')->getCollection();
 
-        $label = $this->getRequest()->getPost('label');
-        $data = Mage::getModel('ccc_ticketsystem/filter')->getCollection()->addFieldToFilter('label', $label);
-        $field = "";
-        $values = [];
-        foreach ($data as $row) {
-            $collection = Mage::getModel('ccc_ticketsystem/filter')->getCollection();
+    //         if ($row->getField() == $field) {
+    //             array_push($values, $row->getValue());
+    //         } else {
+    //             if (!empty($values)) {
+    //                 $collection .= $collection->addFieldToFilter('field', $row->getField())
+    //                     ->addFieldToFilter('value', array('in' => $values));
+    //             }
+    //             $values = [];
+    //             array_push($values, $row->getValue());
+    //             $field = $row->getField();
+    //         }
 
-            if ($row->getField() == $field) {
-                array_push($values, $row->getValue());
-            } else {
-                if (!empty($values)) {
-                    $collection .= $collection->addFieldToFilter('field', $row->getField())
-                        ->addFieldToFilter('value', array('in' => $values));
-                }
-                $values = [];
-                array_push($values, $row->getValue());
-                $field = $row->getField();
-            }
+    //         // $collection = $collection->addFieldToFilter('field', array('in' => $values));
+    //         print_r($collection);
+    //         // print_r($row->getValue());
+    //     }
+    //     $select = $collection->getSelect();
+    //     $query = (string) $select;
 
-            // $collection = $collection->addFieldToFilter('field', array('in' => $values));
-            print_r($collection);
-            // print_r($row->getValue());
-        }
-        $select = $collection->getSelect();
-        $query = (string) $select;
-
-        // Print or log the query
-        Mage::log($query);
-        $this->getResponse()->setBody(json_encode(['success' => true]));
-    }
+    //     // Print or log the query
+    //     Mage::log($query);
+    //     $this->getResponse()->setBody(json_encode(['success' => true]));
+    // }
 
 
-    public function saveAction()
-    {
+    public function saveAction() {
         $data = $this->getRequest()->getPost();
         $comment = Mage::getModel('ccc_ticketsystem/comment');
         if (!empty($data['comment_id'])) {
@@ -326,18 +324,19 @@ class Ccc_Ticketsystem_Adminhtml_TicketsystemController extends Mage_Adminhtml_C
         $comment->setParentId($data['parent_id']);
         $comment->setUserId(Mage::getSingleton('admin/session')->getUser()->getId());
         try {
-           $commentId = $comment->save();
-            header('Content-Type: application/json');
+            $comment->save();
             $response = [
                 'status' => 'success',
-                'comment_id' => $commentId, 
+                'comment_id' => $comment->getId(),
                 'message' => 'Comment saved successfully.'
             ];
-            echo json_encode($response);
-                    } catch (Exception $e) {
-            $this->getResponse()->setBody(json_encode(['success' => false, 'message' => $e->getMessage()]));
+            $this->getResponse()->setBody(json_encode($response));
+        } catch (Exception $e) {
+            $this->getResponse()->setBody(json_encode(['status' => 'error', 'message' => $e->getMessage()]));
         }
     }
+    
+    
 
     public function loadAction()
     {
@@ -353,5 +352,15 @@ class Ccc_Ticketsystem_Adminhtml_TicketsystemController extends Mage_Adminhtml_C
         $this->getResponse()->setBody(json_encode($commentData));
     }
 
+    public function applyFilterAction()
+    {
+        $label = $this->getRequest()->getParam('buttonName');
+        $filteredCollection = Mage::getModel('ccc_ticketsystem/ticketsystem')
+            ->getFilteredCollection($label);
+        $block = $this->getLayout()->createBlock('ccc_ticketsystem/adminhtml_ticketsystem');
+        $block->setTicketCollection($filteredCollection);
+        $html = $block->toHtml();
+        $this->getResponse()->setBody($html);
+    }
 }
 

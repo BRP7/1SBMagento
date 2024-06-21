@@ -5,7 +5,6 @@ class Ccc_Ticketsystem_Model_Ticketsystem extends Mage_Core_Model_Abstract
     {
         $this->_init('ccc_ticketsystem/ticketsystem');
     }
-
     public function getFilteredCollection($label)
     {
         $filterCollection = Mage::getModel('ccc_ticketsystem/filter')

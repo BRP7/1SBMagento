@@ -6,6 +6,16 @@
     .children {
         margin-left: 4vw;
     }
+    div .comment-content{
+      
+        float: left;
+    }
+    table .children{
+        /* background-color: bisque; */
+        position: relative;
+        top:0;
+        left:4vw;
+    }
 </style>
 
 <?php
@@ -20,8 +30,9 @@ $saveUrl = Mage::getUrl('*/*/save');
     <table id="comment-container">
         <?php echo $this->renderComments($comments, 0); ?>
     </table>
-    <button id="add-initial-comment" class="add-initial">Add Initial Comment</button>
+    
 </div>
+<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 
 <script type="text/javascript">
 document.observe('dom:loaded', function() {
@@ -30,9 +41,11 @@ document.observe('dom:loaded', function() {
         addInitialCommentButtonId: 'add-initial-comment',
         saveUrl: '<?php echo $saveUrl; ?>'
     });
-
-    $$('.comment textarea').each(function(textarea) {
-        CKEDITOR.replace(textarea);
+    
+    CKEDITOR.on('instanceReady', function() {
+        $$('.comment textarea').each(function(textarea) {
+            CKEDITOR.replace(textarea);
+        });
     });
 });
 </script>
