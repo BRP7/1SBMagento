@@ -1,105 +1,137 @@
-var CommentSystem = Class.create({
-    initialize: function (config) {
-        this.container = $(config.containerId);
-        this.saveUrl = config.saveUrl;
-        // this.addInitialCommentButton.observe('click', this.addInitialComment.bind(this));
-        this.container.observe('click', this.handleCommentActions.bind(this));
-    },
+var j = jQuery.noConflict();
+j(document).ready(function() {
+    // Level management
+    var level = 1;
 
-    handleCommentActions: function (e) {
-        if (e.target && e.target.hasClassName('add-new')) {
-            let parentComment = e.target.up('.comment');
-            let grandParentElement = parentComment.up('tr.comment');
+    // Add Reply button click event
+    j('#dynamicTable').on('click', '.add-reply', function() {
+        var currentTd = j(this).closest('td');
+        var currentRow = j(this).closest('tr');
+        var nextTd = currentTd.next('td');
+        var currentRowSpan = parseInt(currentTd.attr('rowspan')) || 1;
 
-            if (grandParentElement) {
-                console.log(grandParentElement.down('td').down('.comment-content .add-new'));
-                grandParentElement.down('td').down('.comment-content .add-new').remove();
-                // grandParentElement.remove(); 
-            }
-            let parentId = parentComment.readAttribute('data-comment-id');
-            let ticketId = parentComment.readAttribute('data-ticket-id');
-            let newCommentBox = this.createCommentBox(parentId, false);
-            // if($$(".children"))
-            // console.log($$(".children")[0]);
-            // parentComment.down('.add-new').remove();
-            newCommentBox.writeAttribute('data-ticket-id', ticketId);
-            parentComment.down('.children').insert(newCommentBox);
-            CKEDITOR.replace(newCommentBox.down('textarea'));
-        } else if (e.target && e.target.hasClassName('save')) {
-            let commentBox = e.target.up('.comment');
-            let textBox = commentBox.down('textarea');
-            let editorInstance = CKEDITOR.instances[textBox.identify()];
-            let commentData = editorInstance.getData();
-            let parentId = commentBox.readAttribute('data-parent-id');
-            let commentId = commentBox.readAttribute('data-comment-id');
-            let ticketId = commentBox.readAttribute('data-ticket-id');
+        // Hide the complete button when Add Reply is clicked
+        currentTd.find('.complete').hide();
 
-            this.saveComment(commentData, parentId, commentId, ticketId, function (response) {
-                if (!commentId) {
-                    commentBox.writeAttribute('data-comment-id', response.comment_id);
-                }
-                commentBox.down('.comment-content').update(`<div>${commentData}</div><button class="add-new">Add New</button>`);
-                commentBox.down('.comment-content').removeChild(textBox.up());
-            });
-        }
-    },
-
-    createCommentBox: function (parentId, includeAddNewButton) {
-        let commentId = 'comment-' + new Date().getTime();
-        let commentBox = new Element('tr', { 'class': 'comment', 'data-parent-id': parentId, 'data-comment-id': '', 'data-ticket-id': this.container.readAttribute('data-ticket-id') });
-        let buttonsHtml = `<button class="save">Save</button>`;
-        if (includeAddNewButton) {
-            buttonsHtml += `<button class="add-new">Add New</button>`;
-        }
-        commentBox.update(`
-            <td>
-                <div class="comment-content">
-                    <textarea id="${commentId}" placeholder="Enter your comment"></textarea>
-                    ${buttonsHtml}
+        if (nextTd.length === 0) {
+            // If no TD exists beside, create a new TD in the next column
+            var newTd = j('<td></td>').html(`
+                <div>
+                    <textarea></textarea>
+                    <button class="save">Save</button>
+                    <button class="remove">Remove</button>
                 </div>
-                <table class="children"></table>
-            </td>
-        `);
-        // console.log(parentComment.up('.comment'));
-        return commentBox;
-    },
+            `);
+            currentRow.append(newTd);
 
-    saveComment: function (comment, parentId, commentId, ticketId, callback) {
-        new Ajax.Request(this.saveUrl, {
-            method: 'post',
-            parameters: {
-                form_key: FORM_KEY,
-                comment: comment,
-                parent_id: parentId,
-                comment_id: commentId,
-                ticket_id: ticketId
-            },
-            onSuccess: function (response) {
-                var result;
-                try {
-                    result = response.responseText.evalJSON();
-                } catch (e) {
-                    alert('Invalid server response.');
-                    return;
-                }
+            // Add lock button in the last row
+            var lastRow = j('#dynamicTable tr:last');
+            if (lastRow.find('.lock').length === 0) {
+                lastRow.append('<td><button class="lock">Lock</button></td>');
+            }
+        } else {
+            // If TD exists beside, create a new row and add TD to it
+            var newRow = j('<tr></tr>');
+            var newTd = j('<td></td>').html(`
+                <div>
+                    <textarea></textarea>
+                    <button class="save">Save</button>
+                    <button class="remove">Remove</button>
+                </div>
+            `);
+            newRow.append(newTd);
+            j('#dynamicTable').append(newRow);
+            currentTd.attr('rowspan', currentRowSpan + 1);
+        }
 
-                console.log(result);
-                if (result.status === 'success') {
-                    callback(result);
-                } else {
-                    alert("Error: " + (result.message || 'Unknown error'));
-                }
-            },
-            onFailure: function () {
-                alert('An error occurred while saving the comment.');
+        // Update rowspan of all the parent TDs recursively
+        var parentTd = currentTd;
+        while (parentTd.length) {
+            var rowspan = parseInt(parentTd.attr('rowspan')) || 1;
+            parentTd.attr('rowspan', rowspan + 1);
+            parentTd = parentTd.closest('tr').prev('tr').find('td').eq(currentTd.index());
+        }
+    });
+
+    // Complete button click event
+    j('#dynamicTable').on('click', '.complete', function() {
+        var currentTd = j(this).closest('td');
+        j.ajax({
+            url: 'path_to_your_controller',
+            type: 'POST',
+            data: { status: 'complete' },
+            success: function(response) {
+                currentTd.find('.complete').remove();
+                currentTd.find('.add-reply').hide();
+                var nextTd = j('<td></td>').html('<div>Complete</div>');
+                currentTd.after(nextTd);
             }
         });
-    },
+    });
 
-    // addInitialComment: function() {
-    //     let newCommentBox = this.createCommentBox(0, false);
-    //     this.container.insert(newCommentBox);
-    //     CKEDITOR.replace(newCommentBox.down('textarea'));
-    //     this.addInitialCommentButton.hide();
-    // }
+    // Save button click event
+    j('#dynamicTable').on('click', '.save', function() {
+        var currentTd = j(this).closest('td');
+        var textarea = currentTd.find('textarea');
+        var saveUrl = j('#dynamicTable').data('url');
+        j.ajax({
+            url: saveUrl,
+            type: 'POST',
+            data: { text: textarea.val(), status: 'current', level: level },
+            success: function(response) {
+                textarea.replaceWith('<div>' + textarea.val() + '</div>');
+                currentTd.find('.save').remove();
+            }
+        });
+    });
+
+    // Remove button click event
+    j('#dynamicTable').on('click', '.remove', function() {
+        var currentTd = j(this).closest('td');
+        currentTd.remove();
+
+        // Update rowspan of the first TD if needed
+        var firstTd = j('#dynamicTable td:first');
+        var currentRowSpan = parseInt(firstTd.attr('rowspan')) || 1;
+        if (currentRowSpan > 1) {
+            firstTd.attr('rowspan', currentRowSpan - 1);
+        }
+
+        // Update rowspan of all the parent TDs recursively
+        var parentTd = firstTd;
+        while (parentTd.length) {
+            var rowspan = parseInt(parentTd.attr('rowspan')) || 1;
+            if (rowspan > 1) {
+                parentTd.attr('rowspan', rowspan - 1);
+            }
+            parentTd = parentTd.closest('tr').prev('tr').find('td').eq(firstTd.index());
+        }
+    });
+
+    // Lock button click event
+    j('#dynamicTable').on('click', '.lock', function() {
+        var allSaved = true;
+        j('#dynamicTable td').each(function() {
+            if (j(this).find('textarea').length) {
+                allSaved = false;
+            }
+        });
+
+        if (!allSaved) {
+            alert('All fields must be saved before locking.');
+            return;
+        }
+
+        j('#dynamicTable td').each(function() {
+            if (j(this).find('div').length) {
+                j(this).append(`
+                    <button class="add-reply">Add Reply</button>
+                    <button class="continue">Continue</button>
+                `);
+            }
+        });
+
+        // Remove lock button after locking
+        j(this).remove();
+    });
 });

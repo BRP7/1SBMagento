@@ -1,3 +1,4 @@
+var j = jQuery.noConflict();
 var applyFilter = Class.create({
     initialize: function (redirectUrl, formKey) {
         this.redirectUrl = redirectUrl;

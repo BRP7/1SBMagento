@@ -1,3 +1,4 @@
+var j = jQuery.noConflict();
 var TicketEditor = Class.create({
     initialize: function (ticketId, redirectUrl, formKey, users, status) {
         this.ticketId = ticketId;

@@ -1,51 +1,16 @@
-<style>
-    .comment {
-        margin-left: 20px;
-    }
-
-    .children {
-        margin-left: 4vw;
-    }
-    div .comment-content{
-      
-        float: left;
-    }
-    table .children{
-        /* background-color: bisque; */
-        position: relative;
-        top:0;
-        left:4vw;
-    }
-</style>
-
 <?php
-$comments = $this->getComments();
-$saveUrl = Mage::getUrl('*/*/save');
+$url = $this->getUrl('*/*/save');
 ?>
-
-<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js"></script>
-
-<div id="comment-section">
-    <table id="comment-container">
-        <?php echo $this->renderComments($comments, 0); ?>
+    <table id="dynamicTable" data-url="<?php echo $url; ?>">
+        <tr>
+            <td rowspan="1">
+                <div>
+                    <textarea></textarea>
+                    <button class="add-reply">Add Reply</button>
+                    <button class="complete">Complete</button>
+                </div>
+            </td>
+        </tr>
     </table>
-    
-</div>
-<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+  
 
-<script type="text/javascript">
-document.observe('dom:loaded', function() {
-    new CommentSystem({
-        containerId: 'comment-container',
-        addInitialCommentButtonId: 'add-initial-comment',
-        saveUrl: '<?php echo $saveUrl; ?>'
-    });
-    
-    CKEDITOR.on('instanceReady', function() {
-        $$('.comment textarea').each(function(textarea) {
-            CKEDITOR.replace(textarea);
-        });
-    });
-});
-</script>

@@ -49,6 +49,7 @@
             <action method="addJs"><file>ticketsystem/comment.js</file></action>
             <action method="addJs"><file>ticketsystem/edit_view.js</file></action>
             <action method="addJs"><file>ticketsystem/comment_reply_system.js</file></action>
+            <action method="addJs"><file>lib/jquery/jquery-1.10.2.js</file></action>
         </reference>
         <reference name="content">
             <block type="ccc_ticketsystem/adminhtml_ticketsystemview" name="ticketsystem.view"/>

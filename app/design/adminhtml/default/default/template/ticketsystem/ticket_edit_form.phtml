@@ -2,8 +2,10 @@
 echo get_class($this);
 $ticketCollection = $this->getTicketCollection();
 ?>
-<?php echo $this->getChildHtml('ticketsystem.filter'); ?>
-
+<div class="filter-buttons-container">
+        <?php echo $this->getChildHtml('ticketsystem.filter'); ?>
+</div>
+<div class="ticket-table-container">
 <table border="1" cellspacing="0" cellpadding="5">
     <thead>
         <tr>
@@ -38,10 +40,11 @@ $ticketCollection = $this->getTicketCollection();
         <?php endforeach; ?>
     </tbody>
 </table>
-
-
 <div class="pagination">
     <?php echo $this->getPaginationHtml(); ?>
 </div>
+
+</div>
+
 
 

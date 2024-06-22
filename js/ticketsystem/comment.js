@@ -1,3 +1,4 @@
+var j = jQuery.noConflict();
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('add-comment-btn').addEventListener('click', function () {
         document.getElementById('comment-form-container').style.display = 'block';
