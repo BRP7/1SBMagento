@@ -1,12 +1,12 @@
 var j = jQuery.noConflict();
 j(document).ready(function() {
-    // Level management
-    var level = 1;
+    var level = 1; // Initial level
 
     // Add Reply button click event
     j('#dynamicTable').on('click', '.add-reply', function() {
         var currentTd = j(this).closest('td');
         var currentRow = j(this).closest('tr');
+        var currentTdIndex = currentTd.index();
         var nextTd = currentTd.next('td');
         var currentRowSpan = parseInt(currentTd.attr('rowspan')) || 1;
 
@@ -21,7 +21,7 @@ j(document).ready(function() {
                     <button class="save">Save</button>
                     <button class="remove">Remove</button>
                 </div>
-            `);
+            `).attr('data-level', level).attr('data-parent-td', currentTdIndex); // Set data-level and data-parent-td attributes
             currentRow.append(newTd);
 
             // Add lock button in the last row
@@ -38,9 +38,9 @@ j(document).ready(function() {
                     <button class="save">Save</button>
                     <button class="remove">Remove</button>
                 </div>
-            `);
+            `).attr('data-level', level).attr('data-parent-td', currentTdIndex); // Set data-level and data-parent-td attributes
             newRow.append(newTd);
-            j('#dynamicTable').append(newRow);
+            currentRow.after(newRow);
             currentTd.attr('rowspan', currentRowSpan + 1);
         }
 
@@ -49,8 +49,10 @@ j(document).ready(function() {
         while (parentTd.length) {
             var rowspan = parseInt(parentTd.attr('rowspan')) || 1;
             parentTd.attr('rowspan', rowspan + 1);
-            parentTd = parentTd.closest('tr').prev('tr').find('td').eq(currentTd.index());
+            parentTd = parentTd.closest('tr').prev('tr').find('td').eq(currentTdIndex);
         }
+
+        level++; // Increment level
     });
 
     // Complete button click event
@@ -74,13 +76,14 @@ j(document).ready(function() {
         var currentTd = j(this).closest('td');
         var textarea = currentTd.find('textarea');
         var saveUrl = j('#dynamicTable').data('url');
+        var formKey = FORM_KEY;
         j.ajax({
             url: saveUrl,
             type: 'POST',
-            data: { text: textarea.val(), status: 'current', level: level },
+            data: { text: textarea.val(), status: 'current', level: currentTd.data('level'), form_key: formKey },
             success: function(response) {
                 textarea.replaceWith('<div>' + textarea.val() + '</div>');
-                currentTd.find('.save').remove();
+                currentTd.find('.save, .remove').remove();
             }
         });
     });
@@ -88,6 +91,8 @@ j(document).ready(function() {
     // Remove button click event
     j('#dynamicTable').on('click', '.remove', function() {
         var currentTd = j(this).closest('td');
+        var currentRow = j(this).closest('tr');
+        var currentTdIndex = currentTd.index();
         currentTd.remove();
 
         // Update rowspan of the first TD if needed
@@ -104,14 +109,17 @@ j(document).ready(function() {
             if (rowspan > 1) {
                 parentTd.attr('rowspan', rowspan - 1);
             }
-            parentTd = parentTd.closest('tr').prev('tr').find('td').eq(firstTd.index());
+            parentTd = parentTd.closest('tr').prev('tr').find('td').eq(currentTdIndex);
         }
     });
 
     // Lock button click event
     j('#dynamicTable').on('click', '.lock', function() {
         var allSaved = true;
-        j('#dynamicTable td').each(function() {
+        var currentLevel = level - 1; // Get the current level
+
+        // Check only the fields at the current level
+        j('#dynamicTable td[data-level=' + currentLevel + ']').each(function() {
             if (j(this).find('textarea').length) {
                 allSaved = false;
             }
@@ -122,11 +130,11 @@ j(document).ready(function() {
             return;
         }
 
-        j('#dynamicTable td').each(function() {
+        j('#dynamicTable td[data-level=' + currentLevel + ']').each(function() {
             if (j(this).find('div').length) {
                 j(this).append(`
                     <button class="add-reply">Add Reply</button>
-                    <button class="continue">Continue</button>
+                    <button class="complete">Complete</button>
                 `);
             }
         });
