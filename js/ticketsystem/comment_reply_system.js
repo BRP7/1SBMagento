@@ -117,8 +117,6 @@ j(document).ready(function() {
         }
     });
 
-    
-
     // Lock button click event
     j('#dynamicTable').on('click', '.lock', function() {
         var allSaved = true;
