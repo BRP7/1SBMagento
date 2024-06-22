@@ -1,6 +1,6 @@
 var j = jQuery.noConflict();
 j(document).ready(function() {
-    var level = 1; 
+    var level = 1; // Initial level
 
     // Add Reply button click event
     j('#dynamicTable').on('click', '.add-reply', function() {
