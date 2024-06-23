@@ -1,8 +1,8 @@
 var j = jQuery.noConflict();
 j(document).ready(function() {
-    var level = 1; 
+    // Track the maximum level for each column
+    var maxLevels = [];
 
-    // Add Reply button click event
     j('#dynamicTable').on('click', '.add-reply', function() {
         var currentTd = j(this).closest('td');
         var currentRow = j(this).closest('tr');
@@ -20,10 +20,14 @@ j(document).ready(function() {
                     <textarea></textarea>
                     <button class="save">Save</button>
                     <button class="remove">Remove</button>
-                    <button class="add-reply">Add Reply</button>
-                    <button class="complete">Complete</button>
                 </div>
-            `).attr('data-level', level).attr('data-parent-td', currentTdIndex); // Set data-level and data-parent-td attributes
+            `).attr('data-parent-td', currentTdIndex);
+
+            // Determine the correct level for this column
+            var level = maxLevels[currentTdIndex + 1] || 1;
+            newTd.attr('data-level', level);
+            maxLevels[currentTdIndex + 1] = level + 1;
+
             currentRow.append(newTd);
 
             // Add lock button in the last row
@@ -39,10 +43,14 @@ j(document).ready(function() {
                     <textarea></textarea>
                     <button class="save">Save</button>
                     <button class="remove">Remove</button>
-                    <button class="add-reply">Add Reply</button>
-                    <button class="complete">Complete</button>
                 </div>
-            `).attr('data-level', level).attr('data-parent-td', currentTdIndex); // Set data-level and data-parent-td attributes
+            `).attr('data-parent-td', currentTdIndex);
+
+            // Determine the correct level for this column
+            var level = maxLevels[currentTdIndex + 1] || 1;
+            newTd.attr('data-level', level);
+            maxLevels[currentTdIndex + 1] = level + 1;
+
             newRow.append(newTd);
             currentRow.after(newRow);
             currentTd.attr('rowspan', currentRowSpan + 1);
@@ -55,8 +63,6 @@ j(document).ready(function() {
             parentTd.attr('rowspan', rowspan + 1);
             parentTd = parentTd.closest('tr').prev('tr').find('td').eq(currentTdIndex);
         }
-
-        level++; // Increment level
     });
 
     // Complete button click event
@@ -119,11 +125,14 @@ j(document).ready(function() {
 
     // Lock button click event
     j('#dynamicTable').on('click', '.lock', function() {
+        console.log('Lock button clicked'); // Debug statement
         var allSaved = true;
-        var currentLevel = level - 1; // Get the current level
+        var maxLevel = Math.max.apply(null, maxLevels); // Get the maximum level
 
-        // Check only the fields at the current level
-        j('#dynamicTable td[data-level=' + currentLevel + ']').each(function() {
+        console.log('Max level:', maxLevel); // Debug statement
+
+        // Check only the fields at the maximum level
+        j('#dynamicTable td[data-level=' + maxLevel + ']').each(function() {
             if (j(this).find('textarea').length) {
                 allSaved = false;
             }
@@ -134,8 +143,9 @@ j(document).ready(function() {
             return;
         }
 
-        j('#dynamicTable td[data-level=' + currentLevel + ']').each(function() {
+        j('#dynamicTable td[data-level=' + maxLevel + ']').each(function() {
             if (j(this).find('div').length) {
+                console.log('Adding buttons to td at max level'); // Debug statement
                 j(this).append(`
                     <button class="add-reply">Add Reply</button>
                     <button class="complete">Complete</button>
@@ -144,6 +154,7 @@ j(document).ready(function() {
         });
 
         // Remove lock button after locking
+        console.log('Removing lock button'); // Debug statement
         j(this).remove();
     });
 });
