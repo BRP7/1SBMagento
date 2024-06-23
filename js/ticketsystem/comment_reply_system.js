@@ -9,6 +9,10 @@ j(document).ready(function() {
         var nextTd = currentTd.next('td');
         var currentRowSpan = parseInt(currentTd.attr('rowspan')) || 1;
 
+        console.log('Add Reply clicked');
+        console.log('currentTdIndex:', currentTdIndex);
+        console.log('currentRowSpan:', currentRowSpan);
+
         // Hide the complete button when Add Reply is clicked
         currentTd.find('.complete').hide();
 
@@ -60,6 +64,8 @@ j(document).ready(function() {
 
     j('#dynamicTable').on('click', '.complete', function() {
         var currentTd = j(this).closest('td');
+        console.log('Complete button clicked:', currentTd.index());
+
         j.ajax({
             url: 'path_to_your_controller',
             type: 'POST',
@@ -78,6 +84,9 @@ j(document).ready(function() {
         var textarea = currentTd.find('textarea');
         var saveUrl = j('#dynamicTable').data('url');
         var formKey = FORM_KEY;
+
+        console.log('Save button clicked:', currentTd.index());
+
         j.ajax({
             url: saveUrl,
             type: 'POST',
@@ -93,6 +102,8 @@ j(document).ready(function() {
         var currentTd = j(this).closest('td');
         var currentRow = j(this).closest('tr');
         var currentTdIndex = currentTd.index();
+        console.log('Remove button clicked:', currentTdIndex);
+        
         currentTd.remove();
 
         var firstTd = j('#dynamicTable td:first');
@@ -134,6 +145,8 @@ j(document).ready(function() {
             maxLevelColIndexes.push(j(this).index());
         });
 
+        console.log('maxLevelColIndexes:', maxLevelColIndexes);
+
         maxLevelColIndexes.forEach(function(colIndex) {
             j('#dynamicTable tr').each(function() {
                 var tdInSameColumn = j(this).find('td').eq(colIndex);
@@ -150,6 +163,7 @@ j(document).ready(function() {
         // Ensure the first td in each row also receives the buttons
         j('#dynamicTable tr').each(function() {
             var firstTd = j(this).find('td').first();
+            console.log('firstTd:', firstTd.index());
             if (firstTd.length && firstTd.find('div').length && !firstTd.find('.add-reply').length) {
                 firstTd.append(`
                     <button class="add-reply">Add Reply</button>
