@@ -144,11 +144,15 @@ j(document).ready(function() {
         }
 
         // Ensure all td elements in the same column as the max-level td have the same max level
+        var maxLevelColIndexes = [];
         j('#dynamicTable td[data-level=' + maxLevel + ']').each(function() {
-            var colIndex = j(this).index();
+            maxLevelColIndexes.push(j(this).index());
+        });
+
+        maxLevelColIndexes.forEach(function(colIndex) {
             j('#dynamicTable tr').each(function() {
                 var tdInSameColumn = j(this).find('td').eq(colIndex);
-                if (tdInSameColumn.find('div').length) {
+                if (tdInSameColumn.length && tdInSameColumn.find('div').length && !tdInSameColumn.find('.add-reply').length) {
                     tdInSameColumn.attr('data-level', maxLevel); // Ensure same max level
                     tdInSameColumn.append(`
                         <button class="add-reply">Add Reply</button>
@@ -156,6 +160,17 @@ j(document).ready(function() {
                     `);
                 }
             });
+        });
+
+        // Ensure the first td in each row also receives the buttons
+        j('#dynamicTable tr').each(function() {
+            var firstTd = j(this).find('td').first();
+            if (firstTd.length && !firstTd.find('.add-reply').length && !firstTd.find('.complete').length) {
+                firstTd.append(`
+                    <button class="add-reply">Add Reply</button>
+                    <button class="complete">Complete</button>
+                `);
+            }
         });
 
         // Remove lock button after locking
