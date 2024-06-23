@@ -1,6 +1,5 @@
 var j = jQuery.noConflict();
 j(document).ready(function() {
-    // Initialize maxLevels array to ensure it contains numeric values
     var maxLevels = [];
 
     j('#dynamicTable').on('click', '.add-reply', function() {
@@ -14,7 +13,6 @@ j(document).ready(function() {
         currentTd.find('.complete').hide();
 
         if (nextTd.length === 0) {
-            // If no TD exists beside, create a new TD in the next column
             var newTd = j('<td></td>').html(`
                 <div>
                     <textarea></textarea>
@@ -23,20 +21,17 @@ j(document).ready(function() {
                 </div>
             `).attr('data-parent-td', currentTdIndex);
 
-            // Determine the correct level for this column
             var level = (maxLevels[currentTdIndex + 1] || 0) + 1;
             newTd.attr('data-level', level);
             maxLevels[currentTdIndex + 1] = level;
 
             currentRow.append(newTd);
 
-            // Add lock button in the last row
             var lastRow = j('#dynamicTable tr:last');
             if (lastRow.find('.lock').length === 0) {
                 lastRow.append('<td><button class="lock">Lock</button></td>');
             }
         } else {
-            // If TD exists beside, create a new row and add TD to it
             var newRow = j('<tr></tr>');
             var newTd = j('<td></td>').html(`
                 <div>
@@ -46,7 +41,6 @@ j(document).ready(function() {
                 </div>
             `).attr('data-parent-td', currentTdIndex);
 
-            // Determine the correct level for this column
             var level = (maxLevels[currentTdIndex + 1] || 0) + 1;
             newTd.attr('data-level', level);
             maxLevels[currentTdIndex + 1] = level;
@@ -56,7 +50,6 @@ j(document).ready(function() {
             currentTd.attr('rowspan', currentRowSpan + 1);
         }
 
-        // Update rowspan of all the parent TDs recursively
         var parentTd = currentTd;
         while (parentTd.length) {
             var rowspan = parseInt(parentTd.attr('rowspan')) || 1;
@@ -65,7 +58,6 @@ j(document).ready(function() {
         }
     });
 
-    // Complete button click event
     j('#dynamicTable').on('click', '.complete', function() {
         var currentTd = j(this).closest('td');
         j.ajax({
@@ -81,7 +73,6 @@ j(document).ready(function() {
         });
     });
 
-    // Save button click event
     j('#dynamicTable').on('click', '.save', function() {
         var currentTd = j(this).closest('td');
         var textarea = currentTd.find('textarea');
@@ -98,21 +89,18 @@ j(document).ready(function() {
         });
     });
 
-    // Remove button click event
     j('#dynamicTable').on('click', '.remove', function() {
         var currentTd = j(this).closest('td');
         var currentRow = j(this).closest('tr');
         var currentTdIndex = currentTd.index();
         currentTd.remove();
 
-        // Update rowspan of the first TD if needed
         var firstTd = j('#dynamicTable td:first');
         var currentRowSpan = parseInt(firstTd.attr('rowspan')) || 1;
         if (currentRowSpan > 1) {
             firstTd.attr('rowspan', currentRowSpan - 1);
         }
 
-        // Update rowspan of all the parent TDs recursively
         var parentTd = firstTd;
         while (parentTd.length) {
             var rowspan = parseInt(parentTd.attr('rowspan')) || 1;
@@ -123,15 +111,13 @@ j(document).ready(function() {
         }
     });
 
-    // Lock button click event
     j('#dynamicTable').on('click', '.lock', function() {
         console.log('Lock button clicked'); // Debug statement
         var allSaved = true;
-        var maxLevel = Math.max.apply(null, maxLevels.filter(function(n) { return !isNaN(n); })); // Get the maximum level
+        var maxLevel = Math.max.apply(null, maxLevels.filter(function(n) { return !isNaN(n); }));
 
         console.log('Max level:', maxLevel); // Debug statement
 
-        // Check only the fields at the maximum level
         j('#dynamicTable td[data-level=' + maxLevel + ']').each(function() {
             if (j(this).find('textarea').length) {
                 allSaved = false;
@@ -143,7 +129,6 @@ j(document).ready(function() {
             return;
         }
 
-        // Ensure all td elements in the same column as the max-level td have the same max level
         var maxLevelColIndexes = [];
         j('#dynamicTable td[data-level=' + maxLevel + ']').each(function() {
             maxLevelColIndexes.push(j(this).index());
@@ -153,7 +138,7 @@ j(document).ready(function() {
             j('#dynamicTable tr').each(function() {
                 var tdInSameColumn = j(this).find('td').eq(colIndex);
                 if (tdInSameColumn.length && tdInSameColumn.find('div').length && !tdInSameColumn.find('.add-reply').length) {
-                    tdInSameColumn.attr('data-level', maxLevel); // Ensure same max level
+                    tdInSameColumn.attr('data-level', maxLevel);
                     tdInSameColumn.append(`
                         <button class="add-reply">Add Reply</button>
                         <button class="complete">Complete</button>
@@ -165,7 +150,7 @@ j(document).ready(function() {
         // Ensure the first td in each row also receives the buttons
         j('#dynamicTable tr').each(function() {
             var firstTd = j(this).find('td').first();
-            if (firstTd.length && !firstTd.find('.add-reply').length && !firstTd.find('.complete').length) {
+            if (firstTd.length && firstTd.find('div').length && !firstTd.find('.add-reply').length) {
                 firstTd.append(`
                     <button class="add-reply">Add Reply</button>
                     <button class="complete">Complete</button>
@@ -173,7 +158,6 @@ j(document).ready(function() {
             }
         });
 
-        // Remove lock button after locking
         console.log('Removing lock button'); // Debug statement
         j(this).remove();
     });
