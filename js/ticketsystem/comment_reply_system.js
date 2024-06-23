@@ -1,6 +1,6 @@
 var j = jQuery.noConflict();
 j(document).ready(function() {
-    var level = 1; // Initial level
+    var level = 1; 
 
     // Add Reply button click event
     j('#dynamicTable').on('click', '.add-reply', function() {
@@ -20,8 +20,6 @@ j(document).ready(function() {
                     <textarea></textarea>
                     <button class="save">Save</button>
                     <button class="remove">Remove</button>
-                    <button class="add-reply">Add Reply</button>
-                    <button class="complete">Complete</button>
                 </div>
             `).attr('data-level', level).attr('data-parent-td', currentTdIndex); // Set data-level and data-parent-td attributes
             currentRow.append(newTd);
@@ -134,7 +132,8 @@ j(document).ready(function() {
             return;
         }
 
-        j('#dynamicTable td[data-level=' + currentLevel + ']').each(function() {
+        j('#dynamicTable td[data-level=' + currentLevel + ']').each(function(e) {
+            console.log(e);
             if (j(this).find('div').length) {
                 j(this).append(`
                     <button class="add-reply">Add Reply</button>
