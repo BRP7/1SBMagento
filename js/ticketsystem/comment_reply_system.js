@@ -20,8 +20,8 @@ j(document).ready(function() {
                     <textarea></textarea>
                     <button class="save">Save</button>
                     <button class="remove">Remove</button>
-                    // <button class="add-reply">Add Reply</button>
-                    // <button class="complete">Complete</button>
+                    <button class="add-reply">Add Reply</button>
+                    <button class="complete">Complete</button>
                 </div>
             `).attr('data-level', level).attr('data-parent-td', currentTdIndex); // Set data-level and data-parent-td attributes
             currentRow.append(newTd);
