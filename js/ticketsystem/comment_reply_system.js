@@ -8,7 +8,7 @@ j(document).ready(function() {
         var currentTdIndex = currentTd.index();
         var nextTd = currentTd.next('td');
         var currentRowSpan = parseInt(currentTd.attr('rowspan')) || 1;
-
+        // console.log(currentRowSpan);
         currentTd.find('.complete').hide();
 
         if (nextTd.length === 0) {
@@ -20,8 +20,8 @@ j(document).ready(function() {
                 </div>
             `).attr('data-level', level).attr('data-parent-td', currentTdIndex); 
             currentRow.append(newTd);
-
             var lastRow = j('#dynamicTable tr:last');
+            // console.log( j('#dynamicTable tr:last'));
             if (lastRow.find('.lock').length === 0) {
                 lastRow.append('<td><button class="lock">Lock</button></td>');
             }
@@ -38,17 +38,21 @@ j(document).ready(function() {
             currentRow.after(newRow);
             currentTd.attr('rowspan', currentRowSpan + 1);
         }
-
         var parentTd = currentTd;
+        // console.log(parentTd.length);
         while (parentTd.length) {
             var rowspan = parseInt(parentTd.attr('rowspan')) || 1;
-            parentTd.attr('rowspan', rowspan + 1);
+            console.log(parentTd.closest('tr')[0]!=newTd.closest('tr')[0]);
+            if(parentTd.closest('tr')[0]!=newTd.closest('tr')[0]){
+                console.log(newTd.closest('tr')[0]);
+                parentTd.attr('rowspan', rowspan + 1);
+            }
             parentTd = parentTd.closest('tr').prev('tr').find('td').eq(currentTdIndex);
         }
 
-        level++;
     });
 
+    // Complete button click event
     j('#dynamicTable').on('click', '.complete', function() {
         var currentTd = j(this).closest('td');
         j.ajax({
@@ -64,6 +68,7 @@ j(document).ready(function() {
         });
     });
 
+    // Save button click event
     j('#dynamicTable').on('click', '.save', function() {
         var currentTd = j(this).closest('td');
         var textarea = currentTd.find('textarea');
@@ -80,18 +85,21 @@ j(document).ready(function() {
         });
     });
 
+    // Remove button click event
     j('#dynamicTable').on('click', '.remove', function() {
         var currentTd = j(this).closest('td');
         var currentRow = j(this).closest('tr');
         var currentTdIndex = currentTd.index();
         currentTd.remove();
 
+        // Update rowspan of the first TD if needed
         var firstTd = j('#dynamicTable td:first');
         var currentRowSpan = parseInt(firstTd.attr('rowspan')) || 1;
         if (currentRowSpan > 1) {
             firstTd.attr('rowspan', currentRowSpan - 1);
         }
 
+        // Update rowspan of all the parent TDs recursively
         var parentTd = firstTd;
         while (parentTd.length) {
             var rowspan = parseInt(parentTd.attr('rowspan')) || 1;
@@ -102,9 +110,10 @@ j(document).ready(function() {
         }
     });
 
-   j('#dynamicTable').on('click', '.lock', function() {
+    // Lock button click event
+    j('#dynamicTable').on('click', '.lock', function() {
         var allSaved = true;
-        var currentLevel = level - 1; 
+        var currentLevel = level;
 
         j('#dynamicTable td[data-level=' + currentLevel + ']').each(function() {
             if (j(this).find('textarea').length) {
@@ -123,9 +132,12 @@ j(document).ready(function() {
                     <button class="add-reply">Add Reply</button>
                     <button class="complete">Complete</button>
                 `);
+                console.log(j(this).closest('tr')[0]);
             }
         });
+        level++;
+        // console.log(j(this).closest('td')[0]);
 
-        j(this).remove();
+        j(this).closest('td').remove();
     });
 });
