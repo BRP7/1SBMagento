@@ -1,6 +1,6 @@
 var j = jQuery.noConflict();
 j(document).ready(function() {
-    var maxLevels = [];
+    var level = 1; 
 
     j('#dynamicTable').on('click', '.add-reply', function() {
         var currentTd = j(this).closest('td');
@@ -9,11 +9,6 @@ j(document).ready(function() {
         var nextTd = currentTd.next('td');
         var currentRowSpan = parseInt(currentTd.attr('rowspan')) || 1;
 
-        console.log('Add Reply clicked');
-        console.log('currentTdIndex:', currentTdIndex);
-        console.log('currentRowSpan:', currentRowSpan);
-
-        // Hide the complete button when Add Reply is clicked
         currentTd.find('.complete').hide();
 
         if (nextTd.length === 0) {
@@ -23,12 +18,7 @@ j(document).ready(function() {
                     <button class="save">Save</button>
                     <button class="remove">Remove</button>
                 </div>
-            `).attr('data-parent-td', currentTdIndex);
-
-            var level = (maxLevels[currentTdIndex + 1] || 0) + 1;
-            newTd.attr('data-level', level);
-            maxLevels[currentTdIndex + 1] = level;
-
+            `).attr('data-level', level).attr('data-parent-td', currentTdIndex); 
             currentRow.append(newTd);
 
             var lastRow = j('#dynamicTable tr:last');
@@ -43,12 +33,7 @@ j(document).ready(function() {
                     <button class="save">Save</button>
                     <button class="remove">Remove</button>
                 </div>
-            `).attr('data-parent-td', currentTdIndex);
-
-            var level = (maxLevels[currentTdIndex + 1] || 0) + 1;
-            newTd.attr('data-level', level);
-            maxLevels[currentTdIndex + 1] = level;
-
+            `).attr('data-level', level).attr('data-parent-td', currentTdIndex); 
             newRow.append(newTd);
             currentRow.after(newRow);
             currentTd.attr('rowspan', currentRowSpan + 1);
@@ -60,12 +45,12 @@ j(document).ready(function() {
             parentTd.attr('rowspan', rowspan + 1);
             parentTd = parentTd.closest('tr').prev('tr').find('td').eq(currentTdIndex);
         }
+
+        level++;
     });
 
     j('#dynamicTable').on('click', '.complete', function() {
         var currentTd = j(this).closest('td');
-        console.log('Complete button clicked:', currentTd.index());
-
         j.ajax({
             url: 'path_to_your_controller',
             type: 'POST',
@@ -84,9 +69,6 @@ j(document).ready(function() {
         var textarea = currentTd.find('textarea');
         var saveUrl = j('#dynamicTable').data('url');
         var formKey = FORM_KEY;
-
-        console.log('Save button clicked:', currentTd.index());
-
         j.ajax({
             url: saveUrl,
             type: 'POST',
@@ -102,8 +84,6 @@ j(document).ready(function() {
         var currentTd = j(this).closest('td');
         var currentRow = j(this).closest('tr');
         var currentTdIndex = currentTd.index();
-        console.log('Remove button clicked:', currentTdIndex);
-        
         currentTd.remove();
 
         var firstTd = j('#dynamicTable td:first');
@@ -122,14 +102,11 @@ j(document).ready(function() {
         }
     });
 
-    j('#dynamicTable').on('click', '.lock', function() {
-        console.log('Lock button clicked'); // Debug statement
+   j('#dynamicTable').on('click', '.lock', function() {
         var allSaved = true;
-        var maxLevel = Math.max.apply(null, maxLevels.filter(function(n) { return !isNaN(n); }));
+        var currentLevel = level - 1; 
 
-        console.log('Max level:', maxLevel); // Debug statement
-
-        j('#dynamicTable td[data-level=' + maxLevel + ']').each(function() {
+        j('#dynamicTable td[data-level=' + currentLevel + ']').each(function() {
             if (j(this).find('textarea').length) {
                 allSaved = false;
             }
@@ -140,39 +117,15 @@ j(document).ready(function() {
             return;
         }
 
-        var maxLevelColIndexes = [];
-        j('#dynamicTable td[data-level=' + maxLevel + ']').each(function() {
-            maxLevelColIndexes.push(j(this).index());
-        });
-
-        console.log('maxLevelColIndexes:', maxLevelColIndexes);
-
-        maxLevelColIndexes.forEach(function(colIndex) {
-            j('#dynamicTable tr').each(function() {
-                var tdInSameColumn = j(this).find('td').eq(colIndex);
-                if (tdInSameColumn.length && tdInSameColumn.find('div').length && !tdInSameColumn.find('.add-reply').length) {
-                    tdInSameColumn.attr('data-level', maxLevel);
-                    tdInSameColumn.append(`
-                        <button class="add-reply">Add Reply</button>
-                        <button class="complete">Complete</button>
-                    `);
-                }
-            });
-        });
-
-        // Ensure the first td in each row also receives the buttons
-        j('#dynamicTable tr').each(function() {
-            var firstTd = j(this).find('td').first();
-            console.log('firstTd:', firstTd.index());
-            if (firstTd.length && firstTd.find('div').length && !firstTd.find('.add-reply').length) {
-                firstTd.append(`
+        j('#dynamicTable td[data-level=' + currentLevel + ']').each(function() {
+            if (j(this).find('div').length) {
+                j(this).append(`
                     <button class="add-reply">Add Reply</button>
                     <button class="complete">Complete</button>
                 `);
             }
         });
 
-        console.log('Removing lock button'); // Debug statement
         j(this).remove();
     });
 });
