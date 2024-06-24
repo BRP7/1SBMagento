@@ -314,27 +314,33 @@ class Ccc_Ticketsystem_Adminhtml_TicketsystemController extends Mage_Adminhtml_C
 
 
     public function saveAction() {
-        // $data = $this->getRequest()->getPost();
-        // $comment = Mage::getModel('ccc_ticketsystem/comment');
-        // if (!empty($data['comment_id'])) {
-        //     $comment->load($data['comment_id']);
-        // }
+        $data = $this->getRequest()->getPost();
+        print_r($data);
+        $comment = Mage::getModel('ccc_ticketsystem/comment');
+        if (!empty($data['comment_id'])) {
+            $comment->load($data['comment_id']);
+        }
         // $comment->setDescription($data['comment']);
-        // $comment->setTicketId($data['ticket_id']);
-        // $comment->setParentId($data['parent_id']);
-        // $comment->setUserId(Mage::getSingleton('admin/session')->getUser()->getId());
-        // try {
-        //     $comment->save();
-        //     $response = [
-        //         'status' => 'success',
-        //         'comment_id' => $comment->getId(),
-        //         'message' => 'Comment saved successfully.'
-        //     ];
-        //     $this->getResponse()->setBody(json_encode($response));
-        // } catch (Exception $e) {
-        //     $this->getResponse()->setBody(json_encode(['status' => 'error', 'message' => $e->getMessage()]));
-        // }
-        $this->getResponse()->setBody('success');
+        $comment->setTicketId($data['ticket_id']);
+        $comment->setParentId($data['parent_id']);
+        $comment->setDescription($data['text']);
+        $comment->setLevel($data['level']);
+        if($data['status']=='current'){
+            $comment->setStatus(3);
+        }
+        $comment->setUserId(Mage::getSingleton('admin/session')->getUser()->getId());
+        try {
+            $comment->save();
+            $response = [
+                'status' => 'success',
+                'comment_id' => $comment->getId(),
+                'message' => 'Comment saved successfully.'
+            ];
+            $this->getResponse()->setBody(json_encode($response));
+        } catch (Exception $e) {
+            $this->getResponse()->setBody(json_encode(['status' => 'error', 'message' => $e->getMessage()]));
+        }
+        // $this->getResponse()->setBody('success');
     }
     
     

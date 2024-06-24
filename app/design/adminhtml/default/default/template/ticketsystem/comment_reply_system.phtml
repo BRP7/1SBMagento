@@ -1,7 +1,7 @@
 <?php
 $url = $this->getUrl('*/*/save');
 ?>
-    <table id="dynamicTable" data-url="<?php echo $url; ?>">
+    <table id="dynamicTable" data-url="<?php echo $url; ?>"  data-ticket-id="<?php echo $this->getRequest()->getParam('id'); ?>">
         <tr>
             <td rowspan="1">
                 <div>
@@ -13,4 +13,5 @@ $url = $this->getUrl('*/*/save');
         </tr>
     </table>
   
+    
 

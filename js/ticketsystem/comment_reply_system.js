@@ -18,10 +18,9 @@ j(document).ready(function() {
                     <button class="save">Save</button>
                     <button class="remove">Remove</button>
                 </div>
-            `).attr('data-level', level).attr('data-parent-td', currentTdIndex); 
+            `).attr('data-level', level).attr('data-parent-td', currentTdIndex+1); 
             currentRow.append(newTd);
             var lastRow = j('#dynamicTable tr:last');
-            // console.log( j('#dynamicTable tr:last'));
             if (lastRow.find('.lock').length === 0) {
                 lastRow.append('<td><button class="lock">Lock</button></td>');
             }
@@ -39,20 +38,30 @@ j(document).ready(function() {
             currentTd.attr('rowspan', currentRowSpan + 1);
         }
         var parentTd = currentTd;
-        // console.log(parentTd.length);
         while (parentTd.length) {
             var rowspan = parseInt(parentTd.attr('rowspan')) || 1;
-            console.log(parentTd.closest('tr')[0]!=newTd.closest('tr')[0]);
             if(parentTd.closest('tr')[0]!=newTd.closest('tr')[0]){
-                console.log(newTd.closest('tr')[0]);
                 parentTd.attr('rowspan', rowspan + 1);
             }
             parentTd = parentTd.closest('tr').prev('tr').find('td').eq(currentTdIndex);
         }
 
+        // var parentTd = currentTd;
+        // var currentRow = newTd.closest('tr');
+        
+        // while (parentTd.length) {
+        //     var parentRow = parentTd.closest('tr');
+        //     if (parentRow.length && parentRow[0] !== currentRow[0]) {
+        //         var rowspan = parseInt(parentTd.attr('rowspan')) || 1;
+        //         parentTd.attr('rowspan', rowspan + 1);
+        //         console.log(currentRow);
+        //         currentRow = parentRow;
+        //     }
+        //     parentTd = parentTd.closest('tr').prev('tr').find('td').eq(currentTdIndex);
+        // }
+
     });
 
-    // Complete button click event
     j('#dynamicTable').on('click', '.complete', function() {
         var currentTd = j(this).closest('td');
         j.ajax({
@@ -68,16 +77,18 @@ j(document).ready(function() {
         });
     });
 
-    // Save button click event
     j('#dynamicTable').on('click', '.save', function() {
         var currentTd = j(this).closest('td');
+        // console.log();
+        var parentId =currentTd.data('parent-td');
         var textarea = currentTd.find('textarea');
         var saveUrl = j('#dynamicTable').data('url');
+        var ticketId = j('#dynamicTable').data('ticket-id');
         var formKey = FORM_KEY;
         j.ajax({
             url: saveUrl,
             type: 'POST',
-            data: { text: textarea.val(), status: 'current', level: currentTd.data('level'), form_key: formKey },
+            data: { text: textarea.val(),ticket_id:ticketId,parent_id:parentId, status: 'current', level: currentTd.data('level'), form_key: formKey },
             success: function(response) {
                 textarea.replaceWith('<div>' + textarea.val() + '</div>');
                 currentTd.find('.save, .remove').remove();
@@ -85,21 +96,18 @@ j(document).ready(function() {
         });
     });
 
-    // Remove button click event
     j('#dynamicTable').on('click', '.remove', function() {
         var currentTd = j(this).closest('td');
         var currentRow = j(this).closest('tr');
         var currentTdIndex = currentTd.index();
         currentTd.remove();
 
-        // Update rowspan of the first TD if needed
         var firstTd = j('#dynamicTable td:first');
         var currentRowSpan = parseInt(firstTd.attr('rowspan')) || 1;
         if (currentRowSpan > 1) {
             firstTd.attr('rowspan', currentRowSpan - 1);
         }
 
-        // Update rowspan of all the parent TDs recursively
         var parentTd = firstTd;
         while (parentTd.length) {
             var rowspan = parseInt(parentTd.attr('rowspan')) || 1;
@@ -110,10 +118,11 @@ j(document).ready(function() {
         }
     });
 
-    // Lock button click event
     j('#dynamicTable').on('click', '.lock', function() {
         var allSaved = true;
         var currentLevel = level;
+
+        //change status from 3-2 and 2-1 current-pending-complete send ajax and in response render whole block
 
         j('#dynamicTable td[data-level=' + currentLevel + ']').each(function() {
             if (j(this).find('textarea').length) {
@@ -132,7 +141,7 @@ j(document).ready(function() {
                     <button class="add-reply">Add Reply</button>
                     <button class="complete">Complete</button>
                 `);
-                console.log(j(this).closest('tr')[0]);
+                // console.log(j(this).closest('tr')[0]);
             }
         });
         level++;
