@@ -1,152 +1,171 @@
-var j = jQuery.noConflict();
-j(document).ready(function() {
-    var level = 1; 
-
-    j('#dynamicTable').on('click', '.add-reply', function() {
-        var currentTd = j(this).closest('td');
-        var currentRow = j(this).closest('tr');
-        var currentTdIndex = currentTd.index();
-        var nextTd = currentTd.next('td');
-        var currentRowSpan = parseInt(currentTd.attr('rowspan')) || 1;
-        // console.log(currentRowSpan);
-        currentTd.find('.complete').hide();
-
-        if (nextTd.length === 0) {
-            var newTd = j('<td></td>').html(`
-                <div>
-                    <textarea></textarea>
-                    <button class="save">Save</button>
-                    <button class="remove">Remove</button>
-                </div>
-            `).attr('data-level', level).attr('data-parent-td', currentTdIndex+1); 
-            currentRow.append(newTd);
-            var lastRow = j('#dynamicTable tr:last');
-            if (lastRow.find('.lock').length === 0) {
-                lastRow.append('<td><button class="lock">Lock</button></td>');
-            }
+var CommentBox = Class.create({
+    initialize: function (saveredirectUrl, formKey, loadredirectUrl) {
+        this.saveredirectUrl = saveredirectUrl
+        this.loadredirectUrl = loadredirectUrl
+        this.formKey = formKey
+        this.level = parseInt($$('.commentTable')[0].getAttribute('data-level')) + 1;
+        this.ticketId = $$('.commentTable')[0].getAttribute('data-ticket-id');
+        this.addLockButtonToLastRow();
+    },
+    addNewRow: function (event) {
+        if (!(event instanceof HTMLElement)) {
+            var event = event.element()
+        }
+        if (event.nextElementSibling) {
+            this.removeButton(event.nextElementSibling);
+        }
+        let td = event.up('td');
+        let tr = td.up('tr');
+        let tbody = tr.up('tbody');
+        this.parentId = td.getAttribute('data-comment-id');
+        let existingTds = tr.select(`td[data-level="${parseInt(this.level)}"]`);
+        if (existingTds.length === 0) {
+            let newTd = new Element('td', {
+                'data-level': this.level,
+                'data-parent-id': this.parentId,
+                'rowspan': 1
+            });
+            let textarea = new Element('textarea');
+            let saveBtn = this.createButton('Save', this.saveRow.bind(this));
+            newTd.insert(textarea);
+            newTd.insert(saveBtn);
+            tr.insert(newTd);
         } else {
-            var newRow = j('<tr></tr>');
-            var newTd = j('<td></td>').html(`
-                <div>
-                    <textarea></textarea>
-                    <button class="save">Save</button>
-                    <button class="remove">Remove</button>
-                </div>
-            `).attr('data-level', level).attr('data-parent-td', currentTdIndex); 
-            newRow.append(newTd);
-            currentRow.after(newRow);
-            currentTd.attr('rowspan', currentRowSpan + 1);
-        }
-        var parentTd = currentTd;
-        while (parentTd.length) {
-            var rowspan = parseInt(parentTd.attr('rowspan')) || 1;
-            if(parentTd.closest('tr')[0]!=newTd.closest('tr')[0]){
-                parentTd.attr('rowspan', rowspan + 1);
+            let newTr = new Element('tr');
+            let newTd = new Element('td', {
+                'data-level': this.level,
+                'data-parent-id': this.parentId,
+                'rowspan': 1
+            });
+            let textarea = new Element('textarea');
+            let saveBtn = this.createButton('Save', this.saveRow.bind(this));
+            newTd.insert(textarea);
+            newTd.insert(saveBtn);
+            newTr.insert(newTd);
+            if (tr.nextSibling) {
+                tbody.insertBefore(newTr, tr.nextSibling);
+            } else {
+                tbody.insert(newTr);
             }
-            parentTd = parentTd.closest('tr').prev('tr').find('td').eq(currentTdIndex);
+            this.updateRowspan(td, 1);
         }
-
-        // var parentTd = currentTd;
-        // var currentRow = newTd.closest('tr');
-        
-        // while (parentTd.length) {
-        //     var parentRow = parentTd.closest('tr');
-        //     if (parentRow.length && parentRow[0] !== currentRow[0]) {
-        //         var rowspan = parseInt(parentTd.attr('rowspan')) || 1;
-        //         parentTd.attr('rowspan', rowspan + 1);
-        //         console.log(currentRow);
-        //         currentRow = parentRow;
-        //     }
-        //     parentTd = parentTd.closest('tr').prev('tr').find('td').eq(currentTdIndex);
-        // }
-
-    });
-
-    j('#dynamicTable').on('click', '.complete', function() {
-        var currentTd = j(this).closest('td');
-        j.ajax({
-            url: 'path_to_your_controller',
-            type: 'POST',
-            data: { status: 'complete' },
-            success: function(response) {
-                currentTd.find('.complete').remove();
-                currentTd.find('.add-reply').hide();
-                var nextTd = j('<td></td>').html('<div>Complete</div>');
-                currentTd.after(nextTd);
+        this.addLockButtonToLastRow();
+        console.log($$('.commentTable')[0])
+    },
+    saveRow: function (element) {
+        let saveBtn = element.element()
+        let td = saveBtn.up('td')
+        let textarea = saveBtn.previousElementSibling
+        let value = textarea.value
+        var valueSpan = new Element('span').update(value);
+        td.update(valueSpan)
+        this.saveDataToDb(td, value);
+        textarea.remove();
+        saveBtn.remove();
+    },
+    saveDataToDb: function (td, data) {
+        let parentId = td.getAttribute('data-parent-id');
+        let level = td.getAttribute('data-level');
+        new Ajax.Request(this.saveredirectUrl, {
+            method: 'post',
+            parameters: {
+                parentId: parentId,
+                level: level,
+                data: data,
+                ticketId: this.ticketId,
+                formKey: this.formKey,
+            },
+            onSuccess: function (response) {
+                alert('data save successfully')
+                td.setAttribute('data-comment-id', response.responseText);
+            },
+            onFailure: function () {
+                console.error('Failed to save data.');
             }
         });
-    });
-
-    j('#dynamicTable').on('click', '.save', function() {
-        var currentTd = j(this).closest('td');
-        // console.log();
-        var parentId =currentTd.data('parent-td');
-        var textarea = currentTd.find('textarea');
-        var saveUrl = j('#dynamicTable').data('url');
-        var ticketId = j('#dynamicTable').data('ticket-id');
-        var formKey = FORM_KEY;
-        j.ajax({
-            url: saveUrl,
-            type: 'POST',
-            data: { text: textarea.val(),ticket_id:ticketId,parent_id:parentId, status: 'current', level: currentTd.data('level'), form_key: formKey },
-            success: function(response) {
-                textarea.replaceWith('<div>' + textarea.val() + '</div>');
-                currentTd.find('.save, .remove').remove();
+    },
+    removeButton: function (btn) {
+        btn.remove()
+    },
+    addLockButtonToLastRow: function () {
+        console.log(12);
+        let table = $$('table.commentTable')[0];
+        let tbody = table.down('tbody');
+        let existingLockButtonRow = $$('.lock-button-row')[0];
+        if (existingLockButtonRow) {
+            existingLockButtonRow.remove();
+        }
+        let newRow = new Element('tr', { 'class': 'lock-button-row' });
+        for (let i = 0; i < this.level; i++) {
+            let td = new Element('td');
+            newRow.insert(td);
+        }
+        let lockTd = new Element('td');
+        let lockBtn = this.createButton('Lock', this.lockLevel.bind(this), 'lock-button');
+        lockTd.insert(lockBtn);
+        newRow.insert(lockTd);
+        tbody.insert(newRow);
+    },
+    updateRowspan: function (td, increment) {
+        let commentId = td.getAttribute('data-comment-id');
+        let parentId = td.getAttribute('data-parent-id');
+        let currentRowspan = parseInt(td.getAttribute('rowspan')) || 1;
+        td.setAttribute('rowspan', currentRowspan + increment);
+        let parentTds = $$(`td[data-comment-id="${parentId}"]`);
+        parentTds.forEach(parentTd => {
+            this.updateRowspan(parentTd, increment);
+        });
+    },
+    getPreviousTd: function (td, level) {
+        let tr = td.up('tr').previous();
+        while (tr) {
+            let previousTd = tr.select(`td[data-level="${level}"]`)[0];
+            if (previousTd) return previousTd;
+            tr = tr.previous();
+        }
+        return null;
+    },
+    createButton: function (label, callback, btnClass) {
+        btnClass = btnClass || 'button';
+        let button = new Element('button', { className: btnClass }).update(label);
+        button.observe('click', callback);
+        return button;
+    },
+    completeRow: function (event) {
+        if (!(event instanceof HTMLElement)) {
+            var event = event.element()
+        }
+        let td = event.up('td');
+        if (td.select('textarea')[0]) {
+            td.select('textarea')[0].hide();
+        }
+        if (td.select('button')) {
+            td.select('button').invoke('hide');
+        }
+    },
+    lockLevel: function (event) {
+        let currTds = $$('td[data-level="' + (this.level) + '"]');
+        currTds.each(function (td) {
+            if (td.select('textarea').length > 0) {
+                td.up('tr').remove();
+            }
+        })
+        this.loadComments();
+    },
+    loadComments: function () {
+        var params = {
+            formKey: this.formKey,
+        }
+        new Ajax.Request(this.loadredirectUrl, {
+            method: 'post',
+            parameters: params,
+            onSuccess: function (response) {
+                $('comment_replay').update(response.responseText);
+                this.addLockButtonToLastRow();
+            },
+            onFailure: function () {
+                console.log('Error saving report.');
             }
         });
-    });
-
-    j('#dynamicTable').on('click', '.remove', function() {
-        var currentTd = j(this).closest('td');
-        var currentRow = j(this).closest('tr');
-        var currentTdIndex = currentTd.index();
-        currentTd.remove();
-
-        var firstTd = j('#dynamicTable td:first');
-        var currentRowSpan = parseInt(firstTd.attr('rowspan')) || 1;
-        if (currentRowSpan > 1) {
-            firstTd.attr('rowspan', currentRowSpan - 1);
-        }
-
-        var parentTd = firstTd;
-        while (parentTd.length) {
-            var rowspan = parseInt(parentTd.attr('rowspan')) || 1;
-            if (rowspan > 1) {
-                parentTd.attr('rowspan', rowspan - 1);
-            }
-            parentTd = parentTd.closest('tr').prev('tr').find('td').eq(currentTdIndex);
-        }
-    });
-
-    j('#dynamicTable').on('click', '.lock', function() {
-        var allSaved = true;
-        var currentLevel = level;
-
-        //change status from 3-2 and 2-1 current-pending-complete send ajax and in response render whole block
-
-        j('#dynamicTable td[data-level=' + currentLevel + ']').each(function() {
-            if (j(this).find('textarea').length) {
-                allSaved = false;
-            }
-        });
-
-        if (!allSaved) {
-            alert('All fields must be saved before locking.');
-            return;
-        }
-
-        j('#dynamicTable td[data-level=' + currentLevel + ']').each(function() {
-            if (j(this).find('div').length) {
-                j(this).append(`
-                    <button class="add-reply">Add Reply</button>
-                    <button class="complete">Complete</button>
-                `);
-                // console.log(j(this).closest('tr')[0]);
-            }
-        });
-        level++;
-        // console.log(j(this).closest('td')[0]);
-
-        j(this).closest('td').remove();
-    });
+    }
 });

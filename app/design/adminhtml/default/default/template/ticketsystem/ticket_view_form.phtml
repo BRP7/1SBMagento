@@ -1,4 +1,5 @@
 <?php
+echo 123;
 $ticketDetail = $this->getTicket();
 $status = $this->getStatus($ticketDetail->getStatus());
 $users = $this->getUsers(); ?>
@@ -58,6 +59,9 @@ $users = $this->getUsers(); ?>
 <div style="border:2px dashed black;padding:3px;padding-left:20px;padding-right:20px">
     <h1 style="text-decoration:underline">Add Comments</h1>
     <?php echo $this->getChildHtml('ticketsystem.view.comment'); ?>
+    <div id="comment_replay">
+    <?php echo $this->getChildHtml('ticketsystem.view.comment.reply'); ?>
+</div>
 </div>
 <script type="text/javascript">
     document.observe('dom:loaded', function () {

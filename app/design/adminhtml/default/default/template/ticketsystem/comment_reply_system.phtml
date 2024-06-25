@@ -1,17 +1,32 @@
 <?php
 $url = $this->getUrl('*/*/save');
 ?>
+
+<!-- 
     <table id="dynamicTable" data-url="<?php echo $url; ?>"  data-ticket-id="<?php echo $this->getRequest()->getParam('id'); ?>">
         <tr>
-            <td rowspan="1">
+            <td rowspan="1" data-level="0" data-parent-td="0">
                 <div>
                     <textarea></textarea>
-                    <button class="add-reply">Add Reply</button>
+                    <button class="add-reply" >Add Reply</button>
                     <button class="complete">Complete</button>
                 </div>
             </td>
         </tr>
-    </table>
+    </table> -->
   
-    
+ <h2>Comments</h2>
+<?php
+$comment = $this->getComments();
+echo $this->getHtml($comment);
+?>
+<script>
+    document.observe('dom:loaded', function () {
+        window.commentBoxObj = new CommentBox(
+            '<?php echo $this->getUrl('*/*/saveComment') ?>',
+            FORM_KEY,
+            '<?php echo $this->getUrl('*/*/loadComment') . 'id/' . $this->getRequest()->getParam('id') . '/' ?>',
+        );
+    });
+</script>
 

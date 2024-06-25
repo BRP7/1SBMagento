@@ -254,11 +254,10 @@ class Ccc_Ticketsystem_Adminhtml_TicketsystemController extends Mage_Adminhtml_C
                     ->setUserId($userId)
                     ->save();
     
-                // Create the block
+                
                 $block = $this->getLayout()->createBlock('ccc_ticketsystem/adminhtml_ticketsystemviewcomment')
                     ->setTemplate('ticketsystem/ticket_comment.phtml');
     
-                // Ensure block is created properly
                 if (!$block) {
                     throw new Exception("Block not created.");
                 }
@@ -343,6 +342,47 @@ class Ccc_Ticketsystem_Adminhtml_TicketsystemController extends Mage_Adminhtml_C
         // $this->getResponse()->setBody('success');
     }
     
+    public function saveCommentAction()
+    {
+        $data = array(
+            'description' => $this->getRequest()->getParam('data'),
+            'ticket_id' => $this->getRequest()->getParam('ticketId'),
+            'parent_id' => $this->getRequest()->getParam('parentId'),
+            'user_id' => Mage::getSingleton('admin/session')->getUser()->getId(),
+            'level' => $this->getRequest()->getParam(('level')),
+            'status' => 3
+        );
+        // print_r($data);die;
+        $commentModel = Mage::getModel('ccc_ticketsystem/comment');
+        if ($data['description']) {
+            $commentModel->setData($data)
+                ->save();
+        }
+        $this->getResponse()->setBody($commentModel->getId());
+    }
+    public function loadCommentAction()
+    {
+        $comments = Mage::getModel('ccc_ticketsystem/comment')
+            ->getCollection()
+            ->addFieldToFilter('status', array('in' => array(2, 3)));
+        foreach ($comments as $comment) {
+            $oldStatus = $comment->getStatus();
+            if ($oldStatus == 2) {
+                $newStatus = 1;
+            } elseif ($oldStatus == 3) {
+                $newStatus = 2;
+            } else {
+                continue;
+            }
+            $comment->setStatus($newStatus);
+            $comment->save();
+        }
+
+        $this->loadLayout();
+        $block = $this->getLayout()
+            ->createBlock('ccc_ticketsystem/adminhtml_viewcommentreply');
+        $this->getResponse()->setBody($block->toHtml());
+    }
     
 
     public function loadAction()
