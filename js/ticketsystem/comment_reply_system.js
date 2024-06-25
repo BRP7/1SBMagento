@@ -107,7 +107,7 @@ var CommentBox = Class.create({
         tbody.insert(newRow);
     },
     updateRowspan: function (td, increment) {
-        let commentId = td.getAttribute('data-comment-id');
+        // let commentId = td.getAttribute('data-comment-id');
         let parentId = td.getAttribute('data-parent-id');
         let currentRowspan = parseInt(td.getAttribute('rowspan')) || 1;
         td.setAttribute('rowspan', currentRowspan + increment);
@@ -115,15 +115,6 @@ var CommentBox = Class.create({
         parentTds.forEach(parentTd => {
             this.updateRowspan(parentTd, increment);
         });
-    },
-    getPreviousTd: function (td, level) {
-        let tr = td.up('tr').previous();
-        while (tr) {
-            let previousTd = tr.select(`td[data-level="${level}"]`)[0];
-            if (previousTd) return previousTd;
-            tr = tr.previous();
-        }
-        return null;
     },
     createButton: function (label, callback, btnClass) {
         btnClass = btnClass || 'button';
